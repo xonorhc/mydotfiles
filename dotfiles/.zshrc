@@ -73,3 +73,13 @@ if [[ -n "$YAZI_ID" ]]; then
 	}
 	add-zsh-hook zshexit _yazi_cd
 fi
+
+# -- fastfetch --
+if [[ $(tty) == *"pts"* ]]; then
+	fastfetch
+else
+	echo
+	if [ -f /bin/hyprctl ]; then
+		echo "Start Hyprland with command Hyprland"
+	fi
+fi
