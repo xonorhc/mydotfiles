@@ -1,0 +1,12 @@
+\set QUIET ON
+
+\set PROMPT1 '(%n@%M:%>) [%/] > '
+\set PROMPT2 ''
+\setenv PAGER 'pspg -X -b'
+\set HISTSIZE 2000
+\encoding unicode
+\pset linestyle unicode
+\pset null 'NULL'
+\pset border 2
+
+\set QUIET OFF

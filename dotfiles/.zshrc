@@ -83,3 +83,11 @@ else
 		echo "Start Hyprland with command Hyprland"
 	fi
 fi
+
+# -- postgres --
+export PGHOST='localhost'
+export PGPORT='5432'
+export PGDATABASE='postgres'
+export PGUSER='postgres'
+export DATABASE_URL="postgres://$PGUSER:@$PGHOST:$PGPORT/$PGDATABASE"
+export PSQL_PAGER="pspg"
