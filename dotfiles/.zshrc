@@ -57,6 +57,7 @@ alias clock='tty-clock'
 
 # -- enviroments variables --
 export EDITOR=nvim
+export BROWSER=app.zen_browser.zen
 
 # -- yazi --
 function y() {

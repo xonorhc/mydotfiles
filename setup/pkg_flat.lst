@@ -1,0 +1,52 @@
+# ------------------------------------------- // System
+io.github.flattool.Warehouse
+# org.gnome.Boxes
+# io.missioncenter.MissionCenter
+com.github.tchx84.Flatseal
+# io.gitlab.adhami3310.Impression
+
+# ------------------------------------------- // Networking
+# com.protonvpn.www
+# org.qbittorrent.qBittorrent
+# org.remmina.Remmina
+
+# ------------------------------------------- // Browser
+# org.torproject.torbrowser-launcher
+app.zen_browser.zen
+
+# ------------------------------------------- // Audio & Video
+# org.kde.haruna
+# org.pipewire.Helvum
+com.github.rafostar.Clapper
+# com.obsproject.Studio
+com.spotify.Client
+
+# ------------------------------------------- // Graphics & Photography
+org.gnome.Loupe
+# org.gnome.eog
+# org.kde.krita
+com.github.PintaProject.Pinta
+# io.gitlab.theevilskeleton.Upscaler
+# net.fasterland.converseen
+# org.blender.Blender
+
+# ------------------------------------------- // Productivity
+# org.mozilla.Thunderbird
+# org.onlyoffice.desktopeditors
+# org.libreoffice.LibreOffice
+# com.github.IsmaelMartinez.teams_for_linux
+io.github.zaedus.spider
+
+# ------------------------------------------- // Education
+# org.qgis.qgis
+# com.google.EarthPro
+
+# ------------------------------------------- // Social
+# org.signal.Signal
+
+# ------------------------------------------- // Utilities
+org.gnome.Calculator
+# com.ml4w.dotfilesinstaller
+
+# ------------------------------------------- // Gaming
+# net.lutris.Lutris
