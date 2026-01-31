@@ -1,0 +1,70 @@
+# https://github.com/rose-pine/rose-pine-theme
+# Soho vibes for Zathura: Rosé Pine Moon
+#
+# Usage:
+# Copy contents of this file to ~/.config/zathura/zathurarc
+#
+# Change 'recolor' and 'recolor-keephue' to true to change
+# the document colors for a more uniform viewing experience.
+
+set default-bg                  "#232136"
+set default-fg                  "#e0def4"
+
+set statusbar-fg                "#e0def4"
+set statusbar-bg                "#59546d"
+
+set inputbar-bg                 "#817c9c"
+set inputbar-fg                 "#232136"
+
+set notification-bg             "#817c9c"
+set notification-fg             "#232136"
+
+set notification-error-bg       "#817c9c"
+set notification-error-fg       "#ea9a97"
+
+set notification-warning-bg     "#817c9c"
+set notification-warning-fg     "#f6c177"
+
+set highlight-color             "rgba(0x3e, 0x8f, 0xb0, 0.5)"
+set highlight-active-color      "rgba(0x9c, 0xcf, 0xd8, 0.5)"
+
+set completion-bg               "#817c9c"
+set completion-fg               "#9ccfd8"
+
+set completion-highlight-fg     "#e0def4"
+set completion-highlight-bg     "#9ccfd8"
+
+set recolor-lightcolor          "#232136"
+set recolor-darkcolor           "#e0def4"
+
+set recolor                     "false"
+set recolor-keephue             "false"
+
+
+set recolor-reverse-video 'false'
+set selection-clipboard "clipboard"
+set adjust-open width
+
+set guioptions none
+map [normal]     z zoom in
+map [normal]     Z zoom out
+map [fullscreen] z zoom in
+map [fullscreen] Z zoom out
+map [normal]     D toggle_page_mode
+map [fullscreen] D toggle_page_mode
+map [normal]     u scroll half-up
+map [normal]     d scroll half-down
+map [fullscreen] u scroll half-up
+map [fullscreen] d scroll half-down
+map [normal]     f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+map [normal]     <C-r> reload
+map [fullscreen] <C-r> reload
+map [normal]     b toggle_statusbar
+map [fullscreen] b toggle_statusbar
+map [normal]     H adjust_window best-fit
+map [normal]     W adjust_window width
+map [fullscreen] H adjust_window best-fit
+map [fullscreen] W adjust_window width
+map [normal]     i set recolor
+map [fullscreen] i set recolor
