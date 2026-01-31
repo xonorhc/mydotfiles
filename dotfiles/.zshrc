@@ -57,3 +57,19 @@ alias clock='tty-clock'
 
 # -- enviroments variables --
 export EDITOR=nvim
+
+# -- yazi --
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd <"$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+if [[ -n "$YAZI_ID" ]]; then
+	function _yazi_cd() {
+		ya emit cd "$PWD"
+	}
+	add-zsh-hook zshexit _yazi_cd
+fi
