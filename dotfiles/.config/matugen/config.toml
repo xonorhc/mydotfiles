@@ -74,3 +74,7 @@ output_path = '~/.config/btop/themes/matugen.theme'
 [templates.yazi]
 input_path = '~/.config/matugen/templates/yazi-theme.toml'
 output_path = '~/.config/yazi/theme.toml'
+
+[templates.cava]
+input_path = '~/.config/matugen/templates/cava-colors.ini'
+output_path = '~/.config/cava/config'
