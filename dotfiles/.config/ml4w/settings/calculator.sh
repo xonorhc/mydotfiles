@@ -1,1 +1,1 @@
-gnome-calculator
+org.gnome.Calculator

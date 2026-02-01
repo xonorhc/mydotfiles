@@ -1,1 +1,1 @@
-evolution
+org.mozilla.Thunderbird

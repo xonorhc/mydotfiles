@@ -1,1 +1,1 @@
-firefox
+app.zen_browser.zen
