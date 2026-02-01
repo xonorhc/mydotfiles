@@ -1,90 +1,54 @@
-// Inspired by Catnap
 {
-    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-    "logo": {
-        "type": "small",
-        "padding": {
-            "top": 1
-        }
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": null,
+  "display": {
+    "separator": " ",
+    "color": {
+      "keys": "blue",
     },
-    "display": {
-        "separator": " "
+    "size": {
+      "ndigits": 0,
+      "maxPrefix": "GB",
     },
-    "modules": [
-        {
-            "key": "╭───────────╮",
-            "type": "custom"
-        },
-        {
-            "key": "│ {#31} user    {#keys}│",
-            "type": "title",
-            "format": "{user-name}"
-        },
-        {
-            "key": "│ {#32}󰇅 hname   {#keys}│",
-            "type": "title",
-            "format": "{host-name}"
-        },
-        {
-          "type": "command",
-          "key": "│ {#33}󱦟 os age  {#keys}│",
-          "keyColor": "magenta",
-          "text": "printf \"\\e[0m%s days\\e[0m\" \"$(( ($(date +%s) - $(stat -c %W /)) / 86400 ))\""
-        },
-        {
-            "key": "│ {#34}󰅐 uptime  {#keys}│",
-            "type": "uptime"
-        },
-        {
-            "key": "│ {#34}{icon} distro  {#keys}│",
-            "type": "os"
-        },
-        {
-            "key": "│ {#35} kernel  {#keys}│",
-            "type": "kernel"
-        },
-        {
-            "key": "│ {#36} wm      {#keys}│",
-            "type": "wm"
-        },
-        {
-            "key": "│ {#36}󰇄 desktop {#keys}│",
-            "type": "de"
-        },
-        {
-            "key": "│ {#31} term    {#keys}│",
-            "type": "terminal"
-        },
-        {
-            "key": "│ {#32} shell   {#keys}│",
-            "type": "shell"
-        },
-        {
-            "key": "│ {#33}󰍛 cpu     {#keys}│",
-            "type": "cpu",
-            "showPeCoreCount": true
-        },
-        {
-            "key": "│ {#34}󰉉 disk    {#keys}│",
-            "type": "disk",
-            "folders": "/"
-        },
-        {
-            "key": "│ {#36} memory  {#keys}│",
-            "type": "memory"
-        },
-        {
-            "key": "├───────────┤",
-            "type": "custom"
-        },
-        {
-            "key": "│ {#39} colors  {#keys}│",
-            "type": "colors",
-            "symbol": "circle"
-        },
-        {
-            "key": "╰───────────╯",
-            "type": "custom"
-        }
-    ]
+    "key": {
+      "type": "both-2",
+      "paddingLeft": 2,
+    },
+  },
+  "modules": [
+    {
+      "type": "title",
+      "color": {
+        "user": "green",
+        "at": "red",
+        "host": "blue",
+      },
+    },
+    "separator",
+    "os",
+    "kernel",
+    "wm",
+    "host",
+    "display",
+    {
+      "type": "cpu",
+      "showPeCoreCount": true,
+      "temp": true,
+    },
+    "gpu",
+    "memory",
+    "disk",
+    {
+      "type": "publicip",
+      "timeout": 1000,
+    },
+    "localip",
+    "uptime",
+    {
+      "type": "colors",
+      "key": "Colors", // For printing icon
+      "symbol": "circle",
+    },
+    "separator",
+  ],
 }
