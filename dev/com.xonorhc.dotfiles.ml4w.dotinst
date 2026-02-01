@@ -1,0 +1,14 @@
+{
+	"name": "My dotfiles - ML4W DEV",
+	"id": "com.xonorhc.dotfiles.ml4w.dev",
+	"description": "A fork from ML4W",
+	"version":"0.1",
+	"author": "Anachronox",
+	"homepage": "https://github.com/xonorhc/mydotfiles",
+	"dependencies": "",
+	"source": "Templates/mydotfiles-ml4w",
+	"subfolder": "dotfiles",
+	"setupscript":"setup.sh",
+	"restore":[],
+	"settings":[]
+}
