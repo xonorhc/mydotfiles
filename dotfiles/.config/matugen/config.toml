@@ -86,3 +86,8 @@ output_path = '~/.config/zathura/zathurarc'
 # [templates.neovim]
 # input_path = '~/.config/matugen/templates/neovim-base16.lua'
 # output_path = '~/.config/nvim/lua/plugins/generated.lua'
+
+# [templates.gtk-theme]
+# input_path = '~/.config/matugen/templates/gtk-themes.scss'
+# output_path = '~/.config/matugen/templates/gtk-themes/themes/src/sass/_color-palette-default.scss'
+# post_hook = 'bash ~/.config/matugen/templates/gtk-themes/themes/install.sh --theme default --color dark --size compact'

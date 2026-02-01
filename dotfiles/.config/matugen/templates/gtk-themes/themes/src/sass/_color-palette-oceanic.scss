@@ -1,0 +1,73 @@
+// Material Oceanic Color Palette
+
+// Blue
+$blue-light: #6182b8;
+$blue-dark: #82aaff;
+
+// Cyan
+$cyan-light: #067a82;
+$cyan-dark: #71c6e7;
+
+// Green
+$green-light: #91b859;
+$green-dark: #c3e88d;
+
+// Orange
+$orange-light: #f76d47;
+$orange-dark: #f78c6c;
+
+// Pink
+$pink-light: #ff5370;
+$pink-dark: #ff9cac;
+
+// Purple
+$purple-light: #7c4dff;
+$purple-dark: #c792ea;
+
+// Red
+$red-light: #e53935;
+$red-dark: #f07178;
+
+// Teal
+$teal-light: #39adb5;
+$teal-dark: #89ddff;
+
+// Yellow
+$yellow-light: #f6a434;
+$yellow-dark: #ffcb6b;
+
+// Grey
+$grey-050: #ffffff;
+$grey-100: #eeeeee;
+$grey-150: #e7e7e8;
+$grey-200: #d3e1e8;
+$grey-250: #cfd8dc;
+$grey-300: #d2d4d5;
+$grey-350: #b0bec5;
+$grey-400: #a1b1ba;
+$grey-450: #8a9ea8;
+$grey-500: #7c9ead;
+$grey-550: #648290;
+$grey-600: #546e7a;
+$grey-650: #426367;
+$grey-700: #355058;
+$grey-750: #314549;
+$grey-800: #2f454b;
+$grey-850: #263b40;
+$grey-900: #1c2c30;
+$grey-950: #1e272c;
+
+// White
+$white: #fafafa;
+
+// Black
+$black: #25363b;
+
+// Theme
+$default-light: $blue-light;
+$default-dark: $blue-dark;
+
+// Button
+$button-close: if($topbar == 'light', #e53935, #f07178);
+$button-max: if($topbar == 'light', #91b859, #c3e88d);
+$button-min: if($topbar == 'light', #f6a434, #ffcb6b);
