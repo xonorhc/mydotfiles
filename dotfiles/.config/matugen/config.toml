@@ -70,3 +70,7 @@ post_hook = "jq --slurpfile palette ~/.config/ohmyposh/colors.json '. + $palette
 [templates.btop]
 input_path = '~/.config/matugen/templates/btop.theme'
 output_path = '~/.config/btop/themes/matugen.theme'
+
+[templates.yazi]
+input_path = '~/.config/matugen/templates/yazi-theme.toml'
+output_path = '~/.config/yazi/theme.toml'

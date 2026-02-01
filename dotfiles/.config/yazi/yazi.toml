@@ -1,0 +1,23 @@
+[opener]
+play = [
+	{ run = 'mpv "$@"', orphan = true, for = "unix" },
+]
+edit = [
+	{ run = 'nvim "$@"', block = true, for = "unix" },
+]
+open = [
+	{ run = 'xdg-open "$@"', desc = "Open" },
+]
+extract = [
+	{ run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+]
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*"
+run = "git"
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*/"
+run = "git"
