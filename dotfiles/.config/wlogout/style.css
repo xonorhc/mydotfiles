@@ -7,7 +7,7 @@
 */
 
 /* colors */
-@import "./colors.css";
+@import "./themes/rose-pine-moon.css";
 
 /* general */
 * {
@@ -17,12 +17,12 @@
 }
 
 window {
-  background-color: alpha(@background, 0.8);
+  background-color: alpha(@base, 0.8);
 }
 
 button {
-  color: #ffffff;
-  background-color: @color1;
+  color: @text;
+  background-color: @foam;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 20%;
@@ -33,28 +33,28 @@ button {
 
 /* options */
 #lock {
-  background-color: @color1;
+  background-color: @pine;
   background-image: image(url("icons/lock.png"));
   border-radius: 5px 0px 0px 0px;
   margin: 100px 0px 0px 550px;
 }
 
 #reboot {
-  background-color: @color2;
+  background-color: @rose;
   background-image: image(url("icons/reboot.png"));
   border-radius: 0px 0px 0px 5px;
   margin: 0px 0px 100px 550px;
 }
 
 #logout {
-  background-color: @color3;
+  background-color: @gold;
   background-image: image(url("icons/logout.png"));
   border-radius: 0px 5px 0px 0px;
   margin: 100px 550px 0px 0px;
 }
 
 #shutdown {
-  background-color: @color4;
+  background-color: @love;
   background-image: image(url("icons/shutdown.png"));
   border-radius: 0px 0px 5px 0px;
   margin: 0px 550px 100px 0px;
