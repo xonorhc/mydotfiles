@@ -1,38 +1,37 @@
-//   _ _ _ _____ __ __ _____ _____ _____
-//  | | | |  _  |  |  | __  |  _  | __  |
-//  | | | |     |_   _| __ -|     |    -|
-//  |_____|__|__| |_| |_____|__|__|__|__|  CONFIG
-//
-//  by Bina
-
 {
-  // load modules
-  "include": "~/.config/waybar/modules.json",
-  // general settings
-  "position": "top",
-  "margin-top": 8,
-  "margin-bottom": 0,
   "layer": "top",
-  "margin-left": 8,
-  "margin-right": 8,
+  "output": ["eDP-1"],
+  "position": "top",
+  //"height": 10,
+  //"width": 1280,
   "spacing": 10,
-  "fixed-center": true,
-  "exclusive": true,
-  // modules
+  "margin-top": 10,
+  "margin-left": 10,
+  "margin-right": 10,
+  //"mode": "dock",
+  "reload_style_on_change": true,
+  "include": [
+    "~/.config/waybar/modules.json",
+    "~/.config/waybar/quicklinks.json",
+    "~/.config/waybar/hardware.json",
+    "~/.config/waybar/media.json",
+    "~/.config/waybar/media.json"
+  ],
   "modules-left": [
-    "hyprland/workspaces",
+    "custom/appmenu",
+    "group/quicklinks",
+    "tray",
     "hyprland/window"
   ],
-  "modules-center": ["clock"],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
   "modules-right": [
-    "group/hardware",
-    "pulseaudio",
-    "bluetooth",
     "network",
-    "backlight",
-    "battery",
-    "tray",
-    "custom/notification",
-    "custom/exit"
-  ]
+    "group/media",
+    "group/hardware",
+    "clock",
+    "custom/notification"
+  ],
+  "fixed-center": true
 }
