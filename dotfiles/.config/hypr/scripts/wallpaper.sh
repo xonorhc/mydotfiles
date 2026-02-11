@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-#  _      __     ____                      
+#  _      __     ____
 # | | /| / /__ _/ / /__  ___ ____  ___ ____
 # | |/ |/ / _ `/ / / _ \/ _ `/ _ \/ -_) __/
-# |__/|__/\_,_/_/_/ .__/\_,_/ .__/\__/_/   
-#                /_/       /_/             
+# |__/|__/\_,_/_/_/ .__/\_,_/ .__/\__/_/
+#                /_/       /_/
 
 # Source library.sh
 source $HOME/.config/ml4w/library.sh
@@ -86,7 +86,7 @@ tmpwallpaper=$wallpaper
 if [ ! -f $cachefile ]; then
     touch $cachefile
 fi
-echo "$wallpaper" > $cachefile
+echo "$wallpaper" >$cachefile
 _writeLog "Path of current wallpaper copied to $cachefile"
 
 # -----------------------------------------------------
@@ -135,7 +135,7 @@ THEME_PREF=$(grep -E '^gtk-application-prefer-dark-theme=' "$SETTINGS_FILE" | aw
 
 _writeLog "Execute matugen with $used_wallpaper"
 if [ "$THEME_PREF" -eq 1 ]; then
-    $HOME/.local/bin/matugen image "$used_wallpaper" -m "dark"
+    $HOME/.local/bin/matugen -t scheme-content --contrast 0 image "$used_wallpaper" -m "dark"
 else
     $HOME/.local/bin/matugen image "$used_wallpaper" -m "light"
 fi
