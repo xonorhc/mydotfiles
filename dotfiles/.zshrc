@@ -8,6 +8,9 @@
 # -- $PATH variable --
 export PATH=$HOME/bin:/usr/bin:/usr/local/bin:$PATH
 
+# -- colors highlights --
+source ~/.config/zsh/themes/rose-pine-moon.sh
+
 # -- oh-my-zsh --
 # https://github.com/ohmyzsh
 export ZSH=$HOME/.oh-my-zsh
@@ -92,3 +95,6 @@ export PGDATABASE='postgres'
 export PGUSER='postgres'
 export DATABASE_URL="postgres://$PGUSER:@$PGHOST:$PGPORT/$PGDATABASE"
 export PSQL_PAGER="pspg"
+
+# -- lazygit --
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/themes/rose-pine-moon.yml" lazygit
