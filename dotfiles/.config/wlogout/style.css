@@ -9,6 +9,12 @@
 /* colors */
 @import "./themes/rose-pine-moon.css";
 
+@define-color red @love;
+@define-color yellow @gold;
+@define-color green @rose;
+@define-color blue @pine;
+@define-color background @base;
+
 /* general */
 * {
   background-image: none;
@@ -17,12 +23,12 @@
 }
 
 window {
-  background-color: alpha(@base, 0.8);
+  background-color: alpha(@background, 0.8);
 }
 
 button {
   color: @text;
-  background-color: @foam;
+  background-color: @background;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 20%;
@@ -33,28 +39,28 @@ button {
 
 /* options */
 #lock {
-  background-color: @pine;
+  background-color: @blue;
   background-image: image(url("icons/lock.png"));
   border-radius: 5px 0px 0px 0px;
   margin: 100px 0px 0px 550px;
 }
 
 #reboot {
-  background-color: @rose;
+  background-color: @green;
   background-image: image(url("icons/reboot.png"));
   border-radius: 0px 0px 0px 5px;
   margin: 0px 0px 100px 550px;
 }
 
 #logout {
-  background-color: @gold;
+  background-color: @yellow;
   background-image: image(url("icons/logout.png"));
   border-radius: 0px 5px 0px 0px;
   margin: 100px 550px 0px 0px;
 }
 
 #shutdown {
-  background-color: @love;
+  background-color: @red;
   background-image: image(url("icons/shutdown.png"));
   border-radius: 0px 0px 5px 0px;
   margin: 0px 550px 100px 0px;
