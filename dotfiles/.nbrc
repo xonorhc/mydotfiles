@@ -14,4 +14,4 @@
 ###############################################################################
 
 export NB_DIR="${NB_DIR:-$HOME/.nb}"
-export NB_DEFAULT_TEMPLATE="$HOME/.nb/templates/markdown"
+# export NB_DEFAULT_TEMPLATE="$HOME/.nb/templates/markdown"
