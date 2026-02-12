@@ -8,8 +8,9 @@
 # -- $PATH variable --
 export PATH=$HOME/bin:/usr/bin:/usr/local/bin:$PATH
 
-# -- colors highlights --
-source ~/.config/zsh/themes/rose-pine-moon.sh
+# -- colors --
+source ~/.config/zshrc/tty-colors/rose-pine-moon.sh
+source ~/.config/zshrc/fzf-colors/rose-pine-moon.sh
 
 # -- oh-my-zsh --
 # https://github.com/ohmyzsh
