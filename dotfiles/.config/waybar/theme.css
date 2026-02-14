@@ -1,0 +1,36 @@
+@import "themes/rose-pine-moon.css";
+
+/*
+	br - border
+	bg - background
+	fg - foreground
+*/
+
+/* main colors */
+
+@define-color accent        @pine;
+@define-color main-br       @rose;
+@define-color main-bg       @base;
+@define-color main-fg       @text;
+@define-color hover-bg      @muted;
+@define-color hover-fg      alpha(@main-fg, 0.75);
+@define-color outline       shade(@main-bg, 0.5);
+
+/* module colors */
+
+@define-color workspaces    @surface;
+@define-color temperature   @highlightLow;
+@define-color memory        @highlightMed;
+@define-color cpu           @highlightHigh;
+@define-color time          @highlightHigh;
+@define-color date          @highlightMed;
+@define-color tray          @highlightLow;
+@define-color volume        @highlightLow;
+@define-color backlight     @highlightMed;
+@define-color battery       @highlightHigh;
+
+/* state colors */
+
+@define-color warning       @gold;
+@define-color critical      @love;
+@define-color charging      @foam;

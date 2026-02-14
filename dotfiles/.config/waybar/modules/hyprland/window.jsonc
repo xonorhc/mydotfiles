@@ -1,0 +1,20 @@
+{
+  "hyprland/window": {
+    "format": "{}",
+    "rewrite": {
+      "": "Desktop",
+      "kitty": "Terminal",
+      "zsh": "Terminal",
+      "~": "Terminal",
+      "(.*) - Zen Browser": "$1",
+    },
+    // "separate-outputs":
+    // "icon":
+    // "icon-size":
+    // "min-length":
+    // "max-length":
+    // "tooltip":
+    "swap-icon-label": false,
+    // "expand":
+  },
+}
