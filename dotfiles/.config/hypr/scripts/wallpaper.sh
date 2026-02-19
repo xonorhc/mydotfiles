@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
-#  _      __     ____
+#  _      __     ____                      
 # | | /| / /__ _/ / /__  ___ ____  ___ ____
 # | |/ |/ / _ `/ / / _ \/ _ `/ _ \/ -_) __/
-# |__/|__/\_,_/_/_/ .__/\_,_/ .__/\__/_/
-#                /_/       /_/
+# |__/|__/\_,_/_/_/ .__/\_,_/ .__/\__/_/   
+#                /_/       /_/             
 
 # Source library.sh
 source $HOME/.config/ml4w/library.sh
+
+# Notifications
+source "$HOME/.config/ml4w/scripts/ml4w-notification-handler"
+APP_NAME="Waypaper"
+NOTIFICATION_ICON="preferences-desktop-wallpaper-symbolic"
 
 # -----------------------------------------------------
 # Check to use wallpaper cache
@@ -86,7 +91,7 @@ tmpwallpaper=$wallpaper
 if [ ! -f $cachefile ]; then
     touch $cachefile
 fi
-echo "$wallpaper" >$cachefile
+echo "$wallpaper" > $cachefile
 _writeLog "Path of current wallpaper copied to $cachefile"
 
 # -----------------------------------------------------
@@ -108,7 +113,13 @@ if [ -f "$wallpapereffect" ]; then
             _writeLog "Use cached wallpaper $effect-$wallpaperfilename"
         else
             _writeLog "Generate new cached wallpaper $effect-$wallpaperfilename with effect $effect"
-            notify-send --replace-id=1 "Using wallpaper effect $effect..." "with image $wallpaperfilename" -h int:value:33
+            
+            notify_user \
+                --a "${APP_NAME}" \
+                --i "${NOTIFICATION_ICON}" \
+                --s "Wallpaper" \
+                --m "Using wallpaper effect $effect\n with image $wallpaperfilename"
+
             source $HOME/.config/hypr/effects/wallpaper/$effect
         fi
         _writeLog "Loading wallpaper $generatedversions/$effect-$wallpaperfilename with effect $effect"
@@ -135,7 +146,7 @@ THEME_PREF=$(grep -E '^gtk-application-prefer-dark-theme=' "$SETTINGS_FILE" | aw
 
 _writeLog "Execute matugen with $used_wallpaper"
 if [ "$THEME_PREF" -eq 1 ]; then
-    $HOME/.local/bin/matugen -t scheme-content --contrast 0 image "$used_wallpaper" -m "dark"
+    $HOME/.local/bin/matugen image "$used_wallpaper" -m "dark"
 else
     $HOME/.local/bin/matugen image "$used_wallpaper" -m "light"
 fi
@@ -176,7 +187,6 @@ if [ -f "$generatedversions/blur-$blur-$effect-$wallpaperfilename.png" ] && [ "$
     _writeLog "Use cached wallpaper blur-$blur-$effect-$wallpaperfilename"
 else
     _writeLog "Generate new cached wallpaper blur-$blur-$effect-$wallpaperfilename with blur $blur"
-    # notify-send --replace-id=1 "Generate new blurred version" "with blur $blur" -h int:value:66
     magick "$used_wallpaper" -resize 75% "$blurredwallpaper"
     _writeLog "Resized to 75%"
     if [ ! "$blur" == "0x0" ]; then

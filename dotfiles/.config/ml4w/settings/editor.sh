@@ -1,1 +1,1 @@
-nvim
+gnome-text-editor

@@ -5,6 +5,11 @@ input_path = '~/.config/matugen/templates/kitty-colors.conf'
 output_path = '~/.config/kitty/colors-matugen.conf'
 post_hook = 'pkill -SIGUSR1 kitty'
 
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+post_hook = 'pkill -USR2 btop'
+
 [templates.hyprland]
 input_path = '~/.config/matugen/templates/hyprland-colors.conf'
 output_path = '~/.config/hypr/colors.conf'
@@ -62,14 +67,16 @@ output_path = '~/.config/ml4w/colors/secondary'
 input_path = '~/.config/matugen/templates/onsurface'
 output_path = '~/.config/ml4w/colors/onsurface'
 
+[templates.on_primary]
+input_path = '~/.config/matugen/templates/onprimary'
+output_path = '~/.config/ml4w/colors/onprimary'
+
 [templates.ohmyposh]
 input_path = '~/.config/matugen/templates/ohmyposh-colors.json'
 output_path = '~/.config/ohmyposh/colors.json'
 post_hook = "jq --slurpfile palette ~/.config/ohmyposh/colors.json '. + $palette[0]' ~/.config/ohmyposh/EDM115-newline.omp.json > /tmp/new_theme.json && mv /tmp/new_theme.json ~/.config/ohmyposh/EDM115-newline.omp.json"
 
-[templates.btop]
-input_path = '~/.config/matugen/templates/btop.theme'
-output_path = '~/.config/btop/themes/matugen.theme'
+### Custom ###
 
 [templates.yazi]
 input_path = '~/.config/matugen/templates/yazi-theme.toml'
@@ -83,9 +90,9 @@ output_path = '~/.config/cava/config'
 input_path = '~/.config/matugen/templates/zathura-colors'
 output_path = '~/.config/zathura/zathurarc'
 
-# [templates.neovim]
-# input_path = '~/.config/matugen/templates/neovim-base16.lua'
-# output_path = '~/.config/nvim/lua/plugins/generated.lua'
+[templates.neovim]
+input_path = '~/.config/matugen/templates/neovim-base16.lua'
+output_path = '~/.config/nvim/lua/plugins/generated.lua'
 
 # [templates.gtk-theme]
 # input_path = '~/.config/matugen/templates/gtk-themes.scss'

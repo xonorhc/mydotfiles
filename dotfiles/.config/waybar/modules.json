@@ -74,7 +74,7 @@
 
   // Now Playing
   "custom/nowplaying": {
-    "exec": "~/.config/ml4w/scripts/now-playing.sh",
+    "exec": "~/.config/ml4w/scripts/ml4w-now-playing",
     "format": "  {text}",
     "return-type": "json",
     "interval": 1,
@@ -89,9 +89,9 @@
   // Cliphist
   "custom/cliphist": {
     "format": "",
-    "on-click": "sleep 0.1 && ~/.config/ml4w/scripts/cliphist.sh",
-    "on-click-right": "sleep 0.1 && ~/.config/ml4w/scripts/cliphist.sh d",
-    "on-click-middle": "sleep 0.1 && ~/.config/ml4w/scripts/cliphist.sh w",
+    "on-click": "sleep 0.1 && ~/.config/ml4w/scripts/ml4w-cliphist",
+    "on-click-right": "sleep 0.1 && ~/.config/ml4w/scripts/ml4w-cliphist d",
+    "on-click-middle": "sleep 0.1 && ~/.config/ml4w/scripts/ml4w-cliphist w",
     "tooltip-format": "Left: Open clipboard Manager\nRight: Delete an entry\nMiddle: Clear list",
     "on-scroll-up": "true",
     "on-scroll-down": "true"
@@ -101,7 +101,7 @@
     "format": "  {}",
     "escape": true,
     "return-type": "json",
-    "exec": "~/.config/ml4w/scripts/updates.sh",
+    "exec": "~/.config/ml4w/scripts/ml4w-check-system-updates",
     "interval": 1800,
     "signal": 1,
     "hide-empty-text": true,
@@ -124,7 +124,7 @@
   "custom/settings": {
     "format": "",
     "on-click": "sleep 0.1 && com.ml4w.dotfilessettings",
-    "tooltip-format": "ML4W Dotfiles Settings"
+    "tooltip-format": "ML4W Settings"
   },
   // Keybindings
   "custom/keybindings": {
@@ -157,7 +157,7 @@
   // Power Menu
   "custom/exit": {
     "format": "",
-    "on-click": "~/.config/ml4w/scripts/wlogout.sh",
+    "on-click": "~/.config/ml4w/scripts/ml4w-wlogout",
     "on-click-right": "hyprlock",
     "tooltip-format": "Left: Power menu\nRight: Lock screen"
   },
