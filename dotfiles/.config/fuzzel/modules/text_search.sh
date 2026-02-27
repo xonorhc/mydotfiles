@@ -3,7 +3,7 @@
 BASE_DIR="${1:-$HOME}"
 
 # Pergunta o termo de busca
-QUERY=$(fuzzel --dmenu --prompt "Buscar texto: ")
+QUERY=$(fuzzel --dmenu --prompt "Search text: ")
 
 # Se vazio, sai
 [ -z "$QUERY" ] && exit 0
@@ -16,7 +16,7 @@ RESULT=$(rg --line-number --column --no-heading --color=never \
     --glob '!node_modules/*' \
     --glob '!target/*' \
     "$QUERY" "$BASE_DIR" \
-    | fuzzel --dmenu --prompt "Resultados: ")
+    | fuzzel --dmenu --prompt "Results: ")
 
 # Se nada selecionado, sai
 [ -z "$RESULT" ] && exit 0

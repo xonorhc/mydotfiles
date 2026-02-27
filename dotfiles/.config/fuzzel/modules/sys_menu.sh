@@ -4,7 +4,7 @@ Logout\0icon\x1fsystem-log-out
 Reboot\0icon\x1fsystem-reboot
 Shutdown\0icon\x1fsystem-shutdown"
 
-sel=$(echo -e "$MENU" | fuzzel --dmenu --placeholder "Sistema" | tr '[:upper:]' '[:lower:]')
+sel=$(echo -e "$MENU" | fuzzel --dmenu --lines 4 --placeholder "System" | tr '[:upper:]' '[:lower:]')
 
 case "$sel" in
     lock) hyprlock ;;

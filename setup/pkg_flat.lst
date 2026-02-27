@@ -17,7 +17,7 @@ app.zen_browser.zen
 # ------------------------------------------- // Audio & Video
 # org.kde.haruna
 # org.pipewire.Helvum
-com.github.rafostar.Clapper
+# com.github.rafostar.Clapper
 # com.obsproject.Studio
 com.spotify.Client
 
@@ -35,7 +35,7 @@ com.github.PintaProject.Pinta
 # org.onlyoffice.desktopeditors
 # org.libreoffice.LibreOffice
 # com.github.IsmaelMartinez.teams_for_linux
-io.github.zaedus.spider
+# io.github.zaedus.spider
 
 # ------------------------------------------- // Education
 # org.qgis.qgis

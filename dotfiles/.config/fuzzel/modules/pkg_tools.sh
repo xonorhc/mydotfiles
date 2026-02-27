@@ -12,11 +12,11 @@ else
 fi
 
 # 1️⃣ Escolher tipo de instalação
-install_type=$(echo -e "pacman\nflatpak" | fuzzel --dmenu --prompt "Tipo de pacote:" --lines 2) || exit 0
+install_type=$(echo -e "pacman\nflatpak" | fuzzel --dmenu --prompt "Packege manager:" --lines 2) || exit 0
 [ -z "$install_type" ] && exit 0
 
 # 2️⃣ Digitar termo de busca
-search_term=$(fuzzel --dmenu --prompt "Buscar app:" --placeholder "Digite nome...") || exit 0
+search_term=$(fuzzel --dmenu --prompt "Buscar app:" --placeholder "Type the name...") || exit 0
 [ -z "$search_term" ] && exit 0
 
 # ===============================
@@ -40,12 +40,12 @@ fi
 
 # 4️⃣ Se nenhum pacote encontrado
 if [ ${#pkgs_list[@]} -eq 0 ]; then
-    notify-send "Nenhum pacote encontrado para '$search_term'"
+    notify-send "Package not found '$search_term'"
     exit 0
 fi
 
 # 5️⃣ Selecionar pacote no Fuzzel
-selected_line=$(printf "%s\n" "${pkgs_list[@]}" | fuzzel --dmenu --prompt "Selecione o pacote:" --lines 15) || exit 0
+selected_line=$(printf "%s\n" "${pkgs_list[@]}" | fuzzel --dmenu --prompt "Select a package:" --lines 15) || exit 0
 [ -z "$selected_line" ] && exit 0
 
 # 6️⃣ Extrair apenas o nome
