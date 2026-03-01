@@ -49,11 +49,11 @@ desc = "open git remote url"
 
 [[mgr.prepend_keymap]]
 on   = "o"
-run  = "plugin open-with-cmd --args=block"
+run  = "plugin open-with-cmd -- block"
 desc = "Open with command in the terminal"
 
 [[mgr.prepend_keymap]]
-on   = "O"
+on   = "<C-o>"
 run  = "plugin open-with-cmd"
 desc = "Open with command"
 
