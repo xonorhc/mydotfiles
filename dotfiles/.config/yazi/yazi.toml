@@ -14,7 +14,7 @@ extract = [
 
 # Linux: Hyprland + Hyprpaper
 [[opener.set-wallpaper]]
-run  = "hyprctl hyprpaper reload ,%s1"
+run  = "hyprctl hyprpaper wallpaper ,%s1"
 for  = "linux"
 desc = "Set as wallpaper"
 
@@ -22,7 +22,7 @@ desc = "Set as wallpaper"
 prepend_rules = [
 	{ url = "*.json", use = "edit" },
 	{ url = "*.html", use = [ "open", "edit" ] },
-  { mime = "image/*", use  = [ "set-wallpaper", "open" ] },
+  { mime = "image/*", use  = [ "open", "set-wallpaper" ] },
 ]
 
 [[plugin.prepend_previewers]]
