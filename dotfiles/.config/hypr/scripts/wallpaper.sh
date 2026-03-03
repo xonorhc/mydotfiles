@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-#  _      __     ____                      
+#  _      __     ____
 # | | /| / /__ _/ / /__  ___ ____  ___ ____
 # | |/ |/ / _ `/ / / _ \/ _ `/ _ \/ -_) __/
-# |__/|__/\_,_/_/_/ .__/\_,_/ .__/\__/_/   
-#                /_/       /_/             
+# |__/|__/\_,_/_/_/ .__/\_,_/ .__/\__/_/
+#                /_/       /_/
 
 # Source library.sh
 source $HOME/.config/ml4w/library.sh
@@ -91,7 +91,7 @@ tmpwallpaper=$wallpaper
 if [ ! -f $cachefile ]; then
     touch $cachefile
 fi
-echo "$wallpaper" > $cachefile
+echo "$wallpaper" >$cachefile
 _writeLog "Path of current wallpaper copied to $cachefile"
 
 # -----------------------------------------------------
@@ -113,7 +113,7 @@ if [ -f "$wallpapereffect" ]; then
             _writeLog "Use cached wallpaper $effect-$wallpaperfilename"
         else
             _writeLog "Generate new cached wallpaper $effect-$wallpaperfilename with effect $effect"
-            
+
             notify_user \
                 --a "${APP_NAME}" \
                 --i "${NOTIFICATION_ICON}" \
@@ -146,7 +146,8 @@ THEME_PREF=$(grep -E '^gtk-application-prefer-dark-theme=' "$SETTINGS_FILE" | aw
 
 _writeLog "Execute matugen with $used_wallpaper"
 if [ "$THEME_PREF" -eq 1 ]; then
-    $HOME/.local/bin/matugen image "$used_wallpaper" -m "dark"
+    $HOME/.local/bin/matugen image "$used_wallpaper" -m "dark" \
+        --type scheme-rainbow --contrast 0.3
 else
     $HOME/.local/bin/matugen image "$used_wallpaper" -m "light"
 fi

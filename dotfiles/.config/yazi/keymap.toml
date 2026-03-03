@@ -74,13 +74,13 @@ on   = [ "g", "l" ]
 run  = "plugin open-git-remote"
 desc = "open git remote url"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "o"
-run  = "plugin open-with-cmd --args=block"
+run  = "plugin open-with-cmd -- block"
 desc = "Open with command in the terminal"
 
-[[manager.prepend_keymap]]
-on   = "O"
+[[mgr.prepend_keymap]]
+on   = "<C-o>"
 run  = "plugin open-with-cmd"
 desc = "Open with command"
 
