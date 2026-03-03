@@ -1,0 +1,63 @@
+/* Carrega todas as definições de fontes, cores e bordas originais */
+@import "~/.config/ml4w/settings/rofi-font.rasi"
+@theme "~/.config/rofi/colors.rasi"
+@import "~/.config/ml4w/settings/rofi-border.rasi"
+@import "~/.config/ml4w/settings/rofi-border-radius.rasi"
+
+window {
+    width:                        40em;
+    height:                       8em;
+    transparency:                "real";
+    fullscreen:                  false;
+    enabled:                     true;
+    cursor:                      "default";
+    border:                      @border-width;
+    border-color:                @primary;
+    border-radius:               @border-radius;
+    background-color:            @background;
+    location:                    center;
+    anchor:                      center;
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     0em;
+    padding:                     1.5em;
+    orientation:                 vertical;
+    children:                    [ "inputbar" ];
+    background-color:            transparent;
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     0px;
+    padding:                     0.5em;
+    border-radius:               1.5em;
+    background-color:            @surface;
+    children:                    [ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         " 󰭻 "; /* Ícone de nota */
+    padding:                     0.5em 0.5em 0.5em 0.5em;
+    text-color:                  @on-surface;
+    background-color:            transparent;
+}
+
+entry {
+    enabled:                     true;
+    padding:                     0.5em;
+    text-color:                  @on-surface;
+    cursor:                      text;
+    placeholder:                 "O que você está pensando?";
+    placeholder-color:           @outline;
+    background-color:            transparent;
+}
+
+/* Desabilitamos o que não queremos do tema pai */
+listview { enabled: false; }
+listbox { enabled: false; }
+imagebox { enabled: false; }
+mode-switcher { enabled: false; }

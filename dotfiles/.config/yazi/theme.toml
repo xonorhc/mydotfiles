@@ -1,0 +1,260 @@
+# If the user's terminal is in dark mode, Yazi will load `theme-dark.toml` on startup; otherwise, `theme-light.toml`.
+# You can override any parts of them that are not related to the dark/light mode in your own `theme.toml`.
+
+# If you want to dynamically override their content based on dark/light mode, you can specify two different flavors
+# for dark and light modes under `[flavor]`, and do so in those flavors instead.
+"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+
+# vim:fileencoding=utf-8:foldmethod=marker
+
+# : Flavor [[[
+
+[flavor]
+dark  = ""
+light = ""
+
+# : ]]]
+
+
+# : App [[[
+
+[app]
+overall = {}
+
+# : ]]]
+
+
+# : Manager [[[
+
+[mgr]
+cwd = { fg = "#f4f4f4" }
+
+# Find
+find_keyword = { fg = "#ffb4ab", bold = true, italic = true, underline = true }
+find_position = { fg = "#ffb4ab", bold = true, italic = true }
+
+# Symlink
+symlink_target = { italic = true }
+
+# Marker
+marker_copied = { fg = "#62c8f3", bg = "#62c8f3" }
+marker_cut = { fg = "#c0e9fa", bg = "#c0e9fa" }
+marker_marked = { fg = "#ffb4ab", bg = "#ffb4ab" }
+marker_selected = { fg = "#a4cdde", bg = "#a4cdde" }
+
+# Count
+count_copied = { fg = "#001f28", bg = "#c0e9fa" }
+count_cut = { fg = "#001f28", bg = "#c0e9fa" }
+count_selected = { fg = "#002717", bg = "#a4cdde" }
+
+# Border
+border_symbol = " "
+border_style  = { fg = "#70dba8" }
+
+# : ]]]
+
+
+# : Tabs [[[
+
+[tabs]
+active = { bg = "#70dba8", fg = "#002717", bold = true }
+inactive  = { bg = "#474747", fg = "#c6c6c6" }
+
+# Separator
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+# : ]]]
+
+
+# : Mode [[[
+
+[mode]
+normal_main = { bg = "#70dba8", fg = "#002717", bold = true }
+normal_alt  = { bg = "#474747", fg = "#c6c6c6" }
+
+# Select mode
+select_main = { bg = "#b4ccbc", fg = "#10251a", bold = true }
+select_alt  = { bg = "#474747", fg = "#c6c6c6" }
+
+# Unset mode
+unset_main = { bg = "#a4cdde", fg = "#00242f", bold = true }
+unset_alt  = { bg = "#474747", fg = "#c6c6c6" }
+
+# : ]]]
+
+
+# : Indicator of hovered file [[[
+
+[indicator]
+parent  = { bg = "#70dba8", fg = "#002717", reversed = true }
+current = { bg = "#70dba8", fg = "#002717", bold = true }
+preview = { underline = true }
+padding = { open = "", close = "" }
+
+# : ]]]
+
+
+# : Status bar [[[
+
+[status]
+overall   = {}
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+# Permissions
+perm_sep = { fg = "#0fdb76" }
+perm_type = { fg = "#5e8a6c" }
+perm_read = { fg = "#32b8ef" }
+perm_write = { fg = "#3e8bab" }
+perm_exec = { fg = "#ff2b12" }
+
+# Progress
+progress_label = { bold = true }
+progress_normal = { fg = "#70dba8", bg = "#404040" }
+progress_error = { fg = "#ffb4ab", bg = "#404040" }
+
+# : ]]]
+
+
+# : Which [[[
+
+[which]
+cols = 3
+mask = { bg = "#404040" }
+cand = { fg = "#70dba8" }
+rest = { fg = "#002717" }
+desc = { fg = "#f4f4f4" }
+separator = " ▶ "
+separator_style = { fg = "#f4f4f4" }
+
+# : ]]]
+
+
+# : Confirmation [[[
+
+[confirm]
+border = { fg = "#70dba8" }
+title = { fg = "#f4f4f4" }
+body       = {}
+list       = {}
+btn_yes    = { reversed = true }
+btn_no     = {}
+btn_labels = [ "  [Y]es  ", "  (N)o  " ]
+
+# : ]]]
+
+
+# : Spotter [[[
+
+[spot]
+border = { fg = "#70dba8" }
+title = { fg = "#f4f4f4" }
+
+# Table
+tbl_col  = { fg = "#f4f4f4" }
+tbl_cell = { fg = "#f4f4f4", reversed = true }
+
+# : ]]]
+
+
+# : Notification [[[
+
+[notify]
+title_info = { fg = "#a4cdde" }
+title_warn = { fg = "#70dba8" }
+title_error = { fg = "#ffb4ab" }
+
+# Icons
+icon_info  = ""
+icon_warn  = ""
+icon_error = ""
+
+# : ]]]
+
+
+# : Picker [[[
+
+[pick]
+border = { fg = "#70dba8" }
+active = { fg = "#a4cdde", bold = true }
+inactive = {}
+
+# : ]]]
+
+
+# : Input [[[
+
+[input]
+border = { fg = "#70dba8" }
+title    = {}
+value = { fg = "#f4f4f4" }
+selected = { reversed = true }
+
+# : ]]]
+
+
+# : Completion [[[
+
+[cmp]
+border = { fg = "#70dba8", bg = "#002717" }
+active   = { reversed = true }
+inactive = {}
+
+# Icons
+icon_file    = ""
+icon_folder  = ""
+icon_command = ""
+
+# : ]]]
+
+
+# : Tasks [[[
+
+[tasks]
+border = { fg = "#70dba8" }
+title = {}
+hovered = { fg = "#c0e9fa", underline = true }
+
+# : ]]]
+
+
+# : Help menu [[[
+
+[help]
+on = { fg = "#f4f4f4" }
+run = { fg = "#f4f4f4" }
+desc    = {}
+hovered = { reversed = true, bold = true }
+footer = { fg = "#10251a", bg = "#b4ccbc" }
+
+# : ]]]
+
+
+# : File-specific styles [[[
+
+[filetype]
+
+rules = [
+    # Images
+    { mime = "image/*", fg = "#94e2d5" },
+
+    # Media
+    { mime = "{audio,video}/*", fg = "#f9e2af" },
+
+    # Archives
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#f5c2e7" },
+
+    # Documents
+    { mime = "application/{pdf,doc,rtf}", fg = "#a6e3a1" },
+
+    # Special files
+    { name = "*", is = "orphan", bg = "#da342e" },
+    { name = "*", is = "exec", fg = "#ffffff" },
+
+    # Fallback
+    { name = "*", fg = "#f4f4f4" },
+    { name = "*/", fg = "#70dba8" },
+]
+
+# : ]]]
