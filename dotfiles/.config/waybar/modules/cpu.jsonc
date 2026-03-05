@@ -1,27 +1,15 @@
 {
-	"cpu": {
-		"interval": 10,
-		"format": "󰍛 {usage}%",
-		"format-warning": "󰀨 {usage}%",
-		"format-critical": "󰀨 {usage}%",
-		// "format-icons":
-		"min-length": 7,
-		"max-length": 7,
-		// "align":
-		// "justify":
-		// "rotate":
-		"states": {
-			"warning": 75,
-			"critical": 90
-		},
+  "cpu": {
+    "interval": 10,
+    "format": "󰍛 {usage}%",
+    "format-warning": "󰀧 {percentage}%",
+    "format-critical": "󰀧 {percentage}%",
+    "states": {
+      "warning": 75,
+      "critical": 90,
+    },
+    "min-length": 7,
+    "max-length": 7,
     "on-click": "kitty --class dotfiles-floating -e btop",
-		// "on-click-middle":
-		// "on-click-right":
-		// "on-update":
-		// "on-scroll-up":
-		// "on-scroll-down":
-		// "smooth-scrolling-threshold":
-		"tooltip": false
-		// "expand":
-	}
+  },
 }

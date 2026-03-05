@@ -1,3 +1,6 @@
+/* Import Matugen generated colors */
+@import '../../colors.css';
+
 /* === Derived dynamic colors === */
 @define-color base alpha(@surface, 0.5);
 @define-color surface_custom alpha(@surface_container_high,0.8);
@@ -17,7 +20,9 @@
   color: @text;
   font-size: 1rem;
   font-weight: 900;
-  font-family: "GeistMono Nerd Font", sans-serif;
+  font-family: "Fira Sans Semibold", "Font Awesome 7 Free",
+  "Font Awesome 7 Brands", "Font Awesome 6 Free", "Font Awesome 6 Brands",
+  FontAwesome;
   transition: 200ms;
 }
 
@@ -68,7 +73,7 @@
 .widget-volume trough {
   background: @surface_container_low;
   margin: 8px 8px;
-  border: 3px;
+  border: 3px ;
 }
 
 .widget-backlight trough highlight,
@@ -121,12 +126,14 @@
 }
 
 .widget-mpris-subtitle {
+
   font-weight: 900;
   font-size: 0.8rem;
   margin: 0px 20px 5px 0px;
   color: alpha(white, 0.9);
   background-color: alpha(black, 0.6);
 }
+
 
 /* === Notification Clear Button === */
 
@@ -178,10 +185,7 @@
 }
 
 /* === Notifications === */
-.control-center
-  .notification-row
-  .notification-background
-  .notification.critical {
+.control-center .notification-row .notification-background .notification.critical {
   background-color: @surface_container;
   border-radius: 10px;
   margin: 5px 0px;
@@ -215,12 +219,13 @@ trough highlight {
 }
 .notification-group-headers {
   font-weight: 900;
-  font-size: 0;
+  font-size: 0
 }
 
 .notification-group-icon {
   padding: 0px;
 }
+
 
 .notification-group-collapse-button,
 .notification-group-close-all-button {

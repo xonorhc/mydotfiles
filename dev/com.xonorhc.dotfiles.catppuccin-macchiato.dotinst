@@ -1,0 +1,14 @@
+{
+  "name": "My Dotfiles - Catppuccin Macchiato DEV",
+  "id": "com.xonorhc.dotfiles.catppuccin-macchiato",
+  "description": "Catppuccin Macchiato theme for Hyprland",
+	"version":"0.1",
+	"author": "Anachronox",
+	"homepage": "https://github.com/xonorhc/mydotfiles",
+	"dependencies": "",
+	"source": "Templates/mydotfiles-catppuccin-macchiato",
+	"subfolder": "dotfiles",
+	"setupscript":"setup.sh",
+	"restore":[],
+	"settings":[]
+}

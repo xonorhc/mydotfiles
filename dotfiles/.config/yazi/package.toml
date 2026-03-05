@@ -1,9 +1,4 @@
 [[plugin.deps]]
-use = "ndtoan96/ouch"
-rev = "594b8a2"
-hash = "c9e628fc0312d198db22ae2fa74883b"
-
-[[plugin.deps]]
 use = "pirafrank/what-size"
 rev = "179ebf6"
 hash = "57056b9728006881d580ccabe8154a9c"
@@ -12,16 +7,6 @@ hash = "57056b9728006881d580ccabe8154a9c"
 use = "Lil-Dank/lazygit"
 rev = "0e56060"
 hash = "ab2e66065a94cca4886b303518e44bd8"
-
-[[plugin.deps]]
-use = "larry-oates/open-git-remote"
-rev = "4a5f0b6"
-hash = "ea87816cbbf6b0e0dfac5bc039aaa983"
-
-[[plugin.deps]]
-use = "Ape/open-with-cmd"
-rev = "e3d430f"
-hash = "d29c1ffa99099181faf8c01d1f59aa4c"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
@@ -33,37 +18,27 @@ use = "yazi-rs/plugins:mount"
 rev = "1962818"
 hash = "91937a4a9b779eabc6983e258befdfe9"
 
-[[flavor.deps]]
-use = "yazi-rs/flavors:dracula"
-rev = "3001521"
-hash = "8589ae0231756a9daf9c072f31b1fe0"
+[[plugin.deps]]
+use = "Ape/open-with-cmd"
+rev = "e3d430f"
+hash = "d29c1ffa99099181faf8c01d1f59aa4c"
 
-[[flavor.deps]]
-use = "Mintass/rose-pine-moon"
-rev = "94385fe"
-hash = "edbe0dfb5db8ff37281dba62adc7e750"
+[[plugin.deps]]
+use = "KKV9/compress"
+rev = "cb6e8ec"
+hash = "424ada4807b20ccd4fc85d1d7c26d1e4"
 
-[[flavor.deps]]
-use = "Mintass/rose-pine"
-rev = "d91f8f2"
-hash = "87da3630653b6d272e43658418599188"
+[[plugin.deps]]
+use = "larry-oates/open-git-remote"
+rev = "491070e"
+hash = "4b6301b88d46ce0d7c86666dabafd397"
 
-[[flavor.deps]]
-use = "Mintass/rose-pine-dawn"
-rev = "d82f54f"
-hash = "15ae5f83d3770b9ffc276af77f642e2b"
-
-[[flavor.deps]]
-use = "yazi-rs/flavors:catppuccin-mocha"
-rev = "3001521"
-hash = "8eabb4e88096f10905a6df62cfaadbf4"
-
-[[flavor.deps]]
-use = "yazi-rs/flavors:catppuccin-frappe"
-rev = "3001521"
-hash = "e25fb61c14484de843b52430a72b5196"
+[[plugin.deps]]
+use = "Ape/simple-status"
+rev = "d0da104"
+hash = "68603fdd1dcaf415227e2c77a9317947"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-macchiato"
-rev = "3001521"
-hash = "2f60298d6c26b6d388c8091a9389fa8f"
+rev = "c02c804"
+hash = "67f2240fd9c98f21714527a24cd672f8"

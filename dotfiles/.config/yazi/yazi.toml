@@ -1,33 +1,16 @@
 [opener]
 play = [
-	{ run = "mpv %s", orphan = true, for = "unix" },
+	{ run = 'mpv "$@"', orphan = true, for = "unix" },
 ]
 edit = [
-	{ run = "$EDITOR %s", block = true, for = "unix" },
+	{ run = 'nvim "$@"', block = true, for = "unix" },
 ]
 open = [
-	{ run = "xdg-open %s", desc = "Open" },
+	{ run = 'xdg-open "$@"', desc = "Open" },
 ]
 extract = [
-	{ run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
+	{ run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
 ]
-
-# Linux: Hyprland + Hyprpaper
-[[opener.set-wallpaper]]
-run  = "hyprctl hyprpaper wallpaper ,%s1"
-for  = "linux"
-desc = "Set as wallpaper"
-
-[open]
-prepend_rules = [
-	{ url = "*.json", use = "edit" },
-	{ url = "*.html", use = [ "open", "edit" ] },
-  { mime = "image/*", use  = [ "open", "set-wallpaper" ] },
-]
-
-[[plugin.prepend_previewers]]
-mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}"
-run  = "ouch"
 
 [[plugin.prepend_fetchers]]
 id  = "git"
@@ -38,3 +21,9 @@ run = "git"
 id  = "git"
 url = "*/"
 run = "git"
+
+[open]
+prepend_rules = [
+	{ url = "*.json", use = "edit" },
+	{ url = "*.html", use = [ "open", "edit" ] },
+]

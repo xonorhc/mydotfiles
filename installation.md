@@ -16,7 +16,7 @@ Clone the repository:
 ```sh
 mkdir -p ~/Templates
 cd ~/Templates
-git clone --depth 1 https://github.com/xonorhc/mydotfiles.git --branch rose-pine-moon
+git clone --depth 1 https://github.com/xonorhc/mydotfiles.git --branch catppuccin-macchiato
 
 ```
 

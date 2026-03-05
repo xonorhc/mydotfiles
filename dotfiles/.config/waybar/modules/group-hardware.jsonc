@@ -1,0 +1,15 @@
+{
+  "group/hardware": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/system",
+      "disk",
+      "cpu",
+      "memory",
+      "temperature"
+    ],
+    "drawer": {
+      "transition-left-to-right": false,
+    },
+  },
+}

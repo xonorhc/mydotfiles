@@ -1,4 +1,4 @@
-include ./themes/rose-pine-moon
+include ./colors
 
 set recolor-reverse-video 'false'
 set selection-clipboard "clipboard"

@@ -1,8 +1,0 @@
-{
-  "disk": {
-    "format": "󰋊{percentage_used}%",
-    "path": "/",
-    "interval": 30,
-    "on-click": "kitty --class dotfiles-floating -e btop"
-  }
-}

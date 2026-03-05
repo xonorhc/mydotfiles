@@ -1,31 +1,16 @@
 {
-	"memory": {
-		"interval": 10,
-		"format": "󰘚 {percentage}%",
-		"format-warning": "󰀧 {percentage}%",
-		"format-critical": "󰀧 {percentage}%",
-		// "format-icons":
-		// "rotate":
-		"states": {
-			"warning": 75,
-			"critical": 90
-		},
-		"min-length": 7,
-		"max-length": 7,
-		// "align":
-		// "justify":
+  "memory": {
+    "interval": 10,
+    "format": "󰘚 {percentage}%",
+    "format-warning": "󰀧 {percentage}%",
+    "format-critical": "󰀧 {percentage}%",
+    "states": {
+      "warning": 75,
+      "critical": 90,
+    },
+    "min-length": 7,
+    "max-length": 7,
     "on-click": "kitty --class dotfiles-floating -e btop",
-		// "on-click-middle":
-		// "on-click-right":
-		// "on-update":
-		// "on-scroll-up":
-		// "on-scroll-down":
-		// "smooth-scrolling-threshold":
-		// "tooltip":
-		"tooltip-format": "Memory Used: {used:0.0f}/{total:0.0f} GB"
-		// "menu":
-		// "menu-file":
-		// "menu-actions":
-		// "expand":
-	}
+    "tooltip-format": "Memory Used: {used:0.0f}/{total:0.0f} GB",
+  },
 }

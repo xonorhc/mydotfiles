@@ -1,5 +1,7 @@
+@import '../../colors.css';
+
 /* === Derived dynamic colors === */
-@define-color base alpha(@surface, 0.5); /* translucent blurred base */
+@define-color base alpha(@surface, 0.5);                      /* translucent blurred base */
 @define-color surface_custom alpha(@surface_container_high,0.8);
 @define-color hovercolor alpha(@surface_container_high,0.8);
 @define-color activecolor @primary_container;
@@ -12,11 +14,12 @@
 @define-color fontcolor @on_surface;
 @define-color text @on_surface;
 
+
 * {
   font-size: 1rem;
   font-weight: 900;
   all: unset;
-  font-family: "GeistMono Nerd Font", sans-serif;
+  font-family: "Fira Sans Semibold", "Font Awesome 7 Free", "Font Awesome 7 Brands", "Font Awesome 6 Free", "Font Awesome 6 Brands", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
   transition: 200ms;
 }
 
@@ -30,11 +33,8 @@
   padding: 0px;
 }
 
-.floating-notifications.background
-  .notification-row
-  .notification-background
-  .notification.critical {
-  background: @base; /* translucent blur */
+.floating-notifications.background .notification-row .notification-background .notification.critical {
+  background: @base;       /* translucent blur */
   border-radius: 10px;
   border: 2px solid @primary;
   margin: 5px 10px;
@@ -91,6 +91,7 @@
   background-color: @primary;
   color: @text;
 }
+
 
 .summary {
   font-weight: 800;
