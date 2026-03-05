@@ -1,0 +1,20 @@
+{
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "min-length": 7,
+    "max-length": 7,
+    "tooltip": false,
+    "scroll-step": 1,
+  },
+}

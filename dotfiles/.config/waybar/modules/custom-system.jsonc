@@ -1,0 +1,8 @@
+{
+  "custom/system": {
+    "format": "",
+    "tooltip": false,
+    "on-scroll-up": "true",
+    "on-scroll-down": "true",
+  },
+}

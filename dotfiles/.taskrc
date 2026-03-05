@@ -1,2 +1,2 @@
-data.location=~/.task
+data.location=~/.task/
 include no-color.theme

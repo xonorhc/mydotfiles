@@ -1,0 +1,15 @@
+{
+  "cpu": {
+    "interval": 10,
+    "format": "󰍛 {usage}%",
+    "format-warning": "󰀧 {percentage}%",
+    "format-critical": "󰀧 {percentage}%",
+    "states": {
+      "warning": 75,
+      "critical": 90,
+    },
+    "min-length": 7,
+    "max-length": 7,
+    "on-click": "kitty --class dotfiles-floating -e btop",
+  },
+}

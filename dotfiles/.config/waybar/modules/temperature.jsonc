@@ -1,0 +1,15 @@
+{
+  "temperature": {
+    "thermal-zone": 1,
+    "critical-threshold": 90,
+    "interval": 10,
+    "format-critical": "󰀦 {temperatureC}°C",
+    "format": "󰈸 {temperatureC}°C",
+    "min-length": 7,
+    "max-length": 7,
+    "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+    "input-filename": "temp1_input",
+    "on-click": "kitty --class dotfiles-floating -e btop",
+    "tooltip-format": "Fahrenheit: {temperatureF}°F",
+  },
+}

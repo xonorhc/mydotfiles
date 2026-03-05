@@ -1,0 +1,20 @@
+{
+  "bluetooth": {
+    "format": "󰂯",
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "format-on": "󰂰",
+    "format-connected": "󰂱",
+    "min-length": 2,
+    "max-length": 2,
+    "on-click": "blueman-manager",
+    "on-click-right": "bluetoothctl power off && notify-send 'Bluetooth Off' -i 'network-bluetooth-inactive' -h string:x-canonical-private-synchronous:bluetooth",
+    "tooltip-format": "Device Addr: {device_address}",
+    "tooltip-format-disabled": "Bluetooth Disabled",
+    "tooltip-format-off": "Bluetooth Off",
+    "tooltip-format-on": "Bluetooth Disconnected",
+    "tooltip-format-connected": "Connected devices: {num_connections} connected\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "Device: {device_alias}",
+    "tooltip-format-enumerate-connected-battery": "Device: {device_alias} (Battery: {device_battery_percentage}%)",
+  },
+}

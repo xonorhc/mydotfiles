@@ -3,7 +3,7 @@
 # -----------------------------------------------------
 # Load Launcher
 # -----------------------------------------------------
-launcher=$(cat $HOME/.config/ml4w/settings/launcher)
+launcher=$(cat $HOME/.config/hypr/settings/launcher)
 
 # Use Walker
 _launch_walker() {
@@ -12,7 +12,7 @@ _launch_walker() {
 
 # Use Rofi
 _launch_rofi() {
-    pkill rofi || rofi -show drun -replace -i  
+    pkill rofi || rofi -show drun -replace -i
 }
 
 if [ "$launcher" == "walker" ]; then

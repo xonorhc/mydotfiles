@@ -1,0 +1,14 @@
+{
+	"name": "My dotfiles DEV",
+	"id": "com.xonorhc.dotfiles.dev",
+	"description": "",
+	"version":"0.2.0",
+	"author": "Anachronox",
+	"homepage": "https://github.com/xonorhc/mydotfiles",
+	"dependencies": "",
+	"source": "Templates/mydotfiles",
+	"subfolder": "dotfiles",
+	"setupscript":"setup.sh",
+	"restore":[],
+	"settings":[]
+}
