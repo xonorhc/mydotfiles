@@ -27,20 +27,18 @@ configuration {
     
 }
 
-/* ---- Load font ---- */
-@import "~/.config/ml4w/settings/rofi-font.rasi"
-
 /* ---- Load colors ---- */
 @theme "~/.config/rofi/colors.rasi"
 
-/* ---- Load wallpaper ---- */
-@import "~/.cache/ml4w/hyprland-dotfiles/current_wallpaper.rasi"
-
-/* ---- Load border width ---- */
-@import "~/.config/ml4w/settings/rofi-border.rasi"
-
-/* ---- Load border radius ---- */
-@import "~/.config/ml4w/settings/rofi-border-radius.rasi"
+/* ---- Map colors ---- */
+* {
+    border-radius: 2em; 
+    border-width: 1px; 
+    font: "Fira Sans 11";
+    color11: @primary;
+    color5: @on-primary-fixed;
+    foreground: @on-surface;
+}
 
 // Main //
 window {

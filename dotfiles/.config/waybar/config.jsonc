@@ -1,0 +1,32 @@
+{
+  // General Settings
+  "layer": "top",
+  "margin-bottom": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+  "spacing": 0,
+  "output": ["eDP-1"],
+  // Load Modules
+  "include": ["~/.config/waybar/modules/*.jsonc"],
+  // Modules Left
+  "modules-left": [
+    "custom/appmenuicon",
+    "clock",
+    "tray",
+    "hyprland/window",
+    "custom/empty",
+  ],
+  // Modules Center
+  "modules-center": ["hyprland/workspaces", "custom/empty"],
+  // Modules Right
+  "modules-right": [
+    "group/hardware",
+    "network",
+    "bluetooth",
+    "group/pulseaudio",
+    "backlight",
+    "battery",
+    "custom/notification",
+    "custom/exit",
+  ],
+}

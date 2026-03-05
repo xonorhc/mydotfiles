@@ -7,8 +7,6 @@
 # -----------------------------------------------------
 alias ..='cd ..'
 alias c='clear'
-alias nf='fastfetch'
-alias pf='fastfetch'
 alias ff='fastfetch'
 alias ls='eza -a --icons=always'
 alias ll='eza -al --icons=always'
@@ -17,31 +15,8 @@ alias shutdown='systemctl poweroff'
 alias v='$EDITOR'
 alias vim='$EDITOR'
 alias wifi='nmtui'
-alias arch-cleanup='~/.config/ml4w/scripts/arch/cleanup.sh'
-alias apps='~/.config/ml4w/bin/ml4w-apps.sh'
-alias screenshot='~/.config/ml4w/bin/ml4w-screenshot.sh'
-alias updates='~/.config/ml4w/scripts/ml4w-install-system-updates'
-alias filemanager='~/.config/ml4w/settings/filemanager'
 alias lock='hyprlock'
-alias clock='tty-clock'
-alias system='~/.config/ml4w/settings/systemmonitor'
-alias quick='~/.config/ml4w/bin/ml4w-quicklinks.sh'
-alias wallpaper='~/.config/ml4w/bin/ml4w-wallpaper.sh'
-
-
-# -----------------------------------------------------
-# ML4W Apps
-# -----------------------------------------------------
-alias ml4w='flatpak run com.ml4w.welcome'
-alias ml4w-settings='flatpak run com.ml4w.settings'
-alias ml4w-calendar='flatpak run com.ml4w.calendar'
-alias ml4w-hyprland='flatpak run com.ml4w.hyprlandsettings'
-alias ml4w-sidebar='flatpak run com.ml4w.sidebar'
-
-# -----------------------------------------------------
-# Scripts
-# -----------------------------------------------------
-alias ascii='~/.config/ml4w/scripts/ml4w-ascii-header'
+alias clock='peaclock'
 
 # -----------------------------------------------------
 # System

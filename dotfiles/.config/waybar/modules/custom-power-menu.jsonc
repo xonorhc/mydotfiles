@@ -1,0 +1,9 @@
+{
+  "custom/exit": {
+    "format": "",
+    "min-length": 2,
+    "max-length": 2,
+    "on-click": "~/.config/hypr/scripts/power-menu",
+    "tooltip-format": "Power menu",
+  },
+}
