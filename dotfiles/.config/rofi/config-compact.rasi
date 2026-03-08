@@ -69,15 +69,6 @@ mainbox {
     orientation:                 horizontal;
     children:                    [ "listbox" ];
     background-color:            transparent;
-    background-image:            @current-image;
-}
-
-/* ---- Imagebox ---- */
-imagebox {
-    padding:                      1em;
-    background-color:             transparent;
-    orientation:                  horizontal;
-    children:                     [ "inputbar" ];
 }
 
 // Inputs //

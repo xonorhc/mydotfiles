@@ -65,5 +65,4 @@ entry {
 
 listview { enabled: false; }
 listbox { enabled: false; }
-imagebox { enabled: false; }
 mode-switcher { enabled: false; }

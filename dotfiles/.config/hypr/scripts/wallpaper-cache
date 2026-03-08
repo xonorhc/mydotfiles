@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Notifications
+source "$HOME/.config/hypr/scripts/notification-handler"
+
+cache_folder="$HOME/.cache/hyprland-dotfiles"
+generated_versions="$cache_folder/wallpaper-generated"
+rm $generated_versions/*
+echo ":: Wallpaper cache cleared"
+notify_user \
+        --a "System" \
+        --m "Wallpaper cache cleared"
