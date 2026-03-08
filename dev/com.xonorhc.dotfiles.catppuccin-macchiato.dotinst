@@ -2,7 +2,7 @@
   "name": "My Dotfiles - Catppuccin Macchiato DEV",
   "id": "com.xonorhc.dotfiles.catppuccin-macchiato",
   "description": "Catppuccin Macchiato theme for Hyprland",
-	"version":"0.1",
+	"version":"0.2",
 	"author": "Anachronox",
 	"homepage": "https://github.com/xonorhc/mydotfiles",
 	"dependencies": "",

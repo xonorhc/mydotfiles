@@ -1,12 +1,12 @@
 /*
-#  ____        __ _  
-# |  _ \ ___  / _(_) 
-# | |_) / _ \| |_| | 
-# |  _ < (_) |  _| | 
-# |_| \_\___/|_| |_| 
-#                    
-# by Stephan Raabe (2023) 
-# ----------------------------------------------------- 
+#  ____        __ _
+# |  _ \ ___  / _(_)
+# | |_) / _ \| |_| |
+# |  _ < (_) |  _| |
+# |_| \_\___/|_| |_|
+#
+# by Stephan Raabe (2023)
+# -----------------------------------------------------
 */
 
 /* ---- Configuration ---- */
@@ -18,13 +18,13 @@ configuration {
     display-run:                 " ";
     display-filebrowser:         "";
     display-window:              "";
-	drun-display-format:        "{name}";
+    drun-display-format:        "{name}";
     hover-select:               false;
     scroll-method:              1;
     me-select-entry:            "";
     me-accept-entry:            "MousePrimary";
     window-format:              "{w} · {c} · {t}";
-    
+
 }
 
 /* ---- Load colors ---- */
@@ -32,8 +32,8 @@ configuration {
 
 /* ---- Map colors ---- */
 * {
-    border-radius: 2em; 
-    border-width: 1px; 
+    border-radius: 2em;
+    border-width: 1px;
     font: "Fira Sans 11";
     color11: @primary;
     color5: @on-primary-fixed;
@@ -42,8 +42,8 @@ configuration {
 
 // Main //
 window {
-    height:                      35em;
-    width:                       56em;
+    height:                      37em;
+    width:                       35em;
     transparency:                "real";
     fullscreen:                  false;
     enabled:                     true;
@@ -60,20 +60,8 @@ mainbox {
     enabled:                     true;
     spacing:                     0em;
     padding:                     0em;
-    orientation:                 horizontal;
-    children:                    [ "imagebox" , "listbox" ];
-    background-color:            transparent;
-    background-image:            @current-image;
-}
-
-imagebox {
-    padding:                     20px;
-    background-color:            transparent;
     orientation:                 vertical;
-    children:                    [ "inputbar", "dummy", "mode-switcher" ];
-}
-
-dummy {
+    children:                    [ "inputbar", "mode-switcher" , "listbox" ];
     background-color:            transparent;
 }
 
@@ -90,7 +78,7 @@ mode-switcher {
 button {
     padding:                     15px;
     border-radius:               2em;
-    border:                      0;    
+    border:                      0;
     cursor:                      pointer;
     background-color:            @background;
     text-color:                  @on-surface;
@@ -98,7 +86,7 @@ button {
 
 button selected {
     padding:                     15px;
-    border-radius:               2em;    
+    border-radius:               2em;
     background-color:            @surface;
     text-color:                  @on-surface;
 }

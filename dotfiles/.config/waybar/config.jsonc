@@ -26,6 +26,7 @@
     "group/pulseaudio",
     "backlight",
     "battery",
+    "idle_inhibitor",
     "custom/notification",
     "custom/exit",
   ],

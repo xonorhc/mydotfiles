@@ -19,7 +19,7 @@ configuration {
     display-run:                 " ";
     display-filebrowser:         " ";
     display-window:              " ";
-	drun-display-format:        "{name}";
+    drun-display-format:        "{name}";
     hover-select:               false;
     scroll-method:              1;
     me-select-entry:            "";
@@ -69,7 +69,6 @@ mainbox {
     orientation:                 horizontal;
     children:                    [ "listbox" ];
     background-color:            transparent;
-    background-image:            @current-image;    
 }
 
 // Lists //

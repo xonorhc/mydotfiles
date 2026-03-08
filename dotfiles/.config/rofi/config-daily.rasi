@@ -1,4 +1,4 @@
-/* Carrega todas as definições de fontes, cores e bordas originais */
+/* ---- Load colors ---- */
 @theme "~/.config/rofi/colors.rasi"
 
 /* ---- Map colors ---- */
@@ -63,8 +63,6 @@ entry {
     background-color:            transparent;
 }
 
-/* Desabilitamos o que não queremos do tema pai */
 listview { enabled: false; }
 listbox { enabled: false; }
-imagebox { enabled: false; }
 mode-switcher { enabled: false; }

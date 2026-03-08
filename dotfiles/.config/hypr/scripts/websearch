@@ -71,6 +71,14 @@ elif [[ "$query" =~ ^!yt\  ]]; then
   term="${query#!yt }"
   url="https://www.youtube.com/results?search_query=$(urlencode "$term")"
 
+elif [[ "$query" =~ ^!gpt\  ]]; then
+  term="${query#!gpt }"
+  url="https://chat.openai.com/?q=$(urlencode "$term")"
+
+elif [[ "$query" =~ ^!gem\  ]]; then
+  term="${query#!gem }"
+  url="https://gemini.google.com/app?q=$(urlencode "$term")"
+
 # ----------------------------
 # 🌐 DEFAULT
 # ----------------------------
