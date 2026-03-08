@@ -54,7 +54,7 @@ cachefile="$cache_folder/current_wallpaper"
 blurredwallpaper="$cache_folder/blurred_wallpaper.png"
 squarewallpaper="$cache_folder/square_wallpaper.png"
 rasifile="$cache_folder/current_wallpaper.rasi"
-defaultwallpaper="$HOME/Dropbox/wallpaper/TokyoNight/skeleton.png"
+defaultwallpaper="$HOME/.config/hypr/assets/blank.png"
 wallpapereffect="$HOME/.config/hypr/settings/wallpaper-effect"
 blur="50x30"
 
@@ -152,7 +152,7 @@ fi
 # -----------------------------------------------------
 
 sleep 1
-$HOME/.config/waybar/launch.sh
+$HOME/.config/waybar/launch
 
 # -----------------------------------------------------
 # Update SwayNC

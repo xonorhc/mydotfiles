@@ -20,12 +20,14 @@
   "modules-center": ["hyprland/workspaces", "custom/empty"],
   // Modules Right
   "modules-right": [
+    "custom/mediaplayer",
     "group/hardware",
     "network",
     "bluetooth",
     "group/pulseaudio",
     "backlight",
     "battery",
+    "idle_inhibitor",
     "custom/notification",
     "custom/exit",
   ],
