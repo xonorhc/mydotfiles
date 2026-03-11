@@ -7,23 +7,23 @@
 		],
 		"drawer": {
 			// "transition-duration":
-			"transition-left-to-right": false
+			"transition-left-to-right": false,
 			// "children-class":
 			// "click-to-reveal":
-		}
+		},
 	},
-
 	/*-------------------
 	    output device
 	-------------------*/
-
 	"wireplumber#output": {
 		"format": "{icon} {volume}%",
 		"format-muted": "󰝟 {volume}%",
 		// "format-source":
 		// "format-source-muted":
 		"format-icons": [
-			"󰕿", "󰖀", "󰕾"
+			"󰕿",
+			"󰖀",
+			"󰕾"
 		],
 		// "rotate":
 		// "states":
@@ -42,16 +42,14 @@
 		"tooltip-format": "Device: {node_name}",
 		// "max-volume":
 		// "reverse-scrolling":
-		"node-type": "Audio/Sink"
+		"node-type": "Audio/Sink",
 		// "menu":
 		// "menu-file":
 		// "menu-actions":
 	},
-
 	/*----------------
 	    microphone
 	----------------*/
-
 	"wireplumber#input": {
 		"format": "󰍬 {volume}%",
 		"format-muted": "󰍭 {volume}%",
@@ -74,9 +72,9 @@
 		"tooltip-format": "Device: {node_name}",
 		// "max-volume":
 		// "reverse-scrolling":
-		"node-type": "Audio/Source"
+		"node-type": "Audio/Source",
 		// "menu":
 		// "menu-file":
 		// "menu-actions":
-	}
+	},
 }

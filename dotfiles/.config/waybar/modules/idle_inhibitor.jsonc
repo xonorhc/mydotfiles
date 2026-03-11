@@ -3,7 +3,7 @@
 		"format": "{icon}",
 		"format-icons": {
 			"activated": "󰈈",
-			"deactivated": "󰈉"
+			"deactivated": "󰈉",
 		},
 		// "rotate":
 		"min-length": 3,
@@ -20,11 +20,11 @@
 		// "tooltip":
 		"tooltip-format-activated": "<b>Idle Inhibitor</b>: Activated",
 		"tooltip-format-deactivated": "<b>Idle Inhibitor</b>: Deactivated",
-		"start-activated": false
+		"start-activated": false,
 		// "timeout":
 		// "menu":
 		// "menu-file":
 		// "menu-actions":
 		// "expand":
-	}
+	},
 }

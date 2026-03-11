@@ -17,7 +17,7 @@ MAX=100
 usage() {
 	local script=${0##*/}
 
-	cat >&2 <<- EOF
+	cat >&2 <<-EOF
 		USAGE: $script {input|output} {mute|raise|lower} [value]
 
 		Adjust default device volume and send a notification with the current level
@@ -52,8 +52,8 @@ get_state() {
 	state=$(pactl "get-$DEV_STATE" | awk '{print $2}')
 
 	case $state in
-		yes) printf "Muted" ;;
-		no)  printf "Unmuted" ;;
+	yes) printf "Muted" ;;
+	no) printf "Unmuted" ;;
 	esac
 }
 
@@ -104,18 +104,18 @@ set_volume() {
 	local new_level
 
 	case $ACTION in
-		raise)
-			new_level=$((level + VALUE))
-			if ((new_level > MAX)); then
-				new_level=$MAX
-			fi
-			;;
-		lower)
-			new_level=$((level - VALUE))
-			if ((new_level < MIN)); then
-				new_level=$MIN
-			fi
-			;;
+	raise)
+		new_level=$((level + VALUE))
+		if ((new_level > MAX)); then
+			new_level=$MAX
+		fi
+		;;
+	lower)
+		new_level=$((level - VALUE))
+		if ((new_level < MIN)); then
+			new_level=$MIN
+		fi
+		;;
 	esac
 
 	pactl "set-$DEV_VOLUME" "$new_level%"
@@ -138,33 +138,33 @@ main() {
 	fi
 
 	case $DEVICE in
-		input)
-			DEV_DEF="@DEFAULT_SOURCE@"
-			DEV_STATE="source-mute"
-			DEV_VOLUME="source-volume"
-			DEV_ICON="mic-volume"
-			DEV_NAME="Microphone"
-			;;
-		output)
-			DEV_DEF="@DEFAULT_SINK@"
-			DEV_STATE="sink-mute"
-			DEV_VOLUME="sink-volume"
-			DEV_ICON="audio-volume"
-			DEV_NAME="Volume"
-			;;
-		*)
-			usage
-			return 1
-			;;
+	input)
+		DEV_DEF="@DEFAULT_SOURCE@"
+		DEV_STATE="source-mute"
+		DEV_VOLUME="source-volume"
+		DEV_ICON="mic-volume"
+		DEV_NAME="Microphone"
+		;;
+	output)
+		DEV_DEF="@DEFAULT_SINK@"
+		DEV_STATE="sink-mute"
+		DEV_VOLUME="sink-volume"
+		DEV_ICON="audio-volume"
+		DEV_NAME="Volume"
+		;;
+	*)
+		usage
+		return 1
+		;;
 	esac
 
 	case $ACTION in
-		mute)          set_state ;;
-		raise | lower) set_volume ;;
-		*)
-			usage
-			return 1
-			;;
+	mute) set_state ;;
+	raise | lower) set_volume ;;
+	*)
+		usage
+		return 1
+		;;
 	esac
 }
 

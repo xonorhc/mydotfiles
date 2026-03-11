@@ -59,7 +59,7 @@ get_networks() {
 		printf "\rScanning for networks... (%d/%d)" $i $TIMEOUT
 
 		LIST=$(timeout 1 nmcli device wifi list)
-		NETWORKS=$(tail -n +2 <<< "$LIST" | awk '$2 != "--"')
+		NETWORKS=$(tail -n +2 <<<"$LIST" | awk '$2 != "--"')
 
 		if [[ -n $NETWORKS ]]; then
 			break
@@ -76,7 +76,7 @@ get_networks() {
 
 select_network() {
 	local header
-	header=$(head -n 1 <<< "$LIST")
+	header=$(head -n 1 <<<"$LIST")
 
 	local options=(
 		"--border=sharp"
@@ -91,16 +91,16 @@ select_network() {
 		"--reverse"
 	)
 
-	BSSID=$(fzf "${options[@]}" <<< "$NETWORKS" | awk '{print $1}')
+	BSSID=$(fzf "${options[@]}" <<<"$NETWORKS" | awk '{print $1}')
 	case $BSSID in
-		'')
-			exit 1
-			;;
-		'*')
-			notify-send "Wi-Fi" "Already connected to this network" \
-				-i "package-install"
-			exit 1
-			;;
+	'')
+		exit 1
+		;;
+	'*')
+		notify-send "Wi-Fi" "Already connected to this network" \
+			-i "package-install"
+		exit 1
+		;;
 	esac
 }
 

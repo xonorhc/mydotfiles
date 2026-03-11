@@ -1,33 +1,22 @@
 {
-	"custom/power_menu": {
-		// "exec":
-		// "exec-if":
-		// "exec-on-event":
-		// "hide-empty-text":
-		// "return-type":
-		// "interval":
-		// "restart-interval":
-		// "signal":
-		"format": "󰤄",
-		// "format-icons":
-		// "rotate":
-		// "min-length":
-		// "max-length":
-		// "align":
-		// "justify":
-		"on-click": "kitty --class dotfiles-floating -e ~/.config/waybar/scripts/power-menu.sh",
-		// "on-click-middle":
-		// "on-click-right":
-		// "on-update":
-		// "on-scroll-up":
-		// "on-scroll-down":
-		// "smooth-scrolling-threshold":
-		// "tooltip":
-		"tooltip-format": "Power Menu"
-		// "escape":
-		// "menu":
-		// "menu-file":
-		// "menu-actions":
-		// "expand":
-	}
+	"custom/exit": {
+		"format": "",
+		"min-length": 2,
+		"max-length": 2,
+		"on-click": "~/.config/hypr/scripts/power-menu",
+		"tooltip-format": "Power menu",
+		"menu": "on-click-right",
+		"menu-file": "$HOME/.config/waybar/menus/power.xml",
+		"menu-actions": {
+			"lock": "~/.config/hypr/scripts/power lock",
+			"logout": "hyprctl dispatch exit 0",
+			"shutdown-now": "shutdown now",
+			"shutdown-wait": "systemctl poweroff",
+			"reboot-now": "systemctl reboot",
+			"reboot-firmware": "systemctl reboot --firmware-setup",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate",
+		},
+		"signal": 1,
+	},
 }

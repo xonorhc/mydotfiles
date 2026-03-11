@@ -1,0 +1,57 @@
+# -----------------------------------------------------
+# ALIASES
+# -----------------------------------------------------
+
+# -----------------------------------------------------
+# General
+# -----------------------------------------------------
+alias ..='cd ..'
+alias c='clear'
+alias ff='fastfetch'
+alias shutdown='systemctl poweroff'
+alias vim='$EDITOR'
+alias v='$EDITOR'
+alias vd="$EDITOR diff"
+alias wifi='nmtui'
+alias lock='hyprlock'
+alias clock='peaclock'
+
+# -----------------------------------------------------
+# Git
+# -----------------------------------------------------
+alias gcl="git clone"
+alias gs="git status"
+alias gi="git init"
+alias ga="git add"
+alias gm="git commit -m"
+alias gp="git push"
+alias gb="git branch"
+alias gc="git checkout"
+alias gcb="git checkout -B"
+alias gcm="git checkout master"
+alias gpu="git pull"
+alias gpo="git pull origin"
+alias gl="git log"
+alias gd="git diff"
+alias gra="git remote add"
+alias grr="git remote rm"
+alias gsh="git stash"
+
+# -----------------------------------------------------
+# Yazi
+# -----------------------------------------------------
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd <"$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+if [[ -n "$YAZI_ID" ]]; then
+	function _yazi_cd() {
+		ya emit cd "$PWD"
+	}
+	add-zsh-hook zshexit _yazi_cd
+fi
+

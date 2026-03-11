@@ -7,6 +7,6 @@
 		// "separate-outputs":
 		// "min-length":
 		// "max-length":
-		"swap-icon-label": false
-	}
+		"swap-icon-label": false,
+	},
 }

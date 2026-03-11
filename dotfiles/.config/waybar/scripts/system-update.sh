@@ -22,8 +22,8 @@ printf() {
 
 cprintf() {
 	case $1 in
-		g) printf "\e[32m" ;;
-		b) printf "\e[34m" ;;
+	g) printf "\e[32m" ;;
+	b) printf "\e[34m" ;;
 	esac
 	printf "%b" "${@:2}"
 	printf "\e[39m\n"
@@ -32,7 +32,7 @@ cprintf() {
 get_helper() {
 	local h
 	for h in "${HELPERS[@]}"; do
-		if command -v "$h" > /dev/null; then
+		if command -v "$h" >/dev/null; then
 			HELPER=$h
 			break
 		fi
@@ -50,7 +50,7 @@ check_updates() {
 		return 1
 	fi
 
-	PAC_UPD=$(grep -cve "^\s*$" <<< "$pac_output")
+	PAC_UPD=$(grep -cve "^\s*$" <<<"$pac_output")
 
 	if [[ -z $HELPER ]]; then
 		return 0
@@ -66,7 +66,7 @@ check_updates() {
 		return 1
 	fi
 
-	AUR_UPD=$(grep -cve "^\s*$" <<< "$aur_output")
+	AUR_UPD=$(grep -cve "^\s*$" <<<"$aur_output")
 }
 
 update_packages() {
@@ -111,17 +111,17 @@ main() {
 	AUR_UPD=0
 
 	case $1 in
-		module)
-			check_updates
-			display_module
-			;;
-		*)
-			cprintf b "Checking for updates..."
-			check_updates
-			update_packages
+	module)
+		check_updates
+		display_module
+		;;
+	*)
+		cprintf b "Checking for updates..."
+		check_updates
+		update_packages
 
-			pkill -RTMIN+1 waybar
-			;;
+		pkill -RTMIN+1 waybar
+		;;
 	esac
 }
 

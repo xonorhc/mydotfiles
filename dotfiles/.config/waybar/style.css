@@ -1,44 +1,446 @@
-@import "theme.css";
+/*
+ * __        __          _                  ____  _         _
+ * \ \      / /_ _ _   _| |__   __ _ _ __  / ___|| |_ _   _| | ___
+ *  \ \ /\ / / _` | | | | '_ \ / _` | '__| \___ \| __| | | | |/ _ \
+ *   \ V  V / (_| | |_| | |_) | (_| | |     ___) | |_| |_| | |  __/
+ *    \_/\_/ \__,_|\__, |_.__/ \__,_|_|    |____/ \__|\__, |_|\___|
+ *                 |___/                              |___/
+ *
+ * -----------------------------------------------------
+*/
+
+/* -----------------------------------------------------
+ * Colors
+ * ----------------------------------------------------- */
+@import "colors.css";
+
+@define-color background @base;
+@define-color on_surface @text;
+@define-color primary @pine;
+@define-color on_primary @text;
+@define-color inverse_on_surface @surface;
+@define-color error @rose;
+@define-color error_container @love;
+
+/* -----------------------------------------------------
+ * General
+ * ----------------------------------------------------- */
 
 * {
-  /* ignore GTK theme */
-  all: initial;
-  color: @main-fg;
+  font-family:
+    "Fira Sans Semibold", "Font Awesome 7 Free", "Font Awesome 7 Brands",
+    "Font Awesome 6 Free", "Font Awesome 6 Brands", FontAwesome,
+    "Material Icons", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 900;
+  border: none;
+  border-radius: 0px;
 }
 
-@import "styles/fonts.css";
-@import "styles/modules-center.css";
-@import "styles/modules-left.css";
-@import "styles/modules-right.css";
-@import "styles/states.css";
-
-.module {
-  margin-bottom: -1px;
+window#waybar {
+  background-color: alpha(@background, 0.9);
+  border-bottom: 0px solid #ffffff;
+  transition-property: background-color;
+  transition-duration: 0.5s;
 }
 
-#waybar {
-  background-color: @outline;
-}
-#waybar > box {
-  margin: 4px;
-  background-color: @main-bg;
+.modules-left {
+  padding-left: 10px;
 }
 
-button {
-  border-radius: 16px;
-  min-width: 16px;
-  padding: 0 10px;
+/* -----------------------------------------------------
+ * Workspaces
+ * ----------------------------------------------------- */
+
+#workspaces {
+  margin: 3px 7px 3px 3px;
+  border: 0px;
+  font-size: 14px;
+  color: @on_surface;
 }
-button:hover {
-  background-color: @hover-bg;
-  color: @hover-fg;
+
+#workspaces button {
+  border: 0px;
+  margin: 4px 5px 4px 0px;
+  padding: 0px 4px 0px 4px;
+  color: @on_surface;
+  transition: all 0.5s ease-in-out;
 }
+
+#workspaces button.active {
+  color: @on_primary;
+  background: @primary;
+}
+
+#workspaces button:hover {
+  color: @on_primary;
+  background: @primary;
+  border-radius: 15px;
+}
+
+/* -----------------------------------------------------
+ * Tooltips
+ * ----------------------------------------------------- */
 
 tooltip {
-  border: 2px solid @main-br;
-  border-radius: 10px;
-  background-color: @main-bg;
+  border-radius: 16px;
+  background-color: @inverse_on_surface;
+  opacity: 0.9;
+  padding: 20px;
+  margin: 0px;
 }
-tooltip > box {
-  padding: 0 6px;
+
+tooltip label {
+  color: @on_surface;
+}
+
+/* -----------------------------------------------------
+ * Window
+ * ----------------------------------------------------- */
+
+#window {
+  margin: 0px 15px 0px 0px;
+  border-radius: 12px;
+  color: @on_surface;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+}
+
+/* -----------------------------------------------------
+ * Modules
+ * ----------------------------------------------------- */
+
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
+}
+
+/* -----------------------------------------------------
+ * Custom Quicklinks
+ * ----------------------------------------------------- */
+
+#custom-brave,
+#custom-browser,
+#custom-keybindings,
+#custom-outlook,
+#custom-filemanager,
+#custom-teams,
+#custom-chatgpt,
+#custom-calculator,
+#custom-windowsvm,
+#custom-cliphist,
+#custom-wallpaper,
+#custom-settings,
+#custom-wallpaper,
+#custom-system,
+#custom-hyprshade,
+#custom-hypridle,
+#custom-tools,
+#custom-quicklink_chromium,
+#custom-quicklink_edge,
+#custom-quicklink_firefox,
+#custom-quicklink_browser,
+#custom-quicklink_filemanager,
+#custom-quicklink_email,
+#custom-quicklink_thunderbird,
+#custom-quicklink_calculator,
+#custom-sidepad,
+#custom-quicklink1,
+#custom-quicklink2,
+#custom-quicklink3,
+#custom-quicklink4,
+#custom-quicklink5,
+#custom-quicklink6,
+#custom-quicklink7,
+#custom-quicklink8,
+#custom-quicklink9,
+#custom-quicklink10,
+#custom-waybarthemes {
+  margin-right: 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: @on_surface;
+}
+
+#custom-tools {
+  margin-right: 12px;
+}
+
+#custom-hyprshade {
+  margin-right: 12px;
+}
+
+#custom-hypridle {
+  margin-right: 16px;
+}
+
+#custom-hypridle.active {
+  color: @on_surface;
+}
+
+#custom-hypridle.notactive {
+  color: @error;
+}
+
+#custom-settings {
+  margin-right: 15px;
+}
+
+#custom-browser {
+  margin-right: 12px;
+}
+
+#custom-wallpaper {
+  margin-right: 14px;
+}
+
+#custom-waybarthemes,
+#custom-system {
+  margin-right: 15px;
+}
+
+/* -----------------------------------------------------
+ * Idle Inhibitor
+ * ----------------------------------------------------- */
+
+#idle_inhibitor {
+  margin-right: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: @on_surface;
+}
+
+#idle_inhibitor.activated {
+  margin-right: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: @error;
+}
+
+/* -----------------------------------------------------
+ * Custom Modules
+ * ----------------------------------------------------- */
+
+#custom-appmenuicon {
+  font-size: 20px;
+  color: @on_surface;
+  margin: 0px 15px 0px 0px;
+}
+
+/* -----------------------------------------------------
+ * Custom Notification
+ * ----------------------------------------------------- */
+
+#custom-notification {
+  margin: 0px 13px 0px 0px;
+  padding: 0px;
+  font-size: 18px;
+  font-family: "Material Icons";
+  color: @on_surface;
+  opacity: 0.8;
+}
+
+/* -----------------------------------------------------
+ * Custom Exit
+ * ----------------------------------------------------- */
+
+#custom-exit {
+  margin: 0px 20px 0px 0px;
+  padding: 0px;
+  font-size: 16px;
+  color: @on_surface;
+}
+
+/* -----------------------------------------------------
+ * Custom Updates
+ * ----------------------------------------------------- */
+
+#custom-updates {
+  font-size: 14px;
+  color: @on_surface;
+  border-radius: 15px;
+  margin: 0px 15px 0px 0px;
+}
+
+#custom-updates.green {
+}
+
+#custom-updates.yellow {
+  color: @error;
+}
+
+#custom-updates.red {
+  color: @error_container;
+}
+
+/* -----------------------------------------------------
+ * Custom Youtube
+ * ----------------------------------------------------- */
+
+#custom-youtube {
+  background-color: @on_primary;
+  font-size: 14px;
+  color: @on_surface;
+  border-radius: 15px;
+  margin: 0px 15px 0px 0px;
+}
+
+/* -----------------------------------------------------
+ * Hardware Group
+ * ----------------------------------------------------- */
+
+#disk,
+#memory,
+#cpu,
+#temperature,
+#language {
+  margin: 0px;
+  padding: 0px;
+  font-size: 14px;
+  color: @on_surface;
+}
+
+#language {
+  margin-right: 10px;
+}
+
+/* -----------------------------------------------------
+ * Power Profiles Daemon
+ * ----------------------------------------------------- */
+
+#power-profiles-daemon {
+  margin: 0px 13px 0px 0px;
+  padding: 0px;
+  font-size: 14px;
+  color: @on_surface;
+}
+
+/* -----------------------------------------------------
+ * Clock
+ * ----------------------------------------------------- */
+
+#clock {
+  color: @on_surface;
+  margin: 0px 15px 0px 0px;
+}
+
+/* -----------------------------------------------------
+ * Backlight
+ * ----------------------------------------------------- */
+
+#backlight {
+  font-size: 14px;
+  color: @on_surface;
+  border-radius: 15px;
+  margin: 0px 15px 0px 0px;
+  background-color: transparent;
+}
+
+/* -----------------------------------------------------
+ * Pulseaudio
+ * ----------------------------------------------------- */
+
+#pulseaudio {
+  font-size: 14px;
+  color: @on_surface;
+  border-radius: 15px;
+  margin: 0px 5px 0px 0px;
+}
+
+#pulseaudio.muted {
+  color: @on_surface;
+}
+
+/* -----------------------------------------------------
+ * Network
+ * ----------------------------------------------------- */
+
+#network {
+  font-size: 14px;
+  color: @on_surface;
+  border-radius: 15px;
+  margin: 0px 15px 0px 0px;
+}
+
+#network.ethernet {
+  color: @on_surface;
+}
+
+#network.wifi {
+  color: @on_surface;
+}
+
+/* -----------------------------------------------------
+ * Bluetooth
+ * ----------------------------------------------------- */
+
+#bluetooth,
+#bluetooth.on,
+#bluetooth.connected {
+  font-size: 16px;
+  color: @on_surface;
+  border-radius: 15px;
+  margin: 10px 15px 10px 0px;
+}
+
+#bluetooth.off {
+  background-color: transparent;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* -----------------------------------------------------
+ * Battery
+ * ----------------------------------------------------- */
+
+#battery {
+  font-size: 14px;
+  color: @on_surface;
+  border-radius: 15px;
+  margin: 10px 15px 10px 0px;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @on_surface;
+}
+
+@keyframes blink {
+  to {
+    background-color: @on_primary;
+    color: @on_surface;
+  }
+}
+
+#battery.critical:not(.charging) {
+  color: @error;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/* -----------------------------------------------------
+ * Tray
+ * ----------------------------------------------------- */
+
+#tray {
+  margin: 0px 10px 0px 0px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: @error_container;
 }

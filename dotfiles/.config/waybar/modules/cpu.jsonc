@@ -12,16 +12,16 @@
 		// "rotate":
 		"states": {
 			"warning": 75,
-			"critical": 90
+			"critical": 90,
 		},
-    "on-click": "kitty --class dotfiles-floating -e btop",
+		"on-click": "kitty --class dotfiles-floating -e btop",
 		// "on-click-middle":
 		// "on-click-right":
 		// "on-update":
 		// "on-scroll-up":
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
-		"tooltip": false
+		"tooltip": false,
 		// "expand":
-	}
+	},
 }

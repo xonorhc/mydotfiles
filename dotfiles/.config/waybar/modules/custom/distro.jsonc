@@ -22,12 +22,12 @@
 		// "on-scroll-up":
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
-		"tooltip": false
+		"tooltip": false,
 		// "tooltip-format":
 		// "escape":
 		// "menu":
 		// "menu-file":
 		// "menu-actions":
 		// "expand":
-	}
+	},
 }

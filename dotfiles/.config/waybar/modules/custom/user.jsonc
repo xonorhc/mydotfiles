@@ -9,9 +9,8 @@
 			// "transition-left-to-right":
 			// "children-class":
 			// "click-to-reveal":
-		}
+		},
 	},
-
 	"custom/trigger": {
 		// "exec":
 		// "exec-if":
@@ -28,7 +27,7 @@
 		"max-length": 4,
 		// "align":
 		// "justify":
-    "on-click": "fuzzel & sleep 0.2; hyprctl dispatch focuswindow '^(Fuzzel)'",
+		"on-click": "fuzzel & sleep 0.2; hyprctl dispatch focuswindow '^(Fuzzel)'",
 		// "on-click-middle":
 		// "on-click-right":
 		// "on-update":
@@ -36,11 +35,11 @@
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
 		// "tooltip":
-		"tooltip-format": "No command set"
+		"tooltip-format": "No command set",
 		// "escape":
 		// "menu":
 		// "menu-file":
 		// "menu-actions":
 		// "expand":
-	}
+	},
 }
