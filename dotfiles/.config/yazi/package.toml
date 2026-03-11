@@ -34,6 +34,6 @@ rev = "1962818"
 hash = "91937a4a9b779eabc6983e258befdfe9"
 
 [[flavor.deps]]
-use = "Mintass/rose-pine-moon"
-rev = "94385fe"
-hash = "edbe0dfb5db8ff37281dba62adc7e750"
+use = "yazi-rs/flavors:dracula"
+rev = "3001521"
+hash = "8589ae0231756a9daf9c072f31b1fe0"

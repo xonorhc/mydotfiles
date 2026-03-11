@@ -1,40 +1,38 @@
-gui:
-  theme:
-    activeBorderColor:
-      - "#3e8fb0"
-      - bold
+# DRACULA
+theme:
+  activeBorderColor:
+    - "#FF79C6"
+    - bold
+  inactiveBorderColor:
+    - "#BD93F9"
 
-    inactiveBorderColor:
-      - "#6e6a86"
+  searchingActiveBorderColor:
+    - "#8BE9FD"
+    - bold
 
-    searchingActiveBorderColor:
-      - "#ea9a97"
-      - bold
+  optionsTextColor:
+    - "#6272A4"
 
-    optionsTextColor:
-      - "#9ccfd8"
+  selectedLineBgColor:
+    - "#6272A4"
 
-    selectedLineBgColor:
-      - "#3e8fb0"
+  inactiveViewSelectedLineBgColor:
+    - bold
 
-    inactiveViewSelectedLineBgColor:
-      - "#393552"
-      - bold
+  cherryPickedCommitFgColor:
+    - "#6272A4"
 
-    cherryPickedCommitFgColor:
-      - "#2a273f"
+  cherryPickedCommitBgColor:
+    - "#8BE9FD"
 
-    cherryPickedCommitBgColor:
-      - "#ea9a97"
+  markedBaseCommitFgColor:
+    - "#8BE9FD"
 
-    markedBaseCommitFgColor:
-      - "#9ccfd8"
+  markedBaseCommitBgColor:
+    - "#F1FA8C"
 
-    markedBaseCommitBgColor:
-      - "#f6c177"
+  unstagedChangesColor:
+    - "#FF5555"
 
-    unstagedChangesColor:
-      - "#eb6f92"
-
-    defaultFgColor:
-      - "#e0def4"
+  defaultFgColor:
+    - "#F8F8F2"

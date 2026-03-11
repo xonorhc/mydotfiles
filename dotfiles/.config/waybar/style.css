@@ -14,13 +14,13 @@
  * ----------------------------------------------------- */
 @import "colors.css";
 
-@define-color background @base;
-@define-color on_surface @text;
-@define-color primary @pine;
-@define-color on_primary @text;
-@define-color inverse_on_surface @surface;
-@define-color error @rose;
-@define-color error_container @love;
+@define-color background @background-darker;
+@define-color on_surface @foreground;
+@define-color primary @purple;
+@define-color on_primary @selection;
+@define-color inverse_on_surface @background;
+@define-color error @yellow;
+@define-color error_container @red;
 
 /* -----------------------------------------------------
  * General

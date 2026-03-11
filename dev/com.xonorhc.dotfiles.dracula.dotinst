@@ -1,0 +1,14 @@
+{
+	"name": "My Dotfiles - Dracula DEV",
+	"id": "com.xonorhc.dotfiles.dracula.dev",
+	"description": "Dracula theme for Hyprland",
+	"version":"0.1",
+	"author": "Anachronox",
+	"homepage": "https://github.com/xonorhc/mydotfiles",
+	"dependencies": "",
+	"source": "Templates/mydotfiles-dracula",
+	"subfolder": "dotfiles",
+	"setupscript":"",
+	"restore":[],
+	"settings":[]
+}
