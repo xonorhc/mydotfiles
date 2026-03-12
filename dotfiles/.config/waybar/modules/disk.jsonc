@@ -1,6 +1,6 @@
 {
   "disk": {
-    "format": "󰋊{percentage_used}%",
+    "format": "󰋊 {percentage_used}%",
     "min-length": 7,
     "max-length": 7,
     "path": "/",
