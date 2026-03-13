@@ -64,5 +64,5 @@ run = "plugin mount"
 [[mgr.prepend_keymap]]
 on   = "<C-w>"
 for  = "linux"
-run  = "shell -- hyprctl hyprpaper wallpaper ,%h; matugen image %h"
+run  = "shell -- hyprctl hyprpaper wallpaper ,%h; matugen image %h --source-color-index 0"
 desc = "Set hovered file as wallpaper"
