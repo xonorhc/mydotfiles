@@ -38,7 +38,7 @@ import_json_files = ["./custom3.json"]
 
 [config.wallpaper]
 # Whether to set the wallpaper or not
-set = true
+set = false
 
 # The base command to run for applying the wallpaper.
 # Keywords like {{ image }} or anything that works inside of hooks works here.
@@ -127,7 +127,7 @@ post_hook = 'pkill -USR2 btop || true'
 [templates.cava]
 input_path = '~/.config/matugen/templates/cava-colors.ini'
 output_path = '~/.config/cava/themes/colors.cava'
-post_hook = 'pkill -USR1 cava'
+post_hook = 'pkill -USR1 cava || true'
 
 [templates.fuzzel]
 input_path = './templates/fuzzel.ini'
@@ -177,7 +177,7 @@ input_path = "./templates/colors.css"
 output_path = "~/.config/swaync/colors.css"
 post_hook = "swaync-client -rs"
 
-# [templates.nvim]
-# input_path = './templates/nvim-colors.vim'
-# output_path = '~/.config/nvim/colors/matugen.vim'
-# post_hook = 'pkill -SIGUSR1 nvim'
+[templates.nvim]
+input_path = './templates/nvim-base46.lua'
+output_path = '~/.config/nvim-chad/lua/themes/matugen.lua'
+post_hook = 'pkill -SIGUSR1 nvim'
