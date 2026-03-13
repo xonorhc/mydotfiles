@@ -14,14 +14,6 @@
  * ----------------------------------------------------- */
 @import "colors.css";
 
-@define-color background @background-darker;
-@define-color on_surface @foreground;
-@define-color primary @purple;
-@define-color on_primary @selection;
-@define-color inverse_on_surface @background;
-@define-color error @yellow;
-@define-color error_container @red;
-
 /* -----------------------------------------------------
  * General
  * ----------------------------------------------------- */

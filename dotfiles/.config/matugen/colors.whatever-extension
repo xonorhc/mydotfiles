@@ -1,0 +1,173 @@
+{{ colors.secondary.default.rgba }}
+{{ base16.base00.default.rgba }}
+
+{{ colors.secondary.default.hsla }}
+{{ base16.base00.default.hsla }}
+
+{{ base16.base00.default.alpha }}
+{{ base16.base00.default.hex_alpha }}
+{{ base16.base00.default.alpha_hex }}
+
+<* include "includeme"*>
+
+{{ colors.primary.default.hex }}
+
+{{ "#FF0000" | to_color | set_red: 0 }}
+
+{{ "test" | replace: "test", "test2" }}
+
+{{ palettes.error._99.hex }}
+
+Base16
+{{ base16.base00.dark.hex }}
+{{ base16.base00.light.hex }}
+
+{{ base16.base0f.dark.hex }}
+{{ base16.base0f.light.hex }}
+
+Hex alpha
+
+{{ colors.secondary.default.hex_alpha }}
+{{ colors.secondary.default.hex_alpha_stripped }}
+
+Alpha hex
+
+{{ colors.secondary.default.alpha_hex }}
+{{ colors.secondary.default.alpha_hex_stripped }}
+
+{{ colors.secondary.default.hex_alpha | set_alpha: 0.5 }}
+
+{{ colors.secondary.default.rgba | set_alpha: 0.5 }}
+
+Escaped: \{{
+
+normal: {{ colors.green_source.default.hex }}
+blended_full: {{ colors.green_source.default.hex | blend: {{ colors.source_color.default.hex }}, 1.0 }}
+blended_half: {{ colors.green_source.default.hex | blend: {{ colors.source_color.default.hex }}, 0.5 }}
+harmonized: {{ colors.green_source.default.hex | harmonize: {{ colors.source_color.default.hex }} }}
+blended_full_red: {{ colors.green_source.default.hex | blend: {{ "#FF0000" | to_color }}, 1.0 }}
+blended_full_green: {{ colors.green_source.default.hex | blend: {{ "#00FF00" | to_color }}, 1.0 }}
+blended_full_blue: {{ colors.green_source.default.hex | blend: {{ "#0000FF" | to_color }}, 1.0 }}
+
+
+{{ "#ffbf9b" | to_color | set_lightness: <* if {{ is_dark_mode }} *> {{ int }} <* else *> {{ int2 }} <* endif *> }}
+
+RGB:
+{{ colors.source_color.default.rgba }}
+{{ colors.source_color.default.red }}
+{{ {{ colors.source_color.default.red }} / 255 }}
+{{ colors.source_color.default.green }}
+{{ colors.source_color.default.blue }}
+{{ colors.source_color.default.alpha }}
+
+HSL:
+{{ colors.source_color.default.hsla }}
+{{ colors.source_color.default.hue }}
+{{ colors.source_color.default.saturation }}
+{{ colors.source_color.default.lightness }}
+{{ colors.source_color.default.alpha }}
+
+red #FF0000;
+green #00FF00;
+blue #0000FF;
+
+mode: {{ mode }}
+
+<* if {{ is_dark_mode }} *>
+    True
+<* else *>
+    False
+<* endif *>
+
+<* if not {{ is_dark_mode }} *>
+    not dark mode
+<* else *>
+    is dark mode
+<* endif *>
+
+test {{ colors.source_color.default.rgb | lighten: 20.0 }}
+test {{ colors.source_color.default.rgb | lighten: -20.0 }}
+test {{ colors.source_color.default.rgb | saturate: -20.0, hsl }}
+test {{ colors.source_color.default.rgb }}
+
+{{ colors.source_color.default.hex_stripped | lighten: 20.0 }}
+
+{{ colors.source_color.default.hex }}
+{{ colors.source_color.default.hex | lighten: 20.0 }}
+
+red {{colors.red.default.rgb}};
+red {{colors.red.default.rgba}};
+green {{colors.green.default.hsl}};
+blue {{colors.blue.default.hsla}};
+
+source_color {{colors.source_color.default.hex}};
+
+<* for i in 0..3 *>
+    <* if {{ loop.first }} *>
+        HEADER
+        =================
+    <* endif *>
+    {{ loop.index }}
+    <* if {{ loop.last }} *>
+        ============
+        FOOTER
+    <* else *>
+        ,
+    <* endif *>
+<* endfor *>
+
+<* for entry in palettes.error *>
+    <* if {{ loop.first }} *>
+        HEADER
+        =================
+    <* endif *>
+    {{ loop.index }}: {{ entry }}
+    <* if {{ loop.last }} *>
+        ============
+        FOOTER
+    <* else *>
+        ,
+    <* endif *>
+<* endfor *>
+
+<* for i in -10..10 *>
+    actual: {{ i }} multiplied: {{ {{ i }} * 10 }} {{ colors.red.default.hex | lighten: {{i}} * 10 }}
+<* endfor *>
+
+<* for name, value in colors *>
+    {{name | replace: "_", "-" }} {{value.default.hex}};
+<* endfor *>
+
+<* for name, value in colors *>
+
+    <* if {{ loop.first }} *>
+        HEADER
+        =================
+    <* endif *>
+
+    {{name | replace: "_", "-" }} {{value.default.hex | invert | invert }};
+
+    <* if {{ loop.last }} *>
+        ============
+        FOOTER
+    <* else *>
+        ,
+    <* endif *>
+<* endfor *>
+
+original:
+{{ colors.source_color.default.hex }}
+
+grayscale
+{{ colors.source_color.default.hex | grayscale }}
+
+invert
+{{ colors.source_color.default.hex | invert }}
+
+invert twice
+{{ colors.source_color.default.hex | invert | invert }}
+
+{{ "red" | to_color }}
+{{ "red" | to_color | set_alpha: 0.5 | format: "rgba" }}
+{{ "red" | to_color | set_alpha: 0.5 | format: "hsla" }}
+{{ "red" | to_color | set_alpha: 0.5 | format: "hsl" }}

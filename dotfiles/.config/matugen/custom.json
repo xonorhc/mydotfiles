@@ -1,0 +1,32 @@
+{
+    "text": "Hello, World!",
+    "red_color": {
+        "color": "#ff0000"
+    },
+    "int": 1,
+    "int2": 1000,
+    "float": 2.0,
+    "map": {
+        "text": "nested string",
+        "nested": {
+            "text": "another nested string"
+        }
+    },
+    "array": [
+        1,
+        2
+    ],
+    "colors": {
+        "primary": {
+            "light": {
+                "color": "#ff0000"
+            },
+            "default": {
+                "color": "#ff0000"
+            },
+            "dark": {
+                "color": "#ff0000"
+            }
+        }
+    }
+}

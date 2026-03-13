@@ -1,85 +1,182 @@
-# If the user's terminal is in dark mode, Yazi will load `theme-dark.toml` on startup; otherwise, `theme-light.toml`.
-# You can override any parts of them that are not related to the dark/light mode in your own `theme.toml`.
-
-# If you want to dynamically override their content based on dark/light mode, you can specify two different flavors
-# for dark and light modes under `[flavor]`, and do so in those flavors instead.
-"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
-
-# vim:fileencoding=utf-8:foldmethod=marker
-
-# : Flavor {{{
-
-[flavor]
-dark  = "dracula"
-
-# : }}}
-
-
-# : Manager {{{
+# : Manager [[[
 
 [mgr]
+cwd = { fg = "#e6e0e9" }
+
+# Find
+find_keyword  = { fg = "#ffb4ab", bold = true, italic = true, underline = true }
+find_position = { fg = "#ffb4ab", bold = true, italic = true }
+
+# Marker
+marker_copied   = { fg = "#ff7394", bg = "#ff7394" }
+marker_cut      = { fg = "#ffd9e2", bg = "#ffd9e2" }
+marker_marked   = { fg = "#ffb4ab", bg = "#ffb4ab" }
+marker_selected = { fg = "#efb8c7", bg = "#efb8c7" }
+
+# Count
+count_copied   = { fg = "#31101d", bg = "#ffd9e2" }
+count_cut      = { fg = "#31101d", bg = "#ffd9e2" }
+count_selected = { fg = "#36265d", bg = "#efb8c7" }
+
 # Border
 border_symbol = " "
-border_style  = { fg = "gray" }
+border_style  = { fg = "#d0bcfe" }
 
-# : }}}
-
-
-# : Tabs {{{
-
-[tabs]
-# Separator
-sep_inner = { open = "", close = "" }
-sep_outer = { open = "", close = "" }
-
-# : }}}
+# : ]]]
 
 
-# : Indicator of hovered file {{{
+# : Indicator [[[
 
 [indicator]
-parent  = { reversed = true }
-current = { reversed = true, bold = true }
-preview = { underline = true }
 padding = { open = "█", close = "█" }
 
-# : }}}
+# : ]]]
 
 
-# : Status bar {{{
+# : Tabs [[[
+
+[tabs]
+active    = { fg = "#d0bcfe", bold = true, bg = "#141218" }
+inactive  = { fg = "#ccc2db", bg = "#141218" }
+sep_inner = { open = "[", close = "]" }
+
+# : ]]]
+
+
+# : Mode [[[
+
+[mode]
+# Mode
+normal_main = { bg = "#d0bcfe", fg = "#36265d", bold = true }
+normal_alt  = { bg = "#49454e", fg = "#cac4cf" }
+
+# Select mode
+select_main = { bg = "#ccc2db", fg = "#332d41", bold = true }
+select_alt  = { bg = "#49454e", fg = "#cac4cf" }
+
+# Unset mode
+unset_main = { bg = "#efb8c7", fg = "#4a2531", bold = true }
+unset_alt  = { bg = "#49454e", fg = "#cac4cf" }
+
+# : ]]]
+
+
+# : Status [[[
 
 [status]
-overall   = {}
-sep_left  = { open = "", close = "" }
-sep_right = { open = "", close = "" }
+sep_left  = { open = "🭁", close = "🭠" }
+sep_right = { open = "🭁", close = "🭠" }
 
-# : }}}
+# Permissions
+perm_type  = { fg = "#7c62a2" }
+perm_write = { fg = "#d33b65" }
+perm_read  = { fg = "#ff2b12" }
+perm_exec  = { fg = "#ff406d" }
+perm_sep   = { fg = "#8644ff" }
+
+# Progress
+progress_label  = { bold = true }
+progress_normal = { fg = "#d0bcfe", bg = "#3b383e" }
+progress_error  = { fg = "#ffb4ab", bg = "#3b383e" }
+
+# : ]]]
 
 
-# : File-specific styles {{{
+# : Which [[[
+
+[which]
+cols = 3
+mask = { bg = "#3b383e" }
+cand = { fg = "#d0bcfe" }
+rest = { fg = "#36265d" }
+desc = { fg = "#e6e0e9" }
+separator = " ▶ "
+separator_style = { fg = "#e6e0e9" }
+
+# : ]]]
+
+
+# : Notify [[[
+
+[notify]
+title_info  = { fg = "#efb8c7" }
+title_warn  = { fg = "#d0bcfe" }
+title_error = { fg = "#ffb4ab" }
+
+# : ]]]
+
+
+# : Picker [[[
+
+[pick]
+border = { fg = "#d0bcfe" }
+active = { fg = "#efb8c7", bold = true }
+inactive = {}
+
+# : ]]]
+
+
+# : Input [[[
+
+[input]
+border = { fg = "#d0bcfe" }
+value  = { fg = "#e6e0e9" }
+
+# : ]]]
+
+
+# : Completion [[[
+
+[cmp]
+border = { fg = "#d0bcfe", bg = "#36265d" }
+
+# : ]]]
+
+
+# : Tasks [[[
+
+[tasks]
+border  = { fg = "#d0bcfe" }
+title   = {}
+hovered = { fg = "#ffd9e2", underline = true }
+
+# : ]]]
+
+
+# : Help [[[
+
+[help]
+on     = { fg = "#e6e0e9" }
+run    = { fg = "#e6e0e9" }
+footer = { fg = "#332d41", bg = "#ccc2db" }
+
+# : ]]]
+
+
+# : File-specific styles [[[
 
 [filetype]
+
 rules = [
-	# Image
-	{ mime = "image/*", fg = "yellow" },
-	# Media
-	{ mime = "{audio,video}/*", fg = "magenta" },
-	# Archive
-	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "red" },
-	# Document
-	{ mime = "application/{pdf,doc,rtf}", fg = "cyan" },
-	# Virtual file system
-	{ mime = "vfs/{absent,stale}", fg = "gray" },
-	# Special file
-	{ url = "*", is = "orphan", bg = "red" },
-	{ url = "*", is = "exec"  , fg = "green" },
-	# Dummy file
-	{ url = "*", is = "dummy", bg = "red" },
-	{ url = "*/", is = "dummy", bg = "red" },
-	# Fallback
-	{ url = "*/", fg = "blue" }
+    # Images
+    { mime = "image/*", fg = "#94e2d5" },
+
+    # Media
+    { mime = "{audio,video}/*", fg = "#f9e2af" },
+
+    # Archives
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#f5c2e7" },
+
+    # Documents
+    { mime = "application/{pdf,doc,rtf}", fg = "#a6e3a1" },
+
+    # Special files
+    { name = "*", is = "orphan", bg = "#93000a" },
+    { name = "*", is = "exec", fg = "#ffdad6" },
+
+    # Fallback
+    { url = "*", fg = "#e6e0e9" },
+    { url = "*/", fg = "#d0bcfe" },
 ]
 
-# : }}}
-
-
+# : ]]]

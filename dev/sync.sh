@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Get script folder
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
 # --- Script Initialization and Argument Handling ---
 
@@ -51,15 +51,15 @@ echo ":: Starting Folder Sync Daemon for $project_name"
 # Daemon will only run if NOT in dry-run mode, but the sync logic is tested
 while true; do
     echo ":: Waiting for changes in $SOURCE_DIR..."
-    
+
     # Wait for file system events
     inotifywait -r -e "$EVENTS" --quiet "$SOURCE_DIR"
-    
+
     # Debounce period
-    sleep 1 
-    
+    sleep 1
+
     echo ":: Change detected! Running sync now..."
-    
+
     # Construct the base rsync command flags
     RSYNC_CMD="rsync -azv --delete --exclude=config.dotinst $DRY_RUN_FLAG"
 
