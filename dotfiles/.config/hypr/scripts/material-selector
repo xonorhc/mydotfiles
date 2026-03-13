@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# Definição de algumas cores vibrantes do Material Design para o seletor
+declare -A colors
+colors=(
+  ["󰏘 Red"]="#f44336"
+  ["󰏘 Pink"]="#e91e63"
+  ["󰏘 Purple"]="#9c27b0"
+  ["󰏘 Deep Purple"]="#673ab7"
+  ["󰏘 Indigo"]="#3f51b5"
+  ["󰏘 Blue"]="#2196f3"
+  ["󰏘 Light Blue"]="#03a9f4"
+  ["󰏘 Cyan"]="#00bcd4"
+  ["󰏘 Teal"]="#009688"
+  ["󰏘 Green"]="#4caf50"
+  ["󰏘 Amber"]="#ffc107"
+  ["󰏘 Orange"]="#ff9800"
+  ["󰏘 Deep Orange"]="#ff5722"
+)
+
+# Transforma o array em uma lista para o Fuzzel
+choice=$(for name in "${!colors[@]}"; do echo "$name"; done | sort |
+  fuzzel --dmenu --prompt="󱓟 Escolha uma cor (ou digite o HEX): " --width=30)
+
+# Sai se o usuário cancelar (ESC)
+[ -z "$choice" ] && exit 0
+
+# Verifica se a escolha está no array ou se é um HEX manual
+if [[ ${colors[$choice]} ]]; then
+  hex_color=${colors[$choice]}
+else
+  # Valida se o que foi digitado é um HEX válido (ex: #ffffff)
+  if [[ $choice =~ ^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$ ]]; then
+    hex_color=$choice
+  else
+    notify-send "Matugen" "Código HEX inválido!" --icon=error
+    exit 1
+  fi
+fi
+
+# Dispara o Matugen
+notify-send "Matugen" "Gerando tema para a cor $hex_color..." --icon=color-management
+matugen color hex "$hex_color" --type scheme-fidelity
+
+# No final do material-selector.sh
+notify-send "Matugen" "Tema $hex_color aplicado com sucesso!" -i color-select
