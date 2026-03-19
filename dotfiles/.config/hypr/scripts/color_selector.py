@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+
+import os
+import subprocess
+
+colorscheme = {
+    "Red": "#f44336",
+    "Pink": "#e91e63",
+    "Purple": "#9c27b0",
+    "Deep Purple": "#673ab7",
+    "Indigo": "#3f51b5",
+    "Blue": "#2196f3",
+    "Light Blue": "#03a9f4",
+    "Cyan": "#00bcd4",
+    "Teal": "#009688",
+    "Green": "#4caf50",
+    "Amber": "#ffc107",
+    "Orange": "#ff9800",
+    "Deep Orange": "#ff5722",
+}
+
+colors = "\n".join(colorscheme.keys())
+
+run_rofi = subprocess.run(
+    ["rofi", "-dmenu", "-replace"],
+    input=colors.encode(),
+    capture_output=True,
+)
+
+selected_color = run_rofi.stdout.decode().strip()
+
+if selected_color not in colorscheme:
+    print("Color not found.")
+else:
+    hex_color = colorscheme[selected_color]
+
+    PATH = os.path.expanduser("~/.local/bin/matugen")
+
+    if PATH:
+        run_matugen = subprocess.run(
+            [PATH, "color", "hex", hex_color],
+            text=True,
+        )
+    else:
+        print("Error: Matugen not found")
