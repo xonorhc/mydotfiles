@@ -34,3 +34,14 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# -----------------------------------------------------
+# Neovim
+# -----------------------------------------------------
+alias v='NVIM_APPNAME=nvim nvim' # Nvim
+alias vc='NVIM_APPNAME=nvim-nvchad nvim' # NvChad
+alias va='NVIM_APPNAME=nvim-astro5 nvim' # AstroVim
+
+vv() {
+  select config in nvim nvchad astro5
+  do NVIM_APPNAME=nvim-$config nvim $@; break; done
+}
