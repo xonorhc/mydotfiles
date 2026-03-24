@@ -27,7 +27,7 @@ output_path = '~/.config/rofi/colors.rasi'
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk-colors.css'
 output_path = '~/.config/gtk-3.0/colors.css'
-post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme "Material-Dark"; gsettings set org.gnome.desktop.interface gtk-theme "Material-Dark"'
 
 [templates.gtk4]
 input_path = '~/.config/matugen/templates/gtk-colors.css'
@@ -68,3 +68,18 @@ output_path = '~/.config/zathura/zathurarc'
 input_path = './templates/nvim-base16.lua'
 output_path = '~/.config/nvim-astro5/lua/plugins/base16-prox-max.lua'
 post_hook = 'pkill -SIGUSR1 nvim'
+
+[templates.nvim-nvchad]
+input_path = './templates/nvim-base46.lua'
+output_path = '~/.config/nvim-nvchad/lua/themes/matugen.lua'
+post_hook = 'pkill -SIGUSR1 nvim'
+
+[templates.nvim]
+input_path = './templates/nvim-colors.vim'
+output_path = '~/.config/nvim/colors/matugen.vim'
+post_hook = 'pkill -SIGUSR1 nvim'
+
+[templates.gtk-theme]
+input_path = '~/.config/matugen/templates/gtk-themes.scss'
+output_path = '~/.config/matugen/templates/gtk-themes/themes/src/sass/_color-palette-default.scss'
+post_hook = 'sh ~/.config/matugen/templates/gtk-themes/themes/install.sh --theme default --color dark'
