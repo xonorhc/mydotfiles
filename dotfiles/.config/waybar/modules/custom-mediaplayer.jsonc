@@ -1,0 +1,14 @@
+{
+  "custom/mediaplayer": {
+    "exec": "/usr/bin/python3 $HOME/.config/waybar/scripts/mediaplayer.py --player spotify",
+    "format": " {}",
+    "return-type": "json",
+    "on-click": "spotify",
+    "on-scroll-up": "playerctl previous",
+    "on-scroll-down": "playerctl next",
+    "on-click-right": "playerctl play-pause",
+    "max-length": 25,
+    "escape": true,
+    "tooltip": true,
+  },
+}
