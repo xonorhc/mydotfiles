@@ -1,0 +1,20 @@
+{
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Energy Profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "󰓅",
+      "balanced": "",
+      "power-saver": "󰾆",
+    },
+    "menu": "on-click",
+    "menu-file": "$HOME/.config/waybar/menus/power-profiles-menu.xml",
+    "menu-actions": {
+      "performance": "powerprofilesctl set performance",
+      "balanced": "powerprofilesctl set balanced",
+      "power-saver": "powerprofilesctl set power-saver",
+    },
+  },
+}
