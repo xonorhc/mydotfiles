@@ -33,13 +33,24 @@ if selected_color not in colorscheme:
     print("Color not found.")
 else:
     hex_color = colorscheme[selected_color]
+    subprocess.run(["killall", "hyprpaper"])
 
-    PATH = os.path.expanduser("~/.local/bin/matugen")
-
-    if PATH:
-        run_matugen = subprocess.run(
-            [PATH, "color", "hex", hex_color],
-            text=True,
-        )
-    else:
-        print("Error: Matugen not found")
+    run_matugen = subprocess.run(
+        [
+            "matugen",
+            "-t",
+            "scheme-vibrant",
+            "--contrast",
+            "0.3",
+            "-m",
+            "dark",
+            "--lightness-dark",
+            "0.01",
+            "--lightness-light",
+            "0",
+            "color",
+            "hex",
+            hex_color,
+        ],
+        text=True,
+    )

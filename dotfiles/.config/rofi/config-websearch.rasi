@@ -1,33 +1,3 @@
-/*
-#  ____        __ _  
-# |  _ \ ___  / _(_) 
-# | |_) / _ \| |_| | 
-# |  _ < (_) |  _| | 
-# |_| \_\___/|_| |_| 
-#                    
-# by Stephan Raabe (2023) 
-# ----------------------------------------------------- 
-*/
-
-/* ---- Configuration ---- */
-configuration {
-    modi:                       "drun,filebrowser,window,run";
-    font:                       "Fira Sans 11";
-    show-icons:                 true;
-    icon-theme:                 "Tela-circle-dracula";
-    display-drun:                " ";
-    display-run:                 " ";
-    display-filebrowser:         " ";
-    display-window:              " ";
-	drun-display-format:        "{name}";
-    hover-select:               false;
-    scroll-method:              1;
-    me-select-entry:            "";
-    me-accept-entry:            "MousePrimary";
-    window-format:              "{w} · {c} · {t}";
-    
-}
-
 /* ---- Load colors ---- */
 @theme "~/.config/rofi/colors.rasi"
 

@@ -13,7 +13,7 @@
       "format": {
         "months": "<span color='#ffead3'><b>{}</b></span>",
         "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b>{}</b></span>"
+        "today": "<span color='#ff6699'><b>{}</b></span>",
       },
     },
     "actions": {
@@ -21,7 +21,7 @@
       "on-click-forward": "tz_up",
       "on-click-backward": "tz_down",
       "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down"
+      "on-scroll-down": "shift_down",
     },
   },
 }
