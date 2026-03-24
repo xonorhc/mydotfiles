@@ -26,8 +26,8 @@
 }
 
 window#waybar {
-  background-color: alpha(@background, 0.9);
-  border-bottom: 0px solid #ffffff;
+  background-color: alpha(@surface_container_lowest, 1);
+  border-bottom: 2px solid alpha(@shadow, 0.3);
   transition-property: background-color;
   transition-duration: 0.5s;
 }
@@ -114,6 +114,8 @@ window#waybar.empty #window {
  * Custom Quicklinks
  * ----------------------------------------------------- */
 
+#custom-cava,
+#custom-mediaplayer,
 #custom-brave,
 #custom-browser,
 #custom-keybindings,
