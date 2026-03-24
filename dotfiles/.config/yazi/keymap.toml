@@ -5,21 +5,14 @@ desc = "Cd to ~/Downloads"
 
 [[mgr.prepend_keymap]]
 on   = [ "g", "p" ]
-run  = "cd ~/Projects"
-desc = "Cd to ~/Projects"
+run  = "cd ~/Pictures"
+desc = "Cd to ~/Pictures"
 
 [[mgr.prepend_keymap]]
 on   = "!"
 for  = "unix"
 run  = 'shell "$SHELL" --block'
 desc = "Open $SHELL here"
-
-# If you also using Yazi on Windows:
-[[mgr.prepend_keymap]]
-on   = "!"
-for  = "windows"
-run  = 'shell "powershell.exe" --block'
-desc = "Open PowerShell here"
 
 [[input.prepend_keymap]]
 on   = "<Esc>"
@@ -91,5 +84,5 @@ run = "plugin mount"
 [[mgr.prepend_keymap]]
 on   = "<C-w>"
 for  = "linux"
-run  = "shell -- swww img %h; $HOME/.local/bin/matugen image %h"
+run  = "shell -- hyprctl hyprpaper wallpaper ,%h; matugen --type scheme-content --source-color-index 0 image %h"
 desc = "Set hovered file as wallpaper"
