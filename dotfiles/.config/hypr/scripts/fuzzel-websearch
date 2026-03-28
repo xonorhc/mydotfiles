@@ -4,16 +4,13 @@ HISTFILE="$HOME/.cache/weblauncher_history"
 mkdir -p "$(dirname "$HISTFILE")"
 touch "$HISTFILE"
 
-# Mostra histórico + permite digitar novo
 query=$(cat "$HISTFILE" | tac |
   fuzzel --dmenu --lines 5 --placeholder "Search, URL, aw, aur, pkg, man, !g, !gh, !yt") || exit 0
 
 [ -z "$query" ] && exit 0
 
-# Salva no histórico (evita duplicata consecutiva)
 grep -qxF "$query" "$HISTFILE" || echo "$query" >>"$HISTFILE"
 
-# Trim
 query="$(echo "$query" | xargs)"
 
 urlencode() {
@@ -25,9 +22,7 @@ EOF
 
 encoded=$(urlencode "$query")
 
-# ----------------------------
-# 🔎 URL DETECTION
-# ----------------------------
+# URL DETECTION
 
 if [[ "$query" =~ ^https?:// ]]; then
   url="$query"
@@ -38,9 +33,7 @@ elif [[ "$query" =~ ^(localhost|[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)(:[0-9]+)?(/.*)?$
 elif [[ "$query" =~ ^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(/.*)?$ ]]; then
   url="https://$query"
 
-# ----------------------------
-# 🧠 SHORTCUTS
-# ----------------------------
+# SHORTCUTS
 
 elif [[ "$query" =~ ^aw\  ]]; then
   term="${query#aw }"
@@ -75,9 +68,7 @@ elif [[ "$query" =~ ^!gpt\  ]]; then
   term="${query#!gpt }"
   url="https://chat.openai.com/?q=$(urlencode "$term")"
 
-# ----------------------------
-# 🌐 DEFAULT
-# ----------------------------
+# DEFAULT
 
 else
   url="https://duckduckgo.com/?q=$encoded"

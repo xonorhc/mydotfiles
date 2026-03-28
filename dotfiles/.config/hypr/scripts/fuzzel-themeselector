@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+THEME_DIR="$HOME/.config/matugen/themes"
+
+if [ ! -d "$THEME_DIR" ]; then
+  notify-send "Theme Switcher" "Directory not found!" --icon=error
+  exit 1
+fi
+
+choice=$(ls "$THEME_DIR"/*.json | xargs -n 1 basename | sed 's/\.json//' |
+  fuzzel --dmenu --prompt="󱓟 Select a theme: " --width=35)
+
+[[ -z "$choice" ]] && exit 0
+
+SELECTED_JSON="$THEME_DIR/$choice.json"
+
+if matugen json "$SELECTED_JSON"; then
+  notify-send "Matugen" "Theme '$choice' applied successfully!" --icon=color-management
+else
+  notify-send "Matugen" "Error when applied the theme '$choice'." --icon=error
+fi

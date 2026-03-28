@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+declare -A colors
+
+# TOKYONIGHT COLORS:
+# colors=( ["󰏘 Dark Blue"]="#16161e" ["󰏘 Blue"]="#7aa2f7" ["󰏘 Sky"]="#7dcfff" ["󰏘 Teal"]="#4fd6be" ["󰏘 Green"]="#9ece6a" ["󰏘 Yellow"]="#e0af68" ["󰏘 Orange"]="#f7768e" ["󰏘 Pink"]="#bb9af7" ["󰏘 Purple"]="#9d7cd8" ["󰏘 Red"]="#f7768e")
+
+# ROSEPINE COLORS:
+# colors=( ["󰏘 Rose"]="#f6c177" ["󰏘 Pine"]="#31748f" ["󰏘 Foam"]="#9ccfd8")
+
+# CATPPUCCIN COLORS:
+# colors=( ["󰏘 Rosewater"]="#f5e0dc" ["󰏘 Flamingo"]="#f2cdcd" ["󰏘 Pink"]="#f5c2e7" ["󰏘 Mauve"]="#cba6f7" ["󰏘 Red"]="#f38ba8" ["󰏘 Maroon"]="#eba0ac" ["󰏘 Peach"]="#fab387" ["󰏘 Yellow"]="#f9e2af" ["󰏘 Green"]="#a6e3a1" ["󰏘 Teal"]="#94e2d5" ["󰏘 Sky"]="#89dceb" ["󰏘 Sapphire"]="#74c7ec" ["󰏘 Blue"]="#89b4fa" ["󰏘 Lavender"]="#b4befe")
+
+# MATERIAL COLORS:
+# colors=( ["󰏘 Red"]="#f44336" ["󰏘 Pink"]="#e91e63" ["󰏘 Purple"]="#9c27b0" ["󰏘 Deep Purple"]="#673ab7" ["󰏘 Indigo"]="#3f51b5" ["󰏘 Blue"]="#2196f3" ["󰏘 Light Blue"]="#03a9f4" ["󰏘 Cyan"]="#00bcd4" ["󰏘 Teal"]="#009688" ["󰏘 Green"]="#4caf50" ["󰏘 Amber"]="#ffc107" ["󰏘 Orange"]="#ff9800" ["󰏘 Deep Orange"]="#ff5722")
+
+# DRACULA COLORS:
+colors=(
+  ["󰏘 Cyan"]="#8be9fd"
+  ["󰏘 Green"]="#50fa7b"
+  ["󰏘 Orange"]="#ffb86c"
+  ["󰏘 Pink"]="#ff79c6"
+  ["󰏘 Purple"]="#bd93f9"
+  ["󰏘 Red"]="#ff5555"
+  ["󰏘 Yellow"]="#f1fa8c"
+)
+
+choice=$(for name in "${!colors[@]}"; do echo "$name"; done | sort |
+  fuzzel --dmenu --prompt="󱓟 Choose a color (or type HEX color): " --width=30)
+
+[ -z "$choice" ] && exit 0
+
+if [[ ${colors[$choice]} ]]; then
+  hex_color=${colors[$choice]}
+else
+  if [[ $choice =~ ^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$ ]]; then
+    hex_color=$choice
+  else
+    notify-send "Color Selector" "Invalid HEX code!" --icon=error
+    exit 1
+  fi
+fi
+
+notify-send "Color Selector" "Generating theme for the color $hex_color..." --icon=color-management
+matugen -t scheme-rainbow \
+  --contrast 0.5 \
+  -m dark \
+  -r nearest \
+  --continue-on-error \
+  --fallback-color "#bd93f9" \
+  --lightness-dark 0.05 \
+  color hex "$hex_color"
+notify-send "Color Selector" "Color $hex_color applied successfully!" -i color-select
