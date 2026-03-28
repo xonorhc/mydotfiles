@@ -30,7 +30,7 @@
 }
 
 window#waybar {
-  background-color: alpha(@background, 0.9);
+  background-color: alpha(@surface_container_lowest, 0.9);
   border-bottom: 0px solid #ffffff;
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -61,12 +61,12 @@ window#waybar {
 
 #workspaces button.active {
   color: @on_primary;
-  background: @primary;
+  background: @source_color;
 }
 
 #workspaces button:hover {
-  color: @on_primary;
-  background: @primary;
+  color: @on_tertiary;
+  background: @tertiary_container;
   border-radius: 15px;
 }
 
