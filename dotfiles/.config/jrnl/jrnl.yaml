@@ -1,0 +1,22 @@
+colors:
+  body: NONE
+  date: RED
+  tags: YELLOW
+  title: CYAN
+default_hour: 9
+default_minute: 0
+editor: nvim
+encrypt: false
+highlight: true
+indent_character: "|"
+journals:
+  default:
+    journal: ~/.jrnl
+  study:
+    journal: ~/.jrnl/studies/
+    template: ~/.jrnl/templates/asciidoc.adoc
+linewrap: 79
+tagsymbols: "#@"
+template: false
+timeformat: "%F %r"
+version: v4.2.1
