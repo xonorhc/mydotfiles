@@ -55,3 +55,13 @@ if [[ -n "$YAZI_ID" ]]; then
 	add-zsh-hook zshexit _yazi_cd
 fi
 
+# -----------------------------------------------------
+# Neovim
+# -----------------------------------------------------
+alias vc='NVIM_APPNAME=nvim-nvchad nvim' # NvChad
+alias va='NVIM_APPNAME=nvim-astro5 nvim' # AstroVim
+
+vv() {
+  select config in nvchad astro5
+  do NVIM_APPNAME=nvim-$config nvim $@; break; done
+}
