@@ -1,5 +1,5 @@
 [config]
-fallback_color = "#89b4fa"
+fallback_color = "#bd93f9"
 prefer = "closest-to-fallback"
 caching = false
 

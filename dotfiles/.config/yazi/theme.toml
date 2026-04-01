@@ -29,6 +29,7 @@ border_style  = { fg = "#d8bbff" }
 
 [indicator]
 padding = { open = "█", close = "█" }
+current = { bg = "#bd93f9", fg = "#3d0e75", bold = true }
 
 # : ]]]
 
