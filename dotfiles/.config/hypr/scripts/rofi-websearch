@@ -4,16 +4,13 @@ HISTFILE="$HOME/.cache/weblauncher_history"
 mkdir -p "$(dirname "$HISTFILE")"
 touch "$HISTFILE"
 
-# Mostra histórico + permite digitar novo
 query=$(cat "$HISTFILE" | tac |
   rofi -dmenu -p "Type your search" -theme ~/.config/rofi/config-websearch.rasi) || exit 0
 
 [ -z "$query" ] && exit 0
 
-# Salva no histórico (evita duplicata consecutiva)
 grep -qxF "$query" "$HISTFILE" || echo "$query" >>"$HISTFILE"
 
-# Trim
 query="$(echo "$query" | xargs)"
 
 urlencode() {
@@ -26,7 +23,7 @@ EOF
 encoded=$(urlencode "$query")
 
 # ----------------------------
-# 🔎 URL DETECTION
+# URL DETECTION
 # ----------------------------
 
 if [[ "$query" =~ ^https?:// ]]; then
@@ -39,7 +36,7 @@ elif [[ "$query" =~ ^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(/.*)?$ ]]; then
   url="https://$query"
 
 # ----------------------------
-# 🧠 SHORTCUTS
+# SHORTCUTS
 # ----------------------------
 
 elif [[ "$query" =~ ^aw\  ]]; then
@@ -80,7 +77,7 @@ elif [[ "$query" =~ ^!gem\  ]]; then
   url="https://gemini.google.com/app?q=$(urlencode "$term")"
 
 # ----------------------------
-# 🌐 DEFAULT
+# DEFAULT
 # ----------------------------
 
 else

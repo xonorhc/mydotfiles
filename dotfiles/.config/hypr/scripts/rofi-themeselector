@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+
+import subprocess
+import sys
+
+colorscheme = {
+    "Red": "#f44336",
+    "Pink": "#e91e63",
+    "Purple": "#9c27b0",
+    "Deep Purple": "#673ab7",
+    "Indigo": "#3f51b5",
+    "Blue": "#2196f3",
+    "Light Blue": "#03a9f4",
+    "Cyan": "#00bcd4",
+    "Teal": "#009688",
+    "Green": "#4caf50",
+    "Light Green": "#8bc34a",
+    "Lime": "#cddc39",
+    "Yellow": "#ffeb3b",
+    "Amber": "#ffc107",
+    "Orange": "#ff9800",
+    "Deep Orange": "#ff5722",
+    "Brown": "#795548",
+    "Grey": "#9e9e9e",
+    "Blue Grey": "#607d8b",
+}
+
+colors_list = "\n".join(colorscheme.keys())
+
+run_rofi = subprocess.run(
+    ["rofi", "-dmenu", "-i", "-p", "Color:", "-replace"],
+    input=colors_list,
+    capture_output=True,
+    text=True,
+)
+
+selected_color = run_rofi.stdout.strip()
+
+if not selected_color:
+    print("Operation cancelled.")
+    sys.exit(0)
+
+if selected_color not in colorscheme:
+    print(f"Error: '{selected_color}' is not a valid color.")
+    sys.exit(1)
+
+hex_color = colorscheme[selected_color]
+
+try:
+    subprocess.run(["systemctl", "--user", "stop", "hyprpaper.service"])
+    subprocess.run(
+        [
+            "matugen",
+            "-t", "scheme-content",
+            "--contrast", "0.5",
+            "-m", "dark",
+            "--lightness-dark", "0.05",
+            "color", "hex", hex_color,
+        ],
+        check=True,
+    )
+    print(f"Success: {selected_color} applied.")
+except Exception as e:
+    print(f"Error running Matugen: {e}")
