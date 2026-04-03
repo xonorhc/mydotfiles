@@ -1,0 +1,11 @@
+{
+  "mpris": {
+  "format": "{player_icon} {artist} - {title}",
+  "format-paused": " {title}",
+  "player-icons": {
+    "spotify": "",
+    "firefox": ""
+  },
+  "max-length": 30
+}
+}
