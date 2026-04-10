@@ -3,7 +3,23 @@
 * Generated with Matugen
 */
 
+    @define-color baby_pink #ffcdfb;
+
+    @define-color baby_pink_container #c47ac5;
+
+    @define-color baby_pink_source #ff87d5;
+
+    @define-color baby_pink_value #ff87d5;
+
     @define-color background #1e1e1e;
+
+    @define-color blue #dcdaff;
+
+    @define-color blue_container #8b8be5;
+
+    @define-color blue_source #a3b4e7;
+
+    @define-color blue_value #a3b4e7;
 
     @define-color cyan #afe5ff;
 
@@ -12,6 +28,14 @@
     @define-color cyan_source #8cebff;
 
     @define-color cyan_value #8cebff;
+
+    @define-color dark_purple #e9d5ff;
+
+    @define-color dark_purple_container #a883dc;
+
+    @define-color dark_purple_source #bf95fc;
+
+    @define-color dark_purple_value #bf95fc;
 
     @define-color error #ffd3cd;
 
@@ -31,11 +55,31 @@
 
     @define-color inverse_surface #e3e3e3;
 
+    @define-color nord_blue #dcdaff;
+
+    @define-color nord_blue_container #8b8be5;
+
+    @define-color nord_blue_source #8e9fd2;
+
+    @define-color nord_blue_value #8e9fd2;
+
+    @define-color on_baby_pink #53045b;
+
+    @define-color on_baby_pink_container #000000;
+
     @define-color on_background #e3e3e3;
+
+    @define-color on_blue #1f1a82;
+
+    @define-color on_blue_container #000000;
 
     @define-color on_cyan #00374b;
 
     @define-color on_cyan_container #000000;
+
+    @define-color on_dark_purple #3d0e75;
+
+    @define-color on_dark_purple_container #000000;
 
     @define-color on_error #740004;
 
@@ -44,6 +88,10 @@
     @define-color on_green #004128;
 
     @define-color on_green_container #000000;
+
+    @define-color on_nord_blue #1f1a82;
+
+    @define-color on_nord_blue_container #000000;
 
     @define-color on_orange #582400;
 
@@ -65,7 +113,7 @@
 
     @define-color on_purple_container #000000;
 
-    @define-color on_red #660527;
+    @define-color on_red #66052a;
 
     @define-color on_red_container #000000;
 
@@ -77,9 +125,17 @@
 
     @define-color on_secondary_fixed_variant #443b51;
 
+    @define-color on_sun #423300;
+
+    @define-color on_sun_container #000000;
+
     @define-color on_surface #ffffff;
 
     @define-color on_surface_variant #dddddd;
+
+    @define-color on_teal #1f1a82;
+
+    @define-color on_teal_container #000000;
 
     @define-color on_tertiary #4e202c;
 
@@ -88,6 +144,10 @@
     @define-color on_tertiary_fixed #3b0918;
 
     @define-color on_tertiary_fixed_variant #5f313b;
+
+    @define-color on_vibrant_green #004129;
+
+    @define-color on_vibrant_green_container #000000;
 
     @define-color on_yellow #3e3500;
 
@@ -129,13 +189,13 @@
 
     @define-color purple_value #bf95fc;
 
-    @define-color red #ffd2d9;
+    @define-color red #ffd2da;
 
-    @define-color red_container #de748c;
+    @define-color red_container #dd748e;
 
-    @define-color red_source #ff5858;
+    @define-color red_source #ff7373;
 
-    @define-color red_value #ff5858;
+    @define-color red_value #ff7373;
 
     @define-color scrim #000000;
 
@@ -150,6 +210,14 @@
     @define-color shadow #000000;
 
     @define-color source_color #bd93f9;
+
+    @define-color sun #ffdd5e;
+
+    @define-color sun_container #b69712;
+
+    @define-color sun_source #ffffa6;
+
+    @define-color sun_value #ffffa6;
 
     @define-color surface #1e1e1e;
 
@@ -171,6 +239,14 @@
 
     @define-color surface_variant #505050;
 
+    @define-color teal #dcdaff;
+
+    @define-color teal_container #8b8be5;
+
+    @define-color teal_source #95a5d8;
+
+    @define-color teal_value #95a5d8;
+
     @define-color tertiary #ffd2d9;
 
     @define-color tertiary_container #bd8791;
@@ -178,6 +254,14 @@
     @define-color tertiary_fixed #ffdae0;
 
     @define-color tertiary_fixed_dim #f4b9c4;
+
+    @define-color vibrant_green #86f5c2;
+
+    @define-color vibrant_green_container #32ad7e;
+
+    @define-color vibrant_green_source #5fff8b;
+
+    @define-color vibrant_green_value #5fff8b;
 
     @define-color yellow #f7e162;
 

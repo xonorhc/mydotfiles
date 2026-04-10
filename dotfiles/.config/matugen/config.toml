@@ -4,13 +4,20 @@ prefer = "closest-to-fallback"
 caching = false
 
 [config.custom_colors]
-cyan="#8be9fd"
-green="#50fa7b"
-orange="#ffb86c"
-pink="#ff79c6"
-purple="#bd93f9"
-red="#ff5555"
-yellow="#f1fa8c"
+red = "#ff7070"
+baby_pink = "#ff86d3"
+pink = "#FF79C6"
+green = "#50fa7b"
+vibrant_green = "#5dff88"
+nord_blue = "#8b9bcd"
+blue = "#a1b1e3"
+yellow = "#F1FA8C"
+sun = "#FFFFA5"
+purple = "#BD93F9"
+dark_purple = "#BD93F9"
+teal = "#92a2d4"
+orange = "#FFB86C"
+cyan = "#8BE9FD"
 
 [templates.kitty]
 input_path = './templates/kitty-colors.conf'
