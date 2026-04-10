@@ -9,7 +9,6 @@ alias ..='cd ..'
 alias c='clear'
 alias ff='fastfetch'
 alias shutdown='systemctl poweroff'
-alias vim='$EDITOR'
 alias v='$EDITOR'
 alias vd="$EDITOR diff"
 alias wifi='nmtui'
