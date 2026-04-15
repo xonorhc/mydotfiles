@@ -1,0 +1,111 @@
+[config]
+fallback_color = "#7c4dff"
+prefer = "closest-to-fallback"
+caching = false
+
+[config.custom_colors]
+red = "#e53935"
+baby_pink = "#FF5370"
+pink = "#FF5370"
+green = "#91b859"
+vibrant_green = "#a7c67a"
+nord_blue = "#4e73ae"
+blue = "#6182b8"
+yellow = "#F59717"
+sun = "#f6a434"
+purple = "#7c4dff"
+dark_purple = "#9671ff"
+teal = "#39ADB5"
+orange = "#f76d47"
+cyan = "#39adb5"
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty-colors.conf'
+output_path = '~/.config/kitty/colors.conf'
+post_hook = 'pkill -SIGUSR1 kitty'
+
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/colors.theme'
+post_hook = 'pkill -USR2 btop || true'
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+post_hook = 'hyprctl reload'
+
+[templates.waybar]
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/.config/waybar/colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'
+
+[templates.rofi]
+input_path = '~/.config/matugen/templates/rofi-colors.rasi'
+output_path = '~/.config/rofi/colors.rasi'
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-3.0/colors.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme "Material-Dark"; gsettings set org.gnome.desktop.interface gtk-theme "Material-Dark"'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-4.0/colors.css'
+
+[templates.gtk-theme]
+input_path = '~/.config/matugen/templates/gtk-themes.scss'
+output_path = '~/.config/matugen/templates/gtk-themes/themes/src/sass/_color-palette-default.scss'
+post_hook = 'sh ~/.config/matugen/templates/gtk-themes/themes/install.sh --theme default --color dark'
+
+[templates.wlogout]
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/.config/wlogout/colors.css'
+
+[templates.swaync]
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/.config/swaync/colors.css'
+post_hook = "swaync-client -rs"
+
+[templates.sequences]
+input_path = '~/.config/matugen/templates/sequences'
+output_path = '~/.cache/wal/sequences'
+
+[templates.yazi]
+input_path = '~/.config/matugen/templates/yazi-theme.toml'
+output_path = '~/.config/yazi/theme.toml'
+
+[templates.cava]
+input_path = '~/.config/matugen/templates/cava-colors.ini'
+output_path = '~/.config/cava/config'
+post_hook = 'pkill -USR1 cava || true'
+
+[templates.zathura]
+input_path = '~/.config/matugen/templates/zathura-colors'
+output_path = '~/.config/zathura/zathurarc'
+
+[templates.nvim]
+input_path = './templates/nvim-colors.vim'
+output_path = '~/.config/nvim/colors/matugen.vim'
+post_hook = 'pkill -SIGUSR1 nvim'
+
+[templates.nvim-astro5]
+input_path = './templates/nvim-base16.lua'
+output_path = '~/.config/nvim-astro5/lua/plugins/base16-prox-max.lua'
+post_hook = 'pkill -SIGUSR1 nvim'
+
+[templates.nvim-nvchad]
+input_path = './templates/nvim-base46.lua'
+output_path = '~/.local/share/nvim-nvchad/lazy/base46/lua/base46/themes/chadwal.lua'
+post_hook = 'pkill -SIGUSR1 nvim'
+
+[templates.pgcli]
+input_path = './templates/pgcli-colors'
+output_path = '~/.config/pgcli/config'
+
+[templates.zellij]
+input_path = './templates/zellij-theme.kdl'
+output_path = '~/.config/zellij/themes/matugen.kdl'
+
+[templates.starship]
+input_path = './templates/starship-colors.toml'
+output_path = '~/.config/starship.toml'

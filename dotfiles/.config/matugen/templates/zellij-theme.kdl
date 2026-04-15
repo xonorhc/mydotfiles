@@ -1,0 +1,133 @@
+themes {
+    matugen {
+        // Text: readable content on surfaces
+        text_unselected {
+            base        {{colors.on_surface.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            background  {{colors.surface_container.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_0  {{colors.primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_1  {{colors.secondary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_2  {{colors.tertiary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_3  {{colors.on_surface_variant.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+        }
+        text_selected {
+            base        {{colors.on_surface.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            background  {{colors.surface_container_high.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_0  {{colors.primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_1  {{colors.secondary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_2  {{colors.tertiary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_3  {{colors.on_surface_variant.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+        }
+
+        // Ribbon (tab bar)
+        ribbon_selected {
+            base        {{colors.on_primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            background  {{colors.primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_0  {{colors.tertiary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_1  {{colors.on_primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_2  {{colors.secondary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_3  {{colors.primary_container.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+        }
+        ribbon_unselected {
+            base        {{colors.on_surface_variant.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            background  {{colors.surface_container_high.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_0  {{colors.error.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_1  {{colors.on_surface.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_2  {{colors.primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_3  {{colors.secondary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+        }
+
+        // Table
+        table_title {
+            base        {{colors.primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            background  0
+            emphasis_0  {{colors.tertiary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_1  {{colors.secondary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_2  {{colors.on_surface_variant.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_3  {{colors.outline.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+        }
+        table_cell_selected {
+            base        {{colors.on_surface.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            background  {{colors.surface_container_high.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_0  {{colors.primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_1  {{colors.secondary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_2  {{colors.tertiary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_3  {{colors.on_surface_variant.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+        }
+        table_cell_unselected {
+            base        {{colors.on_surface.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            background  {{colors.surface_container.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_0  {{colors.primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_1  {{colors.secondary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_2  {{colors.tertiary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_3  {{colors.on_surface_variant.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+        }
+
+        // List
+        list_selected {
+            base        {{colors.on_surface.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            background  {{colors.surface_container_high.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_0  {{colors.primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_1  {{colors.secondary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_2  {{colors.tertiary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_3  {{colors.on_surface_variant.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+        }
+        list_unselected {
+            base        {{colors.on_surface.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            background  {{colors.surface_container.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_0  {{colors.primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_1  {{colors.secondary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_2  {{colors.tertiary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_3  {{colors.on_surface_variant.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+        }
+
+        // Frame (pane borders)
+        frame_selected {
+            base        {{colors.primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            background  0
+            emphasis_0  {{colors.secondary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_1  {{colors.tertiary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_2  {{colors.on_surface_variant.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_3  0
+        }
+        frame_highlight {
+            base        {{colors.tertiary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            background  0
+            emphasis_0  {{colors.primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_1  {{colors.secondary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_2  {{colors.tertiary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_3  {{colors.on_surface_variant.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+        }
+
+        // Exit codes
+        exit_code_success {
+            base        {{colors.secondary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            background  0
+            emphasis_0  {{colors.tertiary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_1  {{colors.surface_container.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_2  {{colors.secondary_container.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_3  {{colors.primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+        }
+        exit_code_error {
+            base        {{colors.error.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            background  0
+            emphasis_0  {{colors.on_error_container.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            emphasis_1  0
+            emphasis_2  0
+            emphasis_3  0
+        }
+
+        // Multiplayer user colors
+        multiplayer_user_colors {
+            player_1   {{colors.primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            player_2   {{colors.secondary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            player_3   {{colors.tertiary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            player_4   {{colors.on_primary_fixed.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            player_5   {{colors.on_secondary_fixed.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            player_6   {{colors.on_tertiary_fixed.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            player_7   {{colors.error.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            player_8   {{colors.outline.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            player_9   {{colors.inverse_primary.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+            player_10  {{colors.primary_fixed_dim.default.rgb | replace: "rgb(", "" | replace: ")", "" | replace: ", ", " "}}
+        }
+    }
+}

@@ -9,6 +9,11 @@ run  = "cd ~/Pictures"
 desc = "Cd to ~/Pictures"
 
 [[mgr.prepend_keymap]]
+on   = [ "g", "P" ]
+run  = "cd ~/Projects"
+desc = "Cd to ~/Projects"
+
+[[mgr.prepend_keymap]]
 on   = "!"
 for  = "unix"
 run  = 'shell "$SHELL" --block'
@@ -84,5 +89,5 @@ run = "plugin mount"
 [[mgr.prepend_keymap]]
 on   = "<C-w>"
 for  = "linux"
-run  = "shell -- systemctl --user start hyprpaper.service; hyprctl hyprpaper wallpaper ,%h; matugen --type scheme-content --source-color-index 0 image %h"
+run  = "shell -- hyprctl hyprpaper wallpaper ,%h; matugen --type scheme-content --source-color-index 0 image %h"
 desc = "Set hovered file as wallpaper"

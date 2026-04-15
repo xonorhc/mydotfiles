@@ -1,20 +1,6 @@
 local M = {}
 
 M.base_30 = {
-	red = "#f07178",
-	baby_pink = "#FFADFF",
-	pink = "#DA70CA",
-	green = "#c3e88d",
-	vibrant_green = "#c3e88d",
-	nord_blue = "#6e98eb",
-	blue = "#82aaff",
-	yellow = "#ffcb6b",
-	sun = "#e6b455",
-	purple = "#c792ea",
-	dark_purple = "#b480d6",
-	teal = "#abcf76",
-	orange = "#f78c6c",
-	cyan = "#89ddff",
 	white = "{{ colors.on_surface.default.hex }}",
 	black = "{{ colors.surface.default.hex }}",
 	darker_black = "{{ colors.surface.default.hex | lighten: -0.05 }}",
@@ -26,7 +12,22 @@ M.base_30 = {
 	grey_fg = "{{ colors.on_surface_variant.default.hex }}",
 	grey_fg2 = "{{ colors.on_surface_variant.default.hex | lighten: 0.05 }}",
 	light_grey = "{{ colors.outline.default.hex }}",
+	red = "{{ colors.error.default.hex | lighten: 0.15 }}",
+	baby_pink = "{{ colors.tertiary.default.hex | lighten: 0.20 }}",
+	pink = "{{ colors.tertiary.default.hex | lighten: 0.10 }}",
 	line = "{{ colors.surface.default.hex | lighten: 0.12 }}",
+	green = "{{ colors.primary.default.hex | lighten: 0.10 }}",
+	vibrant_green = "{{ colors.primary.default.hex | lighten: 0.20 }}",
+	nord_blue = "{{ colors.secondary.default.hex | lighten: 0.15 }}",
+	blue = "{{ colors.secondary.default.hex | lighten: 0.05 }}",
+	seablue = "{{ colors.secondary.default.hex }}",
+	yellow = "{{ colors.primary.default.hex | lighten: 0.30 }}",
+	sun = "{{ colors.primary.default.hex | lighten: 0.40 }}",
+	purple = "{{ colors.tertiary.default.hex | lighten: 0.15 }}",
+	dark_purple = "{{ colors.tertiary.default.hex }}",
+	teal = "{{ colors.secondary.default.hex | lighten: 0.25 }}",
+	orange = "{{ colors.error.default.hex | lighten: 0.25 }}",
+	cyan = "{{ colors.primary.default.hex | lighten: 0.35 }}",
 	statusline_bg = "{{ colors.surface_container_low.default.hex }}",
 	lightbg = "{{ colors.surface_container_highest.default.hex }}",
 	pmenu_bg = "{{ colors.surface_container_high.default.hex }}",
@@ -35,7 +36,7 @@ M.base_30 = {
 
 M.base_16 = {
   <* for name, value in base16 *>
-  {{name | camel_case}} = "{{ value.default.hex | blend: {{ colors.source_color.default.hex | to_color }}, 0.5 | to_color | auto_lightness: 10 | set_lightness: 75 | set_saturation: 70, "hsl" }}",
+  {{name | camel_case}} = "{{ value.default.hex | blend: {{ colors.source_color.default.hex | to_color }}, 0.1 | to_color | auto_lightness: 10 | set_lightness: 75 | set_saturation: 70, "hsl" }}",
   <* endfor *>
 }
 
@@ -43,37 +44,29 @@ M.type = "dark"
 
 M.polish_hl = {
 	defaults = {
-		Pmenu = { bg = "{{ colors.surface_container_high.default.hex }}", fg = "{{ colors.on_surface.default.hex }}" },
-		PmenuSel = { bg = "{{ colors.primary.default.hex }}", fg = "{{ colors.on_primary.default.hex }}", bold = true },
-		FloatBorder = { fg = "{{ colors.primary.default.hex }}", bg = "{{ colors.surface.default.hex }}" },
+		Pmenu = {
+			bg = "{{ colors.surface_container_high.default.hex }}",
+			fg = "{{ colors.on_surface.default.hex }}",
+		},
+		PmenuSel = {
+			bg = "{{ colors.primary.default.hex }}",
+			fg = "{{ colors.on_primary.default.hex }}",
+			bold = true,
+		},
+		FloatBorder = {
+			fg = "{{ colors.primary.default.hex }}",
+			bg = "{{ colors.surface.default.hex }}",
+		},
 		PmenuSbar = { bg = "{{ colors.surface_container_low.default.hex }}" },
 		PmenuThumb = { bg = "{{ colors.outline.default.hex }}" },
-		Search = { bg = "{{ colors.secondary_container.default.hex }}", fg = "{{ colors.on_secondary_container.default.hex }}" },
-	},
 
-	treesitter = {
-		["@variable"] = { fg = M.base_16.base07 },
-		["@module"] = { fg = M.base_16.base07 },
-		["@variable.member"] = { fg = M.base_16.base07 },
-		["@type.builtin"] = { fg = M.base_30.purple },
-		["@variable.parameter"] = { fg = M.base_30.orange },
-		["@operator"] = { fg = M.base_30.cyan },
-		["@punctuation.delimiter"] = { fg = M.base_30.cyan },
-		["@punctuation.bracket"] = { fg = M.base_30.cyan },
-		["@punctuation.special"] = { fg = M.base_30.teal },
-		["@function.macro"] = { fg = M.base_30.pink },
-		["@keyword.storage"] = { fg = M.base_30.purple },
-	},
-
-	syntax = {
-		StorageClass = { fg = M.base_30.purple },
-		Repeat = { fg = M.base_30.purple },
-		Define = { fg = M.base_30.blue },
-	},
-
-	telescope = {
-		TelescopeSelection = { bg = M.base_30.one_bg },
+		Search = {
+			bg = "{{ colors.secondary_container.default.hex }}",
+			fg = "{{ colors.on_secondary_container.default.hex }}",
+		},
 	},
 }
+
+M = require("base46").override_theme(M, "matugen")
 
 return M
