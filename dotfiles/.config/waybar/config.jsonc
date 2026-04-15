@@ -17,8 +17,8 @@
     "custom/appmenuicon",
     "clock",
     "tray",
-    "mpris",
-    "custom/cava",
+    // "mpris",
+    // "custom/cava",
     "custom/empty"
   ],
   // Modules Center

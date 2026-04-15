@@ -8,7 +8,7 @@
     "min-length": 2,
     "max-length": 2,
     "on-click": "blueman-manager",
-    "on-click-right": "bluetoothctl power off && notify-send 'Bluetooth Off' -i 'network-bluetooth-inactive' -h string:x-canonical-private-synchronous:bluetooth",
+    // "on-click-right": "bluetoothctl power off && notify-send 'Bluetooth Off' -i 'network-bluetooth-inactive' -h string:x-canonical-private-synchronous:bluetooth",
     "tooltip-format": "Device Addr: {device_address}",
     "tooltip-format-disabled": "Bluetooth Disabled",
     "tooltip-format-off": "Bluetooth Off",

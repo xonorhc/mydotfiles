@@ -29,5 +29,12 @@
       "on-discharging-critical": "notify-send 'Battery Critical (10%)' -u critical -i 'battery-010' -h string:x-canonical-private-synchronous:battery",
       "on-charging-100": "notify-send 'Battery Full (100%)' -i 'battery-100-charged' -h string:x-canonical-private-synchronous:battery",
     },
+    "menu": "on-click-right",
+    "menu-file": "$HOME/.config/waybar/menus/power-profiles-menu.xml",
+    "menu-actions": {
+        "power-saver": "powerprofilesctl set power-saver",
+        "balanced": "powerprofilesctl set balanced",
+        "performance": "powerprofilesctl set performance",
+    },
   },
 }
