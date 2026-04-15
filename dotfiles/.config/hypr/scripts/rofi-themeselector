@@ -51,11 +51,13 @@ try:
     subprocess.run(
         [
             "matugen",
-            "-t", "scheme-content",
-            "--contrast", "0.5",
+            "-t", "scheme-fidelity",  # [possible values: scheme-content, scheme-expressive, scheme-fidelity, scheme-fruit-salad, scheme-monochrome, scheme-neutral, scheme-rainbow, scheme-tonal-spot, scheme-vibrant]
+            "--contrast", "0.1",
             "-m", "dark",
-            "--lightness-dark", "0.05",
-            "color", "hex", hex_color,
+            "--lightness-dark", "0.13",
+            "color",
+            "hex",
+            hex_color,
         ],
         check=True,
     )

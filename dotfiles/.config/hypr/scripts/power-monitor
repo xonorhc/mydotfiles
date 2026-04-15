@@ -1,0 +1,25 @@
+#!/bin/bash
+
+LOW_BAT=20
+SAFE_BAT=25
+
+while true; do
+  CAPACITY=$(cat /sys/class/power_supply/BAT1/capacity) # ls /sys/class/power_supply/
+  STATUS=$(cat /sys/class/power_supply/BAT1/status)     # ls /sys/class/power_supply/
+  CURRENT_PROFILE=$(powerprofilesctl get)
+
+  if [ "$CAPACITY" -le "$LOW_BAT" ] && [ "$STATUS" == "Discharging" ]; then
+    if [ "$CURRENT_PROFILE" != "power-saver" ]; then
+      powerprofilesctl set power-saver
+      notify-send "Economia de Energia" "Bateria baixa ($CAPACITY%). Modo economia ativado." -i battery-low
+    fi
+
+  elif [ "$CAPACITY" -gt "$SAFE_BAT" ] || [ "$STATUS" == "Charging" ]; then
+    if [ "$CURRENT_PROFILE" == "power-saver" ]; then
+      powerprofilesctl set balanced
+      notify-send "Energia Restaurada" "Bateria em nível seguro ou carregando. Modo equilibrado ativado." -i battery-full
+    fi
+  fi
+
+  sleep 30
+done
