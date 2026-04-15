@@ -1,4 +1,5 @@
 [config]
+caching = false
 
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty-colors.conf'
@@ -51,11 +52,6 @@ post_hook = "swaync-client -rs"
 input_path = '~/.config/matugen/templates/sequences'
 output_path = '~/.cache/wal/sequences'
 
-[templates.ohmyposh]
-input_path = '~/.config/matugen/templates/ohmyposh-colors.json'
-output_path = '~/.config/ohmyposh/colors.json'
-post_hook = "jq --slurpfile palette ~/.config/ohmyposh/colors.json '. + $palette[0]' ~/.config/ohmyposh/EDM115-newline.omp.json > /tmp/new_theme.json && mv /tmp/new_theme.json ~/.config/ohmyposh/EDM115-newline.omp.json"
-
 [templates.yazi]
 input_path = '~/.config/matugen/templates/yazi-theme.toml'
 output_path = '~/.config/yazi/theme.toml'
@@ -69,17 +65,15 @@ post_hook = 'pkill -USR1 cava || true'
 input_path = '~/.config/matugen/templates/zathura-colors'
 output_path = '~/.config/zathura/zathurarc'
 
-[templates.nvim]
-input_path = './templates/nvim-colors.vim'
-output_path = '~/.config/nvim/colors/matugen.vim'
-post_hook = 'pkill -SIGUSR1 nvim'
+[templates.starship]
+input_path = './templates/starship-colors.toml'
+output_path = '~/.config/starship.toml'
 
-[templates.nvim-astro5]
+[templates.nvim]
 input_path = './templates/nvim-base16.lua'
 output_path = '~/.config/nvim-astro5/lua/plugins/base16-prox-max.lua'
 post_hook = 'pkill -SIGUSR1 nvim'
 
-[templates.nvim-nvchad]
-input_path = './templates/nvim-base46.lua'
-output_path = '~/.local/share/nvim-nvchad/lazy/base46/lua/base46/themes/chadwal.lua'
-post_hook = 'pkill -SIGUSR1 nvim'
+[templates.pgcli]
+input_path = './templates/pgcli-colors'
+output_path = '~/.config/pgcli/config'

@@ -10,13 +10,3 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:~/.cargo/bin/
 export PATH=$PATH:~/.local/bin/
 export PATH="$HOME/.config/hypr/scripts:$PATH"
-
-# -----------------------------------------------------
-# Postgres
-# -----------------------------------------------------
-export PGHOST='localhost'
-export PGPORT='5432'
-export PGDATABASE='postgres'
-export PGUSER='postgres'
-export DATABASE_URL="postgres://$PGUSER:@$PGHOST:$PGPORT/$PGDATABASE"
-export PSQL_PAGER="pspg"

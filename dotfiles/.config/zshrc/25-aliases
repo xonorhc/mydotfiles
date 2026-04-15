@@ -13,7 +13,7 @@ alias ll='eza -al --icons=always'
 alias lt='eza -a --tree --level=1 --icons=always'
 alias shutdown='systemctl poweroff'
 alias v='$EDITOR'
-alias vim='$EDITOR'
+alias vi='$EDITOR'
 alias wifi='nmtui'
 alias lock='hyprlock'
 alias clock='peaclock'
@@ -32,16 +32,4 @@ function y() {
 	IFS= read -r -d '' cwd < "$tmp"
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
-}
-
-# -----------------------------------------------------
-# Neovim
-# -----------------------------------------------------
-alias v='NVIM_APPNAME=nvim nvim' # Nvim
-alias vc='NVIM_APPNAME=nvim-nvchad nvim' # NvChad
-alias va='NVIM_APPNAME=nvim-astro5 nvim' # AstroVim
-
-vv() {
-  select config in nvim nvchad astro5
-  do NVIM_APPNAME=nvim-$config nvim $@; break; done
 }
