@@ -11,6 +11,6 @@
     },
     "min-length": 7,
     "max-length": 7,
-    "on-click": "kitty --class dotfiles-floating -e btop",
+    "on-click": "uwsm app -- kitty --class kitty-floating -e btop",
   },
 }

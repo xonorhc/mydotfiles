@@ -9,7 +9,7 @@
     "max-length": 7,
     "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
     "input-filename": "temp1_input",
-    "on-click": "kitty --class dotfiles-floating -e btop",
+    "on-click": "uwsm app -- kitty --class kitty-floating -e btop",
     "tooltip-format": "Fahrenheit: {temperatureF}°F",
   },
 }

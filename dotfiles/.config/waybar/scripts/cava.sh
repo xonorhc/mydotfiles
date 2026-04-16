@@ -30,6 +30,7 @@ cava -p "$config_file" | while read -r line; do
   if playerctl status 2>/dev/null | grep -q "Playing"; then
     echo "$line" | sed "$dict"
   else
-    echo ""
+    echo " "
+    sleep 1
   fi
 done

@@ -1,6 +1,6 @@
 {
   "custom/cava": {
-    "exec": "/usr/bin/bash $HOME/.config/waybar/scripts/cava.sh",
+    "exec": "$HOME/.config/waybar/scripts/cava.sh",
     "format": "{}",
     "format-icons": [
       "▁",
@@ -12,7 +12,9 @@
       "▇",
       "█"
     ],
-    "on-click": "kitty --class dotfiles-floating cava",
+    "restart-interval": 1,
+    "kill-directive": "SIGKILL",
+    "on-click": "kitty --class kitty-floating cava",
     "on-scroll-up": "playerctl previous",
     "on-scroll-down": "playerctl next",
     "on-click-right": "playerctl play-pause",

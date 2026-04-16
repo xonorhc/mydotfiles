@@ -17,14 +17,12 @@
     "custom/appmenuicon",
     "clock",
     "tray",
-    // "mpris",
-    // "custom/cava",
-    "custom/empty"
+    "mpris",
+    "custom/cava",
   ],
   // Modules Center
   "modules-center": [
     "hyprland/workspaces",
-    "custom/empty"
   ],
   // Modules Right
   "modules-right": [
@@ -34,6 +32,7 @@
     "group/pulseaudio",
     "backlight",
     "battery",
+    "power-profiles-daemon",
     "idle_inhibitor",
     "custom/notification",
     "custom/exit",

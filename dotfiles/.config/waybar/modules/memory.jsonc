@@ -10,7 +10,7 @@
     },
     "min-length": 7,
     "max-length": 7,
-    "on-click": "kitty --class dotfiles-floating -e btop",
+    "on-click": "uwsm app -- kitty --class kitty-floating -e btop",
     "tooltip-format": "Memory Used: {used:0.0f}/{total:0.0f} GB",
   },
 }

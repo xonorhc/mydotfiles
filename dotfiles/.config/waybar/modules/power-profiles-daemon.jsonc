@@ -4,11 +4,13 @@
     "tooltip-format": "Energy Profile: {profile}\nDriver: {driver}",
     "tooltip": true,
     "format-icons": {
-      "default": "",
-      "performance": "󰓅",
-      "balanced": "",
-      "power-saver": "󰾆",
+      "default": "󰾆",
+      "performance": "",
+      "balanced": "",
+      "power-saver": "",
     },
+    "on-scroll-up": "true",
+    "on-scroll-down": "true",
     "menu": "on-click",
     "menu-file": "$HOME/.config/waybar/menus/power-profiles-menu.xml",
     "menu-actions": {
