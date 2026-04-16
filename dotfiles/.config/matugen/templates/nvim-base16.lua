@@ -6,7 +6,7 @@ return {
 		require("base16-pro-max").setup({
 			colors = {
         <* for name, value in base16 *>
-        {{name | camel_case}} = "{{ value.default.hex | harmonize: {{ colors.source_color.default.hex | to_color }} | to_color | lighten: 20 | auto_lightness: 10 | to_color | saturate: 35, "hsl" }}",
+        {{name | camel_case}} = "{{ value.default.hex | blend: {{ colors.source_color.default.hex | to_color }}, 1.0 | to_color | lighten: 20 | saturate: 20, "hsl" }}",
         <* endfor *>
 			},
 			styles = { italic = true, transparency = true },

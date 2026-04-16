@@ -70,8 +70,18 @@ input_path = './templates/starship-colors.toml'
 output_path = '~/.config/starship.toml'
 
 [templates.nvim]
+input_path = './templates/nvim-colors.vim'
+output_path = '~/.config/nvim/colors/matugen.vim'
+post_hook = 'pkill -SIGUSR1 nvim'
+
+[templates.nvim-astro5]
 input_path = './templates/nvim-base16.lua'
 output_path = '~/.config/nvim-astro5/lua/plugins/base16-prox-max.lua'
+post_hook = 'pkill -SIGUSR1 nvim'
+
+[templates.nvim-nvchad]
+input_path = './templates/nvim-base46.lua'
+output_path = '~/.local/share/nvim-nvchad/lazy/base46/lua/base46/themes/chadwal.lua'
 post_hook = 'pkill -SIGUSR1 nvim'
 
 [templates.pgcli]
