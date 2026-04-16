@@ -98,10 +98,6 @@ input_path = './templates/nvim-base46.lua'
 output_path = '~/.local/share/nvim-nvchad/lazy/base46/lua/base46/themes/chadwal.lua'
 post_hook = 'pkill -SIGUSR1 nvim'
 
-[templates.pgcli]
-input_path = './templates/pgcli-colors'
-output_path = '~/.config/pgcli/config'
-
 [templates.zellij]
 input_path = './templates/zellij-theme.kdl'
 output_path = '~/.config/zellij/themes/matugen.kdl'

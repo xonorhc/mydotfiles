@@ -1,7 +1,6 @@
----@type LazySpec
 return {
 	"y3owk1n/base16-pro-max.nvim",
-	lazy = true,
+	priority = 1000,
 	config = function()
 		require("base16-pro-max").setup({
 			colors = {
