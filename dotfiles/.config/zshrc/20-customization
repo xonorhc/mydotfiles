@@ -1,46 +1,50 @@
 # -----------------------------------------------------
-# CUSTOMIZATION
+# OH-MY-ZSH CONFIG
 # -----------------------------------------------------
+ZSH_THEME="" 
 
-# -----------------------------------------------------
-# oh-myzsh themes: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# -----------------------------------------------------
-ZSH_THEME=robbyrussell
-
-# -----------------------------------------------------
-# oh-my-zsh plugins
-# -----------------------------------------------------
 plugins=(
-    git
-    sudo
-    web-search
-    archlinux
-    zsh-autosuggestions
+    git sudo web-search archlinux copyfile copybuffer 
+    dirhistory dotenv python pip
+    zsh-autosuggestions 
     zsh-syntax-highlighting
-    fast-syntax-highlighting
-    copyfile
-    copybuffer
-    dirhistory
-    dotenv
-    python
-    pip
 )
 
-# Set-up oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # -----------------------------------------------------
-# Set-up FZF key bindings (CTRL R for fuzzy history finder)
+# PERFORMANCE & COMPLETION
 # -----------------------------------------------------
+eval "$(starship init zsh)"
+
 source <(fzf --zsh)
 
-# zsh history
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh-24) ]]; then
+  compinit -C
+else
+  compinit
+  touch "${ZDOTDIR:-$HOME}/.zcompdump"
+fi
+
+# -----------------------------------------------------
+# SHELL OPTIONS (History & Behavior)
+# -----------------------------------------------------
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt appendhistory
 
-# -----------------------------------------------------
-# Prompt
-# -----------------------------------------------------
-eval "$(starship init zsh)"
+setopt APPEND_HISTORY INC_APPEND_HISTORY SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_VERIFY
+setopt EXTENDED_GLOB GLOB_DOTS NO_CASE_GLOB
+setopt INTERACTIVE_COMMENTS AUTO_PUSHD PUSHD_IGNORE_DUPS
+
+# Keybindings (Vi Mode)
+bindkey -v
+export KEYTIMEOUT=1
+
+# Edit current command in Neovim with 'v'
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+

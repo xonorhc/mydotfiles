@@ -1,35 +1,44 @@
 # -----------------------------------------------------
-# ALIASES
-# -----------------------------------------------------
-
-# -----------------------------------------------------
-# General
+# ALIASES & FUNCTIONS
 # -----------------------------------------------------
 alias ..='cd ..'
 alias c='clear'
 alias ff='fastfetch'
-alias ls='eza -a --icons=always'
-alias ll='eza -al --icons=always'
-alias lt='eza -a --tree --level=1 --icons=always'
+alias v='nvim'
+alias diff='delta --side-by-side'
+alias grep='grep --color=auto'
+
+if command -v eza >/dev/null; then
+    alias ls='eza --icons --group-directories-first'
+    alias ll='eza --icons --group-directories-first -l --git'
+    alias la='eza --icons --group-directories-first -la --git'
+    alias lt='eza --icons --group-directories-first --tree --level=2'
+fi
+
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -I'
 alias shutdown='systemctl poweroff'
-alias v='$EDITOR'
-alias vi='$EDITOR'
-alias wifi='nmtui'
-alias lock='hyprlock'
-alias clock='peaclock'
+alias disk_usage='sudo btrfs filesystem usage /'
 
-# -----------------------------------------------------
-# System
-# -----------------------------------------------------
-alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+# Neovim Config Switcher
+alias vc='NVIM_APPNAME=nvim-nvchad nvim'
+alias va='NVIM_APPNAME=nvim-astro6 nvim'
 
-# -----------------------------------------------------
-# Yazi
-# -----------------------------------------------------
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	command yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
+vv() {
+  local config=$(printf "nvim\nnvchad\nastro6" | fzf --prompt="Select Neovim Config: ")
+  [[ -n "$config" ]] && NVIM_APPNAME="nvim-$config" nvim "$@"
 }
+
+# Yazi integration
+function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    command yazi "$@" --cwd-file="$tmp"
+    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
+
+# Suffix alias
+alias -s pdf=zathura

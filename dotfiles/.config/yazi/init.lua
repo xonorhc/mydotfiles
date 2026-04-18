@@ -9,5 +9,3 @@ require("what-size"):setup({
 	LEFT = "",
 	RIGHT = " ",
 })
-
-require("no-status"):setup()

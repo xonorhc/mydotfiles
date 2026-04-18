@@ -1,12 +1,28 @@
 # -----------------------------------------------------
-# INIT
+# EXPORTS & PATHS
 # -----------------------------------------------------
-
-# -----------------------------------------------------
-# Exports
-# -----------------------------------------------------
-export EDITOR=nvim
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=$PATH:~/.cargo/bin/
-export PATH=$PATH:~/.local/bin/
-export PATH="$HOME/.config/hypr/scripts:$PATH"
+
+path=(
+    "$HOME/.local/share/bob/nvim-bin"
+    "$HOME/.config/hypr/scripts"
+    "$HOME/.cargo/bin"
+    "$HOME/.local/bin"
+    $path
+)
+export PATH
+
+export TERMINAL='kitty'
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
+
+# Database Context (Postgres)
+export PGHOST='localhost'
+export PGPORT='5432'
+export PGDATABASE='postgres'
+export PGUSER='postgres'
+export PGPASSFILE="$HOME/.pgpass"
+export DATABASE_URL="postgres://$PGUSER:@$PGHOST:$PGPORT/$PGDATABASE"
+export PSQL_PAGER="pspg"
+
