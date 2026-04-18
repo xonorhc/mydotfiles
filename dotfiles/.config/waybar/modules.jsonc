@@ -1,0 +1,217 @@
+{
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "min-length": 7,
+        "max-length": 7,
+        "tooltip": false,
+        "scroll-step": 1
+    }
+},
+{
+    "battery": {
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰉁 {capacity}%",
+        "format-icons": ["󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "min-length": 7,
+        "max-length": 7,
+        "tooltip-format": "{time}",
+        "on-click-right": "powerprofilesctl set balanced"
+    }
+},
+{
+    "bluetooth": {
+        "format": "󰂯",
+        "format-disabled": "󰂲",
+        "format-off": "󰂲",
+        "format-on": "󰂰",
+        "format-connected": "󰂱",
+        "min-length": 2,
+        "max-length": 2,
+        "on-click": "blueman-manager",
+        "tooltip-format-connected": "{device_enumerate}"
+    }
+},
+{
+    "clock": {
+        "format": "{:%H:%M %a}",
+        "format-alt": "{:%d-%m-%Y}",
+        "min-length": 10,
+        "max-length": 10,
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    }
+},
+{
+    "cpu": {
+        "interval": 10,
+        "format": "󰍛 {usage}%",
+        "states": { "warning": 75, "critical": 90 },
+        "min-length": 7,
+        "max-length": 7,
+        "on-click": "uwsm app -- kitty --class kitty-floating -e btop"
+    }
+},
+{
+    "custom/appmenuicon": {
+        "format": "",
+        "min-length": 2,
+        "max-length": 2,
+        "on-click": "rofi -show drun",
+        "tooltip": false
+    }
+},
+{
+    "custom/cava": {
+        "exec": "$HOME/.config/waybar/scripts/cava.sh",
+        "format": "{}",
+        "restart-interval": 1,
+        "on-click": "kitty --class kitty-floating cava",
+        "max-length": 35
+    }
+},
+{
+    "custom/exit": {
+        "format": "",
+        "min-length": 2,
+        "max-length": 2,
+        "on-click": "~/.config/hypr/scripts/power-menu",
+        "tooltip": false
+    }
+},
+{
+    "custom/notification": {
+        "exec": "swaync-client -swb",
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "󰂚",
+            "dnd-notification": "󱅫",
+            "dnd-none": "󰂛"
+        },
+        "min-length": 2,
+        "max-length": 2,
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    }
+},
+{
+    "disk": {
+        "path": "/home",
+        "interval": 30,
+        "format": "󰋊 {percentage_used}%",
+        "min-length": 7,
+        "max-length": 7,
+        "on-click": "uwsm app -- kitty --class kitty-floating -e btop"
+    }
+},
+{
+    "group/hardware": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-left-to-right": false
+        },
+        "modules": ["custom/system", "disk", "cpu", "memory", "temperature"]
+    }
+},
+{
+    "group/pulseaudio": {
+        "orientation": "horizontal",
+        "modules": ["pulseaudio#output", "pulseaudio#input"]
+    },
+    "pulseaudio#output": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 {volume}%",
+        "format-icons": {
+            "headphone": "󰋋",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "min-length": 7,
+        "max-length": 7,
+        "on-click": "pavucontrol"
+    },
+    "pulseaudio#input": {
+        "format": "󰍬 {volume}%",
+        "format-source-muted": "󰍭 {volume}%",
+        "min-length": 7,
+        "max-length": 7,
+        "on-click": "pavucontrol"
+    }
+},
+{
+    "hyprland/workspaces": {
+        "active-only": false,
+        "all-outputs": true,
+        "format": "{icon}",
+        "persistent-workspaces": { "*": 5 },
+        "on-scroll-up": "hyprctl dispatch workspace +1",
+        "on-scroll-down": "hyprctl dispatch workspace -1"
+    }
+},
+{
+    "memory": {
+        "interval": 10,
+        "format": "󰘚 {percentage}%",
+        "min-length": 7,
+        "max-length": 7,
+        "on-click": "uwsm app -- kitty --class kitty-floating -e btop",
+        "tooltip-format": "Used: {used:0.1f}G"
+    }
+},
+{
+    "mpris": {
+        "format": "{player_icon} {artist} - {title}",
+        "format-paused": " {title}",
+        "player-icons": {
+            "spotify": "",
+            "firefox": ""
+        },
+        "max-length": 30
+    }
+},
+{
+    "network": {
+        "interval": 10,
+        "format-wifi": "{icon}",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤯",
+        "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
+        "min-length": 2,
+        "max-length": 2,
+        "on-click": "uwsm app -- kitty --class kitty-floating -e nmtui"
+    }
+},
+{
+    "temperature": {
+        "thermal-zone": 1,
+        "format": "󰈸 {temperatureC}°C",
+        "min-length": 7,
+        "max-length": 7,
+        "on-click": "uwsm app -- kitty --class kitty-floating -e btop"
+    }
+},
+{
+    "tray": {
+        "icon-size": 16,
+        "spacing": 12
+    }
+},

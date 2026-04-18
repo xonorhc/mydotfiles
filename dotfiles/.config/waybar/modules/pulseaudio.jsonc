@@ -3,8 +3,8 @@
     "orientation": "horizontal",
     "modules": ["pulseaudio#output", "pulseaudio#input"],
     "drawer": {
-      "transition-left-to-right": false,
-    },
+      "transition-left-to-right": false
+    }
   },
   "pulseaudio#output": {
     "format": "{icon} {volume}%",
@@ -15,13 +15,13 @@
       "headphone": "󰋋",
       "headphone-muted": "󰟎",
       "headset": "󰋎",
-      "headset-muted": "󰋐",
+      "headset-muted": "󰋐"
     },
     "min-length": 7,
     "max-length": 7,
     "on-click": "pavucontrol",
     "scroll-step": 1,
-    "tooltip-format": "<b>Output Device</b>: {desc}",
+    "tooltip-format": "<b>Output Device</b>: {desc}"
   },
   "pulseaudio#input": {
     "format": "{format_source}",
@@ -31,6 +31,6 @@
     "max-length": 7,
     "on-click": "pavucontrol",
     "scroll-step": 1,
-    "tooltip-format": "<b>Input Device</b>: {desc}",
-  },
+    "tooltip-format": "<b>Input Device</b>: {desc}"
+  }
 }

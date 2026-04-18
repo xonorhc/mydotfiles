@@ -18,5 +18,5 @@
         "hibernate": "systemctl hibernate"
     },
     "signal": 1
-  },
+  }
 }

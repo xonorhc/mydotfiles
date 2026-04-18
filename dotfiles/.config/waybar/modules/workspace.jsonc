@@ -4,10 +4,10 @@
     "all-outputs": true,
     "format": "{icon}",
     "persistent-workspaces": {
-      "*": 5,
+      "*": 5
     },
     "on-scroll-up": "hyprctl dispatch workspace +1",
     "on-scroll-down": "hyprctl dispatch workspace -1",
-    "cursor": true,
-  },
+    "cursor": true
+  }
 }

@@ -1,40 +1,41 @@
 {
-  // General Settings
-  "layer": "top",
-  "margin-bottom": 0,
-  "margin-left": 0,
-  "margin-right": 0,
-  "spacing": 0,
-  "output": [
-    "eDP-1"
-  ],
-  // Load Modules
-  "include": [
-    "~/.config/waybar/modules/*.jsonc"
-  ],
-  // Modules Left
-  "modules-left": [
-    "custom/appmenuicon",
-    "clock",
-    "tray",
-    "mpris",
-    "custom/cava",
-  ],
-  // Modules Center
-  "modules-center": [
-    "hyprland/workspaces",
-  ],
-  // Modules Right
-  "modules-right": [
-    "group/hardware",
-    "network",
-    "bluetooth",
-    "group/pulseaudio",
-    "backlight",
-    "battery",
-    "power-profiles-daemon",
-    "idle_inhibitor",
-    "custom/notification",
-    "custom/exit",
-  ],
+    "include": "~/.config/waybar/modules/*.jsonc",
+
+    "modules-left": [
+      "custom/appmenuicon",
+      "clock#time",
+      "clock#date",
+      "tray",
+      "mpris",
+      "custom/cava"
+    ],
+    "modules-center": [
+      "hyprland/workspaces"
+    ],
+    "modules-right": [
+      "group/hardware",
+      "network",
+      "bluetooth",
+      "group/pulseaudio",
+      "backlight",
+      "battery",
+      "power-profiles-daemon",
+      "idle_inhibitor",
+      "custom/update",
+      "custom/notification",
+      "custom/exit"
+    ],
+
+	"layer": "top",
+  "output": "eDP-1",
+  "position": "top",
+	"height": 0,
+	"width": 0,
+	"margin": 0,
+	"spacing": 0,
+	"mode": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+	"reload_style_on_change": true
 }

@@ -6,10 +6,10 @@
     "format-critical": "󰀧 {percentage}%",
     "states": {
       "warning": 75,
-      "critical": 90,
+      "critical": 90
     },
     "min-length": 7,
     "max-length": 7,
-    "on-click": "uwsm app -- kitty --class kitty-floating -e btop",
-  },
+		"tooltip": false
+  }
 }

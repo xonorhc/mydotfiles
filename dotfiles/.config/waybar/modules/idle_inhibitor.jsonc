@@ -3,7 +3,6 @@
     "format": "{icon}",
     "min-length": 2,
     "max-length": 2,
-    "rotate": 0,
     "format-icons": {
       "activated": "\udb80\udd76",
       "deactivated": "\udb81\udeca"

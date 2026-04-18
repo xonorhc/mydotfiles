@@ -3,21 +3,14 @@
     "exec": "$HOME/.config/waybar/scripts/cava.sh",
     "format": "{}",
     "format-icons": [
-      "▁",
-      "▂",
-      "▃",
-      "▄",
-      "▅",
-      "▆",
-      "▇",
-      "█"
+      "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"
     ],
-    "restart-interval": 1,
-    "kill-directive": "SIGKILL",
+    // "restart-interval": 1, 
+    "kill-directive": "SIGTERM", 
+    "max-length": 35,
     "on-click": "kitty --class kitty-floating cava",
     "on-scroll-up": "playerctl previous",
     "on-scroll-down": "playerctl next",
-    "on-click-right": "playerctl play-pause",
-    "max-length": 35,
-  },
+    "on-click-right": "playerctl play-pause"
+  }
 }

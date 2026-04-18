@@ -1,16 +1,14 @@
 #!/bin/bash
-#   _ _ _ _____ __ __ _____ _____ _____
-#  | | | |  _  |  |  | __  |  _  | __  |
-#  | | | |     |_   _| __ -|     |    -|
-#  |_____|__|__| |_| |_____|__|__|__|__|  LAUNCH
-#
-#  by Bina
 
-# terminate running instances
+# Mata instâncias antigas
 killall -q waybar
 
-# wait until processes have been shut down
-while pgrep -x waybar >/dev/null; do sleep 0.1; done
+# Aguarda até que o processo seja encerrado
+while pgrep -u $UID -x waybar >/dev/null; do sleep 1; done
 
-# launch main
-waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css
+# Identifica se é laptop ou desktop para carregar configs diferentes (opcional)
+CONFIG="$HOME/.config/waybar/config.jsonc"
+STYLE="$HOME/.config/waybar/style.css"
+
+# Inicia o Waybar com logs para debug (direcionado para o sistema)
+waybar -c "$CONFIG" -s "$STYLE" > /dev/null 2>&1 &

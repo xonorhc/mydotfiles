@@ -6,11 +6,10 @@
     "format-critical": "󰀧 {percentage}%",
     "states": {
       "warning": 75,
-      "critical": 90,
+      "critical": 90
     },
     "min-length": 7,
     "max-length": 7,
-    "on-click": "uwsm app -- kitty --class kitty-floating -e btop",
-    "tooltip-format": "Memory Used: {used:0.0f}/{total:0.0f} GB",
-  },
+		"tooltip-format": "Memory Used: {used:0.0f}/{total:0.0f} GiB"
+  }
 }
