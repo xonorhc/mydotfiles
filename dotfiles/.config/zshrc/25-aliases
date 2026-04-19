@@ -14,6 +14,7 @@ alias vd="$EDITOR diff"
 alias wifi='nmtui'
 alias lock='hyprlock'
 alias clock='peaclock'
+alias -s pdf=zathura
 
 # -----------------------------------------------------
 # Git
@@ -57,10 +58,10 @@ fi
 # -----------------------------------------------------
 # Neovim
 # -----------------------------------------------------
-alias vc='NVIM_APPNAME=nvim-nvchad nvim' # NvChad
-alias va='NVIM_APPNAME=nvim-astro5 nvim' # AstroVim
+alias vc='NVIM_APPNAME=nvim-nvchad nvim'
+alias va='NVIM_APPNAME=nvim-astro6 nvim'
 
 vv() {
-  select config in nvchad astro5
-  do NVIM_APPNAME=nvim-$config nvim $@; break; done
+  local config=$(printf "nvim\nnvchad\nastro6" | fzf --prompt="Select Neovim Config: ")
+  [[ -n "$config" ]] && NVIM_APPNAME="nvim-$config" nvim "$@"
 }

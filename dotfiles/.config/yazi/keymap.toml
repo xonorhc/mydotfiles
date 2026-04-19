@@ -9,6 +9,11 @@ run  = "cd ~/Pictures"
 desc = "Cd to ~/Pictures"
 
 [[mgr.prepend_keymap]]
+on = ["g", "P"]
+run = "cd ~/Projects"
+desc = "Cd to ~/Projects"
+
+[[mgr.prepend_keymap]]
 on   = "!"
 for  = "unix"
 run  = 'shell "$SHELL" --block'
@@ -35,7 +40,7 @@ desc = "Compress with ouch"
 [[mgr.prepend_keymap]]
 on = [ ",", "s" ]
 run  = "plugin what-size"
-desc = "Calc size of selection or cwd" 
+desc = "Calc size of selection or cwd"
 
 [[mgr.prepend_keymap]]
 on   = [ "g", "i" ]

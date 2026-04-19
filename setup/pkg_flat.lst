@@ -2,7 +2,7 @@
 io.github.flattool.Warehouse
 # org.gnome.Boxes
 # io.missioncenter.MissionCenter
-com.github.tchx84.Flatseal
+# com.github.tchx84.Flatseal
 # io.gitlab.adhami3310.Impression
 
 # ------------------------------------------- // Networking
@@ -20,6 +20,8 @@ app.zen_browser.zen
 # com.github.rafostar.Clapper
 # com.obsproject.Studio
 com.spotify.Client
+# org.rncbc.qpwgraph
+# io.github.dp0sk.Crosspipe
 
 # ------------------------------------------- // Graphics & Photography
 org.gnome.Loupe
@@ -36,6 +38,7 @@ com.github.PintaProject.Pinta
 # org.libreoffice.LibreOffice
 # com.github.IsmaelMartinez.teams_for_linux
 # io.github.zaedus.spider
+# io.github.hkdb.Aerion
 
 # ------------------------------------------- // Education
 # org.qgis.qgis
@@ -47,6 +50,7 @@ com.github.PintaProject.Pinta
 # ------------------------------------------- // Utilities
 org.gnome.Calculator
 # com.ml4w.dotfilesinstaller
+# org.vanillaos.ApxGUI
 
-# ------------------------------------------- // Gaming
-# net.lutris.Lutris
+# ------------------------------------------- // AI
+# com.jeffser.Alpaca

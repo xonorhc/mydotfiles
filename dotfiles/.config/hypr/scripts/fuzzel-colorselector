@@ -1,25 +1,39 @@
 #!/usr/bin/env bash
 
+raw_colors="
+  red = '#FF5555',
+  baby_pink = '#FF6E6E',
+  pink = '#FF6BCB',
+  line = '#2D2D4E',
+  green = '#50FA7B',
+  vibrant_green = '#20E3B2',
+  nord_blue = '#05C3FF',
+  blue = '#2CCCFF',
+  yellow = '#F1FA8C',
+  sun = '#F2FA95',
+  purple = '#BD93F9',
+  dark_purple = '#a166f6',
+  teal = '#92A2D4',
+  orange = '#FFB86C',
+  cyan = '#2CCCFF',
+"
+
 declare -A colors
 
-colors=(
-  ["󰏘 Cyan"]="#8be9fd"
-  ["󰏘 Green"]="#50fa7b"
-  ["󰏘 Orange"]="#ffb86c"
-  ["󰏘 Pink"]="#ff79c6"
-  ["󰏘 Purple"]="#bd93f9"
-  ["󰏘 Red"]="#ff5555"
-  ["󰏘 Yellow"]="#f1fa8c"
-)
+while read -r name hex; do
+  [[ -z "$name" || -z "$hex" ]] && continue
+  colors["$name"]="$hex"
+done < <(echo "$raw_colors" | sed -E "s/[[:space:]]*=[[:space:]]*/ /; s/['\",]//g")
 
 choice=$(for name in "${!colors[@]}"; do echo "$name"; done | sort |
-  fuzzel --dmenu --prompt="󱓟 Choose a color (or type HEX color): " --width=30)
+  fuzzel --dmenu --prompt="󱓟 Choose a color: " --width=30)
 
 [ -z "$choice" ] && exit 0
 
 if [[ ${colors[$choice]} ]]; then
   hex_color=${colors[$choice]}
 else
+  # Se o que foi digitado for um HEX válido que não está na lista
   if [[ $choice =~ ^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$ ]]; then
     hex_color=$choice
   else
@@ -28,7 +42,8 @@ else
   fi
 fi
 
-notify-send "Color Selector" "Generating theme for the color $hex_color..." --icon=color-management
+notify-send "Color Selector" "Generating theme for $hex_color..." --icon=color-management
+
 matugen -t scheme-rainbow \
   --contrast 0.5 \
   -m dark \
@@ -37,4 +52,5 @@ matugen -t scheme-rainbow \
   --fallback-color "#bd93f9" \
   --lightness-dark 0.05 \
   color hex "$hex_color"
+
 notify-send "Color Selector" "Color $hex_color applied successfully!" -i color-select

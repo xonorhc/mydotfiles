@@ -13,7 +13,8 @@ ZSH_THEME="robbyrussell"
 # oh-my-zsh plugins
 # -----------------------------------------------------
 plugins=(
-	git
+  git sudo web-search archlinux copyfile copybuffer 
+  dirhistory dotenv python pip
 	zsh-autosuggestions
 	zsh-autocomplete
 	zsh-syntax-highlighting
@@ -32,3 +33,8 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
+
+# Keybindings (Vi Mode)
+bindkey -v
+export KEYTIMEOUT=1
+

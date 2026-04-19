@@ -48,6 +48,30 @@ input_path = '~/.config/matugen/templates/cava-colors.ini'
 output_path = '~/.config/cava/themes/colors.cava'
 post_hook = 'pkill -USR1 cava || true'
 
+# [templates.gtk3]
+# input_path = './templates/gtk-colors.css'
+# output_path = '~/.config/gtk-3.0/colors.css'
+# colors_to_compare = [
+#     { name= "blue", color= "#89b4fa" },
+#     { name= "flamingo", color= "#f2cdcd" },
+#     { name= "green", color= "#a6e3a1" },
+#     { name= "lavender", color= "#b4befe" },
+#     { name= "maroon", color= "#eba0ac" },
+#     { name= "mauve", color= "#cba6f7" },
+#     { name= "peach", color= "#fab387" },
+#     { name= "pink", color= "#f5c2e7" },
+#     { name= "red", color= "#f38ba8" },
+#     { name= "rosewater", color= "#f5e0dc" },
+#     { name= "sapphire", color= "#74c7ec" },
+#     { name= "sky", color= "#89dceb" },
+#     { name= "teal", color= "#94e2d5" },
+#     { name= "yellow", color= "#f9e2af" },
+#     { name= "grey", color= "#6c7086" },
+# ]
+# compare_to = "{{colors.primary.default.hex}}"
+# pre_hook = 'sh ~/.config/matugen/templates/gtk-theme/themes/install.sh -n "Catppuccin" -t {{closest_color}} -c dark'
+# post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Dark"; gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Dark"'
+
 [templates.gtk3]
 input_path = './templates/gtk-colors.css'
 output_path = '~/.config/gtk-3.0/colors.css'
@@ -80,9 +104,9 @@ post_hook = "swaync-client -rs"
 
 [templates.nvim-astro5]
 input_path = './templates/nvim-base16.lua'
-output_path = '~/.config/nvim-astro5/lua/plugins/base16-prox-max.lua'
+output_path = '~/.config/nvim-astro6/lua/plugins/base16-prox-max.lua'
 
 [templates.nvim-nvchad]
 input_path = './templates/nvim-base46.lua'
-output_path = '~/.local/share/nvim-nvchad/lazy/base46/lua/base46/themes/chadwal.lua'
+output_path = '~/.local/share/nvim-nvchad/lazy/base46/lua/base46/themes/matugen.lua'
 post_hook = 'pkill -SIGUSR1 nvim'

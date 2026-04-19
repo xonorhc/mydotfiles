@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+TEMPFILE=$(mktemp --suffix=.md)
+nvim -c "startinsert" "$TEMPFILE"
+[ -s "$TEMPFILE" ] && nb daily "$(cat "$TEMPFILE")"
+rm "$TEMPFILE"
