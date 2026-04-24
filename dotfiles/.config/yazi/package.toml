@@ -10,13 +10,13 @@ hash = "85316b5e9abeae2531d3e5d02a094381"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "e84f4fe"
-hash = "26db011a778f261d730d4f5f8bf24b3f"
+rev = "ac82af3"
+hash = "6849444b7c2df08eace83f3f86fb55a3"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "e84f4fe"
-hash = "91937a4a9b779eabc6983e258befdfe9"
+rev = "ac82af3"
+hash = "77e20b071404f97c09d3f9afdb9482e0"
 
 [[plugin.deps]]
 use = "Ape/open-with-cmd"
@@ -40,7 +40,7 @@ hash = "68603fdd1dcaf415227e2c77a9317947"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:no-status"
-rev = "e84f4fe"
+rev = "ac82af3"
 hash = "3e023d31f29201efdac2a6ae35fedb78"
 
 [flavor]

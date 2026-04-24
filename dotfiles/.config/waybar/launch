@@ -1,14 +1,10 @@
 #!/bin/bash
 
-# Mata instâncias antigas
 killall -q waybar
 
-# Aguarda até que o processo seja encerrado
 while pgrep -u $UID -x waybar >/dev/null; do sleep 1; done
 
-# Identifica se é laptop ou desktop para carregar configs diferentes (opcional)
 CONFIG="$HOME/.config/waybar/config.jsonc"
 STYLE="$HOME/.config/waybar/style.css"
 
-# Inicia o Waybar com logs para debug (direcionado para o sistema)
-waybar -c "$CONFIG" -s "$STYLE" > /dev/null 2>&1 &
+waybar -c "$CONFIG" -s "$STYLE" >/dev/null 2>&1 &
