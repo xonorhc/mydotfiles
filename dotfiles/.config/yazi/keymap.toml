@@ -69,5 +69,13 @@ run = "plugin mount"
 [[mgr.prepend_keymap]]
 on   = "<C-w>"
 for  = "linux"
-run  = "shell -- hyprctl hyprpaper wallpaper ,%h; matugen image %h --source-color-index 0"
+run =[
+  "shell -- hyprctl hyprpaper wallpaper ,%h",
+  "shell -- matugen --type scheme-content --source-color-index 0 image %h"
+] 
 desc = "Set hovered file as wallpaper"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "f" ]
+run  = 'search_do --via=fd --args="-d 3"'
+desc = "Switch to the flat view with a max depth of 3"

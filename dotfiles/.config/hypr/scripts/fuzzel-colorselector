@@ -2,20 +2,19 @@
 
 raw_colors="
   red = '#FF5555',
-  baby_pink = '#FF6E6E',
+  baby_pink = '#FF7EB6',
   pink = '#FF6BCB',
-  line = '#2D2D4E',
-  green = '#50FA7B',
+  green = '#25be6a',
   vibrant_green = '#20E3B2',
-  nord_blue = '#05C3FF',
+  nord_blue = '#78A9FF',
   blue = '#2CCCFF',
-  yellow = '#F1FA8C',
+  yellow = '#ffe731',
   sun = '#F2FA95',
-  purple = '#BD93F9',
+  purple = '#BE95FF',
   dark_purple = '#a166f6',
-  teal = '#92A2D4',
-  orange = '#FFB86C',
-  cyan = '#2CCCFF',
+  teal = '#33B1FF',
+  orange = '#ffa332',
+  cyan = '#3DDBD9',
 "
 
 declare -A colors
