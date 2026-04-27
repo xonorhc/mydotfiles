@@ -12,7 +12,7 @@ path=(
 )
 export PATH
 
-export TERMINAL='kitty'
+export TERMINAL='foot'
 export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'

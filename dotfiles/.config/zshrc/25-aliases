@@ -42,3 +42,9 @@ function y() {
 
 # Suffix alias
 alias -s pdf=zathura
+
+# Scripts
+alias ascii='~/.config/hypr/scripts/ascii-header'
+
+# System
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'

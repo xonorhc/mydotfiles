@@ -33,6 +33,11 @@ alias gcheck="git checkout"
 alias gcredential="git config credential.helper store"
 
 # -----------------------------------------------------
+# Scripts
+# -----------------------------------------------------
+alias ascii='~/.config/hypr/scripts/ascii-header'
+
+# -----------------------------------------------------
 # System
 # -----------------------------------------------------
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'

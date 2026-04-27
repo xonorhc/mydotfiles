@@ -6,6 +6,10 @@ input_path = '~/.config/matugen/templates/kitty-colors.conf'
 output_path = '~/.config/kitty/colors.conf'
 post_hook = 'pkill -SIGUSR1 kitty'
 
+[templates.foot]
+input_path = './templates/foot.ini'
+output_path = '~/.config/foot/colors.ini'
+
 [templates.btop]
 input_path = '~/.config/matugen/templates/btop.theme'
 output_path = '~/.config/btop/themes/colors.theme'

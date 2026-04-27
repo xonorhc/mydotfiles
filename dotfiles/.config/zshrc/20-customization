@@ -17,6 +17,7 @@ source $ZSH/oh-my-zsh.sh
 # -----------------------------------------------------
 eval "$(starship init zsh)"
 
+# Set-up FZF key bindings (CTRL R for fuzzy history finder)
 source <(fzf --zsh)
 
 autoload -Uz compinit
