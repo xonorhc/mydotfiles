@@ -94,7 +94,7 @@ on = "<C-w>"
 for = "linux"
 run =[
   "shell -- hyprctl hyprpaper wallpaper ,%h",
-  "shell -- matugen --type scheme-content --source-color-index 0 image %h"
+  "shell -- matugen --type scheme-vibrant --source-color-index 0 image %h"
 ] 
 desc = "Set hovered file as wallpaper"
 
