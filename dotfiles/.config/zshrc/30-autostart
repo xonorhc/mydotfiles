@@ -20,3 +20,17 @@ finder() {
         return 1
     fi
 }
+
+# Search for content and open it in Vim on the correct line
+fif() {
+  local file
+  local line
+  local res
+  res=$(grep -rin "$1" . | fzf --delimiter : --nth 3.. --preview 'cat {1}')
+  
+  if [[ -n "$res" ]]; then
+    file=$(echo "$res" | cut -d: -f1)
+    line=$(echo "$res" | cut -d: -f2)
+    vim "+$line" "$file"
+  fi
+}
