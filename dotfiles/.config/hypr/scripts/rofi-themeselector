@@ -6,23 +6,27 @@ import sys
 
 THEMES_DIR = os.path.expanduser("~/.config/matugen/themes")
 
+def format_name(filename):
+    name = os.path.splitext(filename)[0]
+    return name.replace("_", " ").replace("-", " ").title()
 
-def get_themes():
+def get_themes_map():
     if not os.path.exists(THEMES_DIR):
         print(f"Error: Directory {THEMES_DIR} not found.")
         sys.exit(1)
 
-    return [f for f in os.listdir(THEMES_DIR) if f.endswith(".json")]
-
+    files = [f for f in os.listdir(THEMES_DIR) if f.endswith(".json")]
+    return {format_name(f): f for f in files}
 
 def main():
-    themes = get_themes()
+    themes_map = get_themes_map()
 
-    if not themes:
+    if not themes_map:
         print("No JSON files found in themes directory.")
         sys.exit(1)
 
-    themes_list = "\n".join(themes)
+    display_names = sorted(themes_map.keys())
+    themes_list = "\n".join(display_names)
 
     run_rofi = subprocess.run(
         ["rofi", "-dmenu", "-i", "-p", "Select Theme:", "-replace"],
@@ -31,35 +35,23 @@ def main():
         text=True,
     )
 
-    selected_theme = run_rofi.stdout.strip()
+    selected_display_name = run_rofi.stdout.strip()
 
-    if not selected_theme:
-        print("Operation cancelled.")
+    if not selected_display_name or selected_display_name not in themes_map:
+        print("Operation cancelled or invalid selection.")
         sys.exit(0)
 
-    theme_path = os.path.join(THEMES_DIR, selected_theme)
-
-    if not os.path.exists(theme_path):
-        print(f"Error: File '{selected_theme}' not found.")
-        sys.exit(1)
+    actual_filename = themes_map[selected_display_name]
+    theme_path = os.path.join(THEMES_DIR, actual_filename)
 
     try:
-        subprocess.run(
-            ["systemctl", "--user", "stop", "hyprpaper.service"], check=False
-        )
-
-        subprocess.run(
-            ["matugen", "json", theme_path],
-            check=True,
-        )
-
-        print(f"Success: Theme '{selected_theme}' applied!")
+        subprocess.run(["matugen", "json", theme_path], check=True)
+        print(f"Success: Theme '{selected_display_name}' applied!")
 
     except subprocess.CalledProcessError as e:
         print(f"Error when running Matugen: {e}")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
-
 
 if __name__ == "__main__":
     main()

@@ -1,14 +1,24 @@
 {
-  "image": null, "is_dark_mode": false, "mode": "light",
+  "image": null,
+  "is_dark_mode": false,
+  "mode": "light",
   "base16": {
-    "base00": { "default": { "color": "#eff1f5" } }, "base01": { "default": { "color": "#e6e9ef" } },
-    "base02": { "default": { "color": "#ccd0da" } }, "base03": { "default": { "color": "#bcc0cc" } },
-    "base04": { "default": { "color": "#acb0be" } }, "base05": { "default": { "color": "#4c4f69" } },
-    "base06": { "default": { "color": "#dc8a78" } }, "base07": { "default": { "color": "#7287fd" } },
-    "base08": { "default": { "color": "#d20f39" } }, "base09": { "default": { "color": "#fe640b" } },
-    "base0a": { "default": { "color": "#df8e1d" } }, "base0b": { "default": { "color": "#40a02b" } },
-    "base0c": { "default": { "color": "#179299" } }, "base0d": { "default": { "color": "#1e66f5" } },
-    "base0e": { "default": { "color": "#8839ef" } }, "base0f": { "default": { "color": "#dd7878" } }
+    "base00": { "default": { "color": "#eff1f5" } },
+    "base01": { "default": { "color": "#e6e9ef" } },
+    "base02": { "default": { "color": "#ccd0da" } },
+    "base03": { "default": { "color": "#bcc0cc" } },
+    "base04": { "default": { "color": "#acb0be" } },
+    "base05": { "default": { "color": "#4c4f69" } },
+    "base06": { "default": { "color": "#dc8a78" } },
+    "base07": { "default": { "color": "#7287fd" } },
+    "base08": { "default": { "color": "#d20f39" } },
+    "base09": { "default": { "color": "#fe640b" } },
+    "base0a": { "default": { "color": "#df8e1d" } },
+    "base0b": { "default": { "color": "#40a02b" } },
+    "base0c": { "default": { "color": "#179299" } },
+    "base0d": { "default": { "color": "#1e66f5" } },
+    "base0e": { "default": { "color": "#8839ef" } },
+    "base0f": { "default": { "color": "#dd7878" } }
   },
   "colors": {
     "background": { "default": { "color": "#eff1f5" } },

@@ -47,7 +47,6 @@ if selected_color not in colorscheme:
 hex_color = colorscheme[selected_color]
 
 try:
-    subprocess.run(["systemctl", "--user", "stop", "hyprpaper.service"])
     subprocess.run(
         [
             "matugen",
