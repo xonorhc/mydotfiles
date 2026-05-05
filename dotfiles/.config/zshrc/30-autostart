@@ -27,7 +27,7 @@ fif() {
   local line
   local res
   res=$(grep -rin "$1" . | fzf --delimiter : --nth 3.. --preview 'cat {1}')
-  
+
   if [[ -n "$res" ]]; then
     file=$(echo "$res" | cut -d: -f1)
     line=$(echo "$res" | cut -d: -f2)
