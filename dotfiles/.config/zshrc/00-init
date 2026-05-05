@@ -18,6 +18,9 @@ export VISUAL='nvim'
 export PAGER='less'
 
 # Database Context (Postgres)
+export PGHOST='localhost'
+export PGPORT='5432'
+export PGDATABASE='postgres'
+export PGUSER='postgres'
 export PGPASSFILE="$HOME/.pgpass"
 export PSQL_PAGER="pspg"
-
