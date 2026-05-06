@@ -13,4 +13,4 @@ end, 3300, Status.LEFT)
 
 require("git"):setup()
 
-require("no-status"):setup()
+-- require("no-status"):setup()

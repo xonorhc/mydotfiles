@@ -1,20 +1,20 @@
-hi Comment guibg=None guifg={{ base16.base03.dark.hex }}
+hi Comment guibg=None guifg={{ base16.base03.default.hex }}
 
-hi Delimiter guibg=None guifg={{ base16.base05.dark.hex }}
-hi Operator guibg=None guifg={{ base16.base05.dark.hex }}
+hi Delimiter guibg=None guifg={{ base16.base05.default.hex }}
+hi Operator guibg=None guifg={{ base16.base05.default.hex }}
 
-hi Todo guibg=None guifg={{ base16.base06.dark.hex }}
+hi Todo guibg=None guifg={{ base16.base06.default.hex }}
 
-hi Identifier guibg=None guifg={{ base16.base08.dark.hex }}
-hi Constant guibg=None guifg={{ base16.base09.dark.hex }}
-hi Type guibg=None guifg={{ base16.base0a.dark.hex }}
-hi String guibg=None guifg={{ base16.base0b.dark.hex }}
-hi Special guibg=None guifg={{ base16.base0c.dark.hex }}
-hi PreProc guibg=None guifg={{ base16.base0c.dark.hex }}
-hi Function guibg=None guifg={{ base16.base0d.dark.hex }}
-hi Statement guibg=None guifg={{ base16.base0e.dark.hex }}
+hi Identifier guibg=None guifg={{ base16.base08.default.hex }}
+hi Constant guibg=None guifg={{ base16.base09.default.hex }}
+hi Type guibg=None guifg={{ base16.base0a.default.hex }}
+hi String guibg=None guifg={{ base16.base0b.default.hex }}
+hi Special guibg=None guifg={{ base16.base0c.default.hex }}
+hi PreProc guibg=None guifg={{ base16.base0c.default.hex }}
+hi Function guibg=None guifg={{ base16.base0d.default.hex }}
+hi Statement guibg=None guifg={{ base16.base0e.default.hex }}
 
-hi Error guibg={{ colors.error_container.dark.hex }} guifg={{ colors.on_error_container.dark.hex }}
-hi StatusLine guibg={{ colors.primary.dark.hex }} guifg={{ colors.on_primary.dark.hex }}
-hi StatusLineNC guibg={{ colors.primary_container.dark.hex }} guifg={{ colors.on_primary_container.dark.hex }}
-hi Selection guibg={{ base16.base02.dark.hex }}
+hi Error guibg={{ colors.error_container.default.hex }} guifg={{ colors.on_error_container.default.hex }}
+hi StatusLine guibg={{ colors.primary.default.hex }} guifg={{ colors.on_primary.default.hex }}
+hi StatusLineNC guibg={{ colors.primary_container.default.hex }} guifg={{ colors.on_primary_container.default.hex }}
+hi Selection guibg={{ base16.base02.default.hex }}
