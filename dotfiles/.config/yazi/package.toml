@@ -5,23 +5,23 @@ hash = "57056b9728006881d580ccabe8154a9c"
 
 [[plugin.deps]]
 use = "Lil-Dank/lazygit"
-rev = "8c4086c"
-hash = "85316b5e9abeae2531d3e5d02a094381"
+rev = "e73fd74"
+hash = "6ea5f37c7f219671ec504cb8311f889d"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "ac82af3"
-hash = "6849444b7c2df08eace83f3f86fb55a3"
+rev = "1db18bb"
+hash = "c8d30a70659f1b880407e61c564ab4e8"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "ac82af3"
-hash = "77e20b071404f97c09d3f9afdb9482e0"
+rev = "1db18bb"
+hash = "e3260d0b1feded8c8e3ae3afa1169e30"
 
 [[plugin.deps]]
 use = "Ape/open-with-cmd"
-rev = "e3d430f"
-hash = "d29c1ffa99099181faf8c01d1f59aa4c"
+rev = "eba191d"
+hash = "722a60eca1b338c9c24bb508d2d48578"
 
 [[plugin.deps]]
 use = "KKV9/compress"
@@ -40,7 +40,7 @@ hash = "68603fdd1dcaf415227e2c77a9317947"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:no-status"
-rev = "ac82af3"
+rev = "1db18bb"
 hash = "3e023d31f29201efdac2a6ae35fedb78"
 
 [flavor]
