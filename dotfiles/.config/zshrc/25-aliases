@@ -48,3 +48,7 @@ alias ascii='~/.config/hypr/scripts/ascii-header'
 
 # System
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+
+# Jrnl Privacy and Security
+setopt HIST_IGNORE_SPACE
+alias jrnl=" jrnl"

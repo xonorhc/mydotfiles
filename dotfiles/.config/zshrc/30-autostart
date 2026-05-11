@@ -21,7 +21,7 @@ finder() {
     fi
 }
 
-# Search for content and open it in Vim on the correct line
+# Busca conteúdo e abre no Vim na linha correta
 fif() {
   local file
   local line
