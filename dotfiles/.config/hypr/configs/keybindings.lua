@@ -20,11 +20,11 @@ hl.bind(mainMod .. " + SHIFT + I", hl.dsp.exec_cmd(Run .. Browser .. "--private-
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd(Run .. FileManager))
 
 -- Float apps
-hl.bind(mainMod .. " + SHIFT + RETURN", hl.dsp.exec_cmd(Run .. Terminal,                                                                 { tag = "float_term" }))
-hl.bind(mainMod .. " + ALT + D",        hl.dsp.exec_cmd(Run .. Terminal .. "-e " .. ScriptsDir .. "nb_daily",                            { tag = "float_term" }))
-hl.bind(mainMod .. " + ALT + N",        hl.dsp.exec_cmd(Run .. Terminal .. "-e jrnl --config-override editor 'nvim -c \"startinsert\"'", { tag = "float_term" }))
-hl.bind(mainMod .. " + D",              hl.dsp.exec_cmd(Run .. Terminal .. "-e lazydocker",                                              { tag = "float_term" }))
-hl.bind(mainMod .. " + SHIFT + P",      hl.dsp.exec_cmd(Run .. Terminal .. "-e lazysql",                                                 { tag = "float_term" }))
+hl.bind( mainMod .. " + SHIFT + RETURN", hl.dsp.exec_cmd(Run .. Terminal, { tag = "+float_term" }))
+hl.bind( mainMod .. " + ALT + D", hl.dsp.exec_cmd(Run .. Terminal .. "-e " .. ScriptsDir .. "nb_daily", { tag = "+float_term" }))
+hl.bind( mainMod .. " + ALT + N", hl.dsp.exec_cmd( Run .. Terminal .. "-e jrnl --config-override editor 'nvim -c \"startinsert\"'", { tag = "+float_term" }))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(Run .. Terminal .. "-e lazydocker", { tag = "+float_term" }))
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(Run .. Terminal .. "-e lazysql", { tag = "+float_term" }))
 
 -- Menus & Tools
 local menuConfig = os.getenv("HOME") .. "/.config/rofi/"
@@ -56,7 +56,7 @@ hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd(screenshot .. "-m region"))
 hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 hl.bind("CTRL + SHIFT + ESCAPE",   hl.dsp.workspace.toggle_special("btop"))
--- hl.bind(mainMod .. " + SHIFT + H", hl.dsp.exec_cmd(ScriptsDir .. "minimize"))
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.exec_cmd(ScriptsDir .. "minimize"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -82,7 +82,7 @@ hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("hyprctl activewindow -j | jq
 hl.bind(mainMod .. " + F",         hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind(mainMod .. " + M",         hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + T",         hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("togglesplit")) -- dwindle only
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("orientationnext")) -- master only
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.layout("swapwithmaster master")) -- master only
 hl.bind(mainMod .. " + period",    hl.dsp.layout("move +col")) -- scroll only
 hl.bind(mainMod .. " + comma",     hl.dsp.layout("swapcol l")) -- scroll only
@@ -116,3 +116,13 @@ hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = tr
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
+
+-- Switch to a submap called `resize`.
+hl.bind("ALT + R", hl.dsp.submap("resize"))
+hl.define_submap("resize", function()
+    hl.bind("right", hl.dsp.window.resize({ x = 10, y = 0, relative = true}), { repeating = true })
+    hl.bind("left", hl.dsp.window.resize({ x = -10, y = 0, relative = true}), { repeating = true })
+    hl.bind("up", hl.dsp.window.resize({ x = 0, y = 10, relative = true}), { repeating = true })
+    hl.bind("down", hl.dsp.window.resize({ x = 0, y = -10, relative = true}), { repeating = true })
+    hl.bind("escape", hl.dsp.submap("reset"))
+end)
