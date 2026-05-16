@@ -101,18 +101,17 @@ hl.window_rule({
 -- PICTURE-IN-PICTURE (PiP) & PINNED WINDOWS
 -----------------------------------------------------------------------------
 
--- FIX: Invalid escape sequence.
--- hl.window_rule({
--- 	name = "pip-global",
--- 	match = { title = "^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$" },
--- 	float = true,
--- 	pin = true,
--- 	size = "248 140",
--- 	center = true,
--- 	opaque = true,
--- 	no_dim = true,
--- 	move = "(monitor_w-window_w-20) (monitor_h-window_h-20)",
--- })
+hl.window_rule({
+	name   = "pip-global",
+	match  = { title = [[^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$]] },
+	float  = true,
+	pin    = true,
+	size   = "248 140",
+	center = true,
+	opaque = true,
+	no_dim = true,
+	move   = "(monitor_w-window_w-20) (monitor_h-window_h-20)",
+})
 
 hl.window_rule({
 	name         = "style-pinned-windows",
@@ -126,23 +125,6 @@ hl.window_rule({
 -----------------------------------------------------------------------------
 -- FULLSCREEN & VISUAL STYLING
 -----------------------------------------------------------------------------
--- Move kitty to 100 100 and add an anim style (named rule)
-hl.window_rule({
-	name      = "move-kitty",
-	match     = { class = "kitty" },
-	move      = { 100, 100 },
-	animation = "popin",
-})
-
--- Disable blur for firefox
-hl.window_rule({ match = { class = "firefox" }, no_blur = true })
-
--- Move kitty to the center of the cursor
-hl.window_rule({
-	match = { class = "kitty" },
-	move  = { "cursor_x-(window_w*0.5)", "cursor_y-(window_h*0.5)" },
-})
-
 -- Set border color to red if window is fullscreen
 hl.window_rule({
 	match        = { fullscreen = true },
@@ -154,15 +136,6 @@ hl.window_rule({
 	match        = { title = ".*Hyprland.*" },
 	border_color = tertiary,
 })
-
--- Set opacity to 1.0 active, 0.5 inactive and 0.8 fullscreen for kitty
-hl.window_rule({
-	match   = { class = "kitty" },
-	opacity = "1.0 override 0.9 override 1.0 override",
-})
-
--- Set rounding to 10 for kitty
-hl.window_rule({ match = { class = "kitty" }, rounding = 10 })
 
 -- Fix pinentry losing focus
 hl.window_rule({
@@ -176,11 +149,12 @@ hl.window_rule({
 
 -- Floating Terminal
 hl.window_rule({
-	name   = "float_term",
-	match  = { tag = "float_term" },
-	float  = true,
-	center = true,
-	size   = "1024 768",
+	name         = "float_term",
+	match        = { tag = "float_term" },
+	float        = true,
+	center       = true,
+	size         = "1024 768",
+	border_color = { colors = {primary, on_primary}, angle = 45 },
 })
 
 -- MPV: Always Float & Small
@@ -192,6 +166,9 @@ hl.window_rule({
 	size   = "640 360",
 	center = true,
 })
+
+-- Disable blur for web browser
+hl.window_rule({ match = { class = "^(.*LibreWolf.*)$|^(.*floorp.*)$|^(.*brave-browser.*)$|^(.*firefox.*)$|^(.*chromium.*)$|^(.*zen.*)$|^(.*vivaldi.*)$" }, no_blur = true })
 
 -----------------------------------------------------------------------------
 -- COMMON DESKTOP / GNOME / QT UTILITIES (calculator, viewers, managers)
@@ -325,15 +302,6 @@ hl.window_rule({
 	size   = "1600 900",
 })
 
--- Newelle
-hl.window_rule({
-	name   = "float-newelle",
-	match  = { class = "(io.github.qwersyk.Newelle)" },
-	float  = true,
-	center = true,
-	size   = "1440 900",
-})
-
 -- System Mission Center
 hl.window_rule({
 	name   = "float-missioncenter",
@@ -353,14 +321,39 @@ hl.window_rule({
 	size   = "1600 900",
 })
 
+-- Newelle
+hl.window_rule({
+	name   = "float-newelle",
+	match  = { class = "(io.github.qwersyk.Newelle)" },
+	float  = true,
+	center = true,
+	size   = "1440 900",
+})
+
 -----------------------------------------------------------------------------
--- Layer Rules like rofi, swaync , awww, wlogout (check using `hyprctl layers`)
+-- Layer Rules like rofi, swaync, awww, wlogout (check using `hyprctl layers`)
 -----------------------------------------------------------------------------
+
+-- Enable blur for waybar
+local myLayerRule = hl.layer_rule({
+  name  = "my-layer-rule",
+  match = { namespace = "waybar" },
+  blur  = true,
+})
+myLayerRule:set_enabled(false)
+
 -- Named layer rule
 local selectionRule = hl.layer_rule({
-	name    = "no-anim-for-selection",
-	match   = { namespace = "selection" },
-	no_anim = true,
+  name      = "no-anim-for-selection",
+  match     = { namespace = "selection" },
+  no_anim   = true,
+})
+
+-- Enable blur and ignore_alpha for rofi
+hl.layer_rule({
+  match        = { namespace = "rofi" },
+  blur         = true,
+  ignore_alpha = 0.5,
 })
 
 -- Swaync rule
@@ -378,12 +371,6 @@ hl.layer_rule({
 	ignore_alpha = 0.2,
 })
 
--- Enable blur and ignore_alpha for rofi
-hl.layer_rule({
-	match        = { namespace = "rofi" },
-	blur         = true,
-	ignore_alpha = 0.5,
-})
 
 -- Wlogout rule
 hl.layer_rule({
@@ -393,5 +380,3 @@ hl.layer_rule({
 	ignore_alpha = 0.0,
 })
 
--- Enable blur for waybar
-hl.layer_rule({ match = { namespace = "waybar" }, blur = true })
