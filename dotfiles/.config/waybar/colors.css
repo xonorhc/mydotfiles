@@ -3,195 +3,195 @@
 * Generated with Matugen
 */
 
-    @define-color baby_pink #f6b2e0;
+    @define-color baby_pink #ff79c6;
 
-    @define-color baby_pink_container #68355b;
+    @define-color baby_pink_container #44475a;
 
-    @define-color baby_pink_source #ff7eb6;
+    @define-color baby_pink_source #ff79c6;
 
-    @define-color baby_pink_value #ff7eb6;
+    @define-color baby_pink_value #ff79c6;
 
-    @define-color background #151218;
+    @define-color background #282a36;
 
-    @define-color blue #96ccf8;
+    @define-color blue #8be9fd;
 
-    @define-color blue_container #004b70;
+    @define-color blue_container #44475a;
 
-    @define-color blue_source #2cccff;
+    @define-color blue_source #8be9fd;
 
-    @define-color blue_value #2cccff;
+    @define-color blue_value #8be9fd;
 
-    @define-color cyan #82d3e1;
+    @define-color cyan #8be9fd;
 
-    @define-color cyan_container #004f58;
+    @define-color cyan_container #44475a;
 
-    @define-color cyan_source #3ddbd9;
+    @define-color cyan_source #8be9fd;
 
-    @define-color cyan_value #3ddbd9;
+    @define-color cyan_value #8be9fd;
 
-    @define-color dark_purple #d6bbfb;
+    @define-color dark_purple #bd93f9;
 
-    @define-color dark_purple_container #523c73;
+    @define-color dark_purple_container #44475a;
 
-    @define-color dark_purple_source #a166f6;
+    @define-color dark_purple_source #bd93f9;
 
-    @define-color dark_purple_value #a166f6;
+    @define-color dark_purple_value #bd93f9;
 
-    @define-color error #ffb4ab;
+    @define-color error #ff5555;
 
-    @define-color error_container #93000a;
+    @define-color error_container #44475a;
 
-    @define-color green #8ad6b7;
+    @define-color green #50fa7b;
 
-    @define-color green_container #00513c;
+    @define-color green_container #44475a;
 
-    @define-color green_source #25be6a;
+    @define-color green_source #50fa7b;
 
-    @define-color green_value #25be6a;
+    @define-color green_value #50fa7b;
 
-    @define-color inverse_on_surface #322f35;
+    @define-color inverse_on_surface #282a36;
 
-    @define-color inverse_primary #6b538c;
+    @define-color inverse_primary #282a36;
 
-    @define-color inverse_surface #e7e0e8;
+    @define-color inverse_surface #f8f8f2;
 
-    @define-color nord_blue #bac3ff;
+    @define-color nord_blue #8be9fd;
 
-    @define-color nord_blue_container #3a4379;
+    @define-color nord_blue_container #44475a;
 
-    @define-color nord_blue_source #78a9ff;
+    @define-color nord_blue_source #8be9fd;
 
-    @define-color nord_blue_value #78a9ff;
+    @define-color nord_blue_value #8be9fd;
 
-    @define-color on_baby_pink #4e1e44;
+    @define-color on_baby_pink #282a36;
 
-    @define-color on_baby_pink_container #ffd7ef;
+    @define-color on_baby_pink_container #f8f8f2;
 
-    @define-color on_background #e7e0e8;
+    @define-color on_background #f8f8f2;
 
-    @define-color on_blue #00344f;
+    @define-color on_blue #282a36;
 
-    @define-color on_blue_container #cae6ff;
+    @define-color on_blue_container #f8f8f2;
 
-    @define-color on_cyan #00363d;
+    @define-color on_cyan #282a36;
 
-    @define-color on_cyan_container #9eeffd;
+    @define-color on_cyan_container #f8f8f2;
 
-    @define-color on_dark_purple #3b255b;
+    @define-color on_dark_purple #282a36;
 
-    @define-color on_dark_purple_container #eddcff;
+    @define-color on_dark_purple_container #f8f8f2;
 
-    @define-color on_error #690005;
+    @define-color on_error #282a36;
 
-    @define-color on_error_container #ffdad6;
+    @define-color on_error_container #f8f8f2;
 
-    @define-color on_green #003828;
+    @define-color on_green #282a36;
 
-    @define-color on_green_container #a6f2d2;
+    @define-color on_green_container #f8f8f2;
 
-    @define-color on_nord_blue #222c61;
+    @define-color on_nord_blue #282a36;
 
-    @define-color on_nord_blue_container #dee0ff;
+    @define-color on_nord_blue_container #f8f8f2;
 
-    @define-color on_orange #522300;
+    @define-color on_orange #282a36;
 
-    @define-color on_orange_container #ffdbc8;
+    @define-color on_orange_container #f8f8f2;
 
-    @define-color on_pink #4b1f4b;
+    @define-color on_pink #282a36;
 
-    @define-color on_pink_container #ffd6f9;
+    @define-color on_pink_container #f8f8f2;
 
-    @define-color on_primary #3b255b;
+    @define-color on_primary #282a36;
 
-    @define-color on_primary_container #eddcff;
+    @define-color on_primary_container #f8f8f2;
 
-    @define-color on_primary_fixed #250e44;
+    @define-color on_primary_fixed #282a36;
 
-    @define-color on_primary_fixed_variant #523c73;
+    @define-color on_primary_fixed_variant #44475a;
 
-    @define-color on_purple #3b255b;
+    @define-color on_purple #282a36;
 
-    @define-color on_purple_container #ecdcff;
+    @define-color on_purple_container #f8f8f2;
 
-    @define-color on_red #551d2b;
+    @define-color on_red #282a36;
 
-    @define-color on_red_container #ffd9de;
+    @define-color on_red_container #f8f8f2;
 
-    @define-color on_secondary #352d40;
+    @define-color on_secondary #282a36;
 
-    @define-color on_secondary_container #ebddf7;
+    @define-color on_secondary_container #f8f8f2;
 
-    @define-color on_secondary_fixed #20182a;
+    @define-color on_secondary_fixed #282a36;
 
-    @define-color on_secondary_fixed_variant #4c4357;
+    @define-color on_secondary_fixed_variant #44475a;
 
-    @define-color on_sun #383000;
+    @define-color on_sun #282a36;
 
-    @define-color on_sun_container #f6e388;
+    @define-color on_sun_container #f8f8f2;
 
-    @define-color on_surface #e7e0e8;
+    @define-color on_surface #f8f8f2;
 
-    @define-color on_surface_variant #ccc4cf;
+    @define-color on_surface_variant #6272a4;
 
-    @define-color on_teal #03305f;
+    @define-color on_teal #282a36;
 
-    @define-color on_teal_container #d5e3ff;
+    @define-color on_teal_container #f8f8f2;
 
-    @define-color on_tertiary #4b252e;
+    @define-color on_tertiary #282a36;
 
-    @define-color on_tertiary_container #ffd9df;
+    @define-color on_tertiary_container #f8f8f2;
 
-    @define-color on_tertiary_fixed #321019;
+    @define-color on_tertiary_fixed #282a36;
 
-    @define-color on_tertiary_fixed_variant #653b44;
+    @define-color on_tertiary_fixed_variant #44475a;
 
-    @define-color on_vibrant_green #003732;
+    @define-color on_vibrant_green #282a36;
 
-    @define-color on_vibrant_green_container #9ef2e6;
+    @define-color on_vibrant_green_container #f8f8f2;
 
-    @define-color on_yellow #3f2e00;
+    @define-color on_yellow #282a36;
 
-    @define-color on_yellow_container #ffdf9b;
+    @define-color on_yellow_container #f8f8f2;
 
-    @define-color orange #ffb68a;
+    @define-color orange #ffb86c;
 
-    @define-color orange_container #6f3810;
+    @define-color orange_container #44475a;
 
-    @define-color orange_source #ffa332;
+    @define-color orange_source #ffb86c;
 
-    @define-color orange_value #ffa332;
+    @define-color orange_value #ffb86c;
 
-    @define-color outline #958e99;
+    @define-color outline #6272a4;
 
-    @define-color outline_variant #4a454e;
+    @define-color outline_variant #44475a;
 
-    @define-color pink #efb4e9;
+    @define-color pink #ff79c6;
 
-    @define-color pink_container #643663;
+    @define-color pink_container #44475a;
 
-    @define-color pink_source #ff6bcb;
+    @define-color pink_source #ff79c6;
 
-    @define-color pink_value #ff6bcb;
+    @define-color pink_value #ff79c6;
 
-    @define-color primary #d6bbfb;
+    @define-color primary #bd93f9;
 
-    @define-color primary_container #523c73;
+    @define-color primary_container #44475a;
 
-    @define-color primary_fixed #eddcff;
+    @define-color primary_fixed #bd93f9;
 
-    @define-color primary_fixed_dim #d6bbfb;
+    @define-color primary_fixed_dim #bd93f9;
 
-    @define-color purple #d6bbfc;
+    @define-color purple #bd93f9;
 
-    @define-color purple_container #523c73;
+    @define-color purple_container #44475a;
 
-    @define-color purple_source #be95ff;
+    @define-color purple_source #bd93f9;
 
-    @define-color purple_value #be95ff;
+    @define-color purple_value #bd93f9;
 
-    @define-color red #ffb1bf;
+    @define-color red #ff5555;
 
-    @define-color red_container #713341;
+    @define-color red_container #44475a;
 
     @define-color red_source #ff5555;
 
@@ -199,75 +199,75 @@
 
     @define-color scrim #000000;
 
-    @define-color secondary #cec2da;
+    @define-color secondary #ff79c6;
 
-    @define-color secondary_container #4c4357;
+    @define-color secondary_container #44475a;
 
-    @define-color secondary_fixed #ebddf7;
+    @define-color secondary_fixed #ff79c6;
 
-    @define-color secondary_fixed_dim #cec2da;
+    @define-color secondary_fixed_dim #ff79c6;
 
     @define-color shadow #000000;
 
     @define-color source_color #bd93f9;
 
-    @define-color sun #d9c76f;
+    @define-color sun #f1fa8c;
 
-    @define-color sun_container #524700;
+    @define-color sun_container #44475a;
 
-    @define-color sun_source #f2fa95;
+    @define-color sun_source #f1fa8c;
 
-    @define-color sun_value #f2fa95;
+    @define-color sun_value #f1fa8c;
 
-    @define-color surface #151218;
+    @define-color surface #21222c;
 
-    @define-color surface_bright #3b383e;
+    @define-color surface_bright #343746;
 
-    @define-color surface_container #211e24;
+    @define-color surface_container #282a36;
 
-    @define-color surface_container_high #2c292f;
+    @define-color surface_container_high #343746;
 
-    @define-color surface_container_highest #37333a;
+    @define-color surface_container_highest #44475a;
 
-    @define-color surface_container_low #1d1a20;
+    @define-color surface_container_low #21222c;
 
-    @define-color surface_container_lowest #100d12;
+    @define-color surface_container_lowest #191a21;
 
-    @define-color surface_dim #151218;
+    @define-color surface_dim #191a21;
 
-    @define-color surface_tint #d6bbfb;
+    @define-color surface_tint #bd93f9;
 
-    @define-color surface_variant #4a454e;
+    @define-color surface_variant #44475a;
 
-    @define-color teal #a6c8ff;
+    @define-color teal #8be9fd;
 
-    @define-color teal_container #234776;
+    @define-color teal_container #44475a;
 
-    @define-color teal_source #33b1ff;
+    @define-color teal_source #8be9fd;
 
-    @define-color teal_value #33b1ff;
+    @define-color teal_value #8be9fd;
 
-    @define-color tertiary #f2b7c2;
+    @define-color tertiary #ffb86c;
 
-    @define-color tertiary_container #653b44;
+    @define-color tertiary_container #44475a;
 
-    @define-color tertiary_fixed #ffd9df;
+    @define-color tertiary_fixed #ffb86c;
 
-    @define-color tertiary_fixed_dim #f2b7c2;
+    @define-color tertiary_fixed_dim #ffb86c;
 
-    @define-color vibrant_green #82d5ca;
+    @define-color vibrant_green #50fa7b;
 
-    @define-color vibrant_green_container #005049;
+    @define-color vibrant_green_container #44475a;
 
-    @define-color vibrant_green_source #20e3b2;
+    @define-color vibrant_green_source #50fa7b;
 
-    @define-color vibrant_green_value #20e3b2;
+    @define-color vibrant_green_value #50fa7b;
 
-    @define-color yellow #e8c26c;
+    @define-color yellow #f1fa8c;
 
-    @define-color yellow_container #5a4300;
+    @define-color yellow_container #44475a;
 
-    @define-color yellow_source #ffe731;
+    @define-color yellow_source #f1fa8c;
 
-    @define-color yellow_value #ffe731;
+    @define-color yellow_value #f1fa8c;
 

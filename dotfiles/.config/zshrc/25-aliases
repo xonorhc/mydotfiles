@@ -65,3 +65,16 @@ vv() {
   local config=$(printf "nvim\nnvchad\nastro6" | fzf --prompt="Select Neovim Config: ")
   [[ -n "$config" ]] && NVIM_APPNAME="nvim-$config" nvim "$@"
 }
+
+fif() {
+  local file
+  local line
+  local res
+  res=$(grep -rin "$1" . | fzf --delimiter : --nth 3.. --preview 'cat {1}')
+
+  if [[ -n "$res" ]]; then
+    file=$(echo "$res" | cut -d: -f1)
+    line=$(echo "$res" | cut -d: -f2)
+    vim "+$line" "$file"
+  fi
+}

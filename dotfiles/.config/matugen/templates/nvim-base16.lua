@@ -14,17 +14,20 @@ return {
 				base06 = "{{colors.inverse_on_surface.default.hex}}",
 				base07 = "{{colors.surface_bright.default.hex}}",
 
-				base08 = "{{colors.purple_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.7}}",
-				base09 = "{{colors.orange_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.7}}",
-				base0A = "{{colors.cyan_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.7}}",
-				base0B = "{{colors.yellow_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.7}}",
-				base0C = "{{colors.cyan_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.7}}",
-				base0D = "{{colors.green_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.7}}",
-				base0E = "{{colors.pink_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.7}}",
-				base0F = "{{colors.red_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.7}}",
+				base08 = "{{colors.purple_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.3}}",
+				base09 = "{{colors.orange_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.3}}",
+				base0A = "{{colors.cyan_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.3}}",
+				base0B = "{{colors.yellow_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.3}}",
+				base0C = "{{colors.cyan_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.3}}",
+				base0D = "{{colors.green_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.3}}",
+				base0E = "{{colors.pink_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.3}}",
+				base0F = "{{colors.red_source.default.hex|to_color|blend:{{colors.source_color.default.hex|to_color}},0.3}}",
 			},
 			styles = { italic = true, transparency = true },
 			plugins = { enable_all = true },
+			highlight_groups = {
+				Comment = { fg = "{{colors.outline_variant.default.hex | lighten:10}}", bg = "NONE" },
+			},
 		})
 	end,
 }
