@@ -32,7 +32,6 @@ choice=$(for name in "${!colors[@]}"; do echo "$name"; done | sort |
 if [[ ${colors[$choice]} ]]; then
   hex_color=${colors[$choice]}
 else
-  # Se o que foi digitado for um HEX válido que não está na lista
   if [[ $choice =~ ^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$ ]]; then
     hex_color=$choice
   else
