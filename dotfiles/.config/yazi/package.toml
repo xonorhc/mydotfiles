@@ -10,32 +10,32 @@ hash = "57056b9728006881d580ccabe8154a9c"
 
 [[plugin.deps]]
 use = "Lil-Dank/lazygit"
-rev = "0e56060"
-hash = "ab2e66065a94cca4886b303518e44bd8"
+rev = "e73fd74"
+hash = "6ea5f37c7f219671ec504cb8311f889d"
 
 [[plugin.deps]]
 use = "larry-oates/open-git-remote"
-rev = "491070e"
-hash = "4b6301b88d46ce0d7c86666dabafd397"
+rev = "72158d6"
+hash = "ed359abc14ba915a12e759435ed721ab"
 
 [[plugin.deps]]
 use = "Ape/open-with-cmd"
-rev = "e3d430f"
-hash = "d29c1ffa99099181faf8c01d1f59aa4c"
+rev = "eba191d"
+hash = "722a60eca1b338c9c24bb508d2d48578"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "1962818"
-hash = "26db011a778f261d730d4f5f8bf24b3f"
+rev = "5d5c480"
+hash = "88e56a64b7ce7c4314427452343fef17"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "1962818"
-hash = "91937a4a9b779eabc6983e258befdfe9"
+rev = "5d5c480"
+hash = "e3260d0b1feded8c8e3ae3afa1169e30"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:no-status"
-rev = "1962818"
+rev = "5d5c480"
 hash = "3e023d31f29201efdac2a6ae35fedb78"
 
 [flavor]
