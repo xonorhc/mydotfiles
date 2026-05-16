@@ -6,14 +6,6 @@
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
--- "Smart gaps" / "No gaps when only"
-hl.workspace_rule({ workspace = "w[tv1]s[false]", gaps_out = 0, gaps_in = 0 })
-hl.workspace_rule({ workspace = "f[1]s[false]",   gaps_out = 0, gaps_in = 0 })
-hl.window_rule({ match = { float = false, workspace = "w[tv1]s[false]" }, border_size = 0 })
-hl.window_rule({ match = { float = false, workspace = "w[tv1]s[false]" }, rounding = 0 })
-hl.window_rule({ match = { float = false, workspace = "f[1]s[false]" },   border_size = 0 })
-hl.window_rule({ match = { float = false, workspace = "f[1]s[false]" },   rounding = 0 })
-
 hl.workspace_rule({ workspace = "m[eDP-1]",    layout = "master", layout_opts = { orientation = "left" } })
 hl.workspace_rule({ workspace = "m[HDMI-A-1]", layout = "scrolling" })
 
