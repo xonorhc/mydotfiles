@@ -5,6 +5,3 @@
 --
 -- Add your additional Hyprland configurations here
 
-hl.on("hyprland.start", function()
-	hl.exec_cmd("sleep 300 && " .. Run .. "flatpak run org.qbittorrent.qBittorrent")
-end)

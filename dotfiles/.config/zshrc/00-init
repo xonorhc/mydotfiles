@@ -2,19 +2,6 @@
 # EXPORTS & PATHS
 # -----------------------------------------------------
 export ZSH="$HOME/.oh-my-zsh"
-
-path=(
-    "$HOME/.local/share/bob/nvim-bin"
-    "$HOME/.config/hypr/scripts"
-    "$HOME/.cargo/bin"
-    "$HOME/.local/bin"
-    $path
-)
-export PATH
-
-export TERMINAL='foot'
-export EDITOR='nvim'
-export VISUAL='nvim'
 export PAGER='less'
 
 # Database Context (Postgres)

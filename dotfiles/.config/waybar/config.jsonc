@@ -6,8 +6,6 @@
     "clock#time",
     "clock#date",
     "tray",
-    "mpris",
-    "custom/cava",
   ],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [

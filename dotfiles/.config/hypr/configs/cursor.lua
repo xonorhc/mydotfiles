@@ -5,7 +5,7 @@
 --
 
 hl.config({
-	cursor              = {
+	cursor = {
 		use_cpu_buffer    = 2,
 		inactive_timeout  = 5,
 		zoom_factor       = 1.0,

@@ -43,10 +43,6 @@ input_path = '~/.config/matugen/templates/gtk-themes.scss'
 output_path = '~/.config/matugen/templates/gtk-themes/themes/src/sass/_color-palette-default.scss'
 post_hook = 'sh ~/.config/matugen/templates/gtk-themes/themes/install.sh --theme default --color dark'
 
-[templates.wlogout]
-input_path = '~/.config/matugen/templates/colors.css'
-output_path = '~/.config/wlogout/colors.css'
-
 [templates.swaync]
 input_path = '~/.config/matugen/templates/colors.css'
 output_path = '~/.config/swaync/colors.css'
@@ -77,12 +73,3 @@ output_path = '~/.config/starship.toml'
 input_path = './templates/nvim-colors.vim'
 output_path = '~/.config/nvim/colors/matugen.vim'
 post_hook = 'pkill -SIGUSR1 nvim'
-
-[templates.nvim-base46]
-input_path = './templates/nvim-base46.lua'
-output_path = '~/.local/share/nvim-nvchad/lazy/base46/lua/base46/themes/matugen.lua'
-post_hook = 'pkill -SIGUSR1 nvim'
-
-[templates.nvim-base16]
-input_path = './templates/nvim-base16.lua'
-output_path = '~/.config/nvim-astro6/lua/plugins/base16-prox-max.lua'

@@ -125,6 +125,7 @@ hl.window_rule({
 -----------------------------------------------------------------------------
 -- FULLSCREEN & VISUAL STYLING
 -----------------------------------------------------------------------------
+
 -- Set border color to red if window is fullscreen
 hl.window_rule({
 	match        = { fullscreen = true },
@@ -371,7 +372,6 @@ hl.layer_rule({
 	ignore_alpha = 0.2,
 })
 
-
 -- Wlogout rule
 hl.layer_rule({
 	name         = "logout_dialog_style",
@@ -379,4 +379,3 @@ hl.layer_rule({
 	blur         = true,
 	ignore_alpha = 0.0,
 })
-

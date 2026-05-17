@@ -1,7 +1,15 @@
-export XDG_CURRENT_DESKTOP=Hyprland
-export XDG_SESSION_TYPE=wayland
-export XDG_SESSION_DESKTOP=Hyprland
+# Changes require a restart to take effect.
 
+# ------ System Locale ------
+export LANG=en_US.UTF-8
+
+# ------ Virtualization ------
+export LIBVIRT_DEFAULT_URI='qemu:///system'
+
+# ------ Path ------
+export PATH="$HOME/.local/share/bob/nvim-bin:$HOME/.config/hypr/scripts:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+
+# ------ Toolkit Backend Variables ------
 export GDK_BACKEND=wayland,x11,*
 export QT_QPA_PLATFORM=wayland;xcb
 export SDL_VIDEODRIVER=wayland
@@ -10,17 +18,28 @@ export OZONE_PLATFORM=wayland
 export ELECTRON_OZONE_PLATFORM_HINT=wayland
 export MOZ_ENABLE_WAYLAND=1
 
-export LIBVA_DRIVER_NAME=nvidia
-export __GLX_VENDOR_LIBRARY_NAME=nvidia
-export WLR_DRM_DEVICES=/dev/dri/card1:/dev/dri/card0
+# ------ XDG Specifications ------
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=Hyprland
 
+# ------ Qt Variables ------
 export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export GDK_SCALE=1
 
+# ------ NVIDIA Specific ------
+export LIBVA_DRIVER_NAME=nvidia
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export WLR_DRM_DEVICES=/dev/dri/card1:/dev/dri/card0
+
+# ------ Theming Related Variables ------
+export XCURSOR_THEME=ArcDusk-cursors
+export XCURSOR_SIZE=24 
+
+# ------ APPS & DEFAULT PREFERENCES ------
+export TERMINAL=foot
 export SUDO_EDITOR=vim
 export EDITOR=nvim
 export VISUAL=nvim
-export NVIM_APPNAME=nvim-nvchad
-export PATH=$PATH:$HOME/.local/share/bob/nvim-bin

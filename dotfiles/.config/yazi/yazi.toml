@@ -1,12 +1,12 @@
 [opener]
 play = [
-	{ run = 'mpv "$@"', orphan = true, for = "unix" },
+	{ run = "mpv %s", orphan = true, for = "unix" },
 ]
 edit = [
-	{ run = 'nvim "$@"', block = true, for = "unix" },
+	{ run = "$EDITOR %s", block = true, for = "unix" },
 ]
 open = [
-	{ run = 'xdg-open "$@"', desc = "Open" },
+	{ run = "xdg-open %s1", desc = "Open" },
 ]
 extract = [
 	{ run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },

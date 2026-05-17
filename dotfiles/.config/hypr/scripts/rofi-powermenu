@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+MENU="Lock\0icon\x1fsystem-lock-screen
+Logout\0icon\x1fsystem-log-out
+Reboot\0icon\x1fsystem-reboot
+Shutdown\0icon\x1fsystem-shutdown"
+
+sel=$(echo -e "$MENU" | rofi -dmenu -i -p "System" -show-icons -l 4 | tr '[:upper:]' '[:lower:]')
+
+case "$sel" in
+    lock) hyprlock ;;
+    logout) uwsm stop ;;
+    reboot) systemctl reboot ;;
+    shutdown) systemctl poweroff ;;
+esac

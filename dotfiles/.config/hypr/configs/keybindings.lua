@@ -35,16 +35,15 @@ hl.bind(mainMod .. " + ALT + W",   hl.dsp.exec_cmd(ScriptsDir .. "rofi-websearch
 hl.bind(mainMod .. " + ALT + T",   hl.dsp.exec_cmd(ScriptsDir .. "rofi-translator"))
 hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(ScriptsDir .. "rofi-colorselector"))
 hl.bind(mainMod .. " + CTRL + T",  hl.dsp.exec_cmd(ScriptsDir .. "rofi-themeselector"))
+hl.bind(mainMod .. " + CTRL + Q",  hl.dsp.exec_cmd(ScriptsDir .. "rofi-powermenu"))
 hl.bind("CTRL + ALT + P",          hl.dsp.exec_cmd(Run .. "hyprpicker -a"))
 
 -- System & Power
 hl.bind(mainMod .. " + SHIFT + ESCAPE", hl.dsp.exec_cmd("uwsm stop"))
+hl.bind("CTRL + ALT + ESCAPE",          hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + SHIFT + R",      hl.dsp.exec_cmd("systemctl --user restart 'app-*.service' && hyprctl reload"))
 hl.bind(mainMod .. " + SHIFT + B",      hl.dsp.exec_cmd(Run .. "~/.config/waybar/launch"))
-hl.bind(mainMod .. " + CTRL + Q",       hl.dsp.exec_cmd(ScriptsDir .. "power-menu"))
-hl.bind(mainMod .. " + CTRL + L",       hl.dsp.exec_cmd(ScriptsDir .. "power lock"))
-hl.bind("CTRL + ALT + DELETE",          hl.dsp.exec_cmd("hyprctl dispatch exit 0"))
-hl.bind("CTRL + ALT + ESCAPE",          hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind(mainMod .. " + CTRL + L",       hl.dsp.exec_cmd("hyprlock"))
 
 -- Screenshots
 local screenshot = Run .. ScriptsDir .. "hyprshot -o 'Pictures/screenshots' "
@@ -120,9 +119,9 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 -- Switch to a submap called `resize`.
 hl.bind("ALT + R", hl.dsp.submap("resize"))
 hl.define_submap("resize", function()
-    hl.bind("right", hl.dsp.window.resize({ x = 10, y = 0, relative = true}), { repeating = true })
-    hl.bind("left", hl.dsp.window.resize({ x = -10, y = 0, relative = true}), { repeating = true })
-    hl.bind("up", hl.dsp.window.resize({ x = 0, y = 10, relative = true}), { repeating = true })
-    hl.bind("down", hl.dsp.window.resize({ x = 0, y = -10, relative = true}), { repeating = true })
+    hl.bind("right",  hl.dsp.window.resize({ x = 10,  y = 0,   relative = true}), { repeating = true })
+    hl.bind("left",   hl.dsp.window.resize({ x = -10, y = 0,   relative = true}), { repeating = true })
+    hl.bind("up",     hl.dsp.window.resize({ x = 0,   y = 10,  relative = true}), { repeating = true })
+    hl.bind("down",   hl.dsp.window.resize({ x = 0,   y = -10, relative = true}), { repeating = true })
     hl.bind("escape", hl.dsp.submap("reset"))
 end)

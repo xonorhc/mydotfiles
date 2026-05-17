@@ -30,8 +30,6 @@ window#waybar {
     alpha(@background, 0.9),
     alpha(@background, 0.7)
   );
-  /* border: 1px solid alpha(@on_surface, 0.06); */
-  /* border-bottom: 1px solid alpha(@outline_variant, 0.3); */
   box-shadow: 0px 6px 16px alpha(@shadow, 0.3);
   transition: background-color 0.4s ease;
 }
