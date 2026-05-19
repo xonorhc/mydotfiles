@@ -42,8 +42,9 @@ hl.bind("CTRL + ALT + P",          hl.dsp.exec_cmd(Run .. "hyprpicker -a"))
 hl.bind(mainMod .. " + SHIFT + ESCAPE", hl.dsp.exec_cmd("uwsm stop"))
 hl.bind("CTRL + ALT + ESCAPE",          hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + SHIFT + R",      hl.dsp.exec_cmd("systemctl --user restart 'app-*.service' && hyprctl reload"))
-hl.bind(mainMod .. " + SHIFT + B",      hl.dsp.exec_cmd(Run .. "~/.config/waybar/launch"))
 hl.bind(mainMod .. " + CTRL + L",       hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + SHIFT + B",      hl.dsp.exec_cmd(Run .. "~/.config/waybar/launch"))
+hl.bind("CTRL + ALT_R",                 hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 
 -- Screenshots
 local screenshot = Run .. ScriptsDir .. "hyprshot -o 'Pictures/screenshots' "
