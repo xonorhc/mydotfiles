@@ -15,6 +15,7 @@ alias wifi='nmtui'
 alias lock='hyprlock'
 alias clock='peaclock'
 alias -s pdf=zathura
+alias ascii='~/.config/hypr/scripts/ascii-header'
 
 # -----------------------------------------------------
 # Git
@@ -36,45 +37,3 @@ alias gd="git diff"
 alias gra="git remote add"
 alias grr="git remote rm"
 alias gsh="git stash"
-
-# -----------------------------------------------------
-# Yazi
-# -----------------------------------------------------
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd <"$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
-}
-
-if [[ -n "$YAZI_ID" ]]; then
-	function _yazi_cd() {
-		ya emit cd "$PWD"
-	}
-	add-zsh-hook zshexit _yazi_cd
-fi
-
-# -----------------------------------------------------
-# Neovim
-# -----------------------------------------------------
-alias vc='NVIM_APPNAME=nvim-nvchad nvim'
-alias va='NVIM_APPNAME=nvim-astro6 nvim'
-
-vv() {
-  local config=$(printf "nvim\nnvchad\nastro6" | fzf --prompt="Select Neovim Config: ")
-  [[ -n "$config" ]] && NVIM_APPNAME="nvim-$config" nvim "$@"
-}
-
-fif() {
-  local file
-  local line
-  local res
-  res=$(grep -rin "$1" . | fzf --delimiter : --nth 3.. --preview 'cat {1}')
-
-  if [[ -n "$res" ]]; then
-    file=$(echo "$res" | cut -d: -f1)
-    line=$(echo "$res" | cut -d: -f2)
-    vim "+$line" "$file"
-  fi
-}

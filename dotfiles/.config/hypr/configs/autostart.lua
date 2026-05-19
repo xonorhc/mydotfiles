@@ -8,6 +8,7 @@
 
 hl.on("hyprland.start", function()
 	--  Core Components
+	hl.exec_cmd(Run .. "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 	hl.exec_cmd(Run .. "waybar")
 	hl.exec_cmd(Run .. "swaync")
 	hl.exec_cmd(Run .. "hyprpaper")
@@ -18,7 +19,6 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("[workspace special:btop silent] sleep 2 && uwsm app -- kitty --class btop-monitor -e btop")
 	-- Portals launch after this gets executed
 	hl.exec_cmd(ScriptsDir .. "xdph.sh")
-	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 	--  Finalize Session
 	hl.exec_cmd("uwsm finalize")
 end)

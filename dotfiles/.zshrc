@@ -18,17 +18,24 @@
 # Load modular configuration
 # -----------------------------------------------------
 
-for f in ~/.config/zshrc/*; do
-    if [ ! -d $f ]; then
-        c=$(echo $f | sed -e "s=.config/zshrc=.config/zshrc/custom=")
-        [[ -f $c ]] && source $c || source $f
+for f in "$HOME"/.config/zshrc/*; do
+    if [ -f "$f" ]; then
+        source "$f"
     fi
 done
+
+if [ -d "$HOME"/.config/zshrc/custom ]; then
+    for f in "$HOME"/.config/zshrc/custom/*; do
+        if [ -f "$f" ]; then
+            source "$f"
+        fi
+    done
+fi
 
 # -----------------------------------------------------
 # Load single customization file (if exists)
 # -----------------------------------------------------
 
-if [ -f ~/.zshrc_custom ]; then
+if [ -f "$HOME"/.zshrc_custom ]; then
     source ~/.zshrc_custom
 fi

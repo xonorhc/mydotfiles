@@ -36,4 +36,4 @@ EMOJI=$(echo "$SELECTED" | awk '{print $1}')
 printf "%s" "$EMOJI" | wl-copy
 echo "$SELECTED" >>"$HISTORY"
 
-notify-send "Emoji copiado" "$EMOJI"
+notify-send "Emoji send to clipboard "$EMOJI"

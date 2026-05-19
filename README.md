@@ -14,17 +14,17 @@ sudo pacman -S stow
 Clone the repository:
 
 ```sh
-mkdir -p ~/Templates
-cd ~/Templates
-git clone --depth 1 https://github.com/xonorhc/mydotfiles.git --branch rose-pine-moon
+mkdir -p ~/.mydotfiles
+cd ~/.mydotfiles
+git clone --depth 1 https://github.com/xonorhc/mydotfiles.git
 
 ```
 
 Create symlinks:
 
 ```sh
-cd ~/Templates/mydotfiles
-stow --verbose --target=$HOME --dir=$HOME/Templates/mydotfiles/dotfiles --restow .
+cd ~/.mydotfiles
+stow --verbose --target=$HOME --dir=$HOME/.mydotfiles/dotfiles --restow .
 
 ```
 
@@ -37,7 +37,15 @@ Restart your system.
 Remove all symlinks:
 
 ```sh
-cd ~/Templates/mydotfiles
+cd ~/.mydotfiles
 stow --verbose --target=$HOME --delete .
 
 ```
+
+## Credits
+
+Learned/Copied a lot from these projects:
+
+- [LierB/dotfiles](https://github.com/LierB/dotfiles)
+- [mylinuxforwork/dotfiles](https://github.com/mylinuxforwork/dotfiles)
+- [HyDE-Project/HyDE](https://github.com/HyDE-Project/HyDE)

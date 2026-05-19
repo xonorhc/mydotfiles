@@ -13,3 +13,51 @@ else
 		echo "Start Hyprland with command Hyprland"
 	fi
 fi
+
+# -----------------------------------------------------
+# Yazi
+# -----------------------------------------------------
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd <"$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+if [[ -n "$YAZI_ID" ]]; then
+	function _yazi_cd() {
+		ya emit cd "$PWD"
+	}
+	add-zsh-hook zshexit _yazi_cd
+fi
+
+# -----------------------------------------------------
+# Fuzzy Finder
+# -----------------------------------------------------
+finder() {
+    local result=$($HOME/.config/hypr/scripts/finder)
+
+    if [[ "$result" == TYPE_DIR:* ]]; then
+        local target_dir="${result#TYPE_DIR:}"
+        cd "$target_dir" && ls
+    elif [[ "$result" == TYPE_FILE:* ]]; then
+        ${EDITOR:-nano} "${result#TYPE_FILE:}"
+    else
+        echo "Could not read $result" >&2
+        return 1
+    fi
+}
+
+fif() {
+  local file
+  local line
+  local res
+  res=$(grep -rin "$1" . | fzf --delimiter : --nth 3.. --preview 'cat {1}')
+
+  if [[ -n "$res" ]]; then
+    file=$(echo "$res" | cut -d: -f1)
+    line=$(echo "$res" | cut -d: -f2)
+    vim "+$line" "$file"
+  fi
+}

@@ -2,7 +2,7 @@
 
 TERMINAL="kitty"
 
-# Detecta gerenciador AUR disponível
+# Detect available AUR manager
 if command -v paru >/dev/null 2>&1; then
   AUR_CMD="paru"
 elif command -v yay >/dev/null 2>&1; then
@@ -11,17 +11,15 @@ else
   AUR_CMD="sudo pacman"
 fi
 
-# 1️⃣ Escolher tipo de instalação
+# 1. Choose installation type
 install_type=$(echo -e "pacman\nflatpak" | fuzzel --dmenu --prompt "Packege manager:" --lines 2) || exit 0
 [ -z "$install_type" ] && exit 0
 
-# 2️⃣ Digitar termo de busca
+# 2. Enter search term
 search_term=$(fuzzel --dmenu --prompt "Buscar app:" --placeholder "Type the name...") || exit 0
 [ -z "$search_term" ] && exit 0
 
-# ===============================
-# 3️⃣ Buscar pacotes e formatar lista
-# ===============================
+# 3. Search packages and format list
 declare -a pkgs_list
 
 if [ "$install_type" = "pacman" ]; then
@@ -38,20 +36,20 @@ elif [ "$install_type" = "flatpak" ]; then
   done < <(flatpak search "$search_term" | tail -n +2)
 fi
 
-# 4️⃣ Se nenhum pacote encontrado
+# 4. If no packages found
 if [ ${#pkgs_list[@]} -eq 0 ]; then
   notify-send "Package not found '$search_term'"
   exit 0
 fi
 
-# 5️⃣ Selecionar pacote no Fuzzel
+# 5. Select package in Fuzzel
 selected_line=$(printf "%s\n" "${pkgs_list[@]}" | fuzzel --dmenu --prompt "Select a package:" --lines 15) || exit 0
 [ -z "$selected_line" ] && exit 0
 
-# 6️⃣ Extrair apenas o nome
+# 6. Extract name only
 pkg_name=$(echo "$selected_line" | awk -F ' — ' '{print $1}')
 
-# 7️⃣ Instalar no terminal
+# 7. Install on terminal
 if [ "$install_type" = "pacman" ]; then
   $TERMINAL -e bash -c "$AUR_CMD -S $pkg_name"
 elif [ "$install_type" = "flatpak" ]; then

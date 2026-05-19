@@ -41,7 +41,6 @@ hl.bind(mainMod .. " + CTRL + Q", hl.dsp.exec_cmd(ScriptsDir .. "fuzzel-powermen
 hl.bind(mainMod .. " + SHIFT + ESCAPE", hl.dsp.exec_cmd("uwsm stop"))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("systemctl --user restart 'app-*.service' && hyprctl reload"))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(Run .. "~/.config/waybar/launch"))
-hl.bind("CTRL + ALT + DELETE", hl.dsp.exec_cmd("hyprctl dispatch exit 0"))
 hl.bind("CTRL + ALT + ESCAPE", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind("CTRL + ALT_R", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 
@@ -82,10 +81,7 @@ hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("togglesplit")) -- dwindle only
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.layout("swapwithmaster master")) -- master only
-hl.bind(mainMod .. " + period", hl.dsp.layout("move +col")) -- scroll only
-hl.bind(mainMod .. " + comma", hl.dsp.layout("swapcol l")) -- scroll only
-
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.layout("swapsplit")) -- dwindle only
 hl.bind("SHIFT + Tab", hl.dsp.window.cycle_next({ tiled = true })) -- monocle only
 hl.bind(mainMod .. " + Tab", hl.dsp.layout("cyclenext")) -- monocle only
 

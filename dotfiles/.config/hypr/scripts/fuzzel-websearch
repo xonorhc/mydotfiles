@@ -22,7 +22,9 @@ EOF
 
 encoded=$(urlencode "$query")
 
+# -------------
 # URL DETECTION
+# -------------
 
 if [[ "$query" =~ ^https?:// ]]; then
   url="$query"
@@ -33,7 +35,9 @@ elif [[ "$query" =~ ^(localhost|[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)(:[0-9]+)?(/.*)?$
 elif [[ "$query" =~ ^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(/.*)?$ ]]; then
   url="https://$query"
 
+# ---------
 # SHORTCUTS
+# ---------
 
 elif [[ "$query" =~ ^aw\  ]]; then
   term="${query#aw }"
@@ -68,7 +72,9 @@ elif [[ "$query" =~ ^!gpt\  ]]; then
   term="${query#!gpt }"
   url="https://chat.openai.com/?q=$(urlencode "$term")"
 
+# -------
 # DEFAULT
+# -------
 
 else
   url="https://duckduckgo.com/?q=$encoded"
