@@ -8,7 +8,6 @@
 
 hl.on("hyprland.start", function()
 	--  Core Components
-	hl.exec_cmd(Run .. "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 	hl.exec_cmd(Run .. "waybar")
 	hl.exec_cmd(Run .. "swaync")
 	hl.exec_cmd(Run .. "hyprpaper")

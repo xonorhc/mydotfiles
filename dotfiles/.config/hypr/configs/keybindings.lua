@@ -80,7 +80,7 @@ hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("hyprctl activewindow -j | jq
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("togglesplit")) -- dwindle only
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("movetoroot")) -- dwindle only
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.layout("swapsplit")) -- dwindle only
 hl.bind("SHIFT + Tab", hl.dsp.window.cycle_next({ tiled = true })) -- monocle only
 hl.bind(mainMod .. " + Tab", hl.dsp.layout("cyclenext")) -- monocle only

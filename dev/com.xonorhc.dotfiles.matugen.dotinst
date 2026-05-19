@@ -2,7 +2,7 @@
 	"name": "My Dotfiles - Matugen DEV",
 	"id": "com.xonorhc.dotfiles.matugen.dev",
 	"description": "Hyprland with Matugen",
-	"version":"0.1",
+	"version":"0.3.1",
 	"author": "Anachronox",
 	"homepage": "https://github.com/xonorhc/mydotfiles",
 	"dependencies": "",
