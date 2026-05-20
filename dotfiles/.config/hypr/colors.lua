@@ -1,270 +1,270 @@
 image = "Null"
 
-baby_pink = "#ec67e3"
+baby_pink = "#ff79c6"
 
-baby_pink_container = "#555168"
+baby_pink_container = "#44475a"
 
-baby_pink_source = "#ec67e3"
+baby_pink_source = "#ff79c6"
 
-baby_pink_value = "#ec67e3"
+baby_pink_value = "#ff79c6"
 
-background = "#373444"
+background = "#282a36"
 
-blue = "#91dbff"
+blue = "#8be9fd"
 
-blue_container = "#555168"
+blue_container = "#44475a"
 
-blue_source = "#91dbff"
+blue_source = "#8be9fd"
 
-blue_value = "#91dbff"
+blue_value = "#8be9fd"
 
-cyan = "#91dbff"
+cyan = "#8be9fd"
 
-cyan_container = "#555168"
+cyan_container = "#44475a"
 
-cyan_source = "#91dbff"
+cyan_source = "#8be9fd"
 
-cyan_value = "#91dbff"
+cyan_value = "#8be9fd"
 
-dark_purple = "#ae7bf8"
+dark_purple = "#bd93f9"
 
-dark_purple_container = "#555168"
+dark_purple_container = "#44475a"
 
-dark_purple_source = "#ae7bf8"
+dark_purple_source = "#bd93f9"
 
-dark_purple_value = "#ae7bf8"
+dark_purple_value = "#bd93f9"
 
-error = "#fd3870"
+error = "#ff5555"
 
-error_container = "#555168"
+error_container = "#44475a"
 
-green = "#15ffb8"
+green = "#50fa7b"
 
-green_container = "#555168"
+green_container = "#44475a"
 
-green_source = "#15ffb8"
+green_source = "#50fa7b"
 
-green_value = "#15ffb8"
+green_value = "#50fa7b"
 
-inverse_on_surface = "#373444"
+inverse_on_surface = "#282a36"
 
-inverse_primary = "#373444"
+inverse_primary = "#282a36"
 
-inverse_surface = "#eceee4"
+inverse_surface = "#f8f8f2"
 
-nord_blue = "#91dbff"
+nord_blue = "#8be9fd"
 
-nord_blue_container = "#555168"
+nord_blue_container = "#44475a"
 
-nord_blue_source = "#91dbff"
+nord_blue_source = "#8be9fd"
 
-nord_blue_value = "#91dbff"
+nord_blue_value = "#8be9fd"
 
-on_baby_pink = "#373444"
+on_baby_pink = "#282a36"
 
-on_baby_pink_container = "#eceee4"
+on_baby_pink_container = "#f8f8f2"
 
-on_background = "#eceee4"
+on_background = "#f8f8f2"
 
-on_blue = "#373444"
+on_blue = "#282a36"
 
-on_blue_container = "#eceee4"
+on_blue_container = "#f8f8f2"
 
-on_cyan = "#373444"
+on_cyan = "#282a36"
 
-on_cyan_container = "#eceee4"
+on_cyan_container = "#f8f8f2"
 
-on_dark_purple = "#373444"
+on_dark_purple = "#282a36"
 
-on_dark_purple_container = "#eceee4"
+on_dark_purple_container = "#f8f8f2"
 
-on_error = "#373444"
+on_error = "#282a36"
 
-on_error_container = "#eceee4"
+on_error_container = "#f8f8f2"
 
-on_green = "#373444"
+on_green = "#282a36"
 
-on_green_container = "#eceee4"
+on_green_container = "#f8f8f2"
 
-on_nord_blue = "#373444"
+on_nord_blue = "#282a36"
 
-on_nord_blue_container = "#eceee4"
+on_nord_blue_container = "#f8f8f2"
 
-on_orange = "#373444"
+on_orange = "#282a36"
 
-on_orange_container = "#eceee4"
+on_orange_container = "#f8f8f2"
 
-on_pink = "#373444"
+on_pink = "#282a36"
 
-on_pink_container = "#eceee4"
+on_pink_container = "#f8f8f2"
 
-on_primary = "#373444"
+on_primary = "#282a36"
 
-on_primary_container = "#eceee4"
+on_primary_container = "#f8f8f2"
 
-on_primary_fixed = "#373444"
+on_primary_fixed = "#282a36"
 
-on_primary_fixed_variant = "#555168"
+on_primary_fixed_variant = "#44475a"
 
-on_purple = "#373444"
+on_purple = "#282a36"
 
-on_purple_container = "#eceee4"
+on_purple_container = "#f8f8f2"
 
-on_red = "#373444"
+on_red = "#282a36"
 
-on_red_container = "#eceee4"
+on_red_container = "#f8f8f2"
 
-on_secondary = "#373444"
+on_secondary = "#282a36"
 
-on_secondary_container = "#eceee4"
+on_secondary_container = "#f8f8f2"
 
-on_secondary_fixed = "#373444"
+on_secondary_fixed = "#282a36"
 
-on_secondary_fixed_variant = "#555168"
+on_secondary_fixed_variant = "#44475a"
 
-on_sun = "#373444"
+on_sun = "#282a36"
 
-on_sun_container = "#eceee4"
+on_sun_container = "#f8f8f2"
 
-on_surface = "#eceee4"
+on_surface = "#f8f8f2"
 
-on_surface_variant = "#626099"
+on_surface_variant = "#6272a4"
 
-on_teal = "#373444"
+on_teal = "#282a36"
 
-on_teal_container = "#eceee4"
+on_teal_container = "#f8f8f2"
 
-on_tertiary = "#373444"
+on_tertiary = "#282a36"
 
-on_tertiary_container = "#eceee4"
+on_tertiary_container = "#f8f8f2"
 
-on_tertiary_fixed = "#373444"
+on_tertiary_fixed = "#282a36"
 
-on_tertiary_fixed_variant = "#555168"
+on_tertiary_fixed_variant = "#44475a"
 
-on_vibrant_green = "#373444"
+on_vibrant_green = "#282a36"
 
-on_vibrant_green_container = "#eceee4"
+on_vibrant_green_container = "#f8f8f2"
 
-on_yellow = "#373444"
+on_yellow = "#282a36"
 
-on_yellow_container = "#eceee4"
+on_yellow_container = "#f8f8f2"
 
-orange = "#ffa670"
+orange = "#ffb86c"
 
-orange_container = "#555168"
+orange_container = "#44475a"
 
-orange_source = "#ffa670"
+orange_source = "#ffb86c"
 
-orange_value = "#ffa670"
+orange_value = "#ffb86c"
 
-outline = "#626099"
+outline = "#6272a4"
 
-outline_variant = "#555168"
+outline_variant = "#44475a"
 
-pink = "#ec67e3"
+pink = "#ff79c6"
 
-pink_container = "#555168"
+pink_container = "#44475a"
 
-pink_source = "#ec67e3"
+pink_source = "#ff79c6"
 
-pink_value = "#ec67e3"
+pink_value = "#ff79c6"
 
-primary = "#ae7bf8"
+primary = "#bd93f9"
 
-primary_container = "#555168"
+primary_container = "#44475a"
 
-primary_fixed = "#ae7bf8"
+primary_fixed = "#bd93f9"
 
-primary_fixed_dim = "#ae7bf8"
+primary_fixed_dim = "#bd93f9"
 
-purple = "#ae7bf8"
+purple = "#bd93f9"
 
-purple_container = "#555168"
+purple_container = "#44475a"
 
-purple_source = "#ae7bf8"
+purple_source = "#bd93f9"
 
-purple_value = "#ae7bf8"
+purple_value = "#bd93f9"
 
-red = "#fd3870"
+red = "#ff5555"
 
-red_container = "#555168"
+red_container = "#44475a"
 
-red_source = "#fd3870"
+red_source = "#ff5555"
 
-red_value = "#fd3870"
+red_value = "#ff5555"
 
-scrim = "#0d0d0d"
+scrim = "#000000"
 
-secondary = "#ec67e3"
+secondary = "#ff79c6"
 
-secondary_container = "#555168"
+secondary_container = "#44475a"
 
-secondary_fixed = "#ec67e3"
+secondary_fixed = "#ff79c6"
 
-secondary_fixed_dim = "#ec67e3"
+secondary_fixed_dim = "#ff79c6"
 
-shadow = "#0d0d0d"
+shadow = "#000000"
 
-source_color = "#ae7bf8"
+source_color = "#bd93f9"
 
-sun = "#ffeea6"
+sun = "#f1fa8c"
 
-sun_container = "#555168"
+sun_container = "#44475a"
 
-sun_source = "#ffeea6"
+sun_source = "#f1fa8c"
 
-sun_value = "#ffeea6"
+sun_value = "#f1fa8c"
 
-surface = "#2f2c3b"
+surface = "#21222c"
 
-surface_bright = "#444154"
+surface_bright = "#343746"
 
-surface_container = "#373444"
+surface_container = "#282a36"
 
-surface_container_high = "#444154"
+surface_container_high = "#343746"
 
-surface_container_highest = "#555168"
+surface_container_highest = "#44475a"
 
-surface_container_low = "#2f2c3b"
+surface_container_low = "#21222c"
 
-surface_container_lowest = "#27252f"
+surface_container_lowest = "#191a21"
 
-surface_dim = "#27252f"
+surface_dim = "#191a21"
 
-surface_tint = "#ae7bf8"
+surface_tint = "#bd93f9"
 
-surface_variant = "#555168"
+surface_variant = "#44475a"
 
-teal = "#91dbff"
+teal = "#8be9fd"
 
-teal_container = "#555168"
+teal_container = "#44475a"
 
-teal_source = "#91dbff"
+teal_source = "#8be9fd"
 
-teal_value = "#91dbff"
+teal_value = "#8be9fd"
 
-tertiary = "#ffa670"
+tertiary = "#ffb86c"
 
-tertiary_container = "#555168"
+tertiary_container = "#44475a"
 
-tertiary_fixed = "#ffa670"
+tertiary_fixed = "#ffb86c"
 
-tertiary_fixed_dim = "#ffa670"
+tertiary_fixed_dim = "#ffb86c"
 
-vibrant_green = "#15ffb8"
+vibrant_green = "#50fa7b"
 
-vibrant_green_container = "#555168"
+vibrant_green_container = "#44475a"
 
-vibrant_green_source = "#15ffb8"
+vibrant_green_source = "#50fa7b"
 
-vibrant_green_value = "#15ffb8"
+vibrant_green_value = "#50fa7b"
 
-yellow = "#ffeea6"
+yellow = "#f1fa8c"
 
-yellow_container = "#555168"
+yellow_container = "#44475a"
 
-yellow_source = "#ffeea6"
+yellow_source = "#f1fa8c"
 
-yellow_value = "#ffeea6"
+yellow_value = "#f1fa8c"
 

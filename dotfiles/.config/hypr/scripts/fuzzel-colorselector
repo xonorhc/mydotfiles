@@ -43,12 +43,11 @@ fi
 notify-send "Color Selector" "Generating theme for $hex_color..." --icon=color-management
 
 matugen -t scheme-rainbow \
-  --contrast 0.5 \
   -m dark \
   -r nearest \
   --continue-on-error \
   --fallback-color "#bd93f9" \
-  --lightness-dark 0.05 \
+  --lightness-dark -0.05 \
   color hex "$hex_color"
 
 notify-send "Color Selector" "Color $hex_color applied successfully!" -i color-select
