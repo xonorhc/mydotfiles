@@ -45,10 +45,14 @@ hl.bind("CTRL + ALT + ESCAPE", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/nu
 hl.bind("CTRL + ALT_R", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 
 -- Screenshots
-hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("grimblast save active"))
-hl.bind(mainMod .. " + ALT + C", hl.dsp.exec_cmd("grimblast save output"))
-hl.bind(mainMod .. " + CTRL + C", hl.dsp.exec_cmd("grimblast save screen"))
-hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("grimblast save area"))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("grimblast save active - | swappy -f -"))
+hl.bind(mainMod .. " + ALT + C", hl.dsp.exec_cmd("grimblast save output - | swappy -f -"))
+hl.bind(mainMod .. " + CTRL + C", hl.dsp.exec_cmd("grimblast save screen - | swappy -f -"))
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("grimblast save area - | swappy -f -"))
+
+-- Recording
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd([[ wf-recorder -g "$(slurp)" -f ~/Videos/recording_$(date +%Y-%m-%d_%H-%M-%S).mp4 ]]))
+hl.bind(mainMod .. " + CTRL + R", hl.dsp.exec_cmd([[ killall -s SIGINT wf-recorder ]]))
 
 -- Special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("scratchpad"))
