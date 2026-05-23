@@ -21,8 +21,8 @@ caching = false
 
 [templates.kitty]
 input_path = './templates/kitty-colors.conf'
-output_path = '~/.config/kitty/themes/Matugen.conf'
-post_hook = "kitty +kitten themes --reload-in=all Matugen"
+output_path = '~/.config/kitty/colors.conf'
+post_hook = 'pkill -SIGUSR1 kitty'
 
 [templates.hyprland]
 input_path = './templates/hyprland-colors.lua'
@@ -105,4 +105,13 @@ post_hook = "swaync-client -rs"
 [templates.nvim]
 input_path = './templates/nvim-colors.vim'
 output_path = '~/.config/nvim/colors/matugen.vim'
+post_hook = 'pkill -SIGUSR1 nvim'
+
+[templates.nvim-astro5]
+input_path = './templates/nvim-base16.lua'
+output_path = '~/.config/nvim-astro6/lua/plugins/base16-prox-max.lua'
+
+[templates.nvim-nvchad]
+input_path = './templates/nvim-base46.lua'
+output_path = '~/.local/share/nvim-nvchad/lazy/base46/lua/base46/themes/matugen.lua'
 post_hook = 'pkill -SIGUSR1 nvim'
