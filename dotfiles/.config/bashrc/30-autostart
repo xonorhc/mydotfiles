@@ -3,8 +3,36 @@
 # -----------------------------------------------------
 
 # -----------------------------------------------------
-# Fastfetch
+# Find
 # -----------------------------------------------------
-if [[ $(tty) == *"pts"* ]]; then
-    fastfetch
+fif() {
+  local res
+  res=$(rg --column --line-number --no-heading --color=always --smart-case "$1" | \
+    fzf --ansi --delimiter : --nth 3.. --preview 'sed -n "{2}p" {1} | head -n 20')
+
+  if [[ -n "$res" ]]; then
+    local file=$(echo "$res" | cut -d: -f1)
+    local line=$(echo "$res" | cut -d: -f2)
+    nvim "+$line" "$file"
+  fi
+}
+
+# -----------------------------------------------------
+# Yazi
+# -----------------------------------------------------
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
+}
+
+# -----------------------------------------------------
+# Zellij
+# -----------------------------------------------------
+if [[ -z "$ZELLIJ" && "$TERM" != "screen" && -z "$SSH_TTY" ]]; then
+    if command -v zellij &> /dev/null; then
+        zellij
+    fi
 fi

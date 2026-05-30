@@ -5,8 +5,18 @@
 # -----------------------------------------------------
 # Exports
 # -----------------------------------------------------
+export PATH="$HOME/.local/share/bob/nvim-bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+export SUDO_EDITOR=nvim
 export EDITOR=nvim
-export PATH="/usr/lib/ccache/bin/:$PATH"
-export PATH=$PATH:~/.cargo/bin/
-export PATH=$PATH:~/.local/bin/
-export PATH="$HOME/.config/hypr/scripts:$PATH"
+export VISUAL=nvim
+export PAGER='less'
+
+# -----------------------------------------------------
+# Database Context (Postgres)
+# -----------------------------------------------------
+export PGHOST='localhost'
+export PGPORT='5432'
+export PGDATABASE='postgres'
+export PGUSER='postgres'
+export PGPASSFILE="$HOME/.pgpass"
+export PSQL_PAGER="pspg"

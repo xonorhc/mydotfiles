@@ -1,25 +1,18 @@
 # -----------------------------------------------------
 # AUTOSTART
 # -----------------------------------------------------
+if [ "$TERM" = "linux" ]; then
+  echo -en "\e]P01a1b26"    # Black
+  echo -en "\e]P1f7768e"        # Red
+  echo -en "\e]P29ece6a"        # Green
+  echo -en "\e]P3e0af68"        # Yellow
+  echo -en "\e]P47aa2f7"        # Blue
+  echo -en "\e]P5bb9af7"        # Magenta
+  echo -en "\e]P67dcfff"        # Cyan
+  echo -en "\e]P7a9b1d6" # White
 
-# The Fuzzy Finder command
-finder() {
-    # Run the script and capture the result
-    local result=$($HOME/.config/hypr/scripts/finder)
-
-    # Check if the script told us to CD
-    if [[ "$result" == TYPE_DIR:* ]]; then
-        local target_dir="${result#TYPE_DIR:}"
-        cd "$target_dir" && ls
-    elif [[ "$result" == TYPE_FILE:* ]]; then
-    # Check if we have a file
-        ${EDITOR:-nano} "${result#TYPE_FILE:}"
-    else
-    # Return an error
-        echo "Could not read $result" >&2
-        return 1
-    fi
-}
+  clear
+fi
 
 # Content file search
 fif() {

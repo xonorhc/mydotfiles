@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-if [[ -z $(hyprctl workspaces | grep special:hide) ]]; then
-  hyprctl eval 'hl.dispatch(hl.dsp.window.move({ workspace = "special:hide" }));hl.dispatch(hl.dsp.workspace.toggle_special("hide"))'
-else
-  hyprctl eval 'hl.dispatch(hl.dsp.workspace.toggle_special("hide"));hl.dispatch(hl.dsp.window.move({ workspace = "+0" }))'
-fi

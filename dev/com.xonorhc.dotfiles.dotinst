@@ -1,8 +1,8 @@
 {
-	"name": "My dotfiles DEV",
-	"id": "com.xonorhc.dotfiles.dev",
+	"name": "My dotfiles TTY",
+	"id": "com.xonorhc.dotfiles.tty",
 	"description": "",
-	"version":"0.3.0",
+	"version":"0.0.1",
 	"author": "Anachronox",
 	"homepage": "https://github.com/xonorhc/mydotfiles",
 	"dependencies": "",

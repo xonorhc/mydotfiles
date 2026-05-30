@@ -11,15 +11,10 @@ highlight: true
 indent_character: " "
 journals:
   default:
-    journal: ~/.jrnl/journal.txt
+    journal: ~/.jrnl/
     encrypt: true
     display_format: json
-    editor: "vim -c 'set viminfo= noswapfile noundofile nobackup nowritebackup noshelltemp history=0 nomodeline secure'"
-  study:
-    journal: ~/.jrnl/studies/
-    template: ~/.jrnl/templates/asciidoc.adoc
     editor: "nvim -c 'set shada= noswapfile noundofile nobackup nowritebackup noshelltemp history=0 nomodeline secure'"
-  workout: ~/.jrnl/workouts.txt
 linewrap: 79
 tagsymbols: "#@"
 template: false

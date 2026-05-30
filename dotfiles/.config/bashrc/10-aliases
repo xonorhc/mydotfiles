@@ -8,15 +8,24 @@
 alias ..='cd ..'
 alias c='clear'
 alias ff='fastfetch'
-alias ls='eza -a --icons=always'
-alias ll='eza -al --icons=always'
-alias lt='eza -a --tree --level=1 --icons=always'
+alias ls='eza -a'
+alias ll='eza -al'
+alias lt='eza -a --tree --level=1'
 alias shutdown='systemctl poweroff'
 alias v='$EDITOR'
 alias vim='$EDITOR'
 alias wifi='nmtui'
-alias lock='hyprlock'
 alias clock='peaclock'
+alias venv='[ -d .venv ] && source .venv/bin/activate || (python3 -m venv .venv && source .venv/bin/activate)'
+alias pip-up='pip install --upgrade pip setuptools wheel'
+alias zj='zellij'
+alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+alias dcom='docker-compose'
+alias dclean='docker system prune --volumes'
+alias psql-gis='docker exec -it postgis_container psql -U user -d gistest'
+alias ginfo='gdalinfo -stats'
+alias oinfo='ogrinfo -so -al'
+alias pg-dump-gis='pg_dump -h $PGHOST -U $PGUSER -t "spatial_ref_sys" -t "geometry_columns" -t "geography_columns"'
 
 # -----------------------------------------------------
 # Git
@@ -32,12 +41,3 @@ alias gfo="git fetch origin"
 alias gcheck="git checkout"
 alias gcredential="git config credential.helper store"
 
-# -----------------------------------------------------
-# Scripts
-# -----------------------------------------------------
-alias ascii='~/.config/hypr/scripts/ascii-header'
-
-# -----------------------------------------------------
-# System
-# -----------------------------------------------------
-alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'

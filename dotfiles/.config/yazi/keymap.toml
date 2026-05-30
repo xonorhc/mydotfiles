@@ -4,11 +4,6 @@ run  = "cd ~/Downloads"
 desc = "Cd to ~/Downloads"
 
 [[mgr.prepend_keymap]]
-on   = ["g", "p"]
-run  = "cd ~/Pictures"
-desc = "Cd to ~/Pictures"
-
-[[mgr.prepend_keymap]]
 on   = ["g", "P"]
 run  = "cd ~/Projects"
 desc = "Cd to ~/Projects"
@@ -24,12 +19,13 @@ on   = "<Esc>"
 run  = "close"
 desc = "Cancel input"
 
-[[mgr.prepend_keymap]]
-on   = "y"
-run  = [
-  'shell -- for path in %s; do echo "file://$path"; done | wl-copy -t text/uri-list',
-  "yank",
-]
+[[manager.prepend_keymap]]
+on   = [ "c", "y" ]
+run  = [ 'shell -- for path in "$@"; do echo "$path"; done | ya pub dnd/copy', "yank" ]
+
+[[manager.prepend_keymap]]
+on   = [ "y" ]
+run  = [ 'shell -- 'for path in "$@"; do echo "$path"; done | base64 | tr -d "\n" | xargs -I {} printf "\e]52;c;{}\a"' ]
 
 [[mgr.prepend_keymap]]
 on   = ["g", "r"]
@@ -76,11 +72,6 @@ run  = "plugin lazygit"
 desc = "run lazygit"
 
 [[mgr.prepend_keymap]]
-on   = ["g", "l"]
-run  = "plugin open-git-remote"
-desc = "open git remote url"
-
-[[mgr.prepend_keymap]]
 on   = "o"
 run  = "plugin open-with-cmd -- block"
 desc = "Open with command in the terminal"
@@ -91,24 +82,6 @@ run  = "plugin open-with-cmd"
 desc = "Open with command"
 
 [[mgr.prepend_keymap]]
-on   = "M"
-run  = "plugin mount"
-
-[[mgr.prepend_keymap]]
-on   = "<C-w>"
-for  = "linux"
-run  = [
-  "shell -- hyprctl hyprpaper wallpaper ,%h",
-  "shell -- matugen --type scheme-vibrant --source-color-index 0 image %h"
-]
-desc = "Set hovered file as wallpaper"
-
-[[mgr.prepend_keymap]]
 on   = [ "g", "f" ]
 run  = 'search_do --via=fd --args="-d 3"'
 desc = "Switch to the flat view with a max depth of 3"
-
-[[mgr.prepend_keymap]]
-on   = "<C-g>"
-run  = 'shell -- rofi -theme fullscreen-preview -show filebrowser -filebrowser-command "ya emit reveal" -filebrowser-directory "$(pwd)"'
-desc = "Grid view"

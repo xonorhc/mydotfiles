@@ -14,11 +14,6 @@ rev = "5d5c480"
 hash = "88e56a64b7ce7c4314427452343fef17"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:mount"
-rev = "5d5c480"
-hash = "e3260d0b1feded8c8e3ae3afa1169e30"
-
-[[plugin.deps]]
 use = "Ape/open-with-cmd"
 rev = "eba191d"
 hash = "722a60eca1b338c9c24bb508d2d48578"
@@ -27,21 +22,6 @@ hash = "722a60eca1b338c9c24bb508d2d48578"
 use = "KKV9/compress"
 rev = "e60e122"
 hash = "fbaf0adc8efc59555b748d36aab62d40"
-
-[[plugin.deps]]
-use = "larry-oates/open-git-remote"
-rev = "72158d6"
-hash = "ed359abc14ba915a12e759435ed721ab"
-
-[[plugin.deps]]
-use = "Ape/simple-status"
-rev = "d0da104"
-hash = "68603fdd1dcaf415227e2c77a9317947"
-
-[[plugin.deps]]
-use = "yazi-rs/plugins:no-status"
-rev = "5d5c480"
-hash = "3e023d31f29201efdac2a6ae35fedb78"
 
 [flavor]
 deps = []
