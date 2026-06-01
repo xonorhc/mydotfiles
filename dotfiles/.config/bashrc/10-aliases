@@ -40,4 +40,3 @@ alias gsp="git stash; git pull"
 alias gfo="git fetch origin"
 alias gcheck="git checkout"
 alias gcredential="git config credential.helper store"
-

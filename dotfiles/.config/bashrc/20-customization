@@ -5,19 +5,19 @@
 # -----------------------------------------------------
 # Prompt
 # -----------------------------------------------------
-eval "$(starship init bash)"
+PS1="\[\e[1;36m\]\w\[\e[0m\]\n\[\e[1;32m\]❯\[\e[0m\] "
 
 # -----------------------------------------------------
 # Colors
 # -----------------------------------------------------
-if [ "$TERM" = "linux" ]; then
-  echo -en "\e]P01a1b26" # Black
-  echo -en "\e]P1f7768e" # Red
-  echo -en "\e]P29ece6a" # Green
-  echo -en "\e]P3e0af68" # Yellow
-  echo -en "\e]P47aa2f7" # Blue
-  echo -en "\e]P5bb9af7" # Magenta
-  echo -en "\e]P67dcfff" # Cyan
-  echo -en "\e]P7a9b1d6" # White
-  clear
-fi
+# if [ "$TERM" = "linux" ]; then
+#   echo -en "\e]P01a1b26" # Black
+#   echo -en "\e]P1f7768e" # Red
+#   echo -en "\e]P29ece6a" # Green
+#   echo -en "\e]P3e0af68" # Yellow
+#   echo -en "\e]P47aa2f7" # Blue
+#   echo -en "\e]P5bb9af7" # Magenta
+#   echo -en "\e]P67dcfff" # Cyan
+#   echo -en "\e]P7a9b1d6" # White
+#   clear
+# fi
