@@ -44,3 +44,5 @@ hi TabLine ctermbg=None ctermfg=None guibg=None
 
 colorscheme matugen
 autocmd Signal SIGUSR1 colorscheme matugen
+
+set laststatus=0
