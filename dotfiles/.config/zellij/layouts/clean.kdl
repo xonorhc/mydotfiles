@@ -1,0 +1,4 @@
+layout {
+    pane
+    // pane size=1 borderless=true name="tab-bar" plugin="tab-bar"
+}
