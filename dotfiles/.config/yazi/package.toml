@@ -1,4 +1,14 @@
 [[plugin.deps]]
+use = "yazi-rs/plugins:no-status"
+rev = "598cdb6"
+hash = "3e023d31f29201efdac2a6ae35fedb78"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "406ce6c"
+hash = "f5afc904d5106ee368c8aa2ded43bd74"
+
+[[plugin.deps]]
 use = "pirafrank/what-size"
 rev = "179ebf6"
 hash = "57056b9728006881d580ccabe8154a9c"
@@ -9,19 +19,9 @@ rev = "e73fd74"
 hash = "6ea5f37c7f219671ec504cb8311f889d"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:git"
-rev = "5d5c480"
-hash = "88e56a64b7ce7c4314427452343fef17"
-
-[[plugin.deps]]
 use = "Ape/open-with-cmd"
 rev = "eba191d"
 hash = "722a60eca1b338c9c24bb508d2d48578"
-
-[[plugin.deps]]
-use = "KKV9/compress"
-rev = "e60e122"
-hash = "fbaf0adc8efc59555b748d36aab62d40"
 
 [flavor]
 deps = []
