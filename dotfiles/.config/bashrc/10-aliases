@@ -22,10 +22,11 @@ alias zj='zellij'
 alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
 alias dcom='docker-compose'
 alias dclean='docker system prune --volumes'
-alias psql-gis='docker exec -it postgis_container psql -U user -d gistest'
+alias psql-gis='docker exec -it postgis psql -U postgres -d postgis'
 alias ginfo='gdalinfo -stats'
 alias oinfo='ogrinfo -so -al'
-alias pg-dump-gis='pg_dump -h $PGHOST -U $PGUSER -t "spatial_ref_sys" -t "geometry_columns" -t "geography_columns"'
+alias pg-dump-gis='docker exec -i postgis pg_dump -U postgres -d postgis'
+alias pg-dump-gis-custom='docker exec -i postgis pg_dump -U postgres -d postgis -F c'
 
 # -----------------------------------------------------
 # Git
