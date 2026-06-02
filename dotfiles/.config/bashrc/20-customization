@@ -21,3 +21,15 @@ PS1="\[\e[1;36m\]\w\[\e[0m\]\n\[\e[1;32m\]❯\[\e[0m\] "
 #   echo -en "\e]P7a9b1d6" # White
 #   clear
 # fi
+
+# -----------------------------------------------------
+# Postgis
+# -----------------------------------------------------
+backup-gis() {
+    local DATA=$(date +%Y-%m-%d_%H-%m-%s)
+    local ARQUIVO="backup_postgis_${DATA}.backup"
+
+    echo ">> Iniciando backup do container postgis..."
+    docker exec -i postgis pg_dump -U postgres -d postgis -F c > "$ARQUIVO"
+    echo ">> Backup concluído com sucesso: $ARQUIVO"
+}
