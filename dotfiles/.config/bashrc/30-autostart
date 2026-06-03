@@ -31,8 +31,8 @@ function y() {
 # -----------------------------------------------------
 # Zellij
 # -----------------------------------------------------
-# if [[ -z "$ZELLIJ" && "$TERM" != "screen" && -z "$SSH_TTY" ]]; then
-#     if command -v zellij &> /dev/null; then
-#         zellij
-#     fi
-# fi
+if [[ -z "$ZELLIJ" && "$TERM" != "screen" && -z "$SSH_TTY" ]]; then
+    if command -v zellij &> /dev/null; then
+        zellij
+    fi
+fi
