@@ -23,5 +23,10 @@ use = "Ape/open-with-cmd"
 rev = "eba191d"
 hash = "722a60eca1b338c9c24bb508d2d48578"
 
+[[plugin.deps]]
+use = "XYenon/clipboard"
+rev = "0ac0320"
+hash = "f80172438b4b5c31e94d6c891f734445"
+
 [flavor]
 deps = []

@@ -5,8 +5,8 @@ desc = "Cd to ~/Downloads"
 
 [[mgr.prepend_keymap]]
 on   = [ "g", "p" ]
-run  = "cd ~/Pictures"
-desc = "Cd to ~/Pictures"
+run  = "cd ~/Projects"
+desc = "Cd to ~/Projects"
 
 [[mgr.prepend_keymap]]
 on   = [ "g", "f" ]
@@ -57,3 +57,11 @@ desc = "Open with command in the terminal"
 on   = "O"
 run  = "plugin open-with-cmd"
 desc = "Open with command"
+
+[[mgr.prepend_keymap]]
+on  = "<C-y>"
+run = [ "yank", 'plugin clipboard -- --action=copy' ]
+
+[[mgr.prepend_keymap]]
+on  = "p"
+run = [ 'plugin clipboard -- --action=paste' ]
