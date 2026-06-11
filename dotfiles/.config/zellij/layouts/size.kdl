@@ -1,0 +1,9 @@
+layout {
+    pane size=5
+    pane split_direction="vertical" {
+        pane size="80%"
+        pane size="20%"
+    }
+    pane size=4
+}
+

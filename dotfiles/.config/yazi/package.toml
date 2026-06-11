@@ -28,5 +28,35 @@ use = "XYenon/clipboard"
 rev = "0ac0320"
 hash = "f80172438b4b5c31e94d6c891f734445"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:diff"
+rev = "598cdb6"
+hash = "8b1af6b5a69797ee951f2a80ce570818"
+
+[[plugin.deps]]
+use = "boydaihungst/gvfs"
+rev = "3abc0a2"
+hash = "eed89e75671723c8f9390a2862af0e4e"
+
+[[plugin.deps]]
+use = "lmnek/pandoc"
+rev = "fd2798b"
+hash = "5af4b06948bb7b825a243131eea2075c"
+
+[[plugin.deps]]
+use = "AnirudhG07/plugins-yazi:copy-file-contents"
+rev = "71545f4"
+hash = "f8530ee84fee95dbcc26bb1d8d8019c7"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "598cdb6"
+hash = "88e56a64b7ce7c4314427452343fef17"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:mount"
+rev = "598cdb6"
+hash = "e3260d0b1feded8c8e3ae3afa1169e30"
+
 [flavor]
 deps = []

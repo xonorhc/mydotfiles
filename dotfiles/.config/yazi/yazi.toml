@@ -10,6 +10,9 @@ edit = [
 open = [
 	{ run = "xdg-open %s1", desc = "Open" },
 ]
+# extract = [
+# 	{ run = "ya pub extract --list %s", desc = "Extract here" },
+# ]
 extract = [
 	{ run = 'ouch d -y %s', desc = "Extract here with ouch", for = "windows" },
 	{ run = 'ouch d -y %s', desc = "Extract here with ouch", for = "unix" },
@@ -19,3 +22,12 @@ extract = [
 mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}"
 run  = "ouch"
 
+[[plugin.prepend_fetchers]]
+url   = "*"
+run   = "git"
+group = "git"
+
+[[plugin.prepend_fetchers]]
+url   = "*/"
+run   = "git"
+group = "git"

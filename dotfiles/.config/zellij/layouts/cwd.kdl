@@ -1,0 +1,9 @@
+layout {
+    pane cwd="/"
+    pane {
+        command "git"
+        args "diff"
+        cwd "/path/to/some/folder"
+    }
+}
+

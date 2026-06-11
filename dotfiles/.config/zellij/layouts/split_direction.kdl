@@ -1,0 +1,12 @@
+layout {
+    pane split_direction="vertical" {
+        pane
+        pane
+    }
+    pane {
+        // value omitted, will be layed out horizontally
+        pane
+        pane
+    }
+}
+

@@ -163,8 +163,8 @@ keybinds clear-defaults=true {
         bind "Alt l" { MoveFocusOrTab "right"; }
         bind "Alt n" { NewPane; }
         bind "Alt o" { NewTab; }
-        bind "Alt p" { TogglePaneInGroup; }
-        bind "Alt Shift p" { ToggleGroupMarking; }
+        // bind "Alt p" { TogglePaneInGroup; }
+        // bind "Alt Shift p" { ToggleGroupMarking; }
         bind "Ctrl q" { Quit; }
         bind "Alt x" { CloseFocus; }
     }
@@ -302,7 +302,7 @@ web_client {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-// theme "default"
+theme "matugen"
  
 // Theme to use when the host terminal reports a dark color palette.
 // Requires `theme_light` to also be set; otherwise `theme` is used.

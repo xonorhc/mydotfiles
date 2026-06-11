@@ -8,15 +8,16 @@ default_minute: 0
 editor: nvim
 encrypt: false
 highlight: true
-indent_character: " "
+indent_character: ' '
 journals:
   default:
-    journal: ~/.jrnl/
-    encrypt: true
     display_format: json
-    editor: "nvim -c 'set shada= noswapfile noundofile nobackup nowritebackup noshelltemp history=0 nomodeline secure'"
+    editor: nvim -c 'set shada= noswapfile noundofile nobackup nowritebackup noshelltemp
+      history=0 nomodeline secure'
+    encrypt: true
+    journal: ~/.jrnl/journal.txt
 linewrap: 79
-tagsymbols: "#@"
+tagsymbols: '#@'
 template: false
-timeformat: "%F %r"
-version: v4.3
+timeformat: '%F %r'
+version: v4.2.1

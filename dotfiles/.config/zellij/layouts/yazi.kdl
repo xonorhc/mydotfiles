@@ -1,0 +1,7 @@
+layout {
+    pane {
+        command "yazi"
+        close_on_exit true
+        cwd "~/"
+    }
+}

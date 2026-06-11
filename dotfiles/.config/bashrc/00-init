@@ -10,6 +10,7 @@ export SUDO_EDITOR=nvim
 export EDITOR=nvim
 export VISUAL=nvim
 export PAGER='less'
+# export NVIM_APPNAME=nvim-nvchad nvim
 
 # -----------------------------------------------------
 # Database Context (Postgres)

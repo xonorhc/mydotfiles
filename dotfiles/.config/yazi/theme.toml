@@ -11,3 +11,21 @@ dirs  = []
 files = []
 exts  = []
 conds = []
+
+[filetype]
+rules = [
+	{ mime = "image/*", fg = "yellow" },
+	{ mime = "{audio,video}/*", fg = "magenta" },
+	{ mime = "inode/empty", fg = "cyan" },
+	{ url = "*", is = "orphan", fg = "red" },
+	# { url = "*", fg = "white" },
+	{ url = "*/", fg = "blue" }
+]
+
+[git]
+modified = { fg = "blue" }
+deleted  = { fg = "red", bold = true }
+unknown_sign  = " "
+modified_sign = "M"
+deleted_sign  = "D"
+clean_sign    = " "

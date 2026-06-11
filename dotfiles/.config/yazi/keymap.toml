@@ -5,6 +5,11 @@ desc = "Cd to ~/Downloads"
 
 [[mgr.prepend_keymap]]
 on   = [ "g", "p" ]
+run  = "cd ~/Pictures"
+desc = "Cd to ~/Pictures"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "P" ]
 run  = "cd ~/Projects"
 desc = "Cd to ~/Projects"
 
@@ -41,27 +46,66 @@ desc = "Compress with ouch"
 [[mgr.prepend_keymap]]
 on = [ ",", "s" ]
 run  = "plugin what-size"
-desc = "Calc size of selection or cwd" 
+desc = "Calc size of selection or cwd"
 
 [[mgr.prepend_keymap]]
 on   = [ "g", "i" ]
 run  = "plugin lazygit"
 desc = "run lazygit"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "o"
 run  = "plugin open-with-cmd -- block"
 desc = "Open with command in the terminal"
 
-[[manager.prepend_keymap]]
-on   = "O"
-run  = "plugin open-with-cmd"
-desc = "Open with command"
+[[mgr.prepend_keymap]]
+on   = "<C-d>"
+run  = "plugin diff"
+desc = "Diff the selected with the hovered file"
+
+[[mgr.prepend_keymap]]
+on   = [ "c", "p" ]
+run  = "plugin pandoc"
+desc = "Pandoc: Interactive Convert"
+
+[[mgr.prepend_keymap]]
+on   = [ "c", "m" ]
+run  = "plugin pandoc -- --to_ext=md"
+desc = "Pandoc: Convert to Markdown"
+
+[[mgr.prepend_keymap]]
+on   = [ "c", "M" ]
+run  = "plugin pandoc -- --to_ext=md --defaults=academic"
+desc = "Pandoc: Convert to Markdown (academic.yaml default file)"
 
 [[mgr.prepend_keymap]]
 on  = "<C-y>"
-run = [ "yank", 'plugin clipboard -- --action=copy' ]
+run = [ "yank", 'plugin clipboard -- --action=copy --notify-unknown-display-server' ]
 
 [[mgr.prepend_keymap]]
-on  = "p"
+on  = "<C-p>"
 run = [ 'plugin clipboard -- --action=paste' ]
+
+[[mgr.prepend_keymap]]
+on = "<A-y>"
+run = ["plugin copy-file-contents"]
+desc = "Copy contents of file"
+
+[[mgr.prepend_keymap]]
+on  = "M"
+run = "plugin mount"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "d" ]
+run = "plugin fazif faziffd"
+desc = "Find files/directories with fd and fzf"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "r" ]
+run = "plugin fazif fazifrg"
+desc = "Find content in files with ripgrep and fzf"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "a" ]
+run = "plugin fazif fazifrga"
+desc = "Find content in documents with ripgrep-all and fzf"
