@@ -1,56 +1,23 @@
-# ------------------------------------------- // System
-io.github.flattool.Warehouse
-# org.gnome.Boxes
-# io.missioncenter.MissionCenter
-# com.github.tchx84.Flatseal
-# io.gitlab.adhami3310.Impression
-
-# ------------------------------------------- // Networking
-# com.protonvpn.www
-# org.qbittorrent.qBittorrent
-# org.remmina.Remmina
-
-# ------------------------------------------- // Browser
-# org.torproject.torbrowser-launcher
 app.zen_browser.zen
-
-# ------------------------------------------- // Audio & Video
-# org.kde.haruna
-# org.pipewire.Helvum
-# com.github.rafostar.Clapper
-# com.obsproject.Studio
-com.spotify.Client
-# org.rncbc.qpwgraph
-# io.github.dp0sk.Crosspipe
-
-# ------------------------------------------- // Graphics & Photography
-org.gnome.Loupe
-# org.gnome.eog
-# org.kde.krita
+com.github.IsmaelMartinez.teams_for_linux
 com.github.PintaProject.Pinta
-# io.gitlab.theevilskeleton.Upscaler
-# net.fasterland.converseen
-# org.blender.Blender
-
-# ------------------------------------------- // Productivity
-# org.mozilla.Thunderbird
-# org.onlyoffice.desktopeditors
-# org.libreoffice.LibreOffice
-# com.github.IsmaelMartinez.teams_for_linux
-# io.github.zaedus.spider
-# io.github.hkdb.Aerion
-
-# ------------------------------------------- // Education
-# org.qgis.qgis
-# com.google.EarthPro
-
-# ------------------------------------------- // Social
-# org.signal.Signal
-
-# ------------------------------------------- // Utilities
+com.github.rafostar.Clapper
+com.github.tchx84.Flatseal
+com.google.EarthPro
+com.jeffser.Alpaca
+com.protonvpn.www
+com.spotify.Client
+io.github.dp0sk.Crosspipe
+io.github.flattool.Warehouse
+io.github.hkdb.Aerion
+io.github.seadve.Kooha
+io.github.zaedus.spider
 org.gnome.Calculator
-# com.ml4w.dotfilesinstaller
-# org.vanillaos.ApxGUI
-
-# ------------------------------------------- // AI
-# com.jeffser.Alpaca
+org.gnome.Loupe
+org.gnome.Maps
+org.gnome.baobab
+org.onlyoffice.desktopeditors
+org.qbittorrent.qBittorrent
+org.qgis.qgis
+org.remmina.Remmina
+org.vanillaos.ApxGUI

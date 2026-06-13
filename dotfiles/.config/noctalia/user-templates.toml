@@ -1,0 +1,25 @@
+[config]
+
+[templates]
+
+# User-defined templates
+# Add your custom templates below
+# Example:
+# [templates.myapp]
+# input_path = "~/.config/noctalia/templates/myapp.css"
+# output_path = "~/.config/myapp/theme.css"
+# post_hook = "myapp --reload-theme"
+
+[templates.hyprland]
+input_path = '~/.config/noctalia/templates/hyprland-colors.lua'
+output_path = '~/.config/hypr/colors.lua'
+post_hook = 'hyprctl reload'
+
+[templates.nvim-astro5]
+input_path = '~/.config/noctalia/templates/nvim-base16.lua'
+output_path = '~/.config/nvim-astro6/lua/plugins/base16-prox-max.lua'
+
+[templates.nvim-nvchad]
+input_path = '~/.config/noctalia/templates/nvim-base46.lua'
+output_path = '~/.local/share/nvim-nvchad/lazy/base46/lua/base46/themes/matugen.lua'
+post_hook = 'pkill -SIGUSR1 nvim'

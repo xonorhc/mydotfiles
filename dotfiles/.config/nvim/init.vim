@@ -41,6 +41,3 @@ hi Pmenu ctermbg=NONE ctermfg=NONE guibg=NONE
 hi FloatBorder ctermbg=NONE ctermfg=NONE guibg=NONE
 hi NormalFloat ctermbg=NONE ctermfg=NONE guibg=NONE
 hi TabLine ctermbg=None ctermfg=None guibg=None
-
-colorscheme matugen
-autocmd Signal SIGUSR1 colorscheme matugen

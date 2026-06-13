@@ -12,8 +12,8 @@ hl.config({
 		border_size = 2,
 
 		col = {
-			active_border = { colors = { source_color, source_color..20 }, angle = 90 },
-			inactive_border = source_color..10,
+			active_border = { colors = { primary, primary..20 }, angle = 90 },
+			inactive_border = primary..10,
 		},
 
 		resize_on_border = false,

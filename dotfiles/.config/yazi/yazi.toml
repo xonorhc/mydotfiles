@@ -12,12 +12,6 @@ extract = [
 	{ run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
 ]
 
-# Linux: Hyprland + Hyprpaper
-[[opener.set-wallpaper]]
-run  = "hyprctl hyprpaper wallpaper ,%s1"
-for  = "linux"
-desc = "Set as wallpaper"
-
 [open]
 prepend_rules = [
 	{ url = "*.json", use = "edit" },

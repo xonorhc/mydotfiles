@@ -27,22 +27,24 @@ hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(Run .. Terminal .. "-e lazydocker", {
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(Run .. Terminal .. "-e lazysql", { tag = "+float_term" }))
 
 -- Menus & Tools
-hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("pkill " .. Menu .. " || " .. Run .. Menu))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | " .. Run .. Menu .. " --dmenu --with-nth 2 " .. " | cliphist decode | wl-copy"))
-hl.bind(mainMod .. " + ALT + W", hl.dsp.exec_cmd(ScriptsDir .. "fuzzel-websearch"))
-hl.bind(mainMod .. " + ALT + T", hl.dsp.exec_cmd(ScriptsDir .. "fuzzel-translate"))
-hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(ScriptsDir .. "fuzzel-colorselector"))
-hl.bind(mainMod .. " + CTRL + T", hl.dsp.exec_cmd(ScriptsDir .. "fuzzel-themeselector"))
-hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd(Run .. "hyprpicker -a"))
-hl.bind(mainMod .. " + SLASH", hl.dsp.exec_cmd(ScriptsDir .. "fuzzel-emojipicker"))
+local ipc = "qs -c noctalia-shell ipc call" .. " "
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(ipc .. "launcher toggle"))
+hl.bind(mainMod .. " + BACKSLASH", hl.dsp.exec_cmd(ipc .. "controlCenter toggle"))
+hl.bind(mainMod .. " + comma", hl.dsp.exec_cmd(ipc .. "settings toggle"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(ipc .. "plugin:clipboard toggle"))
+hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd(ipc .. "plugin:clipboard wipe"))
+hl.bind(mainMod .. " + SLASH", hl.dsp.exec_cmd(ipc .. "launcher emoji"))
+hl.bind(mainMod .. " + CTRL + Q", hl.dsp.exec_cmd(ipc .. "sessionMenu toggle"))
+hl.bind(mainMod .. " + CTRL + M", hl.dsp.exec_cmd(ipc .. "systemMonitor toggle"))
+hl.bind("CTRL + ALT_R", hl.dsp.exec_cmd(ipc .. "bar toggle"))
+hl.bind(mainMod .. " + CTRL + T", hl.dsp.exec_cmd(ipc .. "darkMode toggle"))
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(ipc .. "wallpaper toggle"))
+hl.bind(mainMod .. " + ALT + T", hl.dsp.exec_cmd(ipc .. "plugin:translator toggle '' ''"))
 
 -- System & Power
-hl.bind(mainMod .. " + CTRL + Q", hl.dsp.exec_cmd(ScriptsDir .. "fuzzel-powermenu"))
 hl.bind(mainMod .. " + SHIFT + ESCAPE", hl.dsp.exec_cmd("uwsm stop"))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("systemctl --user restart 'app-*.service' && hyprctl reload"))
-hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(Run .. "~/.config/waybar/launch"))
 hl.bind("CTRL + ALT + ESCAPE", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind("CTRL + ALT_R", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 
 -- Screenshots
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("grimblast save active - | swappy -f -"))

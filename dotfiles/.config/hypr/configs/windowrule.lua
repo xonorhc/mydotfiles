@@ -167,7 +167,7 @@ hl.window_rule({
 	float = true,
 	center = true,
 	size = "1024 768",
-	border_color = { colors = { source_color }, angle = 45 },
+	border_color = { colors = { primary }, angle = 45 },
 })
 
 -- Move kitty to 100 100 and add an anim style (named rule)

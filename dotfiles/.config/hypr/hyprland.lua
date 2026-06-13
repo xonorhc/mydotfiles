@@ -12,7 +12,6 @@ require("configs.monitors")
 Run         = "uwsm app -- "
 Terminal    = "kitty" .. " "
 FileManager = "thunar" .. " "
-Menu        = "fuzzel" .. " "
 Browser     = "flatpak run app.zen_browser.zen" .. " "
 ScriptsDir  = os.getenv("HOME") .. "/.config/hypr/scripts/"
 
@@ -23,6 +22,10 @@ require("configs.autostart")
 require("configs.environment")
 
 ----- PERMISSIONS -----
+hl.permission({ binary = "/usr/bin/grim", type = "screencopy", mode = "allow" })
+hl.permission({ binary = "/usr/bin/wf-recorder", type = "screencopy", mode = "allow" })
+hl.permission({ binary = "/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", type = "screencopy", mode = "allow" })
+hl.permission({ binary = "^(io.github.seadve.Kooha)$" , type = "screencopy", mode = "allow" })
 
 ---- LOOK AND FEEL ----
 require("colors")

@@ -1,270 +1,71 @@
-image = "Null"
-
-baby_pink = "#ff79c6"
-
-baby_pink_container = "#44475a"
-
-baby_pink_source = "#ff79c6"
-
-baby_pink_value = "#ff79c6"
-
-background = "#282a36"
-
-blue = "#8be9fd"
-
-blue_container = "#44475a"
-
-blue_source = "#8be9fd"
-
-blue_value = "#8be9fd"
-
-cyan = "#8be9fd"
-
-cyan_container = "#44475a"
-
-cyan_source = "#8be9fd"
-
-cyan_value = "#8be9fd"
-
-dark_purple = "#bd93f9"
-
-dark_purple_container = "#44475a"
-
-dark_purple_source = "#bd93f9"
-
-dark_purple_value = "#bd93f9"
-
-error = "#ff5555"
-
-error_container = "#44475a"
-
-green = "#50fa7b"
-
-green_container = "#44475a"
-
-green_source = "#50fa7b"
-
-green_value = "#50fa7b"
-
-inverse_on_surface = "#282a36"
-
-inverse_primary = "#282a36"
-
-inverse_surface = "#f8f8f2"
-
-nord_blue = "#8be9fd"
-
-nord_blue_container = "#44475a"
-
-nord_blue_source = "#8be9fd"
-
-nord_blue_value = "#8be9fd"
-
-on_baby_pink = "#282a36"
-
-on_baby_pink_container = "#f8f8f2"
-
-on_background = "#f8f8f2"
-
-on_blue = "#282a36"
-
-on_blue_container = "#f8f8f2"
-
-on_cyan = "#282a36"
-
-on_cyan_container = "#f8f8f2"
-
-on_dark_purple = "#282a36"
-
-on_dark_purple_container = "#f8f8f2"
-
-on_error = "#282a36"
-
-on_error_container = "#f8f8f2"
-
-on_green = "#282a36"
-
-on_green_container = "#f8f8f2"
-
-on_nord_blue = "#282a36"
-
-on_nord_blue_container = "#f8f8f2"
-
-on_orange = "#282a36"
-
-on_orange_container = "#f8f8f2"
-
-on_pink = "#282a36"
-
-on_pink_container = "#f8f8f2"
-
-on_primary = "#282a36"
-
-on_primary_container = "#f8f8f2"
-
-on_primary_fixed = "#282a36"
-
-on_primary_fixed_variant = "#44475a"
-
-on_purple = "#282a36"
-
-on_purple_container = "#f8f8f2"
-
-on_red = "#282a36"
-
-on_red_container = "#f8f8f2"
-
-on_secondary = "#282a36"
-
-on_secondary_container = "#f8f8f2"
-
-on_secondary_fixed = "#282a36"
-
-on_secondary_fixed_variant = "#44475a"
-
-on_sun = "#282a36"
-
-on_sun_container = "#f8f8f2"
-
-on_surface = "#f8f8f2"
-
-on_surface_variant = "#6272a4"
-
-on_teal = "#282a36"
-
-on_teal_container = "#f8f8f2"
-
-on_tertiary = "#282a36"
-
-on_tertiary_container = "#f8f8f2"
-
-on_tertiary_fixed = "#282a36"
-
-on_tertiary_fixed_variant = "#44475a"
-
-on_vibrant_green = "#282a36"
-
-on_vibrant_green_container = "#f8f8f2"
-
-on_yellow = "#282a36"
-
-on_yellow_container = "#f8f8f2"
-
-orange = "#ffb86c"
-
-orange_container = "#44475a"
-
-orange_source = "#ffb86c"
-
-orange_value = "#ffb86c"
-
-outline = "#6272a4"
-
-outline_variant = "#44475a"
-
-pink = "#ff79c6"
-
-pink_container = "#44475a"
-
-pink_source = "#ff79c6"
-
-pink_value = "#ff79c6"
-
-primary = "#bd93f9"
-
-primary_container = "#44475a"
-
-primary_fixed = "#bd93f9"
-
-primary_fixed_dim = "#bd93f9"
-
-purple = "#bd93f9"
-
-purple_container = "#44475a"
-
-purple_source = "#bd93f9"
-
-purple_value = "#bd93f9"
-
-red = "#ff5555"
-
-red_container = "#44475a"
-
-red_source = "#ff5555"
-
-red_value = "#ff5555"
-
+image = "~/Dropbox/wallpaper/OxoCarbon/sebastian-kowoll-spirits_in_the_dark.jpg"
+background = "#161616"
+error = "#ee5396"
+error_container = "#8c023e"
+inverse_on_surface = "#282424"
+inverse_primary = "#1479b8"
+inverse_surface = "#e8e3e3"
+on_background = "#f2f4f8"
+on_error = "#161616"
+on_error_container = "#fad1e3"
+on_primary = "#161616"
+on_primary_container = "#ccebff"
+on_primary_fixed = "#21282c"
+on_primary_fixed_variant = "#2b353b"
+on_secondary = "#161616"
+on_secondary_container = "#d9f2e0"
+on_secondary_fixed = "#212c24"
+on_secondary_fixed_variant = "#2b3b30"
+on_surface = "#f2f4f8"
+on_surface_variant = "#dde1e6"
+on_tertiary = "#161616"
+on_tertiary_container = "#e0ccff"
+on_tertiary_fixed = "#25212c"
+on_tertiary_fixed_variant = "#312b3b"
+outline = "#636363"
+outline_variant = "#3d3d3d"
+primary = "#33b1ff"
+primary_container = "#004f80"
+primary_fixed = "#b2e2ff"
+primary_fixed_dim = "#80ceff"
 scrim = "#000000"
-
-secondary = "#ff79c6"
-
-secondary_container = "#44475a"
-
-secondary_fixed = "#ff79c6"
-
-secondary_fixed_dim = "#ff79c6"
-
+secondary = "#42be65"
+secondary_container = "#0e3f1c"
+secondary_fixed = "#bef4cd"
+secondary_fixed_dim = "#96e9ad"
 shadow = "#000000"
-
-source_color = "#bd93f9"
-
-sun = "#f1fa8c"
-
-sun_container = "#44475a"
-
-sun_source = "#f1fa8c"
-
-sun_value = "#f1fa8c"
-
-surface = "#21222c"
-
-surface_bright = "#343746"
-
-surface_container = "#282a36"
-
-surface_container_high = "#343746"
-
-surface_container_highest = "#44475a"
-
-surface_container_low = "#21222c"
-
-surface_container_lowest = "#191a21"
-
-surface_dim = "#191a21"
-
-surface_tint = "#bd93f9"
-
-surface_variant = "#44475a"
-
-teal = "#8be9fd"
-
-teal_container = "#44475a"
-
-teal_source = "#8be9fd"
-
-teal_value = "#8be9fd"
-
-tertiary = "#ffb86c"
-
-tertiary_container = "#44475a"
-
-tertiary_fixed = "#ffb86c"
-
-tertiary_fixed_dim = "#ffb86c"
-
-vibrant_green = "#50fa7b"
-
-vibrant_green_container = "#44475a"
-
-vibrant_green_source = "#50fa7b"
-
-vibrant_green_value = "#50fa7b"
-
-yellow = "#f1fa8c"
-
-yellow_container = "#44475a"
-
-yellow_source = "#f1fa8c"
-
-yellow_value = "#f1fa8c"
-
+surface = "#161616"
+surface_bright = "#454545"
+surface_container = "#262626"
+surface_container_high = "#303030"
+surface_container_highest = "#3a3a3a"
+surface_container_low = "#1e1e1e"
+surface_container_lowest = "#191919"
+surface_dim = "#0c0c0c"
+surface_variant = "#262626"
+terminal_background = "#161616"
+terminal_bright_black = "#393939"
+terminal_bright_blue = "#33b1ff"
+terminal_bright_cyan = "#3ddbd9"
+terminal_bright_green = "#42be65"
+terminal_bright_magenta = "#ff7eb6"
+terminal_bright_red = "#ee5396"
+terminal_bright_white = "#ffffff"
+terminal_bright_yellow = "#82cfff"
+terminal_cursor = "#f2f4f8"
+terminal_cursor_text = "#161616"
+terminal_foreground = "#f2f4f8"
+terminal_normal_black = "#262626"
+terminal_normal_blue = "#33b1ff"
+terminal_normal_cyan = "#3ddbd9"
+terminal_normal_green = "#42be65"
+terminal_normal_magenta = "#ff7eb6"
+terminal_normal_red = "#ee5396"
+terminal_normal_white = "#dde1e6"
+terminal_normal_yellow = "#82cfff"
+terminal_selection_bg = "#f2f4f8"
+terminal_selection_fg = "#161616"
+tertiary = "#be95ff"
+tertiary_container = "#5700e2"
+tertiary_fixed = "#d0b3ff"
+tertiary_fixed_dim = "#b180ff"
