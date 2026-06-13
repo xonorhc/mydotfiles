@@ -64,18 +64,16 @@ function y() {
 # -----------------------------------------------------
 backup-gis() {
     local DATA=$(date +%Y-%m-%d_%H-%m-%s)
-    local ARQUIVO="backup_postgis_${DATA}.backup"
+    local ARQUIVO="postgis_${DATA}.backup"
 
-    echo ">> Iniciando backup do container postgis..."
-    docker exec -i postgis pg_dump -U postgres -d postgis -F c > "$ARQUIVO"
-    echo ">> Backup concluído com sucesso: $ARQUIVO"
+    echo ">> Starting backup..."
+    docker exec -i geodatabase pg_dump -U postgres -d postgis -F c > "$ARQUIVO"
+    echo ">> Backup finished: $ARQUIVO"
 }
 
 # -----------------------------------------------------
 # Zellij
 # -----------------------------------------------------
-if [[ -z "$ZELLIJ" && "$TERM" != "screen" && -z "$SSH_TTY" ]]; then
-    if command -v zellij &> /dev/null; then
-        zellij
-    fi
+if [[ -z "$ZELLIJ" && -t 1 ]]; then
+  exec zellij
 fi

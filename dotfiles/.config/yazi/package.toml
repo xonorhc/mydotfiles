@@ -34,11 +34,6 @@ rev = "598cdb6"
 hash = "8b1af6b5a69797ee951f2a80ce570818"
 
 [[plugin.deps]]
-use = "boydaihungst/gvfs"
-rev = "3abc0a2"
-hash = "eed89e75671723c8f9390a2862af0e4e"
-
-[[plugin.deps]]
 use = "lmnek/pandoc"
 rev = "fd2798b"
 hash = "5af4b06948bb7b825a243131eea2075c"

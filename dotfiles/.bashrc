@@ -17,6 +17,17 @@
 # You can also create a .bashrc_custom file in your home directory
 # -----------------------------------------------------
 
+if [[ "${DEBUG_SHELL:-0}" == "1" ]]; then
+  export PS4='+ $(date "+%H:%M:%S") ${BASH_SOURCE}:${LINENO}: '
+  set -x
+fi
+
+cleanup_shell_children() {
+  pkill -P $$ 2>/dev/null || true
+}
+
+trap cleanup_shell_children EXIT HUP INT TERM
+
 # -----------------------------------------------------
 # Load modular configuration
 # -----------------------------------------------------

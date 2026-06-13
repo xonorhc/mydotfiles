@@ -11,8 +11,8 @@ highlight: true
 indent_character: " "
 journals:
   default:
-    journal: "~/.jrnl/"
-    template: "~/.local/share/jrnl/templates/example.md"
+    journal: "/mnt/c/Documents and Settings/HeronFernandesGolin/OneDrive - Global M. Tiete/Documentos/journal.md"
+    template: "~/.config/jrnl/template.md"
 linewrap: 79
 tagsymbols: "#@"
 template: false

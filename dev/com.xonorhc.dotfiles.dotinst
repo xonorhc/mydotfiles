@@ -2,7 +2,7 @@
 	"name": "My dotfiles TTY",
 	"id": "com.xonorhc.dotfiles.tty",
 	"description": "",
-	"version":"0.0.2",
+	"version":"0.0.3",
 	"author": "Anachronox",
 	"homepage": "https://github.com/xonorhc/mydotfiles",
 	"dependencies": "",
