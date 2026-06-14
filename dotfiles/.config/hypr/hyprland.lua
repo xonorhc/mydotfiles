@@ -12,7 +12,6 @@ require("configs.monitors")
 Run         = "uwsm app -- "
 Terminal    = "kitty" .. " "
 FileManager = "thunar" .. " "
-Menu        = "rofi" .. " "
 Browser     = "flatpak run app.zen_browser.zen" .. " "
 ScriptsDir  = os.getenv("HOME") .. "/.config/hypr/scripts/"
 

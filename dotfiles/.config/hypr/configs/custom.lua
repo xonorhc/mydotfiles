@@ -5,8 +5,8 @@
 --
 -- Add your additional Hyprland configurations here
 
--- hl.on("hyprland.start", function()
--- 	hl.exec_cmd("sleep 300 && " .. Run .. "flatpak run org.qbittorrent.qBittorrent")
--- end)
+hl.on("hyprland.start", function()
+	hl.exec_cmd("sleep 300 && " .. Run .. "flatpak run org.qbittorrent.qBittorrent")
+end)
 
--- hl.env("NVIM_APPNAME", "nvim-astro6")
+hl.env("NVIM_APPNAME", "nvim-astro6")
