@@ -10,7 +10,7 @@ require("configs.monitors")
 
 ---- MY PROGRAMS ----
 Run         = "uwsm app -- "
-Terminal    = "foot" .. " "
+Terminal    = "kitty" .. " "
 FileManager = "thunar" .. " "
 Menu        = "rofi" .. " "
 Browser     = "flatpak run app.zen_browser.zen" .. " "

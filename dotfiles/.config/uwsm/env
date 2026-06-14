@@ -1,10 +1,10 @@
 # Changes require a restart to take effect.
 
 # ------ System Locale ------
-export LANG=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
 # ------ Virtualization ------
-export LIBVIRT_DEFAULT_URI='qemu:///system'
+# export LIBVIRT_DEFAULT_URI='qemu:///system'
 
 # ------ Path ------
 export PATH="$HOME/.local/share/bob/nvim-bin:$HOME/.config/hypr/scripts:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
@@ -39,7 +39,7 @@ export XCURSOR_THEME=ArcDusk-cursors
 export XCURSOR_SIZE=24 
 
 # ------ APPS & DEFAULT PREFERENCES ------
-export TERMINAL=foot
+export TERMINAL=kitty
 export SUDO_EDITOR=vim
 export EDITOR=nvim
 export VISUAL=nvim
