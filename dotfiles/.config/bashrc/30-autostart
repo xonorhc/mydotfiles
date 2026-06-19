@@ -67,7 +67,7 @@ backup-gis() {
     local ARQUIVO="postgis_${DATA}.backup"
 
     echo ">> Starting backup..."
-    docker exec -i geodatabase pg_dump -U postgres -d postgis -F c > "$ARQUIVO"
+    docker exec -i container pg_dump -U postgres -d postgis -F c > "$ARQUIVO"
     echo ">> Backup finished: $ARQUIVO"
 }
 

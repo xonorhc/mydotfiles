@@ -4,7 +4,7 @@ run  = "cd ~/Downloads"
 desc = "Cd to ~/Downloads"
 
 [[mgr.prepend_keymap]]
-on   = [ "g", "p" ]
+on   = [ "g", "P" ]
 run  = "cd ~/Projects"
 desc = "Cd to ~/Projects"
 

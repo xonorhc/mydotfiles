@@ -11,13 +11,14 @@ export EDITOR=nvim
 export VISUAL=nvim
 export PAGER='less'
 # export NVIM_APPNAME=nvim-nvchad nvim
+# export NVIM_APPNAME=nvim-astro6 nvim
 
 # -----------------------------------------------------
 # Database Context (Postgres)
 # -----------------------------------------------------
 export PGHOST='localhost'
 export PGPORT='5432'
-export PGDATABASE='postgres'
+export PGDATABASE='postgis'
 export PGUSER='postgres'
 export PGPASSFILE="$HOME/.pgpass"
 export PSQL_PAGER="pspg"

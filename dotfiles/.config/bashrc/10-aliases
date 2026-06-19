@@ -41,9 +41,9 @@ alias gcredential="git config credential.helper store"
 alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
 alias dcom='docker-compose'
 alias dclean='docker system prune --volumes'
-alias psql-gis='docker exec -it geodatabase psql -U postgres -d postgis'
-alias pg-dump-gis='docker exec -i geodatabase pg_dump -U postgres -d postgis'
-alias pg-dump-gis-custom='docker exec -i geodatabase pg_dump -U postgres -d postgis -F c'
+alias psql-gis='docker exec -it container psql -U postgres -d postgis'
+alias pg-dump-gis='docker exec -i container pg_dump -U postgres -d postgis'
+alias pg-dump-gis-custom='docker exec -i container pg_dump -U postgres -d postgis -F c'
 
 # -----------------------------------------------------
 # GDAL
