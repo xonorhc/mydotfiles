@@ -1,16 +1,37 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "~/.config/DankMaterialShell/themes/tokyoNightNightMoon/theme.json",
+  "customThemeFile": "~/.config/DankMaterialShell/themes/oxocarbon/theme.json",
   "registryThemeVariants": {
     "deepdark": {
       "dark": {
         "flavor": "voltage",
-        "accent": "blue"
+        "accent": "purple"
       }
-    }
+    },
+    "peaceAndQuiet": "blue",
+    "oxocarbon": "pink",
+    "gruvboxMulti": {
+      "dark": {
+        "flavor": "material-medium-dark",
+        "accent": "yellow"
+      }
+    },
+    "catppuccin": {
+      "dark": {
+        "flavor": "mocha",
+        "accent": "mauve"
+      }
+    },
+    "amoledBlack": {
+      "dark": {
+        "flavor": "black",
+        "accent": "red"
+      }
+    },
+    "rosePine": "rosePine"
   },
-  "matugenScheme": "scheme-fidelity",
+  "matugenScheme": "scheme-content",
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "",
   "popupTransparency": 1,
@@ -288,7 +309,7 @@
   "matugenTemplateEquibop": false,
   "matugenTemplateGhostty": false,
   "matugenTemplateKitty": true,
-  "matugenTemplateFoot": false,
+  "matugenTemplateFoot": true,
   "matugenTemplateAlacritty": false,
   "matugenTemplateNeovim": false,
   "matugenTemplateWezterm": false,

@@ -1,0 +1,42 @@
+{
+  "dark": {
+    "name": "Carbon Tech Dark",
+    "primary": "#78a9ff",
+    "primaryText": "#161616",
+    "primaryContainer": "#33b1ff",
+    "secondary": "#be95ff",
+    "surface": "#262626",
+    "surfaceText": "#f2f4f8",
+    "surfaceVariant": "#393939",
+    "surfaceVariantText": "#dde1e6",
+    "surfaceTint": "#78a9ff",
+    "background": "#161616",
+    "backgroundText": "#ffffff",
+    "outline": "#525252",
+    "surfaceContainer": "#262626",
+    "surfaceContainerHigh": "#393939",
+    "error": "#ee5396",
+    "warning": "#08bdba",
+    "info": "#3ddbd9"
+  },
+  "light": {
+    "name": "Carbon Tech Light",
+    "primary": "#33b1ff",
+    "primaryText": "#ffffff",
+    "primaryContainer": "#78a9ff",
+    "secondary": "#be95ff",
+    "surface": "#f2f4f8",
+    "surfaceText": "#262626",
+    "surfaceVariant": "#dde1e6",
+    "surfaceVariantText": "#393939",
+    "surfaceTint": "#33b1ff",
+    "background": "#ffffff",
+    "backgroundText": "#161616",
+    "outline": "#525252",
+    "surfaceContainer": "#f2f4f8",
+    "surfaceContainerHigh": "#dde1e6",
+    "error": "#ee5396",
+    "warning": "#08bdba",
+    "info": "#3ddbd9"
+  }
+}
