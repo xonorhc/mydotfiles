@@ -22,6 +22,7 @@ require("configs.autostart")
 require("configs.environment")
 
 ----- PERMISSIONS -----
+hl.permission({ binary = "/usr/bin/dms", type = "screencopy", mode = "allow" })
 
 ---- LOOK AND FEEL ----
 require("colors")

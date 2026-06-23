@@ -1,102 +1,102 @@
 image = "Null"
 
-background = "#1f212d"
+background = "#1f1f1f"
 
-error = "#ec60a0"
+error = "#eb3c8b"
 
 error_container = "#a31b40"
 
-inverse_on_surface = "#b2c2f1"
+inverse_on_surface = "#455360"
 
-inverse_primary = "#6899ff"
+inverse_primary = "#ff64a8"
 
-inverse_surface = "#293046"
+inverse_surface = "#e9e9eb"
 
-on_background = "#a8b9f2"
+on_background = "#cfd2dc"
 
 on_error = "#76152d"
 
-on_error_container = "#f2c9ce"
+on_error_container = "#f4c9cc"
 
-on_primary = "#232635"
+on_primary = "#232323"
 
-on_primary_container = "#a8b9f2"
+on_primary_container = "#cfd2dc"
 
-on_primary_fixed = "#232635"
+on_primary_fixed = "#232323"
 
-on_primary_fixed_variant = "#232635"
+on_primary_fixed_variant = "#232323"
 
-on_secondary = "#232635"
+on_secondary = "#232323"
 
-on_secondary_container = "#a8b9f2"
+on_secondary_container = "#cfd2dc"
 
-on_secondary_fixed = "#232635"
+on_secondary_fixed = "#232323"
 
-on_secondary_fixed_variant = "#232635"
+on_secondary_fixed_variant = "#232323"
 
-on_surface = "#a8b9f2"
+on_surface = "#cfd2dc"
 
-on_surface_variant = "#96a3ce"
+on_surface_variant = "#e2e4f0"
 
-on_tertiary = "#232635"
+on_tertiary = "#232323"
 
-on_tertiary_container = "#a8b9f2"
+on_tertiary_container = "#cfd2dc"
 
-on_tertiary_fixed = "#232635"
+on_tertiary_fixed = "#232323"
 
-on_tertiary_fixed_variant = "#232635"
+on_tertiary_fixed_variant = "#232323"
 
-outline = "#424e71"
+outline = "#5f5f5f"
 
-outline_variant = "#2c334b"
+outline_variant = "#464646"
 
-primary = "#6291f6"
+primary = "#ff64a8"
 
-primary_container = "#80bdff"
+primary_container = "#5f5f5f"
 
-primary_fixed = "#80bdff"
+primary_fixed = "#5f5f5f"
 
-primary_fixed_dim = "#6291f6"
+primary_fixed_dim = "#ff64a8"
 
 scrim = "#0d0d0d"
 
-secondary = "#8d87fe"
+secondary = "#0fd1e6"
 
-secondary_container = "#323952"
+secondary_container = "#333333"
 
-secondary_fixed = "#8d87fe"
+secondary_fixed = "#0fd1e6"
 
-secondary_fixed_dim = "#8d87fe"
+secondary_fixed_dim = "#0fd1e6"
 
 shadow = "#0d0d0d"
 
-source_color = "#6291f6"
+source_color = "#ff64a8"
 
-surface = "#232635"
+surface = "#232323"
 
-surface_bright = "#323952"
+surface_bright = "#333333"
 
-surface_container = "#272e45"
+surface_container = "#232323"
 
-surface_container_high = "#323952"
+surface_container_high = "#333333"
 
-surface_container_highest = "#323952"
+surface_container_highest = "#333333"
 
-surface_container_low = "#232635"
+surface_container_low = "#232323"
 
-surface_container_lowest = "#1f212d"
+surface_container_lowest = "#1f1f1f"
 
-surface_dim = "#1f212d"
+surface_dim = "#1f1f1f"
 
-surface_tint = "#6291f6"
+surface_tint = "#cfd2dc"
 
-surface_variant = "#2c334b"
+surface_variant = "#464646"
 
-tertiary = "#8d87fe"
+tertiary = "#0fd1e6"
 
-tertiary_container = "#323952"
+tertiary_container = "#333333"
 
-tertiary_fixed = "#8d87fe"
+tertiary_fixed = "#0fd1e6"
 
-tertiary_fixed_dim = "#8d87fe"
+tertiary_fixed_dim = "#0fd1e6"
 

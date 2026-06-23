@@ -1,0 +1,6 @@
+scheme: "Matugen"
+author: "AnachronoX"
+slug: "matugen"
+<* for name, value in base16 *>
+{{ name | camel_case }}: "{{ value.default.hex | to_color | auto_lightness: 10 | lighten: 20 | saturate: 30, "hsl" }}"
+<* endfor *>

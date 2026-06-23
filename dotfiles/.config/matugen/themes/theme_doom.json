@@ -1,0 +1,42 @@
+{
+  "dark": {
+    "name": "Warm Ash Dark",
+    "primary": "#ff4500",
+    "primaryText": "#110b0b",
+    "primaryContainer": "#e63900",
+    "secondary": "#ffcc00",
+    "surface": "#1c1414",
+    "surfaceText": "#e8e1e1",
+    "surfaceVariant": "#2d2020",
+    "surfaceVariantText": "#d9c5c5",
+    "surfaceTint": "#ff4500",
+    "background": "#110b0b",
+    "backgroundText": "#ffffff",
+    "outline": "#5e4343",
+    "surfaceContainer": "#1c1414",
+    "surfaceContainerHigh": "#2d2020",
+    "error": "#8b0000",
+    "warning": "#bf941a",
+    "info": "#50fa7b"
+  },
+  "light": {
+    "name": "Warm Ash Light",
+    "primary": "#e63900",
+    "primaryText": "#ffffff",
+    "primaryContainer": "#ff4500",
+    "secondary": "#bf941a",
+    "surface": "#e8e1e1",
+    "surfaceText": "#1c1414",
+    "surfaceVariant": "#d9c5c5",
+    "surfaceVariantText": "#2d2020",
+    "surfaceTint": "#e63900",
+    "background": "#ffffff",
+    "backgroundText": "#110b0b",
+    "outline": "#a17b7b",
+    "surfaceContainer": "#e8e1e1",
+    "surfaceContainerHigh": "#d9c5c5",
+    "error": "#8b0000",
+    "warning": "#ffcc00",
+    "info": "#50fa7b"
+  }
+}

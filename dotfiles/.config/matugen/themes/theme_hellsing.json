@@ -1,0 +1,42 @@
+{
+  "dark": {
+    "name": "Crimson Gothic Dark",
+    "primary": "#ff1a1a",
+    "primaryText": "#0f0d0d",
+    "primaryContainer": "#a80000",
+    "secondary": "#ffcc00",
+    "surface": "#1a1616",
+    "surfaceText": "#f2e9e9",
+    "surfaceVariant": "#2b2323",
+    "surfaceVariantText": "#e0d1d1",
+    "surfaceTint": "#ff1a1a",
+    "background": "#0f0d0d",
+    "backgroundText": "#ffffff",
+    "outline": "#453636",
+    "surfaceContainer": "#1a1616",
+    "surfaceContainerHigh": "#2b2323",
+    "error": "#7a0000",
+    "warning": "#ffcc00",
+    "info": "#c0c0c0"
+  },
+  "light": {
+    "name": "Crimson Gothic Light",
+    "primary": "#a80000",
+    "primaryText": "#ffffff",
+    "primaryContainer": "#ff1a1a",
+    "secondary": "#4b0082",
+    "surface": "#f2e9e9",
+    "surfaceText": "#1a1616",
+    "surfaceVariant": "#e0d1d1",
+    "surfaceVariantText": "#2b2323",
+    "surfaceTint": "#a80000",
+    "background": "#ffffff",
+    "backgroundText": "#0f0d0d",
+    "outline": "#8c7a7a",
+    "surfaceContainer": "#f2e9e9",
+    "surfaceContainerHigh": "#e0d1d1",
+    "error": "#7a0000",
+    "warning": "#ffcc00",
+    "info": "#4d4d4d"
+  }
+}
