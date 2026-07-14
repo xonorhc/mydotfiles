@@ -23,7 +23,7 @@ hl.workspace_rule({ workspace = "special:scratchpad", on_created_empty = "kitty"
 
 hl.workspace_rule({
 	workspace = "special:btop",
-	on_created_empty = "kitty -e btop",
+	on_created_empty = Run .. Terminal .. " -e btop",
 	no_rounding = true,
 	gaps_out = 20,
 	border_size = 3,

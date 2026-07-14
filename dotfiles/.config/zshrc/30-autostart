@@ -1,10 +1,8 @@
 # -----------------------------------------------------
 # AUTOSTART
 # -----------------------------------------------------
+autoload -Uz add-zsh-hook
 
-# -----------------------------------------------------
-# Fastfetch
-# -----------------------------------------------------
 if [[ $(tty) == *"pts"* ]]; then
 	fastfetch
 else
@@ -15,34 +13,39 @@ else
 fi
 
 # -----------------------------------------------------
-# Yazi
+# Yazi Integration
 # -----------------------------------------------------
 function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd <"$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd <"$tmp"
+    [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+    rm -f -- "$tmp"
 }
 
 if [[ -n "$YAZI_ID" ]]; then
-	function _yazi_cd() {
-		ya emit cd "$PWD"
-	}
-	add-zsh-hook zshexit _yazi_cd
+    function _yazi_cd() {
+        ya emit cd "$PWD"
+    }
+    add-zsh-hook zshexit _yazi_cd
 fi
 
 # -----------------------------------------------------
 # Fuzzy Finder
 # -----------------------------------------------------
 finder() {
+    if [ ! -f "$HOME/.config/hypr/scripts/finder" ]; then
+        echo "Script 'finder' não encontrado em ~/.config/hypr/scripts/" >&2
+        return 1
+    fi
+
     local result=$($HOME/.config/hypr/scripts/finder)
 
     if [[ "$result" == TYPE_DIR:* ]]; then
         local target_dir="${result#TYPE_DIR:}"
         cd "$target_dir" && ls
     elif [[ "$result" == TYPE_FILE:* ]]; then
-        ${EDITOR:-nano} "${result#TYPE_FILE:}"
+        ${EDITOR:-nvim} "${result#TYPE_FILE:}"
     else
         echo "Could not read $result" >&2
         return 1
@@ -50,14 +53,20 @@ finder() {
 }
 
 fif() {
-  local file
-  local line
-  local res
-  res=$(grep -rin "$1" . | fzf --delimiter : --nth 3.. --preview 'cat {1}')
+    if ! command -v fzf &> /dev/null; then
+        echo "fzf não está instalado."
+        return 1
+    fi
 
-  if [[ -n "$res" ]]; then
-    file=$(echo "$res" | cut -d: -f1)
-    line=$(echo "$res" | cut -d: -f2)
-    vim "+$line" "$file"
-  fi
+    local file line res
+    local preview_cmd="cat {1}"
+    command -v bat &> /dev/null && preview_cmd="bat --style=numbers --color=always --line-range :500 {1}"
+
+    res=$(grep -rin "$1" . 2>/dev/null | fzf --delimiter : --nth 3.. --preview "$preview_cmd")
+
+    if [[ -n "$res" ]]; then
+        file=$(echo "$res" | cut -d: -f1)
+        line=$(echo "$res" | cut -d: -f2)
+        ${EDITOR:-nvim} "+$line" "$file"
+    fi
 }

@@ -3,6 +3,6 @@ alias vc='NVIM_APPNAME=nvim-nvchad nvim'
 alias va='NVIM_APPNAME=nvim-astro6 nvim'
 
 vv() {
-  local config=$(printf "nvim\nnvchad\nastro6" | fzf --prompt="Select Neovim Config: ")
+  local config=$(printf "nvim\nnvchad\nastro6" | fzf --height=40% --layout=reverse --border=rounded --prompt=" Select Neovim Config: ")
   [[ -n "$config" ]] && NVIM_APPNAME="nvim-$config" nvim "$@"
 }

@@ -4,29 +4,24 @@
 CASE_SENSITIVE="true"
 ENABLE_CORRECTION="true"
 
-# -----------------------------------------------------
-# oh-myzsh themes: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# -----------------------------------------------------
 ZSH_THEME="robbyrussell"
 
-# -----------------------------------------------------
-# oh-my-zsh plugins
-# -----------------------------------------------------
 plugins=(
-  git sudo web-search archlinux copyfile copybuffer 
-  dirhistory dotenv python pip
-	zsh-autosuggestions
-	zsh-autocomplete
-	zsh-syntax-highlighting
+    git sudo web-search archlinux copyfile copybuffer 
+    dirhistory dotenv python pip
+    zsh-autosuggestions
+    zsh-syntax-highlighting
 )
 
-# Set-up oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # -----------------------------------------------------
-# Set-up FZF key bindings (CTRL R for fuzzy history finder)
+# Set-up FZF key bindings
 # -----------------------------------------------------
-source <(fzf --zsh)
+if [ -f /usr/share/fzf/key-bindings.zsh ]; then
+    source /usr/share/fzf/key-bindings.zsh
+    source /usr/share/fzf/completion.zsh
+fi
 
 # zsh history
 HISTFILE=~/.zsh_history
@@ -37,4 +32,3 @@ setopt appendhistory
 # Keybindings (Vi Mode)
 bindkey -v
 export KEYTIMEOUT=1
-

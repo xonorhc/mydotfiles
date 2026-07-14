@@ -10,7 +10,7 @@ require("configs.monitors")
 
 ---- MY PROGRAMS ----
 Run         = "uwsm app -- "
-Terminal    = "kitty" .. " "
+Terminal    = "foot" .. " "
 FileManager = "thunar" .. " "
 Browser     = "flatpak run app.zen_browser.zen" .. " "
 ScriptsDir  = os.getenv("HOME") .. "/.config/hypr/scripts/"

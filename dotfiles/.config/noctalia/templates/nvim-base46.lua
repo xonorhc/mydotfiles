@@ -52,7 +52,7 @@ M.base_16 = {
 	base0C = "{{colors.tertiary_fixed_dim.default.hex}}", -- Regex, Escape Chars
 	base0D = "{{colors.primary_fixed_dim.default.hex}}", -- Functions, Methods
 	base0E = "{{colors.secondary_fixed_dim.default.hex}}", -- Keywords, Storage
-	base0F = "{{colors.error_container.default.hex}}", -- Deprecated, Embedded Tags
+	base0F = "{{colors.on_error_container.default.hex}}", -- Deprecated, Embedded Tags
 }
 
 M.type = "dark"

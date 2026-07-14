@@ -3,37 +3,20 @@
 # -----------------------------------------------------
 
 # -----------------------------------------------------
-# General
+# General & Safety
 # -----------------------------------------------------
 alias ..='cd ..'
 alias c='clear'
 alias ff='fastfetch'
 alias shutdown='systemctl poweroff'
 alias v='$EDITOR'
-alias vd="$EDITOR diff"
+alias vd="$EDITOR -d"
 alias wifi='nmtui'
 alias lock='hyprlock'
 alias clock='peaclock'
 alias -s pdf=zathura
 alias ascii='~/.config/hypr/scripts/ascii-header'
 
-# -----------------------------------------------------
-# Git
-# -----------------------------------------------------
-alias gcl="git clone"
-alias gs="git status"
-alias gi="git init"
-alias ga="git add"
-alias gm="git commit -m"
-alias gp="git push"
-alias gb="git branch"
-alias gc="git checkout"
-alias gcb="git checkout -B"
-alias gcm="git checkout master"
-alias gpu="git pull"
-alias gpo="git pull origin"
-alias gl="git log"
-alias gd="git diff"
-alias gra="git remote add"
-alias grr="git remote rm"
-alias gsh="git stash"
+alias rm='rm -iv'
+alias cp='cp -iv'
+alias mv='mv -iv'

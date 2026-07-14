@@ -15,9 +15,11 @@ input_path = '~/.config/noctalia/templates/hyprland-colors.lua'
 output_path = '~/.config/hypr/colors.lua'
 post_hook = 'hyprctl reload'
 
-[templates.nvim-astro5]
+[templates.nvim-astro6]
 input_path = '~/.config/noctalia/templates/nvim-base16.lua'
-output_path = '~/.config/nvim-astro6/lua/plugins/base16-prox-max.lua'
+output_path = '~/.config/nvim-astro6/lua/plugins/matugen.lua'
+# input_path = '~/.config/noctalia/templates/base16.yaml'
+# output_path = '~/.config/nvim-astro6/lua/schemes/matugen.yaml'
 
 [templates.nvim-nvchad]
 input_path = '~/.config/noctalia/templates/nvim-base46.lua'

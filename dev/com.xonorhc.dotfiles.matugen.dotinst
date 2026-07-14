@@ -2,7 +2,7 @@
 	"name": "My Dotfiles - Noctalia DEV",
 	"id": "com.xonorhc.dotfiles.matugen.dev",
 	"description": "Hyprland with Noctalia",
-	"version":"0.0.1",
+	"version":"0.0.2",
 	"author": "Anachronox",
 	"homepage": "https://github.com/xonorhc/mydotfiles",
 	"dependencies": "",
