@@ -33,13 +33,13 @@ input_path = '~/.config/matugen/templates/nvim-colors.vim'
 output_path = '~/.config/nvim/colors/matugen.vim'
 post_hook = 'pkill -SIGUSR1 nvim'
 
-[templates.nvim-astro5]
-# input_path = '~/.config/matugen/templates/nvim-base16.lua'
-# output_path = '~/.config/nvim-astro6/lua/plugins/base16-prox-max.lua'
-input_path = '~/.config/matugen/templates/base16.yaml'
-output_path = '~/.config/nvim-astro6/lua/schemes/matugen.yaml'
+# [templates.nvim-astro5]
+# # input_path = '~/.config/matugen/templates/neovim.lua'
+# # output_path = '~/.config/nvim-astro6/lua/plugins/base16.lua'
+# input_path = '~/.config/matugen/templates/base16.yaml'
+# output_path = '~/.config/nvim-astro6/lua/schemes/matugen.yaml'
 
-[templates.nvim-nvchad]
-input_path = '~/.config/matugen/templates/nvim-base46.lua'
-output_path = '~/.local/share/nvim-nvchad/lazy/base46/lua/base46/themes/matugen.lua'
-post_hook = 'pkill -SIGUSR1 nvim'
+# [templates.nvim-nvchad]
+# input_path = '~/.config/matugen/templates/nvim-base46.lua'
+# output_path = '~/.local/share/nvim-nvchad/lazy/base46/lua/base46/themes/matugen.lua'
+# post_hook = 'pkill -SIGUSR1 nvim'

@@ -1,15 +1,15 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "~/.config/DankMaterialShell/themes/oxocarbon/theme.json",
+  "customThemeFile": "/home/xonorhc/.config/DankMaterialShell/themes/oxocarbon/theme.json",
   "registryThemeVariants": {
     "deepdark": {
       "dark": {
         "flavor": "voltage",
-        "accent": "purple"
+        "accent": "blue"
       }
     },
-    "peaceAndQuiet": "blue",
+    "peaceAndQuiet": "pink",
     "oxocarbon": "pink",
     "gruvboxMulti": {
       "dark": {
@@ -19,19 +19,32 @@
     },
     "catppuccin": {
       "dark": {
-        "flavor": "mocha",
-        "accent": "mauve"
+        "flavor": "frappe",
+        "accent": "sapphire"
       }
     },
     "amoledBlack": {
       "dark": {
         "flavor": "black",
-        "accent": "red"
+        "accent": "green"
       }
     },
-    "rosePine": "rosePine"
+    "rosePine": "dawn",
+    "everforest": "soft",
+    "joziCityNights": {
+      "dark": {
+        "flavor": "nights",
+        "accent": "green"
+      }
+    },
+    "astralJourney": {
+      "dark": {
+        "flavor": "blackhole",
+        "accent": "coral"
+      }
+    }
   },
-  "matugenScheme": "scheme-content",
+  "matugenScheme": "scheme-vibrant",
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "",
   "popupTransparency": 1,
@@ -309,7 +322,7 @@
   "matugenTemplateEquibop": false,
   "matugenTemplateGhostty": false,
   "matugenTemplateKitty": true,
-  "matugenTemplateFoot": true,
+  "matugenTemplateFoot": false,
   "matugenTemplateAlacritty": false,
   "matugenTemplateNeovim": false,
   "matugenTemplateWezterm": false,

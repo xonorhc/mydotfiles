@@ -2,7 +2,7 @@
 	"name": "My dotfiles DankMaterialShell DEV",
 	"id": "com.xonorhc.dotfiles.dms.dev",
 	"description": "",
-	"version":"0.0.1",
+	"version":"0.0.3",
 	"author": "Anachronox",
 	"homepage": "https://github.com/xonorhc/mydotfiles",
 	"dependencies": "",
