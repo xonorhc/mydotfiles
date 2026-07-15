@@ -2,6 +2,26 @@
 # CUSTOMIZATION
 # -----------------------------------------------------
 
+__AUTOENV_FILE=""
+autoenv_load() {
+    local git_root env_file
+
+    git_root=$(git rev-parse --show-toplevel 2>/dev/null) || return
+
+    env_file="$git_root/.env"
+
+    [[ -f "$env_file" ]] || return
+    [[ "$env_file" == "$__AUTOENV_FILE" ]] && return
+
+    while IFS='=' read -r key value; do
+        [[ -z "$key" || "$key" =~ ^[[:space:]]*# ]] && continue
+        export "$key=$value"
+    done < "$env_file"
+
+    __AUTOENV_FILE="$env_file"
+}
+PROMPT_COMMAND="autoenv_load${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+
 # -----------------------------------------------------
 # Prompt
 # -----------------------------------------------------
