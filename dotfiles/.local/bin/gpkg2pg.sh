@@ -6,7 +6,7 @@ set -euo pipefail
 #
 # Exemplos:
 #   ./gpkg2postgres.sh dados.gpkg linhas
-#   ./gpkg2postgres.sh dados.gpkg linhas ingest_temp trechos
+#   ./gpkg2postgres.sh dados.gpkg linhas ingest_tmp trechos
 #   ./gpkg2postgres.sh dados.gpkg pontos ingest pontos_coletados
 
 usage() {
@@ -15,7 +15,7 @@ usage() {
   echo
   echo "Exemplos:"
   echo "  $0 dados.gpkg linhas"
-  echo "  $0 dados.gpkg linhas ingest_temp trechos"
+  echo "  $0 dados.gpkg linhas ingest_tmp trechos"
   echo "  $0 dados.gpkg pontos ingest pontos_coletados"
   exit 1
 }
@@ -36,7 +36,7 @@ PG_CONN_STR="host=${DB_HOST} user=${DB_USER} dbname=${DB_NAME} port=${DB_PORT}"
 # --- Parâmetros ---
 INPUT_GPKG="$1"
 SOURCE_LAYER="$2"
-SCHEMA="${3:-ingest_temp}"
+SCHEMA="${3:-ingest_tmp}"
 TARGET_TABLE="${4:-$SOURCE_LAYER}"
 
 command -v ogr2ogr >/dev/null 2>&1 || {

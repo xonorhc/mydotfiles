@@ -1,79 +1,377 @@
 # -----------------------------------------------------
-# AUTOSTART
+# AUTOSTART / FUNCTIONS
 # -----------------------------------------------------
 
 # -----------------------------------------------------
-# FZF
+# FZF helpers
 # -----------------------------------------------------
 fif() {
-  local res
-  res=$(rg --column --line-number --no-heading --color=always --smart-case "$1" | \
-    fzf --ansi --delimiter : --nth 3.. --preview 'sed -n "{2}p" {1} | head -n 20')
+    local query="$1"
+    local res file line
 
-  if [[ -n "$res" ]]; then
-    local file=$(echo "$res" | cut -d: -f1)
-    local line=$(echo "$res" | cut -d: -f2)
-    nvim "+$line" "$file"
-  fi
+    if [[ -z "$query" ]]; then
+        echo "Usage: fif <search-term>"
+        return 1
+    fi
+
+    command -v rg >/dev/null 2>&1 || {
+        echo "Missing dependency: rg"
+        return 1
+    }
+
+    command -v fzf >/dev/null 2>&1 || {
+        echo "Missing dependency: fzf"
+        return 1
+    }
+
+    res="$(
+        rg --column --line-number --no-heading --color=always --smart-case "$query" |
+            fzf --ansi --delimiter : --nth 3.. \
+                --preview 'sed -n "{2}p" {1} | head -n 20'
+    )"
+
+    if [[ -n "$res" ]]; then
+        file="$(echo "$res" | cut -d: -f1)"
+        line="$(echo "$res" | cut -d: -f2)"
+        "$EDITOR" "+$line" "$file"
+    fi
 }
 
 fkill() {
-    local pid
-    if [ "$UID" != "0" ]; then
-        pid=$(ps -f -u $UID | sed 1d | fzf -m | awk '{print $2}')
+    local pid signal="${1:-9}"
+
+    command -v fzf >/dev/null 2>&1 || {
+        echo "Missing dependency: fzf"
+        return 1
+    }
+
+    if [[ "$UID" != "0" ]]; then
+        pid="$(ps -f -u "$UID" | sed 1d | fzf -m | awk '{print $2}')"
     else
-        pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+        pid="$(ps -ef | sed 1d | fzf -m | awk '{print $2}')"
     fi
 
-    if [ "x$pid" != "x" ]
-    then
-        echo $pid | xargs kill -${1:-9}
+    if [[ -n "$pid" ]]; then
+        echo "$pid" | xargs kill "-$signal"
     fi
 }
 
 fd() {
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m) &&
-  cd "$dir"
+    local dir
+
+    command -v fzf >/dev/null 2>&1 || {
+        echo "Missing dependency: fzf"
+        return 1
+    }
+
+    dir="$(find "${1:-.}" -path '*/.*' -prune -o -type d -print 2>/dev/null | fzf +m)" &&
+        cd "$dir" || return
 }
 
 fda() {
-  local dir
-  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+    local dir
+
+    command -v fzf >/dev/null 2>&1 || {
+        echo "Missing dependency: fzf"
+        return 1
+    }
+
+    dir="$(find "${1:-.}" -type d 2>/dev/null | fzf +m)" &&
+        cd "$dir" || return
 }
 
 fjrnl() {
-  title=$(jrnl --short | fzf --tac --no-sort) &&
-  jrnl -on "$(echo $title | cut -c 1-16)" $1
+    local title
+
+    command -v jrnl >/dev/null 2>&1 || {
+        echo "Missing dependency: jrnl"
+        return 1
+    }
+
+    command -v fzf >/dev/null 2>&1 || {
+        echo "Missing dependency: fzf"
+        return 1
+    }
+
+    title="$(jrnl --short | fzf --tac --no-sort)" &&
+        jrnl -on "$(echo "$title" | cut -c 1-16)" "$1"
 }
 
 # -----------------------------------------------------
 # Yazi
 # -----------------------------------------------------
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	command yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
-	command rm -f -- "$tmp"
+y() {
+    command -v yazi >/dev/null 2>&1 || {
+        echo "Missing dependency: yazi"
+        return 1
+    }
+
+    local tmp cwd
+    tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+
+    yazi "$@" --cwd-file="$tmp"
+
+    if cwd="$(cat "$tmp" 2>/dev/null)"; then
+        [[ -n "$cwd" && "$cwd" != "$PWD" && -d "$cwd" ]] && cd "$cwd"
+    fi
+
+    rm -f "$tmp"
 }
 
 # -----------------------------------------------------
-# Postgis
+# PostgreSQL / PostGIS Docker helpers
 # -----------------------------------------------------
+psql-gis() {
+    local container="${PG_CONTAINER:-postgis-db}"
+    local database="${PGDATABASE:-postgis}"
+    local user="${PGUSER:-postgres}"
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -C|--container)
+                container="$2"
+                shift 2
+                ;;
+            -d|--database)
+                database="$2"
+                shift 2
+                ;;
+            -U|--user)
+                user="$2"
+                shift 2
+                ;;
+            -h|--help)
+                echo "Usage:"
+                echo "  psql-gis [-C container] [-d database] [-U user] [-- psql args]"
+                echo
+                echo "Examples:"
+                echo "  psql-gis"
+                echo "  psql-gis -C postgis-container -d postgis -U postgres"
+                echo "  psql-gis -- -c 'SELECT version();'"
+                return 0
+                ;;
+            --)
+                shift
+                break
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+    docker exec -it "$container" psql -U "$user" -d "$database" "$@"
+}
+
 backup-gis() {
-    local DATA=$(date +%Y-%m-%d_%H-%m-%s)
-    local ARQUIVO="postgis_${DATA}.backup"
+    local container="${PG_CONTAINER:-postgis-db}"
+    local database="${PGDATABASE:-postgis}"
+    local user="${PGUSER:-postgres}"
+    local compress="6"
+    local schema=""
+    local table=""
+    local file=""
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -C|--container)
+                container="$2"
+                shift 2
+                ;;
+            -d|--database)
+                database="$2"
+                shift 2
+                ;;
+            -U|--user)
+                user="$2"
+                shift 2
+                ;;
+            -f|--file)
+                file="$2"
+                shift 2
+                ;;
+            -n|--schema)
+                schema="$2"
+                shift 2
+                ;;
+            -t|--table)
+                table="$2"
+                shift 2
+                ;;
+            -Z|--compress)
+                compress="$2"
+                shift 2
+                ;;
+            -h|--help)
+                echo "Usage:"
+                echo "  backup-gis [options] [-- extra pg_dump args]"
+                echo
+                echo "Options:"
+                echo "  -C, --container   Docker container name"
+                echo "  -d, --database    PostgreSQL database name"
+                echo "  -U, --user        PostgreSQL user"
+                echo "  -f, --file        Output backup file"
+                echo "  -n, --schema      Backup only one schema"
+                echo "  -t, --table       Backup only one table"
+                echo "  -Z, --compress    Compression level 0-9"
+                echo "  -h, --help        Show help"
+                echo
+                echo "Examples:"
+                echo "  backup-gis"
+                echo "  backup-gis -f postgis.backup"
+                echo "  backup-gis -C postgis-container -d postgis -U postgres"
+                echo "  backup-gis -n public"
+                echo "  backup-gis -t public.roads"
+                echo "  backup-gis -Z 9"
+                echo "  backup-gis -- --verbose"
+                return 0
+                ;;
+            --)
+                shift
+                break
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+    if [[ -z "$file" ]]; then
+        local timestamp
+        timestamp="$(date +%Y-%m-%d_%H-%M-%S)"
+        file="${database}_${timestamp}.backup"
+    fi
+
+    local dump_args=(
+        -U "$user"
+        -d "$database"
+        -F c
+        -Z "$compress"
+    )
+
+    [[ -n "$schema" ]] && dump_args+=(-n "$schema")
+    [[ -n "$table" ]] && dump_args+=(-t "$table")
 
     echo ">> Starting backup..."
-    docker exec -i container pg_dump -U postgres -d postgis -F c > "$ARQUIVO"
-    echo ">> Backup finished: $ARQUIVO"
+    echo ">> Container: $container"
+    echo ">> Database:  $database"
+    echo ">> User:      $user"
+    echo ">> File:      $file"
+
+    if docker exec -i "$container" pg_dump "${dump_args[@]}" "$@" > "$file"; then
+        echo ">> Backup finished: $file"
+    else
+        echo ">> Backup failed"
+        [[ -f "$file" ]] && rm -f "$file"
+        return 1
+    fi
+}
+
+pg-dump-gis() {
+    local container="${PG_CONTAINER:-postgis-db}"
+    local database="${PGDATABASE:-postgis}"
+    local user="${PGUSER:-postgres}"
+    local file=""
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -C|--container)
+                container="$2"
+                shift 2
+                ;;
+            -d|--database)
+                database="$2"
+                shift 2
+                ;;
+            -U|--user)
+                user="$2"
+                shift 2
+                ;;
+            -f|--file)
+                file="$2"
+                shift 2
+                ;;
+            -h|--help)
+                echo "Usage:"
+                echo "  pg-dump-gis [-C container] [-d database] [-U user] [-f file] [-- pg_dump args]"
+                return 0
+                ;;
+            --)
+                shift
+                break
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+    if [[ -z "$file" ]]; then
+        file="${database}_$(date +%Y-%m-%d_%H-%M-%S).sql"
+    fi
+
+    docker exec -i "$container" pg_dump -U "$user" -d "$database" "$@" > "$file" &&
+        echo ">> SQL dump saved to: $file"
+}
+
+pg-restore-gis() {
+    local container="${PG_CONTAINER:-postgis-db}"
+    local database="${PGDATABASE:-postgis}"
+    local user="${PGUSER:-postgres}"
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -C|--container)
+                container="$2"
+                shift 2
+                ;;
+            -d|--database)
+                database="$2"
+                shift 2
+                ;;
+            -U|--user)
+                user="$2"
+                shift 2
+                ;;
+            -h|--help)
+                echo "Usage:"
+                echo "  pg-restore-gis [-C container] [-d database] [-U user] file.backup [-- pg_restore args]"
+                return 0
+                ;;
+            --)
+                shift
+                break
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+    local file="$1"
+    shift || true
+
+    if [[ -z "$file" || ! -f "$file" ]]; then
+        echo "Error: backup file not found"
+        return 1
+    fi
+
+    pg_restore -l "$file" >/dev/null 2>&1 || {
+        echo "Error: invalid custom-format backup file"
+        return 1
+    }
+
+    cat "$file" | docker exec -i "$container" pg_restore -U "$user" -d "$database" "$@"
 }
 
 # -----------------------------------------------------
-# Zellij
+# Zellij autostart
 # -----------------------------------------------------
-if [[ -z "$ZELLIJ" && -t 1 ]]; then
-  exec zellij
+# Disable with:
+# export DISABLE_ZELLIJ=1
+
+if command -v zellij >/dev/null 2>&1; then
+    if [[ -z "$ZELLIJ" && -z "$DISABLE_ZELLIJ" && -t 1 ]]; then
+        exec zellij
+    fi
 fi

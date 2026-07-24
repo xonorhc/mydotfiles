@@ -2,47 +2,93 @@
 # CUSTOMIZATION
 # -----------------------------------------------------
 
+# -----------------------------------------------------
+# Virtualenv
+# -----------------------------------------------------
+venv() {
+    if [[ ! -d .venv ]]; then
+        echo ">> Creating virtual environment: .venv"
+        python3 -m venv .venv || return 1
+    fi
+
+    source .venv/bin/activate
+}
+
+pip-up() {
+    python -m pip install --upgrade pip setuptools wheel
+}
+
+# -----------------------------------------------------
+# Auto-load .env from Git root
+# -----------------------------------------------------
 __AUTOENV_FILE=""
+
 autoenv_load() {
     local git_root env_file
 
-    git_root=$(git rev-parse --show-toplevel 2>/dev/null) || return
-
+    git_root="$(git rev-parse --show-toplevel 2>/dev/null)" || return 0
     env_file="$git_root/.env"
 
-    [[ -f "$env_file" ]] || return
-    [[ "$env_file" == "$__AUTOENV_FILE" ]] && return
+    [[ -f "$env_file" ]] || return 0
+    [[ "$env_file" == "$__AUTOENV_FILE" ]] && return 0
 
     while IFS='=' read -r key value; do
-        [[ -z "$key" || "$key" =~ ^[[:space:]]*# ]] && continue
+        [[ -z "$key" ]] && continue
+        [[ "$key" =~ ^[[:space:]]*# ]] && continue
+        [[ "$key" =~ ^[A-Za-z_][A-Za-z0-9_]*$ ]] || continue
+
         export "$key=$value"
     done < "$env_file"
 
     __AUTOENV_FILE="$env_file"
 }
-PROMPT_COMMAND="autoenv_load${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+
+add_prompt_command() {
+    case ";$PROMPT_COMMAND;" in
+        *";$1;"*) ;;
+        *) PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND;}$1" ;;
+    esac
+}
+
+add_prompt_command autoenv_load
 
 # -----------------------------------------------------
 # Prompt
 # -----------------------------------------------------
-PS1="\[\e[1;36m\]\w\[\e[0m\]\n\[\e[1;32m\]❯\[\e[0m\] "
-YAZI_TERM=""
-if [ -n "$YAZI_LEVEL" ]; then
-	YAZI_TERM="|  Yazi terminal: "
-fi
-PS1="$PS1$YAZI_TERM"
+set_prompt() {
+    local yazi_info=""
+
+    if [[ -n "$YAZI_LEVEL" ]]; then
+        yazi_info=" | Yazi"
+    fi
+
+    PS1="\[\e[1;36m\]\w\[\e[0m\]${yazi_info}\n\[\e[1;32m\]❯\[\e[0m\] "
+}
+
+add_prompt_command set_prompt
 
 # -----------------------------------------------------
-# Colors
+# Colors - Linux TTY only
 # -----------------------------------------------------
-if [ "$TERM" = "linux" ]; then
-  echo -en "\e]P01a1b26" # Black
-  echo -en "\e]P1f7768e" # Red
-  echo -en "\e]P29ece6a" # Green
-  echo -en "\e]P3e0af68" # Yellow
-  echo -en "\e]P47aa2f7" # Blue
-  echo -en "\e]P5bb9af7" # Magenta
-  echo -en "\e]P67dcfff" # Cyan
-  echo -en "\e]P7a9b1d6" # White
-  clear
+if [[ "$TERM" == "linux" ]]; then
+    echo -en "\e]P01a1b26" # Black
+    echo -en "\e]P1f7768e" # Red
+    echo -en "\e]P29ece6a" # Green
+    echo -en "\e]P3e0af68" # Yellow
+    echo -en "\e]P47aa2f7" # Blue
+    echo -en "\e]P5bb9af7" # Magenta
+    echo -en "\e]P67dcfff" # Cyan
+    echo -en "\e]P7a9b1d6" # White
+    clear
+fi
+
+# -----------------------------------------------------
+# Optional tools
+# -----------------------------------------------------
+if command -v direnv >/dev/null 2>&1; then
+    eval "$(direnv hook bash)"
+fi
+
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init bash)"
 fi

@@ -7,43 +7,58 @@
 # -----------------------------------------------------
 alias ..='cd ..'
 alias c='clear'
-alias ff='fastfetch'
-alias ls='eza -a'
-alias ll='eza -al'
-alias lt='eza -a --tree --level=1'
 alias shutdown='systemctl poweroff'
 alias v='$EDITOR'
 alias vim='$EDITOR'
 alias wifi='nmtui'
 alias clock='peaclock'
-alias venv='[ -d .venv ] && source .venv/bin/activate || (python3 -m venv .venv && source .venv/bin/activate)'
-alias pip-up='pip install --upgrade pip setuptools wheel'
 alias zj='zellij'
-alias wsl-clean='pkill zellij; pkill yazi; pkill bash'
+
+if command -v fastfetch >/dev/null 2>&1; then
+    alias ff='fastfetch'
+fi
+
+if command -v eza >/dev/null 2>&1; then
+    alias ls='eza -a'
+    alias ll='eza -al'
+    alias lt='eza -a --tree --level=1'
+else
+    alias ll='ls -al'
+    alias lt='ls -al'
+fi
+
+# Safer interactive defaults
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+# WSL cleanup
+alias wsl-clean='pkill zellij 2>/dev/null; pkill yazi 2>/dev/null; pkill bash 2>/dev/null'
 
 # -----------------------------------------------------
 # Git
 # -----------------------------------------------------
-alias gs="git status"
-alias ga="git add"
-alias gc="git commit -m"
-alias gp="git push"
-alias gpl="git pull"
-alias gst="git stash"
-alias gsp="git stash; git pull"
-alias gfo="git fetch origin"
-alias gcheck="git checkout"
-alias gcredential="git config credential.helper store"
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit -m'
+alias gp='git push'
+alias gpl='git pull'
+alias gst='git stash'
+alias gsp='git stash && git pull'
+alias gfo='git fetch origin'
+alias gcheck='git checkout'
+alias gco='git checkout'
+alias gsw='git switch'
+alias gl='git log --oneline --graph --decorate'
+alias gcredential='git config credential.helper store'
 
 # -----------------------------------------------------
 # Docker
 # -----------------------------------------------------
+alias dc='docker compose'
+alias dcom='docker compose'
 alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
-alias dcom='docker-compose'
 alias dclean='docker system prune --volumes'
-alias psql-gis='docker exec -it container psql -U postgres -d postgis'
-alias pg-dump-gis='docker exec -i container pg_dump -U postgres -d postgis'
-alias pg-dump-gis-custom='docker exec -i container pg_dump -U postgres -d postgis -F c'
 
 # -----------------------------------------------------
 # GDAL
