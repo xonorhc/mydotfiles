@@ -5,4 +5,5 @@
 --
 -- Add your additional Hyprland configurations here
 
--- hl.env("NVIM_APPNAME", "nvim-nvchad")
+hl.env("NVIM_APPNAME", "nvim-nvchad")
+-- hl.env("NVIM_APPNAME", "nvim-astro6")

@@ -8,7 +8,7 @@
 
 hl.on("hyprland.start", function()
 	--  Core Components
-	hl.exec_cmd(Run .. "qs -c noctalia-shell")
+	hl.exec_cmd(Run .. "noctalia")
 	--  Clipboard Manager
 	hl.exec_cmd(Run .. "wl-paste --type text --watch cliphist store")
 	hl.exec_cmd(Run .. "wl-paste --type image --watch cliphist store")

@@ -5,5 +5,5 @@ border_symbol = " "
 padding = { open = "█", close = "█" }
 
 [flavor]
-dark  = "noctalia"
+dark = "noctalia"
 light = "noctalia"

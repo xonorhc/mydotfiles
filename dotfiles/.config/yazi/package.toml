@@ -5,7 +5,7 @@ hash = "f5afc904d5106ee368c8aa2ded43bd74"
 
 [[plugin.deps]]
 use = "pirafrank/what-size"
-rev = "179ebf6"
+rev = "c1a8cb6"
 hash = "57056b9728006881d580ccabe8154a9c"
 
 [[plugin.deps]]
@@ -25,17 +25,17 @@ hash = "722a60eca1b338c9c24bb508d2d48578"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "65559fd"
-hash = "88e56a64b7ce7c4314427452343fef17"
+rev = "3f2b882"
+hash = "336548d9f67926e12d5584f60b790f1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "65559fd"
-hash = "e3260d0b1feded8c8e3ae3afa1169e30"
+rev = "3f2b882"
+hash = "46cbdc05596a3ecd730b288e28c7079d"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:no-status"
-rev = "65559fd"
+rev = "3f2b882"
 hash = "3e023d31f29201efdac2a6ae35fedb78"
 
 [flavor]

@@ -24,6 +24,7 @@ hl.config({
 -- See https://wiki.hypr.land/Configuring/Layouts/Master-Layout/ for more
 hl.config({
 	master = {
+		new_on_top = true,
 		new_status = "master",
 	},
 })
@@ -32,5 +33,9 @@ hl.config({
 hl.config({
 	scrolling = {
 		fullscreen_on_one_column = true,
+		column_width = 0.95,
+		follow_min_visible = 0.5,
+		direction = "down",
+		explicit_column_widths = "0.1, 0.333, 0.5, 0.667, 0.9, 0.95, 1.0",
 	},
 })

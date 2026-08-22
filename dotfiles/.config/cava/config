@@ -264,6 +264,7 @@
 
 
 [color]
+theme = "noctalia"
 
 # Colors can be one of seven predefined: black, blue, cyan, green, magenta, red, white, yellow.
 # Or defined by hex code '#xxxxxx' (hex code must be within ''). User defined colors requires
@@ -309,7 +310,6 @@
 
 # use theme file instead of defining colors in this file
 # themes are located in $HOME/.config/cava/themes
-theme = "noctalia"
 
 
 [smoothing]

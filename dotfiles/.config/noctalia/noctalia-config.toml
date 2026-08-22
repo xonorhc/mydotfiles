@@ -1,0 +1,172 @@
+[bar.default]
+capsule = true
+end = [
+    "mini-docker",
+    "tray",
+    "notifications",
+    "network",
+    "bluetooth",
+    "volume",
+    "brightness",
+    "battery",
+    "control-center",
+    "session"
+]
+font_family = "GeistMono Nerd Font"
+margin_ends = 0
+radius = 0
+start = [ "launcher", "workspaces", "media" ]
+
+    [bar.default.monitor.HDMI-A-1]
+    enabled = false
+
+[config]
+
+[desktop_widgets]
+enabled = false
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "HDMI-A-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "eDP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[plugins]
+enabled = [
+    "noctalia/bitwarden",
+    "noctalia/translator",
+    "noctalia/screen_recorder",
+    "noctalia/timer",
+    "yuuto/arch-updater",
+    "damian-ds7/battery-threshold",
+    "oldirtty/color_picker",
+    "8bury/mini-docker",
+    "thepunkoff/pomodoro",
+    "lucasoe/proton-pass",
+    "noctalia/kaomoji"
+]
+
+[shell]
+font_family = "Adwaita Sans"
+telemetry_enabled = true
+
+[templates]
+
+[theme]
+community_palette = "Tokyo Night Moon"
+custom_palette = "Deku"
+mode = "dark"
+source = "builtin"
+
+    [theme.templates]
+    builtin_ids = [ "btop", "cava", "foot", "gtk3", "gtk4", "hyprland", "kitty", "qt", "starship" ]
+    community_ids = [ "zen-browser", "gimp", "libreoffice", "vscode", "fastfetch", "zathura", "zellij", "lazygit", "yazi" ]
+
+        [theme.templates.user.hyprland]
+        input_path = "~/.config/noctalia/templates/hyprland-colors.lua"
+        output_path = "~/.config/hypr/colors.lua"
+        post_hook = "hyprctl reload"
+
+        [theme.templates.user.nvim-astro6]
+        input_path = "~/.config/noctalia/templates/nvim-base16.lua"
+        output_path = "~/.config/nvim-astro6/lua/plugins/matugen.lua"
+
+        [theme.templates.user.nvim-nvchad]
+        input_path = "~/.config/noctalia/templates/nvim-base46.lua"
+        output_path = "~/.local/share/nvim-nvchad/lazy/base46/lua/base46/themes/matugen.lua"
+        post_hook = "pkill -SIGUSR1 nvim"
+
+        [theme.templates.user.terminal-sequences]
+        input_path = "~/.config/noctalia/templates/terminal-sequences"
+        output_path = "~/.cache/terminal-sequences"
+        post_hook = "tee /dev/pts/[0-9]* < ~/.cache/terminal-sequences"
+
+[wallpaper]
+directory = "/home/chronox/Dropbox/wallpaper"
+enabled = false
+transition_duration = 100
+
+    [wallpaper.default]
+    path = "/home/chronox/Dropbox/wallpaper/VantaBlack/evanesca-claymore-theresa.jpg"
+
+    [wallpaper.last]
+    path = "/home/chronox/Dropbox/wallpaper/VantaBlack/evanesca-claymore-theresa.jpg"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "/home/chronox/Dropbox/wallpaper/VantaBlack/evanesca-claymore-theresa.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/chronox/Dropbox/wallpaper/VantaBlack/evanesca-claymore-theresa.jpg"
+
+[widget.mini-docker]
+type = "8bury/mini-docker:mini-docker"
+
+[widget.network]
+show_label = false

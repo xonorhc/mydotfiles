@@ -8,21 +8,23 @@ default_minute: 0
 editor: nvim
 encrypt: false
 highlight: true
-indent_character: " "
+indent_character: ' '
 journals:
   default:
-    journal: ~/.jrnl/journal.txt
-    encrypt: true
     display_format: json
-    editor: "vim -c 'set viminfo= noswapfile noundofile nobackup nowritebackup noshelltemp history=0 nomodeline secure'"
+    editor: vim -c 'set viminfo= noswapfile noundofile nobackup nowritebackup noshelltemp
+      history=0 nomodeline secure'
+    encrypt: true
+    journal: ~/.jrnl/journal.txt
   study:
+    editor: nvim -c 'set shada= noswapfile noundofile nobackup nowritebackup noshelltemp
+      history=0 nomodeline secure'
     journal: ~/.jrnl/studies/
     template: ~/.jrnl/templates/asciidoc.adoc
-    editor: "nvim -c 'set shada= noswapfile noundofile nobackup nowritebackup noshelltemp history=0 nomodeline secure'"
-  workout: ~/.jrnl/workouts.txt
   work: ~/.jrnl/work.md
+  workout: ~/.jrnl/workouts.txt
 linewrap: 79
-tagsymbols: "#@"
+tagsymbols: '#@'
 template: false
-timeformat: "%F %r"
-version: v4.3
+timeformat: '%F %r'
+version: '4.6'

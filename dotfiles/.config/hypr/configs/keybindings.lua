@@ -27,19 +27,19 @@ hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(Run .. Terminal .. "-e lazydocker", {
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(Run .. Terminal .. "-e lazysql", { tag = "+float_term" }))
 
 -- Menus & Tools
-local ipc = "qs -c noctalia-shell ipc call" .. " "
-hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(ipc .. "launcher toggle"))
-hl.bind(mainMod .. " + BACKSLASH", hl.dsp.exec_cmd(ipc .. "controlCenter toggle"))
-hl.bind(mainMod .. " + SLASH", hl.dsp.exec_cmd(ipc .. "settings toggle"))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(ipc .. "plugin:clipboard toggle"))
-hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd(ipc .. "plugin:clipboard wipe"))
-hl.bind(mainMod .. " + COMMA", hl.dsp.exec_cmd(ipc .. "launcher emoji"))
-hl.bind(mainMod .. " + CTRL + Q", hl.dsp.exec_cmd(ipc .. "sessionMenu toggle"))
-hl.bind(mainMod .. " + CTRL + M", hl.dsp.exec_cmd(ipc .. "systemMonitor toggle"))
-hl.bind("CTRL + ALT_R", hl.dsp.exec_cmd(ipc .. "bar toggle"))
-hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(ipc .. "darkMode toggle"))
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(ipc .. "wallpaper toggle"))
-hl.bind(mainMod .. " + ALT + T", hl.dsp.exec_cmd(ipc .. "plugin:translator toggle '' ''"))
+local ipc = "noctalia msg" .. " "
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
+hl.bind(mainMod .. " + BACKSLASH", hl.dsp.exec_cmd(ipc .. "panel-toggle control-center"))
+hl.bind(mainMod .. " + SLASH", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(ipc .. "panel-toggle clipboard"))
+hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd(ipc .. "clipboard-clear"))
+hl.bind(mainMod .. " + CTRL + Q", hl.dsp.exec_cmd(ipc .. "panel-toggle session"))
+hl.bind(mainMod .. " + CTRL + M", hl.dsp.exec_cmd(ipc .. "panel-toggle control-center system"))
+hl.bind("CTRL + ALT_R", hl.dsp.exec_cmd(ipc .. "bar-toggle"))
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(ipc .. "theme-mode-toggle"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(ipc .. "panel-toggle wallpaper"))
+hl.bind(mainMod .. " + ALT + T", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher '/tr' ' ' "))
+hl.bind(mainMod .. " + SHIFT + SLASH", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher '/kao' ' ' "))
 
 -- System & Power
 hl.bind(mainMod .. " + SHIFT + ESCAPE", hl.dsp.exec_cmd("uwsm stop"))
@@ -86,10 +86,17 @@ hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("hyprctl activewindow -j | jq
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("movetoroot")) -- dwindle only
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.layout("swapsplit")) -- dwindle only
-hl.bind("SHIFT + Tab", hl.dsp.window.cycle_next({ tiled = true })) -- monocle only
-hl.bind(mainMod .. " + Tab", hl.dsp.layout("cyclenext")) -- monocle only
+-- dwindle only
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("movetoroot"))
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.layout("swapsplit"))
+ -- monocle only
+hl.bind(mainMod .. "+ PERIOD", hl.dsp.layout("cyclenext"))
+hl.bind(mainMod .. "+ COMMA", hl.dsp.layout("cycleprev"))
+-- scrolling only
+-- hl.bind("ALT + EQUAL", hl.dsp.layout("colresize +conf"))
+-- hl.bind("ALT + MINUS", hl.dsp.layout("colresize -conf"))
+-- hl.bind(mainMod .. "+ mouse_up", hl.dsp.focus({direction = "up"}))
+-- hl.bind(mainMod .. "+ mouse_down", hl.dsp.focus({direction = "down"}))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -124,9 +131,9 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 -- Switch to a submap called `resize`.
 hl.bind("ALT + R", hl.dsp.submap("resize"))
 hl.define_submap("resize", function()
-	hl.bind("right", hl.dsp.window.resize({ x = 10, y = 0, relative = true }), { repeating = true })
-	hl.bind("left", hl.dsp.window.resize({ x = -10, y = 0, relative = true }), { repeating = true })
-	hl.bind("up", hl.dsp.window.resize({ x = 0, y = 10, relative = true }), { repeating = true })
-	hl.bind("down", hl.dsp.window.resize({ x = 0, y = -10, relative = true }), { repeating = true })
+	hl.bind("L", hl.dsp.window.resize({ x = 10, y = 0, relative = true }), { repeating = true })
+	hl.bind("H", hl.dsp.window.resize({ x = -10, y = 0, relative = true }), { repeating = true })
+	hl.bind("K", hl.dsp.window.resize({ x = 0, y = 10, relative = true }), { repeating = true })
+	hl.bind("J", hl.dsp.window.resize({ x = 0, y = -10, relative = true }), { repeating = true })
 	hl.bind("escape", hl.dsp.submap("reset"))
 end)

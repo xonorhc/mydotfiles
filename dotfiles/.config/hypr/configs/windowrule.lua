@@ -351,6 +351,13 @@ hl.window_rule({
 	size = "1600 900",
 })
 
+-- Noctalia Settings
+hl.window_rule({
+    match = { class = "dev.noctalia.Noctalia" },
+    float = true,
+    size = { 1080, 920 },
+})
+
 -----------------------------------------------------------------------------
 -- Layer Rules like rofi, swaync, awww, wlogout (check using `hyprctl layers`)
 -----------------------------------------------------------------------------
@@ -390,4 +397,16 @@ hl.layer_rule({
 	match = { namespace = "swaync-notification-window" },
 	blur = true,
 	ignore_alpha = 0.2,
+})
+
+-- Noctalia Settings
+hl.layer_rule({
+  name = "noctalia",
+  match = {
+    namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd|window-switcher)$",
+  },
+  no_anim = true,
+  ignore_alpha = 0.5,
+  blur = true,
+  blur_popups = true,
 })
