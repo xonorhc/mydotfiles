@@ -1,16 +1,16 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:no-status"
-rev = "bb758e2"
+rev = "4848aac"
 hash = "3e023d31f29201efdac2a6ae35fedb78"
 
 [[plugin.deps]]
 use = "ndtoan96/ouch"
-rev = "406ce6c"
-hash = "f5afc904d5106ee368c8aa2ded43bd74"
+rev = "cfe4f50"
+hash = "eff5702573b6cfba61e4ac8b1969629a"
 
 [[plugin.deps]]
 use = "pirafrank/what-size"
-rev = "179ebf6"
+rev = "c1a8cb6"
 hash = "57056b9728006881d580ccabe8154a9c"
 
 [[plugin.deps]]
@@ -25,13 +25,13 @@ hash = "722a60eca1b338c9c24bb508d2d48578"
 
 [[plugin.deps]]
 use = "XYenon/clipboard"
-rev = "d4d19ea"
-hash = "2cfc56d62f9ca0c62ce356e4364c3d89"
+rev = "0f4982a"
+hash = "dcda5f179482ee8cc191ad679c9d72e0"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:diff"
-rev = "bb758e2"
-hash = "39ce0924dfe3989dc89d7caa1473c77c"
+rev = "4848aac"
+hash = "14558d2829c0aa05e99c57de8f74d199"
 
 [[plugin.deps]]
 use = "lmnek/pandoc"
@@ -40,18 +40,18 @@ hash = "5af4b06948bb7b825a243131eea2075c"
 
 [[plugin.deps]]
 use = "AnirudhG07/plugins-yazi:copy-file-contents"
-rev = "71545f4"
-hash = "f8530ee84fee95dbcc26bb1d8d8019c7"
+rev = "3f4f1a3"
+hash = "421263a8558fbd2fdb07a75f074cc6e3"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "bb758e2"
-hash = "88e56a64b7ce7c4314427452343fef17"
+rev = "4848aac"
+hash = "5bb0bfab901d3601c370eafdd66edd31"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "bb758e2"
-hash = "e3260d0b1feded8c8e3ae3afa1169e30"
+rev = "4848aac"
+hash = "46cbdc05596a3ecd730b288e28c7079d"
 
 [flavor]
 deps = []

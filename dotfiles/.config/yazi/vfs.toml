@@ -1,7 +1,0 @@
-[services.my-server]
-type     = "sftp"
-host     = "1.2.3.4"
-user     = "root"
-port     = 22
-key_file = "~/.ssh/id_rsa"
-# key_passphrase = "my_passphrase"
