@@ -9,7 +9,7 @@ open = [
 	{ run = "xdg-open %s1", desc = "Open" },
 ]
 extract = [
-	{ run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
+	{ run = "ouch d -y %s1", desc = "Extract here with ouch", for = "unix" },
 ]
 
 [open]

@@ -74,7 +74,5 @@ desc = "Switch to the flat view with a max depth of 3"
 [[mgr.prepend_keymap]]
 on   = "<C-w>"
 for  = "linux"
-run =[
-  "shell -- qs -c noctalia-shell ipc call wallpaper set %h",
-] 
+run = "shell -- noctalia msg wallpaper-set %h"
 desc = "Set hovered file as wallpaper"
