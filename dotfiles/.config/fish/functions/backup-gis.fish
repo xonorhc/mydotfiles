@@ -1,4 +1,4 @@
-function backup-gis --description 'Backup PostGIS database from Docker container'
+function backup-gis --description 'Backup PostGIS database from podman container'
     argparse \
         'c/container=' \
         'd/database=' \
@@ -16,7 +16,7 @@ function backup-gis --description 'Backup PostGIS database from Docker container
         echo "  backup-gis [options] [-- extra pg_dump args]"
         echo
         echo "Options:"
-        echo "  -c, --container   Docker container name"
+        echo "  -c, --container   podman container name"
         echo "  -d, --database    PostgreSQL database name"
         echo "  -U, --user        PostgreSQL user"
         echo "  -f, --file        Output backup file"
@@ -80,7 +80,7 @@ function backup-gis --description 'Backup PostGIS database from Docker container
     echo ">> User:      $user"
     echo ">> File:      $file"
 
-    if docker exec -i $container pg_dump $dump_args $argv > "$file"
+    if podman exec -i $container pg_dump $dump_args $argv > "$file"
         echo ">> Backup finished: $file"
     else
         echo ">> Backup failed"

@@ -1,4 +1,4 @@
-function pg-dump-gis-custom --description "Create custom-format dump from PostGIS Docker container"
+function pg-dump-gis-custom --description "Create custom-format dump from PostGIS podman container"
     argparse \
         'c/container=' \
         'd/database=' \
@@ -29,7 +29,7 @@ function pg-dump-gis-custom --description "Create custom-format dump from PostGI
     set -q _flag_user; and set user $_flag_user
     set -q _flag_file; and set file $_flag_file
 
-    docker exec -i $container pg_dump -U $user -d $database -F c $argv > $file
+    podman exec -i $container pg_dump -U $user -d $database -F c $argv > $file
 
     echo "Custom dump saved to: $file"
 end

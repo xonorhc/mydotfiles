@@ -1,4 +1,4 @@
-function pg-restore-gis-custom --description "Restore custom-format dump into PostGIS Docker container"
+function pg-restore-gis-custom --description "Restore custom-format dump into PostGIS podman container"
     argparse \
         'c/container=' \
         'd/database=' \
@@ -28,5 +28,5 @@ function pg-restore-gis-custom --description "Restore custom-format dump into Po
     set -q _flag_database; and set database $_flag_database
     set -q _flag_user; and set user $_flag_user
 
-    cat $file | docker exec -i $container pg_restore -U $user -d $database $argv
+    cat $file | podman exec -i $container pg_restore -U $user -d $database $argv
 end

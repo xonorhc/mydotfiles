@@ -1,8 +1,8 @@
 # -----------------------------------------------------
-# Functions - PostgreSQL / PostGIS in Docker
+# Functions - PostgreSQL / PostGIS in podman
 # -----------------------------------------------------
 
-function pg-dump-gis --description "Create plain SQL dump from PostGIS Docker container"
+function pg-dump-gis --description "Create plain SQL dump from PostGIS podman container"
     argparse \
         'c/container=' \
         'd/database=' \
@@ -33,7 +33,7 @@ function pg-dump-gis --description "Create plain SQL dump from PostGIS Docker co
     set -q _flag_user; and set user $_flag_user
     set -q _flag_file; and set file $_flag_file
 
-    docker exec -i $container pg_dump -U $user -d $database $argv > $file
+    podman exec -i $container pg_dump -U $user -d $database $argv > $file
 
     echo "Dump saved to: $file"
 end

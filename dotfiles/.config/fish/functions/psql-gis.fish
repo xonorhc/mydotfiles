@@ -1,4 +1,4 @@
-function psql-gis --description "Open psql inside the PostGIS Docker container"
+function psql-gis --description "Open psql inside the PostGIS podman container"
     argparse \
         'c/container=' \
         'd/database=' \
@@ -26,5 +26,5 @@ function psql-gis --description "Open psql inside the PostGIS Docker container"
     set -q _flag_database; and set database $_flag_database
     set -q _flag_user; and set user $_flag_user
 
-    docker exec -it $container psql -U $user -d $database $argv
+    podman exec -it $container psql -U $user -d $database $argv
 end
