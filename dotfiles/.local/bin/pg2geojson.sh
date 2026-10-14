@@ -2,771 +2,363 @@
 set -euo pipefail
 
 usage() {
-cat <<EOF
-
+  cat <<USAGE
 USO
+  $0 [<CONN>] [opcoes]
 
-Usando DATABASE_URL do ambiente:
-  $0 --schema stage
+CONEXAO
+  Se <CONN> nao for informada, usa DATABASE_URL, POSTGIS_URL ou PG_URL.
 
-URL explícita:
-  $0 "postgresql://postgres:secret@localhost:5432/postgis" --schema stage
+SELECAO
+  --schema <schema>           Exporta as tabelas espaciais do schema
+  --table <schema.tabela>     Exporta uma tabela; pode ser repetido
+  --sql <SQL|@arquivo.sql>    Exporta o resultado de uma consulta
+  --where <expressao>         Filtro para exportacao direta de tabela
+  --bbox xmin ymin xmax ymax  Filtro espacial
 
-Banco inteiro:
-  $0 "<CONN>"
+SISTEMA DE REFERENCIA
+  --srid <EPSG>               SRID de saida; padrao: 4326
+  --source-srid <EPSG>        SRID de entrada para SQL complexo
+  --src-srid <EPSG>           Alias de --source-srid
 
-Schema:
-  $0 "<CONN>" --schema stage
+O driver PostgreSQL detecta automaticamente o SRS de tabelas e consultas que
+preservam os metadados da geometria. Para SQL, o script tambem tenta detectar o
+SRS pelo resultado do ogrinfo e, em consultas simples, pela tabela do FROM.
+Use --source-srid quando uma consulta complexa produzir geometria sem SRS.
 
-Tabela:
-  $0 "<CONN>" --table stage.sabesp_ligacao
+EXEMPLOS
+  $0 --table stage.sabesp_rede_agua
+  $0 --table stage.sabesp_rede_agua --srid 31983
+  $0 --sql @query_linestring_raw_agua.sql
+  $0 --sql @query_complexa.sql --source-srid 31983
+  $0 --sql "SELECT * FROM stage.sabesp_rede_agua" --srid 4674
+USAGE
+}
 
-Múltiplas tabelas:
-  $0 "<CONN>" \\
-      --table stage.sabesp_ligacao \\
-      --table stage.sabesp_rede_agua
+die() {
+  echo "ERRO: $*" >&2
+  exit 1
+}
 
-Where:
-  $0 "<CONN>" \\
-      --table stage.sabesp_ligacao \\
-      --where "situacao = 'ATIVA'"
+is_epsg() {
+  [[ "$1" =~ ^[0-9]+$ ]] && ((10#$1 > 0))
+}
 
-BBox:
-  $0 "<CONN>" \\
-      --table stage.sabesp_ligacao \\
-      --bbox xmin ymin xmax ymax
+sql_literal() {
+  printf "%s" "$1" | sed "s/'/''/g"
+}
 
-Clip por camada:
-  $0 "<CONN>" \\
-      --schema stage \\
-      --clip-table base.municipios \\
-      --clip-where "nm_mun='BOTUCATU'"
+# Retorna um unico SRID valido da geometry_columns, se existir.
+table_srid() {
+  local table="$1" schema name schema_q name_q
+  if [[ "$table" == *.* ]]; then
+    schema="${table%%.*}"
+    name="${table#*.}"
+  else
+    schema="public"
+    name="$table"
+  fi
+  schema="${schema//\"/}"
+  name="${name//\"/}"
+  schema_q=$(sql_literal "$schema")
+  name_q=$(sql_literal "$name")
+  psql "$PSQL_CONN" -X -q -A -t -c "
+    SELECT CASE WHEN count(DISTINCT srid) = 1 THEN min(srid)::text ELSE '' END
+    FROM geometry_columns
+    WHERE f_table_schema='${schema_q}'
+      AND f_table_name='${name_q}'
+      AND srid > 0;
+  " | head -n 1 | tr -d '[:space:]'
+}
 
-Recorte geométrico:
-  $0 "<CONN>" \\
-      --schema stage \\
-      --clip-table base.municipios \\
-      --clip-where "nm_mun='BOTUCATU'" \\
-      --cut
+# Le o texto apenas para deteccao. O argumento original continua sendo passado
+# ao GDAL, inclusive no formato @arquivo.sql.
+sql_text_for_detection() {
+  if [[ "$SQL" == @* ]]; then
+    local file="${SQL#@}"
+    [[ -r "$file" ]] || die "Arquivo SQL nao encontrado ou sem leitura: $file"
+    cat "$file"
+  else
+    printf "%s" "$SQL"
+  fi
+}
 
-SQL livre:
-  $0 "<CONN>" \\
-      --sql "SELECT * FROM stage.sabesp_ligacao" \\
-      --out saida.geojson
+# Tenta obter EPSG diretamente dos metadados apresentados pelo ogrinfo.
+detect_srid_with_ogrinfo() {
+  local info srid
+  info=$(ogrinfo "$CONN" -ro -so -q -sql "$SQL" -dialect PostgreSQL 2>/dev/null || true)
+  srid=$(printf "%s\n" "$info" | sed -nE \
+    -e 's/.*AUTHORITY\["EPSG","([0-9]+)"\].*/\1/p' \
+    -e 's/.*ID\["EPSG",([0-9]+)\].*/\1/p' | tail -n 1)
+  [[ -n "$srid" ]] && printf "%s" "$srid"
+}
 
-Opções de redução:
-  --precision N              Casas decimais. Padrão: 5
-  --simplify-meters N        Simplificação em metros. Padrão: 1.0
-  --no-simplify              Desativa simplificação
-  --keep-z                   Mantém coordenada Z
-  --attrs "col1,col2,col3"   Exporta apenas estes atributos
-  --exclude-columns "a,b,c"  Remove atributos informados
-  --fid-col coluna           Define coluna usada como Feature.id
-  --write-bbox               Escreve bbox no GeoJSON
-  --target-srid SRID         SRID final. Padrão: 4326
-  --out caminho              Diretório ou arquivo .geojson
-  --bbox-srid SRID           SRID do bbox informado. Padrão: 4326
+# Fallback para SELECT simples com exatamente uma tabela no FROM e sem JOIN,
+# UNION, INTERSECT ou EXCEPT. Nesses casos consulta geometry_columns.
+detect_srid_from_simple_sql() {
+  local text normalized table
+  text=$(sql_text_for_detection)
+  normalized=$(printf "%s" "$text" | tr '\n\r\t' '   ')
 
-EOF
+  if printf "%s" "$normalized" | grep -Eiq '\b(join|union|intersect|except)\b'; then
+    return 0
+  fi
+
+  table=$(printf "%s" "$normalized" | sed -nE \
+    's/.*[Ff][Rr][Oo][Mm][[:space:]]+(("[^"]+"|[A-Za-z_][A-Za-z0-9_$]*)(\.("[^"]+"|[A-Za-z_][A-Za-z0-9_$]*))?).*/\1/p' | head -n 1)
+
+  [[ -n "$table" ]] && table_srid "$table"
+}
+
+resolve_sql_source_srid() {
+  local srid=""
+  if [[ -n "$SOURCE_SRID" ]]; then
+    printf "%s" "$SOURCE_SRID"
+    return 0
+  fi
+
+  srid=$(detect_srid_with_ogrinfo)
+  if [[ -z "$srid" ]]; then
+    srid=$(detect_srid_from_simple_sql)
+  fi
+  printf "%s" "$srid"
 }
 
 ###############################################################################
-# CONEXÃO
+# AJUDA (nao exige conexao)
 ###############################################################################
+for arg in "$@"; do
+  if [[ "$arg" == "-h" || "$arg" == "--help" ]]; then
+    usage
+    exit 0
+  fi
+done
 
+###############################################################################
+# CONEXAO
+###############################################################################
 if [[ $# -eq 0 || "$1" == --* ]]; then
-
-    INPUT_CONN="${DATABASE_URL:-${POSTGIS_URL:-${PG_URL:-}}}"
-
-    if [[ -z "${INPUT_CONN:-}" ]]; then
-        echo "Nenhuma conexão informada."
-        echo "Defina DATABASE_URL ou passe a conexão como parâmetro."
-        exit 1
-    fi
-
+  INPUT_CONN="${DATABASE_URL:-${POSTGIS_URL:-${PG_URL:-}}}"
+  [[ -n "${INPUT_CONN:-}" ]] || die "Nenhuma conexao informada. Defina DATABASE_URL ou passe a conexao."
 else
-
-    INPUT_CONN="$1"
-    shift
-
+  INPUT_CONN="$1"
+  shift
 fi
-
-###############################################################################
-# URL PostgreSQL -> GDAL + PSQL
-###############################################################################
 
 if [[ "$INPUT_CONN" =~ ^postgresql:// ]] || [[ "$INPUT_CONN" =~ ^postgres:// ]]; then
-
-    PSQL_CONN="$INPUT_CONN"
-
-    URI="${INPUT_CONN#postgresql://}"
-    URI="${URI#postgres://}"
-
-    USERPASS="${URI%%@*}"
-    HOSTDB="${URI#*@}"
-
-    USER="${USERPASS%%:*}"
-    PASS="${USERPASS#*:}"
-
-    HOSTPORT="${HOSTDB%%/*}"
-    DBNAME="${HOSTDB#*/}"
-
-    HOST="${HOSTPORT%%:*}"
-
-    if [[ "$HOSTPORT" == *:* ]]; then
-        PORT="${HOSTPORT##*:}"
-    else
-        PORT="5432"
-    fi
-
-    CONN="PG:host=${HOST} port=${PORT} dbname=${DBNAME} user=${USER} password=${PASS}"
-
+  PSQL_CONN="$INPUT_CONN"
+  URI="${INPUT_CONN#postgresql://}"
+  URI="${URI#postgres://}"
+  USERPASS="${URI%%@*}"
+  HOSTDB="${URI#*@}"
+  USER="${USERPASS%%:*}"
+  PASS="${USERPASS#*:}"
+  HOSTPORT="${HOSTDB%%/*}"
+  DBNAME="${HOSTDB#*/}"
+  DBNAME="${DBNAME%%\?*}"
+  HOST="${HOSTPORT%%:*}"
+  PORT="${HOSTPORT#*:}"
+  [[ "$PORT" != "$HOSTPORT" ]] || PORT=5432
+  CONN="PG:host=${HOST} port=${PORT} dbname=${DBNAME} user=${USER} password=${PASS}"
 elif [[ "$INPUT_CONN" =~ ^PG: ]]; then
-
-    CONN="$INPUT_CONN"
-    PSQL_CONN="${INPUT_CONN#PG:}"
-
-    DBNAME=$(
-        echo "$CONN" |
-        sed -n 's/.*dbname=\([^ ]*\).*/\1/p'
-    )
-
+  CONN="$INPUT_CONN"
+  PSQL_CONN="${INPUT_CONN#PG:}"
+  DBNAME=$(printf "%s" "$CONN" | sed -n 's/.*dbname=\([^ ]*\).*/\1/p')
 else
-
-    echo "Formato de conexão não suportado."
-    exit 1
-
+  die "Formato de conexao nao suportado."
 fi
-
 DBNAME="${DBNAME:-export}"
 
 ###############################################################################
-# DEPENDÊNCIAS
+# PARAMETROS
 ###############################################################################
-
-command -v ogr2ogr >/dev/null 2>&1 || {
-    echo "Erro: ogr2ogr não encontrado. Instale o GDAL."
-    exit 1
-}
-
-command -v psql >/dev/null 2>&1 || {
-    echo "Erro: psql não encontrado."
-    exit 1
-}
-
-###############################################################################
-# PARÂMETROS
-###############################################################################
-
 SCHEMA=""
 SQL=""
 WHERE=""
-
 CLIP_TABLE=""
 CLIP_WHERE=""
 CUT=false
-
 XMIN=""
 YMIN=""
 XMAX=""
 YMAX=""
-
-OUT=""
-TARGET_SRID="4326"
-BBOX_SRID="4326"
-
-PRECISION="5"
-SIMPLIFY_METERS="1.0"
-SIMPLIFY_SRID="3857"
-
-DROP_Z=true
-WRITE_BBOX=false
-
-FID_COL=""
-ATTRS=""
-EXCLUDE_COLUMNS=""
-
+TARGET_SRID="${TARGET_SRID:-4326}"
+SOURCE_SRID="${SOURCE_SRID:-}"
 TABLES=()
 
 while [[ $# -gt 0 ]]; do
-
-    case "$1" in
-
-        --schema)
-            SCHEMA="$2"
-            shift 2
-            ;;
-
-        --table)
-            TABLES+=("$2")
-            shift 2
-            ;;
-
-        --sql)
-            SQL="$2"
-            shift 2
-            ;;
-
-        --where)
-            WHERE="$2"
-            shift 2
-            ;;
-
-        --bbox)
-            XMIN="$2"
-            YMIN="$3"
-            XMAX="$4"
-            YMAX="$5"
-            shift 5
-            ;;
-
-        --bbox-srid)
-            BBOX_SRID="$2"
-            shift 2
-            ;;
-
-        --clip-table)
-            CLIP_TABLE="$2"
-            shift 2
-            ;;
-
-        --clip-where)
-            CLIP_WHERE="$2"
-            shift 2
-            ;;
-
-        --cut)
-            CUT=true
-            shift
-            ;;
-
-        --out)
-            OUT="$2"
-            shift 2
-            ;;
-
-        --target-srid)
-            TARGET_SRID="$2"
-            shift 2
-            ;;
-
-        --precision)
-            PRECISION="$2"
-            shift 2
-            ;;
-
-        --simplify-meters)
-            SIMPLIFY_METERS="$2"
-            shift 2
-            ;;
-
-        --no-simplify)
-            SIMPLIFY_METERS="0"
-            shift
-            ;;
-
-        --keep-z)
-            DROP_Z=false
-            shift
-            ;;
-
-        --write-bbox)
-            WRITE_BBOX=true
-            shift
-            ;;
-
-        --fid-col)
-            FID_COL="$2"
-            shift 2
-            ;;
-
-        --attrs)
-            ATTRS="$2"
-            shift 2
-            ;;
-
-        --exclude-columns)
-            EXCLUDE_COLUMNS="$2"
-            shift 2
-            ;;
-
-        -h|--help)
-            usage
-            exit 0
-            ;;
-
-        *)
-            echo "Parâmetro inválido: $1"
-            usage
-            exit 1
-            ;;
-    esac
-
+  case "$1" in
+  --schema)
+    [[ $# -ge 2 ]] || die "--schema exige um valor"
+    SCHEMA="$2"
+    shift 2
+    ;;
+  --table)
+    [[ $# -ge 2 ]] || die "--table exige um valor"
+    TABLES+=("$2")
+    shift 2
+    ;;
+  --sql)
+    [[ $# -ge 2 ]] || die "--sql exige um valor"
+    SQL="$2"
+    shift 2
+    ;;
+  --where)
+    [[ $# -ge 2 ]] || die "--where exige um valor"
+    WHERE="$2"
+    shift 2
+    ;;
+  --bbox)
+    [[ $# -ge 5 ]] || die "--bbox exige quatro valores"
+    XMIN="$2"
+    YMIN="$3"
+    XMAX="$4"
+    YMAX="$5"
+    shift 5
+    ;;
+  --clip-table)
+    [[ $# -ge 2 ]] || die "--clip-table exige um valor"
+    CLIP_TABLE="$2"
+    shift 2
+    ;;
+  --clip-where)
+    [[ $# -ge 2 ]] || die "--clip-where exige um valor"
+    CLIP_WHERE="$2"
+    shift 2
+    ;;
+  --cut)
+    CUT=true
+    shift
+    ;;
+  --srid)
+    [[ $# -ge 2 ]] || die "--srid exige um valor"
+    TARGET_SRID="$2"
+    shift 2
+    ;;
+  --source-srid | --src-srid)
+    [[ $# -ge 2 ]] || die "$1 exige um valor"
+    SOURCE_SRID="$2"
+    shift 2
+    ;;
+  -h | --help)
+    usage
+    exit 0
+    ;;
+  *) die "Parametro invalido: $1" ;;
+  esac
 done
 
-###############################################################################
-# FUNÇÕES AUXILIARES
-###############################################################################
+is_epsg "$TARGET_SRID" || die "SRID de saida invalido: $TARGET_SRID"
+[[ -z "$SOURCE_SRID" ]] || is_epsg "$SOURCE_SRID" || die "SRID de entrada invalido: $SOURCE_SRID"
 
-safe_name() {
-    echo "$1" | tr '.' '_' | tr '/' '_' | tr ' ' '_'
-}
-
-single_output_file_requested() {
-    [[ -n "$OUT" && "$OUT" =~ \.geojson$ ]]
-}
-
-sql_quote_literal() {
-    local value="$1"
-    value="${value//\'/\'\'}"
-    printf "'%s'" "$value"
-}
-
-build_not_in_clause() {
-    local csv="$1"
-
-    if [[ -z "$csv" ]]; then
-        echo ""
-        return
-    fi
-
-    local result=""
-    local first=true
-
-    IFS=',' read -ra parts <<< "$csv"
-
-    for item in "${parts[@]}"; do
-        item="$(echo "$item" | xargs)"
-        [[ -z "$item" ]] && continue
-
-        if $first; then
-            result="$(sql_quote_literal "$item")"
-            first=false
-        else
-            result="${result}, $(sql_quote_literal "$item")"
-        fi
-    done
-
-    if [[ -n "$result" ]]; then
-        echo "AND column_name NOT IN (${result})"
-    fi
-}
-
-get_geom_column() {
-    local full_table="$1"
-    local table_schema="${full_table%%.*}"
-    local table_name="${full_table##*.}"
-
-    psql "$PSQL_CONN" -Atc "
-        SELECT f_geometry_column
-        FROM geometry_columns
-        WHERE f_table_schema='${table_schema}'
-          AND f_table_name='${table_name}'
-        LIMIT 1
-    "
-}
-
-get_geom_srid() {
-    local full_table="$1"
-    local table_schema="${full_table%%.*}"
-    local table_name="${full_table##*.}"
-
-    psql "$PSQL_CONN" -Atc "
-        SELECT srid
-        FROM geometry_columns
-        WHERE f_table_schema='${table_schema}'
-          AND f_table_name='${table_name}'
-        LIMIT 1
-    "
-}
-
-get_columns_from_attrs() {
-    local attrs="$1"
-    local geom_col="$2"
-
-    local result=""
-    local first=true
-
-    IFS=',' read -ra parts <<< "$attrs"
-
-    for item in "${parts[@]}"; do
-        item="$(echo "$item" | xargs)"
-        [[ -z "$item" ]] && continue
-        [[ "$item" == "$geom_col" ]] && continue
-
-        if $first; then
-            result="a.\"${item}\""
-            first=false
-        else
-            result="${result}, a.\"${item}\""
-        fi
-    done
-
-    echo "$result"
-}
-
-get_columns_except_geom() {
-    local full_table="$1"
-    local geom_col="$2"
-    local exclude_clause
-
-    exclude_clause="$(build_not_in_clause "$EXCLUDE_COLUMNS")"
-
-    local table_schema="${full_table%%.*}"
-    local table_name="${full_table##*.}"
-
-    psql "$PSQL_CONN" -Atc "
-        SELECT string_agg(format('a.%I', column_name), ', ' ORDER BY ordinal_position)
-        FROM information_schema.columns
-        WHERE table_schema='${table_schema}'
-          AND table_name='${table_name}'
-          AND column_name <> '${geom_col}'
-          ${exclude_clause}
-    "
-}
-
-optimize_geom_sql() {
-    local geom_expr="$1"
-
-    local base_expr="$geom_expr"
-
-    if $DROP_Z; then
-        base_expr="ST_Force2D(${base_expr})"
-    fi
-
-    if [[ "$SIMPLIFY_METERS" != "0" && "$SIMPLIFY_METERS" != "0.0" ]]; then
-        echo "ST_Transform(ST_SimplifyPreserveTopology(ST_Transform(${base_expr}, ${SIMPLIFY_SRID}), ${SIMPLIFY_METERS}), ${TARGET_SRID})"
-    else
-        echo "ST_Transform(${base_expr}, ${TARGET_SRID})"
-    fi
-}
-
-build_lco_args() {
-    LCO_ARGS=()
-
-    if [[ "$TARGET_SRID" == "4326" ]]; then
-        LCO_ARGS+=(-lco RFC7946=YES)
-    fi
-
-    LCO_ARGS+=(-lco COORDINATE_PRECISION="$PRECISION")
-
-    if $WRITE_BBOX; then
-        LCO_ARGS+=(-lco WRITE_BBOX=YES)
-    fi
-
-    if [[ -n "$FID_COL" ]]; then
-        LCO_ARGS+=(-lco ID_FIELD="$FID_COL")
-    fi
-}
-
-export_geojson() {
-    local outfile="$1"
-    local sql_export="$2"
-
-    mkdir -p "$(dirname "$outfile")"
-    rm -f "$outfile"
-
-    build_lco_args
-
-    echo "Gerando arquivo: $outfile"
-
-    DIM_ARGS=()
-    if $DROP_Z; then
-        DIM_ARGS=(-dim XY)
-    fi
-
-    ogr2ogr \
-        -f GeoJSON \
-        "$outfile" \
-        "$CONN" \
-        -sql "$sql_export" \
-        -dialect PostgreSQL \
-        -t_srs "EPSG:${TARGET_SRID}" \
-        "${LCO_ARGS[@]}" \
-        "${DIM_ARGS[@]}" \
-        -skipfailures
-
-    if [[ ! -f "$outfile" ]]; then
-        echo "Erro: o GeoJSON não foi criado: $outfile"
-        exit 1
-    fi
-
-    if [[ ! -s "$outfile" ]]; then
-        echo "Erro: o GeoJSON foi criado vazio: $outfile"
-        exit 1
-    fi
-
-    echo "Criado com sucesso: $outfile"
-}
-
-###############################################################################
-# INFORMAÇÕES
-###############################################################################
-
-echo "Configuração de exportação:"
-echo "  Banco: ${DBNAME}"
-echo "  SRID saída: EPSG:${TARGET_SRID}"
-echo "  Precisão coordenadas: ${PRECISION}"
-echo "  Simplificação: ${SIMPLIFY_METERS} m"
-echo "  Simplificação SRID: EPSG:${SIMPLIFY_SRID}"
-echo "  Remover Z/M: ${DROP_Z}"
-echo "  Escrever bbox: ${WRITE_BBOX}"
+TARGET_ARGS=(-t_srs "EPSG:${TARGET_SRID}")
 
 ###############################################################################
 # SQL LIVRE
 ###############################################################################
-
 if [[ -n "$SQL" ]]; then
+  OUTFILE="${DBNAME}_sql.geojson"
+  DETECTED_SOURCE_SRID=$(resolve_sql_source_srid)
+  SOURCE_ARGS=()
 
-    OUTFILE="${OUT:-${DBNAME}_sql.geojson}"
+  if [[ -n "$DETECTED_SOURCE_SRID" ]]; then
+    SOURCE_ARGS=(-s_srs "EPSG:${DETECTED_SOURCE_SRID}")
+    echo "SRID de entrada: EPSG:${DETECTED_SOURCE_SRID}"
+  else
+    die "Nao foi possivel detectar o SRID da consulta. Para SQL complexo, informe --source-srid <EPSG>."
+  fi
 
-    if [[ ! "$OUTFILE" =~ \.geojson$ ]]; then
-        mkdir -p "$OUTFILE"
-        OUTFILE="${OUTFILE}/${DBNAME}_sql.geojson"
-    fi
-
-    echo
-    echo "Aviso: em modo --sql, a simplificação automática não altera sua SQL."
-    echo "Use ST_SimplifyPreserveTopology diretamente na query quando necessário."
-    echo
-
-    export_geojson "$OUTFILE" "$SQL"
-
-    echo
-    echo "Exportação concluída:"
-    echo "$OUTFILE"
-    exit 0
+  echo "SRID de saida: EPSG:${TARGET_SRID}"
+  ogr2ogr -f GeoJSON "$OUTFILE" "$CONN" \
+    -sql "$SQL" -dialect PostgreSQL \
+    "${SOURCE_ARGS[@]}" "${TARGET_ARGS[@]}"
+  echo "Arquivo criado: $OUTFILE"
+  exit 0
 fi
 
 ###############################################################################
-# BANCO INTEIRO
+# BANCO INTEIRO / SCHEMA
 ###############################################################################
-
 if [[ -z "$SCHEMA" && ${#TABLES[@]} -eq 0 ]]; then
-
-    OUTDIR="${OUT:-${DBNAME}_geojson}"
-    mkdir -p "$OUTDIR"
-
-    echo "Exportando banco completo para diretório: $OUTDIR"
-
-    mapfile -t TABLES < <(
-        psql "$PSQL_CONN" -Atc "
-            SELECT f_table_schema || '.' || f_table_name
-            FROM geometry_columns
-            ORDER BY 1
-        "
-    )
+  echo "Obtendo todas as tabelas espaciais..."
+  mapfile -t TABLES < <(psql "$PSQL_CONN" -X -q -A -t -c "
+    SELECT f_table_schema || '.' || f_table_name
+    FROM geometry_columns ORDER BY 1;")
 fi
-
-###############################################################################
-# ESQUEMA
-###############################################################################
 
 if [[ -n "$SCHEMA" && ${#TABLES[@]} -eq 0 ]]; then
-
-    OUTDIR="${OUT:-${DBNAME}_${SCHEMA}_geojson}"
-    mkdir -p "$OUTDIR"
-
-    mapfile -t TABLES < <(
-        psql "$PSQL_CONN" -Atc "
-            SELECT f_table_schema || '.' || f_table_name
-            FROM geometry_columns
-            WHERE f_table_schema='${SCHEMA}'
-            ORDER BY 1
-        "
-    )
+  SCHEMA_Q=$(sql_literal "$SCHEMA")
+  mapfile -t TABLES < <(psql "$PSQL_CONN" -X -q -A -t -c "
+    SELECT f_table_schema || '.' || f_table_name
+    FROM geometry_columns
+    WHERE f_table_schema='${SCHEMA_Q}' ORDER BY 1;")
 fi
 
-###############################################################################
-# VALIDAÇÃO
-###############################################################################
-
-if [[ ${#TABLES[@]} -eq 0 ]]; then
-    echo "Nenhuma tabela encontrada."
-    exit 1
-fi
-
-if [[ -z "${OUTDIR:-}" ]]; then
-
-    if single_output_file_requested && [[ ${#TABLES[@]} -eq 1 ]]; then
-        OUTDIR="$(dirname "$OUT")"
-        mkdir -p "$OUTDIR"
-    else
-        OUTDIR="${OUT:-${DBNAME}_geojson}"
-        mkdir -p "$OUTDIR"
-    fi
-
-fi
+[[ ${#TABLES[@]} -gt 0 ]] || die "Nenhuma tabela encontrada."
 
 ###############################################################################
-# EXPORTAÇÃO
+# EXPORTACAO
 ###############################################################################
+OUTDIR="${DBNAME}_geojson"
+rm -rf "$OUTDIR"
+mkdir -p "$OUTDIR"
 
 for TABLE in "${TABLES[@]}"; do
+  echo "Exportando ${TABLE} para EPSG:${TARGET_SRID}"
+  LAYER_NAME=$(printf "%s" "$TABLE" | tr '.' '_')
+  OUTFILE="${OUTDIR}/${LAYER_NAME}.geojson"
 
-    echo
-    echo "Exportando ${TABLE}"
+  if [[ -n "$CLIP_TABLE" ]]; then
+    TABLE_SCHEMA="${TABLE%%.*}"
+    TABLE_NAME="${TABLE##*.}"
+    CLIP_SCHEMA="${CLIP_TABLE%%.*}"
+    CLIP_NAME="${CLIP_TABLE##*.}"
 
-    GEOM_COL="$(get_geom_column "$TABLE")"
-    GEOM_SRID="$(get_geom_srid "$TABLE")"
+    GEOM_COL=$(psql "$PSQL_CONN" -X -q -A -t -c "
+      SELECT f_geometry_column FROM geometry_columns
+      WHERE f_table_schema='$(sql_literal "$TABLE_SCHEMA")'
+        AND f_table_name='$(sql_literal "$TABLE_NAME")' LIMIT 1;")
+    CLIP_GEOM=$(psql "$PSQL_CONN" -X -q -A -t -c "
+      SELECT f_geometry_column FROM geometry_columns
+      WHERE f_table_schema='$(sql_literal "$CLIP_SCHEMA")'
+        AND f_table_name='$(sql_literal "$CLIP_NAME")' LIMIT 1;")
 
-    if [[ -z "$GEOM_COL" ]]; then
-        echo "Aviso: geometria não encontrada para ${TABLE}. Ignorando."
-        continue
-    fi
+    [[ -n "$GEOM_COL" ]] || die "Geometria nao encontrada para $TABLE"
+    [[ -n "$CLIP_GEOM" ]] || die "Geometria nao encontrada para $CLIP_TABLE"
 
-    if [[ -z "$GEOM_SRID" || "$GEOM_SRID" == "0" ]]; then
-        GEOM_SRID="$TARGET_SRID"
-    fi
-
-    if [[ -n "$ATTRS" ]]; then
-        ATTR_COLS="$(get_columns_from_attrs "$ATTRS" "$GEOM_COL")"
+    if $CUT; then
+      SQL_EXPORT="SELECT a.*, ST_Intersection(a.${GEOM_COL}, b.${CLIP_GEOM}) AS ${GEOM_COL}
+        FROM ${TABLE} a JOIN ${CLIP_TABLE} b
+        ON ST_Intersects(a.${GEOM_COL}, b.${CLIP_GEOM})"
+      [[ -n "$CLIP_WHERE" ]] && SQL_EXPORT+=" WHERE ${CLIP_WHERE}"
     else
-        ATTR_COLS="$(get_columns_except_geom "$TABLE" "$GEOM_COL")"
+      SQL_EXPORT="SELECT a.* FROM ${TABLE} a WHERE EXISTS (
+        SELECT 1 FROM ${CLIP_TABLE} b WHERE "
+      [[ -n "$CLIP_WHERE" ]] && SQL_EXPORT+="(${CLIP_WHERE}) AND "
+      SQL_EXPORT+="ST_Intersects(a.${GEOM_COL}, b.${CLIP_GEOM}))"
     fi
 
-    if [[ -z "$ATTR_COLS" ]]; then
-        SELECT_ATTRS=""
-    else
-        SELECT_ATTRS="${ATTR_COLS},"
-    fi
+    CLIP_SOURCE_SRID="${SOURCE_SRID:-$(table_srid "$TABLE")}"
+    [[ -n "$CLIP_SOURCE_SRID" ]] || die "Nao foi possivel detectar o SRID de $TABLE. Use --source-srid <EPSG>."
 
-    LAYER_NAME="$(safe_name "$TABLE")"
+    ogr2ogr -f GeoJSON "$OUTFILE" "$CONN" \
+      -sql "$SQL_EXPORT" -dialect PostgreSQL \
+      -s_srs "EPSG:${CLIP_SOURCE_SRID}" "${TARGET_ARGS[@]}"
+  else
+    TABLE_ARGS=()
+    [[ -n "$WHERE" ]] && TABLE_ARGS+=(-where "$WHERE")
+    [[ -n "$XMIN" ]] && TABLE_ARGS+=(-spat "$XMIN" "$YMIN" "$XMAX" "$YMAX")
 
-    if single_output_file_requested && [[ ${#TABLES[@]} -eq 1 ]]; then
-        OUTFILE="$OUT"
-    else
-        OUTFILE="${OUTDIR}/${LAYER_NAME}.geojson"
-    fi
+    # Exportacao direta: o driver PostgreSQL fornece o SRS da camada.
+    # --source-srid pode sobrescreve-lo quando solicitado.
+    SOURCE_ARGS=()
+    [[ -n "$SOURCE_SRID" ]] && SOURCE_ARGS=(-s_srs "EPSG:${SOURCE_SRID}")
 
-    ###########################################################################
-    # CLIP / CUT
-    ###########################################################################
-
-    if [[ -n "$CLIP_TABLE" ]]; then
-
-        CLIP_GEOM="$(get_geom_column "$CLIP_TABLE")"
-        CLIP_SRID="$(get_geom_srid "$CLIP_TABLE")"
-
-        if [[ -z "$CLIP_GEOM" ]]; then
-            echo "Erro: geometria não encontrada para clip-table ${CLIP_TABLE}."
-            exit 1
-        fi
-
-        if [[ -z "$CLIP_SRID" || "$CLIP_SRID" == "0" ]]; then
-            CLIP_SRID="$GEOM_SRID"
-        fi
-
-        if [[ "$CLIP_SRID" != "$GEOM_SRID" ]]; then
-            CLIP_GEOM_EXPR="ST_Transform(b.${CLIP_GEOM}, ${GEOM_SRID})"
-        else
-            CLIP_GEOM_EXPR="b.${CLIP_GEOM}"
-        fi
-
-        if $CUT; then
-
-            GEOM_EXPORT="$(
-                optimize_geom_sql "ST_Intersection(a.${GEOM_COL}, ${CLIP_GEOM_EXPR})"
-            )"
-
-            SQL_EXPORT="
-                SELECT
-                    ${SELECT_ATTRS}
-                    ${GEOM_EXPORT} AS geom
-                FROM ${TABLE} a
-                JOIN ${CLIP_TABLE} b
-                  ON ST_Intersects(a.${GEOM_COL}, ${CLIP_GEOM_EXPR})
-            "
-
-            if [[ -n "$CLIP_WHERE" ]]; then
-                SQL_EXPORT+=" WHERE ${CLIP_WHERE}"
-            fi
-
-        else
-
-            GEOM_EXPORT="$(optimize_geom_sql "a.${GEOM_COL}")"
-
-            SQL_EXPORT="
-                SELECT
-                    ${SELECT_ATTRS}
-                    ${GEOM_EXPORT} AS geom
-                FROM ${TABLE} a
-                WHERE EXISTS (
-                    SELECT 1
-                    FROM ${CLIP_TABLE} b
-            "
-
-            if [[ -n "$CLIP_WHERE" ]]; then
-                SQL_EXPORT+=" WHERE (${CLIP_WHERE}) AND "
-            else
-                SQL_EXPORT+=" WHERE "
-            fi
-
-            SQL_EXPORT+="
-                    ST_Intersects(a.${GEOM_COL}, ${CLIP_GEOM_EXPR})
-                )
-            "
-
-        fi
-
-        export_geojson "$OUTFILE" "$SQL_EXPORT"
-
-    ###########################################################################
-    # EXPORTAÇÃO PADRÃO
-    ###########################################################################
-
-    else
-
-        GEOM_EXPORT="$(optimize_geom_sql "a.${GEOM_COL}")"
-
-        SQL_EXPORT="
-            SELECT
-                ${SELECT_ATTRS}
-                ${GEOM_EXPORT} AS geom
-            FROM ${TABLE} a
-        "
-
-        WHERE_PARTS=()
-
-        if [[ -n "$WHERE" ]]; then
-            WHERE_PARTS+=("(${WHERE})")
-        fi
-
-        if [[ -n "$XMIN" ]]; then
-            WHERE_PARTS+=("
-                a.${GEOM_COL} && ST_Transform(
-                    ST_MakeEnvelope(${XMIN}, ${YMIN}, ${XMAX}, ${YMAX}, ${BBOX_SRID}),
-                    ${GEOM_SRID}
-                )
-            ")
-        fi
-
-        if [[ ${#WHERE_PARTS[@]} -gt 0 ]]; then
-            SQL_EXPORT+=" WHERE "
-
-            local_first=true
-            for part in "${WHERE_PARTS[@]}"; do
-                if $local_first; then
-                    SQL_EXPORT+=" ${part} "
-                    local_first=false
-                else
-                    SQL_EXPORT+=" AND ${part} "
-                fi
-            done
-        fi
-
-        export_geojson "$OUTFILE" "$SQL_EXPORT"
-
-    fi
-
+    ogr2ogr -f GeoJSON "$OUTFILE" "$CONN" "$TABLE" \
+      "${TABLE_ARGS[@]}" "${SOURCE_ARGS[@]}" "${TARGET_ARGS[@]}"
+  fi
 done
 
 echo
-echo "Exportação concluída."
-echo "Saída:"
-if single_output_file_requested && [[ ${#TABLES[@]} -eq 1 ]]; then
-    echo "$OUT"
-else
-    echo "$OUTDIR"
-fi
-
+echo "Exportacao concluida."
+echo "Diretorio: ${OUTDIR}"
