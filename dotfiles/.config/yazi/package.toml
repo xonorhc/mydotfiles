@@ -53,5 +53,10 @@ use = "yazi-rs/plugins:mount"
 rev = "f703392"
 hash = "b95f898e6dc60b52edbc415952e14395"
 
+[[plugin.deps]]
+use = "coder0x6675/osc7"
+rev = "ae73046"
+hash = "4f73595837992eeefcb525c0a95b92ba"
+
 [flavor]
 deps = []
