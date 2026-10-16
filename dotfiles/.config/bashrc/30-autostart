@@ -81,8 +81,6 @@ fda() {
 }
 
 fjrnl() {
-    local title
-
     command -v jrnl >/dev/null 2>&1 || {
         echo "Missing dependency: jrnl"
         return 1
@@ -93,8 +91,15 @@ fjrnl() {
         return 1
     }
 
-    title="$(jrnl --short | fzf --tac --no-sort)" &&
-        jrnl -on "$(echo "$title" | cut -c 1-16)" "$1"
+    local line date
+
+    line="$(jrnl --short | fzf --ansi --tac --no-sort)" || return
+
+    [[ -z "$line" ]] && return
+
+    date="$(awk '{print $1, $2, $3}' <<< "$line")"
+
+    jrnl -on "$date"
 }
 
 # -----------------------------------------------------

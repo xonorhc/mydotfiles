@@ -1,6 +1,8 @@
 function fjrnl --description 'Open jrnl entry selected with fzf'
-    set -l title (jrnl --short | fzf --tac --no-sort)
-    if test -n "$title"
-        jrnl -on (echo $title | cut -c 1-16) $argv
+    set -l line (jrnl --short | fzf --ansi --tac --no-sort)
+
+    if test -n "$line"
+        set -l date (echo $line | awk '{print $1, $2, $3}')
+        jrnl -on "$date" $argv
     end
 end
