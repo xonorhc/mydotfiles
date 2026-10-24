@@ -2,6 +2,10 @@ require("session"):setup({
 	sync_yanked = true,
 })
 
+require("zoxide"):setup({
+	update_db = true,
+})
+
 Status:children_add(function(self)
 	local h = self._current.hovered
 	if h and h.link_to then

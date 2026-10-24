@@ -24,6 +24,10 @@ input_path = './templates/kitty-colors.conf'
 output_path = '~/.config/kitty/themes/Matugen.conf'
 post_hook = "kitty +kitten themes --reload-in=all Matugen"
 
+[templates.foot]
+input_path = './templates/foot.ini'
+output_path = '~/.config/foot/colors.ini'
+
 [templates.hyprland]
 input_path = './templates/hyprland-colors.lua'
 output_path = '~/.config/hypr/colors.lua'
@@ -106,3 +110,17 @@ post_hook = "swaync-client -rs"
 input_path = './templates/nvim-colors.vim'
 output_path = '~/.config/nvim/colors/matugen.vim'
 post_hook = 'pkill -SIGUSR1 nvim'
+
+# [templates.nvim-astro5]
+# input_path = '~/.config/matugen/templates/nvim-base16.lua'
+# output_path = '~/.config/nvim-astro6/lua/plugins/base16.lua'
+
+# [templates.nvim-nvchad]
+# input_path = '~/.config/matugen/templates/nvim-base46.lua'
+# output_path = '~/.local/share/nvim-nvchad/lazy/base46/lua/base46/themes/matugen.lua'
+# post_hook = 'pkill -SIGUSR1 nvim'
+
+[templates.terminal-sequences]
+input_path = '~/.config/matugen/templates/terminal-sequences'
+output_path = '~/.cache/terminal-sequences'
+post_hook = 'tee /dev/pts/[0-9]* < ~/.cache/terminal-sequences'

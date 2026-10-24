@@ -10,7 +10,7 @@ require("configs.monitors")
 
 ---- MY PROGRAMS ----
 Run         = "uwsm app -- "
-Terminal    = "kitty" .. " "
+Terminal    = "foot" .. " "
 FileManager = "thunar" .. " "
 Menu        = "fuzzel" .. " "
 Browser     = "flatpak run app.zen_browser.zen" .. " "
@@ -23,6 +23,10 @@ require("configs.autostart")
 require("configs.environment")
 
 ----- PERMISSIONS -----
+hl.permission({ binary = "/usr/bin/grim", type = "screencopy", mode = "allow" })
+hl.permission({ binary = "/usr/bin/wf-recorder", type = "screencopy", mode = "allow" })
+hl.permission({ binary = "/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", type = "screencopy", mode = "allow" })
+hl.permission({ binary = "^(io.github.seadve.Kooha)$" , type = "screencopy", mode = "allow" })
 
 ---- LOOK AND FEEL ----
 require("colors")

@@ -326,7 +326,7 @@ hl.window_rule({
 -- Btop
 hl.window_rule({
 	name = "float_btop",
-	match = { class = "^(btop-monitor)$" },
+	match = { class = "^(btop)$" },
 	float = true,
 	center = true,
 	size = "1600 900",

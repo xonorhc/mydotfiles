@@ -14,9 +14,9 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(Run .. Terminal .. "-e yazi"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(Run .. Terminal .. "-e nvim"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd(Run .. Terminal .. "-e jrnl study"))
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd(Run .. Terminal .. "-e nb shell"))
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(Run .. Browser))
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(Run .. Browser .. "--private-window"))
-hl.bind(mainMod .. " + SHIFT + I", hl.dsp.exec_cmd(Run .. Browser .. "--private-window https://gemini.google.com/app"))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(Run .. Browser))
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(Run .. Browser .. "--private-window"))
+hl.bind(mainMod .. " + SHIFT + I", hl.dsp.exec_cmd(Run .. Browser .. "--private-window https://chatgpt.com/"))
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd(Run .. FileManager))
 
 -- Float apps
@@ -40,15 +40,15 @@ hl.bind(mainMod .. " + SLASH", hl.dsp.exec_cmd(ScriptsDir .. "fuzzel-emojipicker
 hl.bind(mainMod .. " + CTRL + Q", hl.dsp.exec_cmd(ScriptsDir .. "fuzzel-powermenu"))
 hl.bind(mainMod .. " + SHIFT + ESCAPE", hl.dsp.exec_cmd("uwsm stop"))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("systemctl --user restart 'app-*.service' && hyprctl reload"))
-hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(Run .. "~/.config/waybar/launch"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(Run .. "~/.config/waybar/launch"))
 hl.bind("CTRL + ALT + ESCAPE", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind("CTRL + ALT_R", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 
 -- Screenshots
-hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("grimblast save active"))
-hl.bind(mainMod .. " + ALT + C", hl.dsp.exec_cmd("grimblast save output"))
-hl.bind(mainMod .. " + CTRL + C", hl.dsp.exec_cmd("grimblast save screen"))
-hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("grimblast save area"))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("grimblast save active - | swappy -f -"))
+hl.bind(mainMod .. " + ALT + C", hl.dsp.exec_cmd("grimblast save output - | swappy -f -"))
+hl.bind(mainMod .. " + CTRL + C", hl.dsp.exec_cmd("grimblast save screen - | swappy -f -"))
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("grimblast save area - | swappy -f -"))
 
 -- Special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("scratchpad"))
@@ -80,10 +80,10 @@ hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("hyprctl activewindow -j | jq
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("movetoroot")) -- dwindle only
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.layout("swapsplit")) -- dwindle only
-hl.bind("SHIFT + Tab", hl.dsp.window.cycle_next({ tiled = true })) -- monocle only
-hl.bind(mainMod .. " + Tab", hl.dsp.layout("cyclenext")) -- monocle only
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("movetoroot"))
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.layout("swapsplit"))
+hl.bind(mainMod .. "+ PERIOD", hl.dsp.layout("cyclenext"))
+hl.bind(mainMod .. "+ COMMA", hl.dsp.layout("cycleprev"))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
