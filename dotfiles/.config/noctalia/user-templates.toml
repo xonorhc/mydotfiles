@@ -15,13 +15,19 @@ input_path = '~/.config/noctalia/templates/hyprland-colors.lua'
 output_path = '~/.config/hypr/colors.lua'
 post_hook = 'hyprctl reload'
 
-[theme.templates.user.nvim-astro6]
-input_path = '~/.config/noctalia/templates/nvim-base16.lua'
-output_path = '~/.config/nvim-astro6/lua/plugins/matugen.lua'
+[theme.templates.user.terminal-sequences]
+input_path = '~/.config/noctalia/templates/terminal-sequences'
+output_path = '~/.cache/terminal-sequences'
+post_hook = 'tee /dev/pts/[0-9]* < ~/.cache/terminal-sequences'
+
+# [theme.templates.user.nvim-astro6]
+# input_path = '~/.config/noctalia/templates/nvim-base16.lua'
+# output_path = '~/.config/nvim-astro6/lua/plugins/matugen.lua'
+
 # input_path = '~/.config/noctalia/templates/base16.yaml'
 # output_path = '~/.config/nvim-astro6/lua/schemes/matugen.yaml'
 
-[theme.templates.user.nvim-nvchad]
-input_path = '~/.config/noctalia/templates/nvim-base46.lua'
-output_path = '~/.local/share/nvim-nvchad/lazy/base46/lua/base46/themes/matugen.lua'
-post_hook = 'pkill -SIGUSR1 nvim'
+# [theme.templates.user.nvim-nvchad]
+# input_path = '~/.config/noctalia/templates/nvim-base46.lua'
+# output_path = '~/.local/share/nvim-nvchad/lazy/base46/lua/base46/themes/matugen.lua'
+# post_hook = 'pkill -SIGUSR1 nvim'

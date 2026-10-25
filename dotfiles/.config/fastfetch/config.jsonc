@@ -38,10 +38,6 @@
     "gpu",
     "memory",
     "disk",
-    {
-      "type": "publicip",
-      "timeout": 1000,
-    },
     "localip",
     "uptime",
     {

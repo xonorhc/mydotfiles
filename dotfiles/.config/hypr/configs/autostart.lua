@@ -13,7 +13,9 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd(Run .. "wl-paste --type text --watch cliphist store")
 	hl.exec_cmd(Run .. "wl-paste --type image --watch cliphist store")
 	--  Optional / Utilities
-	hl.exec_cmd("[workspace special:btop silent] sleep 2 && " .. Run .. Terminal .. " -e btop, { tag = '+float_term' }")
+	hl.exec_cmd("sleep 2 && " .. Run .. Terminal .. " -e btop", {
+		workspace = "special:btop silent",
+	})
 	-- Portals launch after this gets executed
 	hl.exec_cmd(ScriptsDir .. "xdph.sh")
 	--  Finalize Session

@@ -25,17 +25,17 @@ hash = "7c84fff414a652c86c44523dbb08026f"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "f703392"
+rev = "e0bbd20"
 hash = "347cc6b190eb0c2fd60513cc7ae37412"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "f703392"
-hash = "b95f898e6dc60b52edbc415952e14395"
+rev = "e0bbd20"
+hash = "ba1a606728adb75b091b6eaf3fd60372"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:no-status"
-rev = "f703392"
+rev = "e0bbd20"
 hash = "3e023d31f29201efdac2a6ae35fedb78"
 
 [flavor]

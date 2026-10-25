@@ -16,7 +16,7 @@ hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd(Run .. Terminal .. "-e jrnl s
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd(Run .. Terminal .. "-e nb shell"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(Run .. Browser))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(Run .. Browser .. "--private-window"))
-hl.bind(mainMod .. " + SHIFT + I", hl.dsp.exec_cmd(Run .. Browser .. "--private-window https://gemini.google.com/app"))
+hl.bind(mainMod .. " + SHIFT + I", hl.dsp.exec_cmd(Run .. Browser .. "--private-window https://chatgpt.com/"))
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd(Run .. FileManager))
 
 -- Float apps

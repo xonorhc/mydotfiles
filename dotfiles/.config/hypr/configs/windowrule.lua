@@ -326,7 +326,7 @@ hl.window_rule({
 -- Btop
 hl.window_rule({
 	name = "float_btop",
-	match = { class = "^(btop-monitor)$" },
+	match = { class = "^(btop)$" },
 	float = true,
 	center = true,
 	size = "1600 900",
@@ -381,21 +381,6 @@ hl.layer_rule({
 	match = { namespace = "launcher" },
 	blur = true,
 	dim_around = true,
-	ignore_alpha = 0.2,
-})
-
--- Swaync rule
-hl.layer_rule({
-	match = { namespace = "swaync-control-center" },
-	animation = "slide left",
-	dim_around = true,
-	blur = true,
-	ignore_alpha = 0.2,
-})
-
-hl.layer_rule({
-	match = { namespace = "swaync-notification-window" },
-	blur = true,
 	ignore_alpha = 0.2,
 })
 

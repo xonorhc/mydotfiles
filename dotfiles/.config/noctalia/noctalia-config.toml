@@ -149,21 +149,8 @@ source = "builtin"
         post_hook = "tee /dev/pts/[0-9]* < ~/.cache/terminal-sequences"
 
 [wallpaper]
-directory = "/home/chronox/Dropbox/wallpaper"
 enabled = false
 transition_duration = 100
-
-    [wallpaper.default]
-    path = "/home/chronox/Dropbox/wallpaper/VantaBlack/evanesca-claymore-theresa.jpg"
-
-    [wallpaper.last]
-    path = "/home/chronox/Dropbox/wallpaper/VantaBlack/evanesca-claymore-theresa.jpg"
-
-    [wallpaper.monitors.HDMI-A-1]
-    path = "/home/chronox/Dropbox/wallpaper/VantaBlack/evanesca-claymore-theresa.jpg"
-
-    [wallpaper.monitors.eDP-1]
-    path = "/home/chronox/Dropbox/wallpaper/VantaBlack/evanesca-claymore-theresa.jpg"
 
 [widget.mini-docker]
 type = "8bury/mini-docker:mini-docker"
