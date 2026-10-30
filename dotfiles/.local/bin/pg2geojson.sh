@@ -300,8 +300,10 @@ fi
 # EXPORTACAO
 ###############################################################################
 OUTDIR="${DBNAME}_geojson"
-rm -rf "$OUTDIR"
-mkdir -p "$OUTDIR"
+
+if [[ ! -d "$OUTDIR" ]]; then
+  mkdir -p "$OUTDIR"
+fi
 
 for TABLE in "${TABLES[@]}"; do
   echo "Exportando ${TABLE} para EPSG:${TARGET_SRID}"

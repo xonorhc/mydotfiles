@@ -2,60 +2,47 @@
 
 set -euo pipefail
 
-usage() {
-cat <<EOF
+###############################################################################
+# UTIL
+###############################################################################
 
+die() {
+  echo "ERRO: $*" >&2
+  exit 1
+}
+
+usage() {
+  cat <<EOF
 USO
 
-Usando DATABASE_URL do ambiente:
-  $0 --schema stage
-
-URL explícita:
-  $0 "postgresql://postgres:secret@localhost:5432/postgis" --schema stage
-
 Banco inteiro:
-  $0 "<CONN>"
+  $0 <CONN>
 
 Schema:
-  $0 "<CONN>" --schema stage
+  $0 <CONN> --schema stage
 
 Tabela:
-  $0 "<CONN>" --table stage.sabesp_ligacao
-
-Múltiplas tabelas:
-  $0 "<CONN>" \
-      --table stage.sabesp_ligacao \
-      --table stage.sabesp_rede_agua \
-      --table stage.sabesp_rede_esgoto
-
-Where:
-  $0 "<CONN>" \
-      --table stage.sabesp_ligacao \
-      --where "situacao = 'ATIVA'"
-
-BBox:
-  $0 "<CONN>" \
-      --table stage.sabesp_ligacao \
-      --bbox xmin ymin xmax ymax
-
-Filtro através de camada:
-  $0 "<CONN>" \
-      --schema stage \
-      --clip-table base.municipios \
-      --clip-where "nm_mun='BOTUCATU'"
-
-Recorte geométrico:
-  $0 "<CONN>" \
-      --schema stage \
-      --clip-table base.municipios \
-      --clip-where "nm_mun='BOTUCATU'" \
-      --cut
+  $0 <CONN> --table stage.sabesp_ligacao
 
 SQL:
-  $0 "<CONN>" \
-      --sql "SELECT * FROM stage.sabesp_ligacao"
+  $0 <CONN> --sql "SELECT * FROM stage.sabesp_ligacao"
 
+Filtros:
+  --where
+  --bbox
+  --clip-table
+  --clip-where
+  --cut
+
+Se <CONN> não for informada:
+  DATABASE_URL
+  POSTGIS_URL
+  PG_URL
 EOF
+}
+
+layer_name() {
+  printf "%s" "$1" | tr '.' '_'
 }
 
 ###############################################################################
@@ -64,61 +51,60 @@ EOF
 
 if [[ $# -eq 0 || "$1" == --* ]]; then
 
-    INPUT_CONN="${DATABASE_URL:-${POSTGIS_URL:-${PG_URL:-}}}"
+  INPUT_CONN="${DATABASE_URL:-${POSTGIS_URL:-${PG_URL:-}}}"
 
-    if [[ -z "${INPUT_CONN:-}" ]]; then
-        echo "Nenhuma conexão informada."
-        echo "Defina DATABASE_URL ou passe a conexão como parâmetro."
-        exit 1
-    fi
+  [[ -n "${INPUT_CONN:-}" ]] || die \
+    "Nenhuma conexão informada."
 
 else
 
-    INPUT_CONN="$1"
-    shift
+  INPUT_CONN="$1"
+  shift
 
 fi
 
 ###############################################################################
-# URL PostgreSQL → GDAL + PSQL
+# URL PostgreSQL
 ###############################################################################
 
-if [[ "$INPUT_CONN" =~ ^postgresql:// ]] || \
-   [[ "$INPUT_CONN" =~ ^postgres:// ]]; then
+if [[ "$INPUT_CONN" =~ ^postgresql:// ]] ||
+  [[ "$INPUT_CONN" =~ ^postgres:// ]]; then
 
-    PSQL_CONN="$INPUT_CONN"
+  PSQL_CONN="$INPUT_CONN"
 
-    URI="${INPUT_CONN#postgresql://}"
-    URI="${URI#postgres://}"
+  URI="${INPUT_CONN#postgresql://}"
+  URI="${URI#postgres://}"
 
-    USERPASS="${URI%%@*}"
-    HOSTDB="${URI#*@}"
+  USERPASS="${URI%%@*}"
+  HOSTDB="${URI#*@}"
 
-    USER="${USERPASS%%:*}"
-    PASS="${USERPASS#*:}"
+  USER="${USERPASS%%:*}"
+  PASS="${USERPASS#*:}"
 
-    HOSTPORT="${HOSTDB%%/*}"
-    DBNAME="${HOSTDB#*/}"
+  HOSTPORT="${HOSTDB%%/*}"
+  DBNAME="${HOSTDB#*/}"
+  DBNAME="${DBNAME%%\?*}"
 
-    HOST="${HOSTPORT%%:*}"
-    PORT="${HOSTPORT#*:}"
+  HOST="${HOSTPORT%%:*}"
+  PORT="${HOSTPORT#*:}"
 
-    CONN="PG:host=${HOST} port=${PORT} dbname=${DBNAME} user=${USER} password=${PASS}"
+  [[ "$PORT" != "$HOSTPORT" ]] || PORT=5432
+
+  CONN="PG:host=${HOST} port=${PORT} dbname=${DBNAME} user=${USER} password=${PASS}"
 
 elif [[ "$INPUT_CONN" =~ ^PG: ]]; then
 
-    CONN="$INPUT_CONN"
-    PSQL_CONN="${INPUT_CONN#PG:}"
+  CONN="$INPUT_CONN"
+  PSQL_CONN="${INPUT_CONN#PG:}"
 
-    DBNAME=$(
-        echo "$CONN" |
-        sed -n 's/.*dbname=\([^ ]*\).*/\1/p'
-    )
+  DBNAME=$(
+    echo "$CONN" |
+      sed -n 's/.*dbname=\([^ ]*\).*/\1/p'
+  )
 
 else
 
-    echo "Formato de conexão não suportado."
-    exit 1
+  die "Formato de conexão não suportado."
 
 fi
 
@@ -146,174 +132,209 @@ TABLES=()
 
 while [[ $# -gt 0 ]]; do
 
-    case "$1" in
+  case "$1" in
 
-        --schema)
-            SCHEMA="$2"
-            shift 2
-            ;;
+  --schema)
+    SCHEMA="$2"
+    shift 2
+    ;;
 
-        --table)
-            TABLES+=("$2")
-            shift 2
-            ;;
+  --table)
+    TABLES+=("$2")
+    shift 2
+    ;;
 
-        --sql)
-            SQL="$2"
-            shift 2
-            ;;
+  --sql)
+    SQL="$2"
+    shift 2
+    ;;
 
-        --where)
-            WHERE="$2"
-            shift 2
-            ;;
+  --where)
+    WHERE="$2"
+    shift 2
+    ;;
 
-        --bbox)
-            XMIN="$2"
-            YMIN="$3"
-            XMAX="$4"
-            YMAX="$5"
-            shift 5
-            ;;
+  --bbox)
+    XMIN="$2"
+    YMIN="$3"
+    XMAX="$4"
+    YMAX="$5"
+    shift 5
+    ;;
 
-        --clip-table)
-            CLIP_TABLE="$2"
-            shift 2
-            ;;
+  --clip-table)
+    CLIP_TABLE="$2"
+    shift 2
+    ;;
 
-        --clip-where)
-            CLIP_WHERE="$2"
-            shift 2
-            ;;
+  --clip-where)
+    CLIP_WHERE="$2"
+    shift 2
+    ;;
 
-        --cut)
-            CUT=true
-            shift
-            ;;
+  --cut)
+    CUT=true
+    shift
+    ;;
 
-        *)
-            echo "Parâmetro inválido: $1"
-            exit 1
-            ;;
-    esac
+  -h | --help)
+    usage
+    exit 0
+    ;;
+
+  *)
+    die "Parâmetro inválido: $1"
+    ;;
+
+  esac
 
 done
 
 ###############################################################################
-# SQL LIVRE
+# ARQUIVO DE SAÍDA
+###############################################################################
+
+OUTFILE="${DBNAME}.gpkg"
+
+###############################################################################
+# FUNÇÃO DE EXPORTAÇÃO
+###############################################################################
+
+export_layer() {
+
+  local layer="$1"
+  shift
+
+  if [[ -f "$OUTFILE" ]]; then
+
+    if ogrinfo "$OUTFILE" "$layer" >/dev/null 2>&1; then
+
+      echo "Layer já existe, ignorando: $layer"
+      return 0
+
+    fi
+
+    ogr2ogr \
+      -update \
+      -f GPKG \
+      "$OUTFILE" \
+      "$@"
+
+  else
+
+    ogr2ogr \
+      -f GPKG \
+      "$OUTFILE" \
+      "$@"
+
+  fi
+}
+
+###############################################################################
+# SQL
 ###############################################################################
 
 if [[ -n "$SQL" ]]; then
 
-    OUTFILE="${DBNAME}_sql.gpkg"
+  echo "Exportando SQL..."
 
-    ogr2ogr \
-        -f GPKG \
-        "$OUTFILE" \
-        "$CONN" \
-        -sql "$SQL" \
-        -dialect PostgreSQL
+  export_layer \
+    "sql_result" \
+    "$CONN" \
+    -sql "$SQL" \
+    -dialect PostgreSQL \
+    -nln sql_result
 
-    echo "Arquivo criado: $OUTFILE"
-    exit 0
+  echo "Arquivo atualizado: $OUTFILE"
+  exit 0
+
 fi
 
 ###############################################################################
-# BANCO INTEIRO
+# BANCO COMPLETO
 ###############################################################################
 
 if [[ -z "$SCHEMA" && ${#TABLES[@]} -eq 0 ]]; then
 
-    OUTFILE="${DBNAME}.gpkg"
+  echo "Obtendo tabelas espaciais..."
 
-    echo "Exportando banco completo..."
+  mapfile -t TABLES < <(
+    psql "$PSQL_CONN" -Atc "
+            SELECT f_table_schema || '.' || f_table_name
+            FROM geometry_columns
+            ORDER BY 1
+        "
+  )
 
-    ogr2ogr \
-        -f GPKG \
-        "$OUTFILE" \
-        "$CONN"
-
-    echo "Arquivo criado: $OUTFILE"
-    exit 0
 fi
 
 ###############################################################################
-# ESQUEMA
+# SCHEMA
 ###############################################################################
 
 if [[ -n "$SCHEMA" && ${#TABLES[@]} -eq 0 ]]; then
 
-    mapfile -t TABLES < <(
-        psql "$PSQL_CONN" -Atc "
+  mapfile -t TABLES < <(
+    psql "$PSQL_CONN" -Atc "
             SELECT f_table_schema || '.' || f_table_name
             FROM geometry_columns
             WHERE f_table_schema='${SCHEMA}'
             ORDER BY 1
         "
-    )
+  )
+
 fi
 
-if [[ ${#TABLES[@]} -eq 0 ]]; then
-    echo "Nenhuma tabela encontrada."
-    exit 1
-fi
+[[ ${#TABLES[@]} -gt 0 ]] || die "Nenhuma tabela encontrada."
 
 ###############################################################################
 # EXPORTAÇÃO
 ###############################################################################
 
-OUTFILE="${DBNAME}.gpkg"
-rm -f "$OUTFILE"
-
-FIRST=true
-
 for TABLE in "${TABLES[@]}"; do
 
-    echo "Exportando ${TABLE}"
+  echo "Exportando ${TABLE}"
 
-    LAYER_NAME=$(echo "$TABLE" | tr '.' '_')
+  LAYER_NAME=$(layer_name "$TABLE")
 
-    APPEND_ARGS=()
+  ###########################################################################
+  # CLIP / CUT
+  ###########################################################################
 
-    if ! $FIRST; then
-        APPEND_ARGS=(-append)
-    fi
+  if [[ -n "$CLIP_TABLE" ]]; then
 
-    ###########################################################################
-    # CLIP / CUT
-    ###########################################################################
+    TABLE_SCHEMA="${TABLE%%.*}"
+    TABLE_NAME="${TABLE##*.}"
 
-    if [[ -n "$CLIP_TABLE" ]]; then
+    CLIP_SCHEMA="${CLIP_TABLE%%.*}"
+    CLIP_NAME="${CLIP_TABLE##*.}"
 
-        TABLE_SCHEMA="${TABLE%%.*}"
-        TABLE_NAME="${TABLE##*.}"
-
-        CLIP_SCHEMA="${CLIP_TABLE%%.*}"
-        CLIP_NAME="${CLIP_TABLE##*.}"
-
-        GEOM_COL=$(
-            psql "$PSQL_CONN" -Atc "
+    GEOM_COL=$(
+      psql "$PSQL_CONN" -Atc "
                 SELECT f_geometry_column
                 FROM geometry_columns
                 WHERE f_table_schema='${TABLE_SCHEMA}'
                   AND f_table_name='${TABLE_NAME}'
                 LIMIT 1
             "
-        )
+    )
 
-        CLIP_GEOM=$(
-            psql "$PSQL_CONN" -Atc "
+    CLIP_GEOM=$(
+      psql "$PSQL_CONN" -Atc "
                 SELECT f_geometry_column
                 FROM geometry_columns
                 WHERE f_table_schema='${CLIP_SCHEMA}'
                   AND f_table_name='${CLIP_NAME}'
                 LIMIT 1
             "
-        )
+    )
 
-        if $CUT; then
+    [[ -n "$GEOM_COL" ]] || die "Geometria não encontrada: $TABLE"
+    [[ -n "$CLIP_GEOM" ]] || die "Geometria não encontrada: $CLIP_TABLE"
 
-            SQL_EXPORT="
+    if $CUT; then
+
+      SQL_EXPORT="
             SELECT
                 a.*,
                 ST_Intersection(
@@ -328,12 +349,12 @@ for TABLE in "${TABLES[@]}"; do
                  )
             "
 
-            [[ -n "$CLIP_WHERE" ]] &&
-                SQL_EXPORT+=" WHERE ${CLIP_WHERE}"
+      [[ -n "$CLIP_WHERE" ]] &&
+        SQL_EXPORT+=" WHERE ${CLIP_WHERE}"
 
-        else
+    else
 
-            SQL_EXPORT="
+      SQL_EXPORT="
             SELECT a.*
             FROM ${TABLE} a
             WHERE EXISTS (
@@ -341,63 +362,62 @@ for TABLE in "${TABLES[@]}"; do
                 FROM ${CLIP_TABLE} b
             "
 
-            if [[ -n "$CLIP_WHERE" ]]; then
-                SQL_EXPORT+=" WHERE (${CLIP_WHERE}) AND "
-            else
-                SQL_EXPORT+=" WHERE "
-            fi
+      if [[ -n "$CLIP_WHERE" ]]; then
+        SQL_EXPORT+=" WHERE (${CLIP_WHERE}) AND "
+      else
+        SQL_EXPORT+=" WHERE "
+      fi
 
-            SQL_EXPORT+="
+      SQL_EXPORT+="
                 ST_Intersects(
                     a.${GEOM_COL},
                     b.${CLIP_GEOM}
                 )
             )"
-        fi
-
-        ogr2ogr \
-            -f GPKG \
-            "$OUTFILE" \
-            "$CONN" \
-            -sql "$SQL_EXPORT" \
-            -dialect PostgreSQL \
-            -nln "$LAYER_NAME" \
-            "${APPEND_ARGS[@]}"
-
-    ###########################################################################
-    # EXPORTAÇÃO PADRÃO
-    ###########################################################################
-
-    else
-
-        OGR_ARGS=()
-
-        [[ -n "$WHERE" ]] &&
-            OGR_ARGS+=(-where "$WHERE")
-
-        [[ -n "$XMIN" ]] &&
-            OGR_ARGS+=(
-                -spat
-                "$XMIN"
-                "$YMIN"
-                "$XMAX"
-                "$YMAX"
-            )
-
-        ogr2ogr \
-            -f GPKG \
-            "$OUTFILE" \
-            "$CONN" \
-            "$TABLE" \
-            "${OGR_ARGS[@]}" \
-            "${APPEND_ARGS[@]}"
 
     fi
 
-    FIRST=false
+    export_layer \
+      "$LAYER_NAME" \
+      "$CONN" \
+      -sql "$SQL_EXPORT" \
+      -dialect PostgreSQL \
+      -nln "$LAYER_NAME"
+
+  ###########################################################################
+  # EXPORTAÇÃO DIRETA
+  ###########################################################################
+
+  else
+
+    OGR_ARGS=()
+
+    [[ -n "$WHERE" ]] &&
+      OGR_ARGS+=(
+        -where
+        "$WHERE"
+      )
+
+    [[ -n "$XMIN" ]] &&
+      OGR_ARGS+=(
+        -spat
+        "$XMIN"
+        "$YMIN"
+        "$XMAX"
+        "$YMAX"
+      )
+
+    export_layer \
+      "$LAYER_NAME" \
+      "$CONN" \
+      "$TABLE" \
+      -nln "$LAYER_NAME" \
+      "${OGR_ARGS[@]}"
+
+  fi
 
 done
 
 echo
-echo "Exportação concluída:"
-echo "$OUTFILE"
+echo "Exportação concluída."
+echo "Arquivo: $OUTFILE"
