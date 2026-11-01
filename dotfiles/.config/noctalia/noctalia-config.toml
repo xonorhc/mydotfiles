@@ -37,7 +37,7 @@ widget_order = []
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
-widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
+widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-login-box@HDMI-A-1" ]
 
     [lockscreen_widgets.grid]
     cell_size = 16
@@ -56,7 +56,7 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -67,6 +67,7 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
         show_keyboard_layout = true
         show_login_button = true
         show_media = true
+        show_password_reveal = true
         show_session_buttons = true
         show_unlock_hint = true
         show_weather = true
@@ -83,7 +84,7 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -94,6 +95,7 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
         show_keyboard_layout = true
         show_login_button = true
         show_media = true
+        show_password_reveal = true
         show_session_buttons = true
         show_unlock_hint = true
         show_weather = true
@@ -120,14 +122,32 @@ telemetry_enabled = true
 [templates]
 
 [theme]
-community_palette = "Tokyo Night Moon"
-custom_palette = "Deku"
+builtin = "Dracula"
+community_palette = "SeaBed"
+custom_palette = "Shades-of-Purple"
 mode = "dark"
 source = "builtin"
+wallpaper_scheme = "faithful"
 
     [theme.templates]
     builtin_ids = [ "btop", "cava", "foot", "gtk3", "gtk4", "hyprland", "kitty", "qt", "starship" ]
-    community_ids = [ "zen-browser", "gimp", "libreoffice", "vscode", "fastfetch", "zathura", "zellij", "lazygit", "yazi" ]
+    community_ids = [
+        "zen-browser",
+        "gimp",
+        "libreoffice",
+        "fuzzel",
+        "rofi",
+        "fastfetch",
+        "thunderbird",
+        "zathura",
+        "zellij",
+        "thunar",
+        "fzf",
+        "lazygit",
+        "oh-my-posh",
+        "starship",
+        "yazi"
+    ]
 
         [theme.templates.user.hyprland]
         input_path = "~/.config/noctalia/templates/hyprland-colors.lua"
@@ -149,8 +169,21 @@ source = "builtin"
         post_hook = "tee /dev/pts/[0-9]* < ~/.cache/terminal-sequences"
 
 [wallpaper]
-enabled = false
+directory = "~/Dropbox/wallpaper"
+enabled = true
 transition_duration = 100
+
+    [wallpaper.default]
+    path = "~/Dropbox/wallpaper/Dracula/jack_wang_morgana.jpg"
+
+    [wallpaper.last]
+    path = "~/Dropbox/wallpaper/Dracula/jack_wang_morgana.jpg"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "~/Dropbox/wallpaper/Dracula/jack_wang_morgana.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "~/Dropbox/wallpaper/Dracula/jack_wang_morgana.jpg"
 
 [widget.mini-docker]
 type = "8bury/mini-docker:mini-docker"

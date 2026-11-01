@@ -60,7 +60,17 @@ hl.bind(mainMod .. " + CTRL + R", hl.dsp.exec_cmd([[ killall -s SIGINT wf-record
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("scratchpad"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:scratchpad" }))
 hl.bind("CTRL + SHIFT + ESCAPE", hl.dsp.workspace.toggle_special("btop"))
-hl.bind(mainMod .. " + SHIFT + H", hl.dsp.exec_cmd(ScriptsDir .. "minimize"))
+
+-- Minimize windows using special workspaces
+hl.bind("SUPER + X", function ()
+    if hl.get_workspace("special:minimized") then
+        hl.dispatch(hl.dsp.window.move({ workspace = hl.get_active_workspace(), window = "tag:minimized" }))
+        hl.dispatch(hl.dsp.window.clear_tags({ window = "tag:minimized" }))
+    else
+        hl.dispatch(hl.dsp.window.tag({ tag = "minimized", window = hl.get_active_window() }))
+        hl.dispatch(hl.dsp.window.move({ workspace = "special:minimized", follow = false }))
+    end
+end)
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
@@ -74,10 +84,14 @@ hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 
 -- To switch between windows in a floating workspace:
-hl.bind("ALT + Tab", function()
-	hl.dispatch(hl.dsp.window.cycle_next()) -- Change focus to another window
-	hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
-end)
+hl.bind("ALT + TAB", function()
+    local window = hl.get_active_window()
+    if not window then return end
+    hl.dispatch(hl.dsp.window.cycle_next({
+        floating = not window.floating,
+        tiled = window.floating,
+    }))
+end, { description = "Switch focus between tiled and floating windows" })
 
 -- Window actions
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
@@ -86,17 +100,30 @@ hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("hyprctl activewindow -j | jq
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
--- dwindle only
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.layout("movetoroot"))
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.layout("swapsplit"))
- -- monocle only
-hl.bind(mainMod .. "+ PERIOD", hl.dsp.layout("cyclenext"))
-hl.bind(mainMod .. "+ COMMA", hl.dsp.layout("cycleprev"))
--- scrolling only
--- hl.bind("ALT + EQUAL", hl.dsp.layout("colresize +conf"))
--- hl.bind("ALT + MINUS", hl.dsp.layout("colresize -conf"))
--- hl.bind(mainMod .. "+ mouse_up", hl.dsp.focus({direction = "up"}))
--- hl.bind(mainMod .. "+ mouse_down", hl.dsp.focus({direction = "down"}))
+
+-- Per-layout binds
+local function layout_bind(bind_table)
+	return function()
+		local workspace = hl.get_active_special_workspace() or hl.get_active_workspace()
+		if not workspace then return end
+		local layout = workspace.tiled_layout
+		if bind_table[layout] then hl.dispatch(bind_table[layout]) end
+	end
+end
+
+hl.bind(mainMod .. "+ COMMA", layout_bind({
+    scrolling = hl.dsp.layout("swapcol l"),  -- Scrolling: swap column with left one
+    dwindle   = hl.dsp.layout("swapsplit"),  -- Dwindle: swap window split
+    monocle   = hl.dsp.layout("cycleprev"),  -- Monocle and master: cycle prev window
+    master    = hl.dsp.layout("swapprev"),
+}))
+
+hl.bind(mainMod .. "+ PERIOD", layout_bind({
+    scrolling = hl.dsp.layout("swapcol r"),   -- Scrolling: swap column with right one
+    dwindle   = hl.dsp.layout("togglesplit"), -- Dwindle: toggle window split
+    monocle   = hl.dsp.layout("cyclenext"),   -- Monocle and master: cycle next window
+    master    = hl.dsp.layout("swapnext"),
+}))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -135,4 +162,78 @@ hl.define_submap("resize", function()
 	hl.bind("K", hl.dsp.window.resize({ x = 0, y = 10, relative = true }), { repeating = true })
 	hl.bind("J", hl.dsp.window.resize({ x = 0, y = -10, relative = true }), { repeating = true })
 	hl.bind("escape", hl.dsp.submap("reset"))
+end)
+
+-- Windows Magnifier-like cursor zoom
+local MAX_ZOOM = 3
+local MIN_ZOOM = 1
+local ZOOM_TOGGLE_FACTOR = 1.5
+
+---@param offset number
+---@return nil
+local function zoom(offset)
+    local current = hl.get_config("cursor.zoom_factor")
+    if offset ~= nil then
+        current = current + offset
+    elseif current ~= MIN_ZOOM then
+        current = MIN_ZOOM
+    else
+        current = ZOOM_TOGGLE_FACTOR
+    end
+    current = math.max(MIN_ZOOM, math.min(MAX_ZOOM, current))
+    hl.config({ cursor = { zoom_factor = current } })
+end
+
+hl.bind("SUPER + Z", zoom)
+hl.bind("SUPER + KP_ADD", function() zoom(0.5) end)
+hl.bind("SUPER + minus", function() zoom(-0.5) end)
+
+-- Close All Windows At Once
+local function closeAllWindows()
+    local windows = hl.get_windows()
+
+    for _,w in pairs(windows) do
+        hl.dispatch(hl.dsp.window.close({ window = w }))
+    end
+end
+
+local function closeAllWindowsCurrentWorkspace()
+    local cws = hl.get_active_workspace()
+    local windows = hl.get_windows({ workspace = cws })
+
+    for _,w in pairs(windows) do
+        hl.dispatch(hl.dsp.window.close({ window = w }))
+    end
+end
+
+hl.bind(mainMod .. "+BackSpace", closeAllWindowsCurrentWorkspace )
+hl.bind(mainMod .. "+Delete", closeAllWindows )
+
+-- Cycle layout for current workspace
+hl.bind(mainMod .. "+ SHIFT + BACKSLASH", function ()
+    local layouts   = { "scrolling", "dwindle", "master", "monocle" }
+    local workspace = hl.get_active_workspace()
+    if hl.get_active_special_workspace() then
+        workspace = hl.get_active_special_workspace()
+    end
+
+    local next_layout = "dwindle"
+
+    if not workspace then
+        return
+    end
+
+    for i = 1, #layouts do
+        if layouts[i] == workspace.tiled_layout then
+            local next_layout_idx = (i % #layouts) + 1
+            next_layout = layouts[next_layout_idx]
+            break
+        end
+    end
+
+    if workspace then
+        hl.workspace_rule({ workspace = tostring(workspace.name), layout = next_layout })
+    else
+        hl.workspace_rule({ workspace = "name:" .. tostring(workspace.name), layout = next_layout })
+    end
 end)

@@ -50,5 +50,6 @@ require("configs.workspace")
 ---- CUSTOM ----
 require("configs.custom")
 
+
 -- For Noctalia Color templates
 require("noctalia").apply_theme()

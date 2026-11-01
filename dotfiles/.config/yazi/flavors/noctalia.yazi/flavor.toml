@@ -8,14 +8,14 @@ find_keyword = { fg = "#ff5555", bold = true, italic = true, underline = true }
 find_position = { fg = "#ff5555", bold = true, italic = true }
 
 # Marker
-marker_copied = { fg = "#03aed2", bg = "#03aed2" }
-marker_cut = { fg = "#03aed2", bg = "#03aed2" }
+marker_copied = { fg = "#456371", bg = "#456371" }
+marker_cut = { fg = "#456371", bg = "#456371" }
 marker_marked = { fg = "#ff5555", bg = "#ff5555" }
 marker_selected = { fg = "#8be9fd", bg = "#8be9fd" }
 
 # Count
-count_copied = { fg = "#193c44", bg = "#03aed2" }
-count_cut = { fg = "#193c44", bg = "#03aed2" }
+count_copied = { fg = "#8be9fd", bg = "#456371" }
+count_cut = { fg = "#8be9fd", bg = "#456371" }
 count_selected = { fg = "#282a36", bg = "#8be9fd" }
 
 # Border
@@ -40,8 +40,8 @@ progress_error = { fg = "#ff5555", bg = "#282a36" }
 perm_type = { fg = "#ff79c6" }
 perm_write = { fg = "#8be9fd" }
 perm_exec = { fg = "#ff5555" }
-perm_read = { fg = "#03aed2" }
-perm_sep = { fg = "#5b0ad0" }
+perm_read = { fg = "#456371" }
+perm_sep = { fg = "#544970" }
 
 # : ]]]
 
@@ -96,7 +96,7 @@ border = { fg = "#bd93f9", bg = "#282a36" }
 [tasks]
 border = { fg = "#bd93f9" }
 title = {}
-hovered = { fg = "#03aed2", underline = true }
+hovered = { fg = "#456371", underline = true }
 
 # : ]]]
 
@@ -164,7 +164,7 @@ rules = [
     { mime = "application/{pdf,doc,rtf}", fg = "#8be9fd" },
 
     # Special files
-    { mime = "*", is = "orphan", fg = "#ffcccc", bg = "#a20000" },
+    { mime = "*", is = "orphan", fg = "#ff948d", bg = "#68363f" },
     { mime = "application/*exec*", fg = "#ff5555" },
 
     # Fallback
