@@ -1,0 +1,759 @@
+{
+  "base16": {
+    "base00": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "base01": {
+      "default": {
+        "color": "#665c54"
+      }
+    },
+    "base02": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "base03": {
+      "default": {
+        "color": "#928374"
+      }
+    },
+    "base04": {
+      "default": {
+        "color": "#d4be98"
+      }
+    },
+    "base05": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "base06": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "base07": {
+      "default": {
+        "color": "#ebdbb2"
+      }
+    },
+    "base08": {
+      "default": {
+        "color": "#ea6962"
+      }
+    },
+    "base09": {
+      "default": {
+        "color": "#d8a657"
+      }
+    },
+    "base0a": {
+      "default": {
+        "color": "#d8a657"
+      }
+    },
+    "base0b": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "base0c": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "base0d": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "base0e": {
+      "default": {
+        "color": "#d3869b"
+      }
+    },
+    "base0f": {
+      "default": {
+        "color": "#89b482"
+      }
+    }
+  },
+  "colors": {
+    "baby_pink": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "baby_pink_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "baby_pink_source": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "baby_pink_value": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "background": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "blue": {
+      "default": {
+        "color": "#7daea3"
+      }
+    },
+    "blue_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "blue_source": {
+      "default": {
+        "color": "#7daea3"
+      }
+    },
+    "blue_value": {
+      "default": {
+        "color": "#7daea3"
+      }
+    },
+    "cyan": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "cyan_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "cyan_source": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "cyan_value": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "dark_purple": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "dark_purple_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "dark_purple_source": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "dark_purple_value": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "error": {
+      "default": {
+        "color": "#ea6962"
+      }
+    },
+    "error_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "green": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "green_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "green_source": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "green_value": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "inverse_on_surface": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "inverse_primary": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "inverse_surface": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "nord_blue": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "nord_blue_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "nord_blue_source": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "nord_blue_value": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "on_baby_pink": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_baby_pink_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_background": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_blue": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_blue_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_cyan": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_cyan_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_dark_purple": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_dark_purple_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_error": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_error_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_green": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_green_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_nord_blue": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_nord_blue_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_orange": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_orange_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_pink": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_pink_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_primary": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_primary_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_primary_fixed": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_primary_fixed_variant": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "on_purple": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_purple_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_red": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_red_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_secondary": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_secondary_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_secondary_fixed": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_secondary_fixed_variant": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "on_sun": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_sun_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_surface": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_surface_variant": {
+      "default": {
+        "color": "#d4be98"
+      }
+    },
+    "on_teal": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_teal_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_tertiary": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_tertiary_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_tertiary_fixed": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_tertiary_fixed_variant": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "on_vibrant_green": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_vibrant_green_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "on_yellow": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "on_yellow_container": {
+      "default": {
+        "color": "#ddc7a1"
+      }
+    },
+    "orange": {
+      "default": {
+        "color": "#d8a657"
+      }
+    },
+    "orange_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "orange_source": {
+      "default": {
+        "color": "#d8a657"
+      }
+    },
+    "orange_value": {
+      "default": {
+        "color": "#d8a657"
+      }
+    },
+    "outline": {
+      "default": {
+        "color": "#504945"
+      }
+    },
+    "outline_variant": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "pink": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "pink_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "pink_source": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "pink_value": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "primary": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "primary_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "primary_fixed": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "primary_fixed_dim": {
+      "default": {
+        "color": "#e78a4e"
+      }
+    },
+    "purple": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "purple_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "purple_source": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "purple_value": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "red": {
+      "default": {
+        "color": "#ea6962"
+      }
+    },
+    "red_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "red_source": {
+      "default": {
+        "color": "#ea6962"
+      }
+    },
+    "red_value": {
+      "default": {
+        "color": "#ea6962"
+      }
+    },
+    "scrim": {
+      "default": {
+        "color": "#000000"
+      }
+    },
+    "secondary": {
+      "default": {
+        "color": "#e78a4e"
+      }
+    },
+    "secondary_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "secondary_fixed": {
+      "default": {
+        "color": "#e78a4e"
+      }
+    },
+    "secondary_fixed_dim": {
+      "default": {
+        "color": "#e78a4e"
+      }
+    },
+    "shadow": {
+      "default": {
+        "color": "#282828"
+      }
+    },
+    "source_color": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "sun": {
+      "default": {
+        "color": "#d8a657"
+      }
+    },
+    "sun_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "sun_source": {
+      "default": {
+        "color": "#d8a657"
+      }
+    },
+    "sun_value": {
+      "default": {
+        "color": "#d8a657"
+      }
+    },
+    "surface": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "surface_bright": {
+      "default": {
+        "color": "#7daea3"
+      }
+    },
+    "surface_container": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "surface_container_high": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "surface_container_highest": {
+      "default": {
+        "color": "#7daea3"
+      }
+    },
+    "surface_container_low": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "surface_container_lowest": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "surface_dim": {
+      "default": {
+        "color": "#32302f"
+      }
+    },
+    "surface_tint": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "surface_variant": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "teal": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "teal_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "teal_source": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "teal_value": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "tertiary": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "tertiary_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "tertiary_fixed": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "tertiary_fixed_dim": {
+      "default": {
+        "color": "#89b482"
+      }
+    },
+    "vibrant_green": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "vibrant_green_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "vibrant_green_source": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "vibrant_green_value": {
+      "default": {
+        "color": "#a9b665"
+      }
+    },
+    "yellow": {
+      "default": {
+        "color": "#d8a657"
+      }
+    },
+    "yellow_container": {
+      "default": {
+        "color": "#3c3836"
+      }
+    },
+    "yellow_source": {
+      "default": {
+        "color": "#d8a657"
+      }
+    },
+    "yellow_value": {
+      "default": {
+        "color": "#d8a657"
+      }
+    }
+  },
+  "image": null,
+  "is_dark_mode": true,
+  "mode": "dark"
+}
