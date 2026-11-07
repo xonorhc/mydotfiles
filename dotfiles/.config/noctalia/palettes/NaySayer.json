@@ -17,8 +17,6 @@
     "mHover": "#0b3335",
     "mOnHover": "#d1b897",
     "terminal": {
-      "foreground": "#d1b897",
-      "background": "#062329",
       "normal": {
         "black": "#0b3335",
         "red": "#F92672",
@@ -39,10 +37,12 @@
         "cyan": "#7ad0c6",
         "white": "#ffffff"
       },
-      "cursor": "#ffffff",
-      "cursorText": "#062329",
+      "foreground": "#d1b897",
+      "background": "#062329",
       "selectionFg": "#d1b897",
-      "selectionBg": "#0000ff"
+      "selectionBg": "#0000ff",
+      "cursorText": "#062329",
+      "cursor": "#ffffff"
     }
   },
   "light": {
@@ -63,8 +63,6 @@
     "mHover": "#e8f4f5",
     "mOnHover": "#062329",
     "terminal": {
-      "foreground": "#062329",
-      "background": "#ffffff",
       "normal": {
         "black": "#062329",
         "red": "#F92672",
@@ -85,10 +83,12 @@
         "cyan": "#7ad0c6",
         "white": "#ffffff"
       },
-      "cursor": "#062329",
-      "cursorText": "#ffffff",
+      "foreground": "#062329",
+      "background": "#ffffff",
       "selectionFg": "#062329",
-      "selectionBg": "#c1d1e3"
+      "selectionBg": "#c1d1e3",
+      "cursorText": "#ffffff",
+      "cursor": "#062329"
     }
   }
 }

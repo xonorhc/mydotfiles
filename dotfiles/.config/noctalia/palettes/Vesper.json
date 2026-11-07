@@ -17,8 +17,6 @@
     "mHover": "#282828",
     "mOnHover": "#FFFFFF",
     "terminal": {
-      "foreground": "#FFFFFF",
-      "background": "#0C0C0C",
       "normal": {
         "black": "#0C0C0C",
         "red": "#FF8080",
@@ -39,10 +37,12 @@
         "cyan": "#99FFE4",
         "white": "#FFFFFF"
       },
-      "cursor": "#FFFFFF",
-      "cursorText": "#000000",
+      "foreground": "#FFFFFF",
+      "background": "#0C0C0C",
       "selectionFg": "#000000",
-      "selectionBg": "#FFC799"
+      "selectionBg": "#FFC799",
+      "cursorText": "#000000",
+      "cursor": "#FFFFFF"
     }
   },
   "light": {
@@ -63,8 +63,6 @@
     "mHover": "#E0E0E0",
     "mOnHover": "#0C0C0C",
     "terminal": {
-      "foreground": "#0C0C0C",
-      "background": "#F2F2F2",
       "normal": {
         "black": "#F2F2F2",
         "red": "#FF8080",
@@ -85,10 +83,12 @@
         "cyan": "#99FFE4",
         "white": "#0C0C0C"
       },
-      "cursor": "#0C0C0C",
-      "cursorText": "#F2F2F2",
+      "foreground": "#0C0C0C",
+      "background": "#F2F2F2",
       "selectionFg": "#F2F2F2",
-      "selectionBg": "#FFC799"
+      "selectionBg": "#FFC799",
+      "cursorText": "#F2F2F2",
+      "cursor": "#0C0C0C"
     }
   }
 }
